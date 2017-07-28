@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void WrongClick() {
                 Log.d(Tag, "Wrongclick");
+
+                mRwView.setVisibility(View.GONE);
             }
         });
 

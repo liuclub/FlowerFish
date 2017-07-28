@@ -13,10 +13,10 @@
 
 
         android:id="@+id/fv_flower"
-
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        >
 
 
     </com.bagelplay.flowerfish.view.FlowerView>

@@ -99,14 +99,14 @@ public class FlowerView extends FrameLayout {
                     for (int i = 0; i < mFlowerBitmaps.length; i++) {
 
                         if (mFlowerBitmaps[i].getPixel((int) (arg1.getX()), ((int) arg1.getY())) == 0) {
-                            Log.i(Tag, "图" + i + "透明区域");
+                            //  Log.i(Tag, "图" + i + "透明区域");
 
 
                             continue;
 
                         } else {
 
-                            Log.i(Tag, "图" + i + "实体区域");
+                            // Log.i(Tag, "图" + i + "实体区域");
 
                             mFlowerImageViews[i].setImageResource(mFlowerBitmapsSelect[i]);
 
