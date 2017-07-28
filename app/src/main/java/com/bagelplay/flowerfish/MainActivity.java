@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bagelplay.flowerfish.view.FlowerView;
+import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.RightWrongView;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     FlowerView mFv_flower;
 
     RightWrongView mRwView;
+
+    NumberGameView mNgvView;
 
 
     @Override
@@ -58,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 mRwView.setVisibility(View.GONE);
             }
         });
+
+
+        mNgvView= (NumberGameView) findViewById(R.id.ngv_view);
+
 
     }
 

@@ -13,13 +13,13 @@
 
 
         android:id="@+id/fv_flower"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:layout_gravity="center">
 
 
     </com.bagelplay.flowerfish.view.FlowerView>
+
 
     <com.bagelplay.flowerfish.view.RightWrongView
         android:id="@+id/rw_view"
@@ -27,6 +27,14 @@
         android:layout_height="match_parent">
 
     </com.bagelplay.flowerfish.view.RightWrongView>
+
+   <com.bagelplay.flowerfish.view.NumberGameView
+
+       android:id="@+id/ngv_view"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   </com.bagelplay.flowerfish.view.NumberGameView>
 
 
 </FrameLayout>
