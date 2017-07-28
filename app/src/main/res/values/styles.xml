@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FlowerImageView" >
+
+        <item name="android:layout_width">@dimen/FlowerImangeViewWidth</item>
+        <item name="android:layout_height">@dimen/FlowerImangeViewHeight</item>
+
+
+
+
+    </style>
+
 </resources>
