@@ -10,11 +10,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.bagelplay.flowerfish.view.FlowerView;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity {
+  String Tag="MainActivity";
 
-
-
+    FlowerView mFv_flower;
 
 
     @Override
@@ -23,8 +28,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        mFv_flower= (FlowerView) findViewById(R.id.fv_flower);
 
 
+        mFv_flower.setonFlowerChooseListener(new FlowerView.FlowerChoose() {
+            @Override
+            public void flowerChoose(int chooseid) {
+                //Toast.makeText(MainActivity.this,"第"+chooseid+"关",Toast.LENGTH_SHORT).show();
+
+                Log.d(Tag,"第"+chooseid+"关");
+            }
+        });
 
     }
 

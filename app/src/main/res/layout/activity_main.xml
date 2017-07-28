@@ -12,7 +12,6 @@
     <com.bagelplay.flowerfish.view.FlowerView
 
 
-
         android:layout_centerInParent="true"
 
         android:id="@+id/fv_flower"

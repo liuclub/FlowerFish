@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -86,40 +87,50 @@ public class FlowerView extends FrameLayout {
         }
 
 
+
+
         iv1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View arg0, MotionEvent arg1) {
                 // TODO Auto-generated method stub
 
 
-                for (int i = 0; i < mFlowerBitmaps.length; i++) {
-
-                    if (mFlowerBitmaps[i].getPixel((int) (arg1.getX()), ((int) arg1.getY())) == 0) {
-                        Log.i(Tag, "图" + i + "透明区域");
+                if(arg1.getAction()== KeyEvent.ACTION_DOWN) {
 
 
-                        continue;
+                    for (int i = 0; i < mFlowerBitmaps.length; i++) {
 
-                    } else {
-
-                        Log.i(Tag, "图" + i + "实体区域");
-
-                        mFlowerImageViews[i].setImageResource(mFlowerBitmapsSelect[i]);
+                        if (mFlowerBitmaps[i].getPixel((int) (arg1.getX()), ((int) arg1.getY())) == 0) {
+                            Log.i(Tag, "图" + i + "透明区域");
 
 
-                        return true;
+                            continue;
+
+                        } else {
+
+                            Log.i(Tag, "图" + i + "实体区域");
+
+                            mFlowerImageViews[i].setImageResource(mFlowerBitmapsSelect[i]);
+
+
+                            mFlowerChoose.flowerChoose(i);
+
+                            return true;
+                        }
+
+
                     }
 
-
                 }
-
-
                 return true;
 
 
             }
         });
     }
+
+
+
 
     private Bitmap getDecodeBitmap(Context context, int id) {
         Bitmap bitmapOrg = BitmapFactory.decodeResource(getResources(),
@@ -172,6 +183,21 @@ public class FlowerView extends FrameLayout {
 
     public FlowerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+
+    public FlowerChoose mFlowerChoose;
+
+    public void  setonFlowerChooseListener(FlowerChoose flowerChoose){
+
+       this.mFlowerChoose=flowerChoose;
+    }
+
+   public interface  FlowerChoose {
+
+        public void flowerChoose(int chooseid);
+
+
     }
 
 
