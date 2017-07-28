@@ -13,13 +13,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bagelplay.flowerfish.view.FlowerView;
+import com.bagelplay.flowerfish.view.RightWrongView;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity {
-  String Tag="MainActivity";
+    String Tag = "MainActivity";
 
     FlowerView mFv_flower;
+
+    RightWrongView mRwView;
 
 
     @Override
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        mFv_flower= (FlowerView) findViewById(R.id.fv_flower);
+        mFv_flower = (FlowerView) findViewById(R.id.fv_flower);
 
 
         mFv_flower.setonFlowerChooseListener(new FlowerView.FlowerChoose() {
@@ -36,7 +39,21 @@ public class MainActivity extends AppCompatActivity {
             public void flowerChoose(int chooseid) {
                 //Toast.makeText(MainActivity.this,"第"+chooseid+"关",Toast.LENGTH_SHORT).show();
 
-                Log.d(Tag,"第"+chooseid+"关");
+                Log.d(Tag, "第" + chooseid + "关");
+            }
+        });
+
+        mRwView = (RightWrongView) findViewById(R.id.rw_view);
+
+        mRwView.setOnRightWrongClickLinstener(new RightWrongView.RightWrongClickLinstener() {
+            @Override
+            public void RightClick() {
+                Log.d(Tag, "Rightclick");
+            }
+
+            @Override
+            public void WrongClick() {
+                Log.d(Tag, "Wrongclick");
             }
         });
 

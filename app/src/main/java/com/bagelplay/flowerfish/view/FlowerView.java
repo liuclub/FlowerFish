@@ -87,15 +87,13 @@ public class FlowerView extends FrameLayout {
         }
 
 
-
-
         iv1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View arg0, MotionEvent arg1) {
                 // TODO Auto-generated method stub
 
 
-                if(arg1.getAction()== KeyEvent.ACTION_DOWN) {
+                if (arg1.getAction() == KeyEvent.ACTION_DOWN) {
 
 
                     for (int i = 0; i < mFlowerBitmaps.length; i++) {
@@ -112,8 +110,11 @@ public class FlowerView extends FrameLayout {
 
                             mFlowerImageViews[i].setImageResource(mFlowerBitmapsSelect[i]);
 
+                            if (mFlowerChoose != null) {
 
-                            mFlowerChoose.flowerChoose(i);
+                                mFlowerChoose.flowerChoose(i);
+
+                            }
 
                             return true;
                         }
@@ -128,8 +129,6 @@ public class FlowerView extends FrameLayout {
             }
         });
     }
-
-
 
 
     private Bitmap getDecodeBitmap(Context context, int id) {
@@ -188,12 +187,12 @@ public class FlowerView extends FrameLayout {
 
     public FlowerChoose mFlowerChoose;
 
-    public void  setonFlowerChooseListener(FlowerChoose flowerChoose){
+    public void setonFlowerChooseListener(FlowerChoose flowerChoose) {
 
-       this.mFlowerChoose=flowerChoose;
+        this.mFlowerChoose = flowerChoose;
     }
 
-   public interface  FlowerChoose {
+    public interface FlowerChoose {
 
         public void flowerChoose(int chooseid);
 

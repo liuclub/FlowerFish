@@ -1,21 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
     </style>
 
-    <style name="FlowerImageView" >
+    <style name="FlowerImageView">
 
         <item name="android:layout_width">@dimen/FlowerImangeViewWidth</item>
         <item name="android:layout_height">@dimen/FlowerImangeViewHeight</item>
 
-
-
-
     </style>
+
+    <style name="RightWrongBtn">
+        <item name="android:layout_height">@dimen/RightWrongBtnHeight</item>
+        <item name="android:layout_width">@dimen/RightWrongBtnWidth</item>
+        <item name="android:layout_margin">@dimen/RightWrongBtnMargin</item>
+    </style>
+
 
 </resources>
