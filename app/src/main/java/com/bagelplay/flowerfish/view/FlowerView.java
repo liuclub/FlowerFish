@@ -17,10 +17,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.bagelplay.flowerfish.R;
+import com.bagelplay.flowerfish.utils.DimenUtil;
 
-import static android.R.attr.scaleHeight;
-import static android.R.attr.scaleWidth;
-import static android.R.attr.width;
+
 
 /**
  * Created by zhangtianjie on 2017/7/28.
@@ -145,13 +144,13 @@ public class FlowerView extends FrameLayout {
 
         // Log.d(Tag,w+"~"+h);
 
-        w = Px2Dp(context, w);
+        w = DimenUtil.px2Dp(context, w);
 
-        h = Px2Dp(context, h);
+        h = DimenUtil.px2Dp(context, h);
 
 
-        int newWidth = dip2px(context, w);
-        int newHeight = dip2px(context, h);
+        int newWidth = DimenUtil.dip2px(context, w);
+        int newHeight = DimenUtil.dip2px(context, h);
 
 
         float scaleWidth = ((float) newWidth) / width;
@@ -165,24 +164,14 @@ public class FlowerView extends FrameLayout {
     }
 
 
-    public int Px2Dp(Context context, float px) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (px / scale + 0.5f);
-    }
 
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
 
 
     public FlowerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public FlowerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
+
 
 
     public FlowerChoose mFlowerChoose;

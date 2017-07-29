@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bagelplay.flowerfish.R;
+import com.bagelplay.flowerfish.utils.DimenUtil;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static com.bagelplay.flowerfish.utils.DimenUtil.px2Dp;
 
 /**
  * Created by zhangtianjie on 2017/7/28.
@@ -45,13 +47,13 @@ public class RightWrongView extends LinearLayout {
         int h = getResources().getDimensionPixelSize(R.dimen.RightWrongBtnHeight);
 
 
-        w = Px2Dp(context, w);
+        w = DimenUtil.px2Dp(context, w);
 
-        h = Px2Dp(context, h);
+        h = DimenUtil.px2Dp(context, h);
 
 
-        mIvWidth = dip2px(context, w);
-        mIvHeight = dip2px(context, h);
+        mIvWidth = DimenUtil.dip2px(context, w);
+        mIvHeight = DimenUtil.dip2px(context, h);
 
 
         mLlParent.setOnTouchListener(new OnTouchListener() {
@@ -157,15 +159,7 @@ public class RightWrongView extends LinearLayout {
     }
 
 
-    public int Px2Dp(Context context, float px) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (px / scale + 0.5f);
-    }
 
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
 
 
     public RightWrongView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

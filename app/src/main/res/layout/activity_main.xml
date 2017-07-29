@@ -32,7 +32,9 @@
 
        android:id="@+id/ngv_view"
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="match_parent"
+
+       >
 
    </com.bagelplay.flowerfish.view.NumberGameView>
 

@@ -6,7 +6,8 @@
     <dimen name="RightWrongBtnWidth">100dp</dimen>
     <dimen name="RightWrongBtnHeight">100dp</dimen>
     <dimen name="RightWrongBtnMargin">40dp</dimen>
-
-
-
+    <dimen name="NumGameNumLineIVWdith">70dp</dimen>
+    <dimen name="NumGameNumLineIVHeight">70dp</dimen>
+    <dimen name="NumGameNumLineIVMarginLeft">50dp</dimen>
+    <dimen name="NumGameNumLineMarginBottom">50dp</dimen>
 </resources>
