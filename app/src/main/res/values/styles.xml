@@ -27,16 +27,16 @@
 
         <item name="android:layout_width">@dimen/NumGameNumLineIVWdith</item>
         <item name="android:layout_height">@dimen/NumGameNumLineIVHeight</item>
-        <item name="android:layout_marginLeft">@dimen/NumGameNumLineIVMarginLeft</item>
+
     </style>
 
     <style name="NumberGameNumLine">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/NumGameNumLineWdith</item>
+        <item name="android:layout_height">@dimen/NumGameNumLineHeight</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginBottom">@dimen/NumGameNumLineMarginBottom</item>
-        <item name="android:orientation">horizontal</item>
+
 
     </style>
 

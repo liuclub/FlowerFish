@@ -7,30 +7,38 @@
     android:background="@drawable/sea_bg"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll_num_line"
         style="@style/NumberGameNumLine">
 
         <ImageView
             android:id="@+id/iv_num_left"
             style="@style/NumberGameNumLineImagineView"
-            android:src="@drawable/num0" />
+            android:src="@drawable/num0"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+
+            />
 
         <ImageView
             android:id="@+id/iv_num_center"
 
             style="@style/NumberGameNumLineImagineView"
+
+             android:layout_centerInParent="true"
+
             android:src="@drawable/num1" />
 
         <ImageView
             android:id="@+id/iv_num_right"
 
             style="@style/NumberGameNumLineImagineView"
-
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:src="@drawable/num2" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

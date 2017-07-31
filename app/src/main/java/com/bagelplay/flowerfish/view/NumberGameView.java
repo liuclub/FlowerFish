@@ -28,7 +28,7 @@ public class NumberGameView extends RelativeLayout {
 
     ImageView mIvNumLeft, mIvNumCenter, mIvNumRight;
 
-    LinearLayout mLlNumLine;
+    RelativeLayout mLlNumLine;
 
     RelativeLayout mRlParent;
 
@@ -77,11 +77,11 @@ public class NumberGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         Log.d(Tag, "left~down");
 
-                      LinearLayout.LayoutParams para = (LinearLayout.LayoutParams) mIvNumLeft.getLayoutParams();
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
 
 
-                        para.height = (int) (mNumIvWidth * 1.5);
-                        para.width = (int) (mNumIvHeight * 1.5);
+                        para.height = (int) (mNumIvWidth * 1.3);
+                        para.width = (int) (mNumIvHeight * 1.3);
 
 
                         mIvNumLeft.setLayoutParams(para);
@@ -97,12 +97,112 @@ public class NumberGameView extends RelativeLayout {
                         Log.d(Tag, "left~up");
 
 
-                       LinearLayout.LayoutParams para1 = (LinearLayout.LayoutParams) mIvNumLeft.getLayoutParams();
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
 
                         para1.height = mNumIvWidth;
                         para1.width = mNumIvHeight;
 
                         mIvNumLeft.setLayoutParams(para1);
+
+
+                        break;
+                }
+
+
+                return true;
+            }
+        });
+
+
+
+
+
+        mIvNumCenter.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.d(Tag, "center~down");
+
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
+
+
+                        para.height = (int) (mNumIvWidth * 1.3);
+                        para.width = (int) (mNumIvHeight * 1.3);
+
+
+                        mIvNumCenter.setLayoutParams(para);
+
+
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Log.d(Tag, "center~up");
+
+
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
+
+                        para1.height = mNumIvWidth;
+                        para1.width = mNumIvHeight;
+
+                        mIvNumCenter.setLayoutParams(para1);
+
+
+                        break;
+                }
+
+
+                return true;
+            }
+        });
+
+
+
+
+        mIvNumRight.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Log.d(Tag, "right~down");
+
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
+
+
+                        para.height = (int) (mNumIvWidth * 1.3);
+                        para.width = (int) (mNumIvHeight * 1.3);
+
+
+                        mIvNumRight.setLayoutParams(para);
+
+
+
+                      //  mRlParent.setVisibility(View.GONE);
+
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        Log.d(Tag, "right~up");
+
+
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
+
+                        para1.height = mNumIvWidth;
+                        para1.width = mNumIvHeight;
+
+                        mIvNumRight.setLayoutParams(para1);
 
 
                         break;
@@ -123,7 +223,7 @@ public class NumberGameView extends RelativeLayout {
         mIvNumLeft = (ImageView) findViewById(R.id.iv_num_left);
         mIvNumCenter = (ImageView) findViewById(R.id.iv_num_center);
         mIvNumRight = (ImageView) findViewById(R.id.iv_num_right);
-        mLlNumLine = (LinearLayout) findViewById(R.id.ll_num_line);
+        mLlNumLine = (RelativeLayout) findViewById(R.id.ll_num_line);
     }
 
     public NumberGameView(Context context, AttributeSet attrs, int defStyleAttr) {
