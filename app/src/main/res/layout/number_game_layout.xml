@@ -7,6 +7,7 @@
     android:background="@drawable/sea_bg"
     android:orientation="vertical">
 
+
     <RelativeLayout
         android:id="@+id/ll_num_line"
         style="@style/NumberGameNumLine">
@@ -14,9 +15,9 @@
         <ImageView
             android:id="@+id/iv_num_left"
             style="@style/NumberGameNumLineImagineView"
-            android:src="@drawable/num0"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:src="@drawable/num0"
 
             />
 
@@ -25,13 +26,13 @@
 
             style="@style/NumberGameNumLineImagineView"
 
-             android:layout_centerInParent="true"
+            android:layout_centerInParent="true"
 
             android:src="@drawable/num1" />
 
+
         <ImageView
             android:id="@+id/iv_num_right"
-
             style="@style/NumberGameNumLineImagineView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -39,6 +40,26 @@
 
 
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_fish_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/ll_num_line"
+        android:layout_marginBottom="@dimen/NumGameNumLineHeight"
+        android:background="@color/colorPrimary">
+
+
+        <include layout="@layout/fish_template_row_layout"></include>
+        <include layout="@layout/fish_template_line_layout"></include>
+
+        <Button
+            android:id="@+id/btn_rand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rand" />
+
+    </FrameLayout>
 
 
 </RelativeLayout>

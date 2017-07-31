@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_fish_template_line"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/line1_fish1"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish"
+
+                />
+
+            <ImageView
+                android:id="@+id/line1_fish2"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/line2_fish1"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish"
+
+                />
+
+            <ImageView
+                android:id="@+id/line2_fish2"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/line3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/line3_fish1"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish"
+
+                />
+
+            <ImageView
+                android:id="@+id/line3_fish2"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/line4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/line4_fish1"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish"
+
+                />
+
+            <ImageView
+                android:id="@+id/line4_fish2"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish" />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/line5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/line5_fish1"
+                android:layout_width="@dimen/NumGameNumLineIVWidth"
+                android:layout_height="@dimen/NumGameNumLineIVHeight"
+                android:src="@drawable/fish"
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
