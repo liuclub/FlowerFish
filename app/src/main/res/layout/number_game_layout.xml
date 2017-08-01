@@ -10,6 +10,7 @@
 
     <RelativeLayout
         android:id="@+id/ll_num_line"
+
         style="@style/NumberGameNumLine">
 
         <ImageView
@@ -47,17 +48,14 @@
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/ll_num_line"
         android:layout_marginBottom="@dimen/NumGameNumLineHeight"
-        android:background="@color/colorPrimary">
+        >
 
 
         <include layout="@layout/fish_template_row_layout"></include>
+
         <include layout="@layout/fish_template_line_layout"></include>
 
-        <Button
-            android:id="@+id/btn_rand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="rand" />
+
 
     </FrameLayout>
 

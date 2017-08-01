@@ -6,15 +6,17 @@
     <dimen name="RightWrongBtnWidth">100dp</dimen>
     <dimen name="RightWrongBtnHeight">100dp</dimen>
     <dimen name="RightWrongBtnMargin">40dp</dimen>
-    <dimen name="NumGameNumLineIVWidth">55dp</dimen>
-    <dimen name="NumGameNumLineIVHeight">55dp</dimen>
+    <dimen name="NumGameNumLineIVWidth">50dp</dimen>
+    <dimen name="NumGameNumLineIVHeight">50dp</dimen>
+    <dimen name="NumGameNumLineIVMargin">10dp</dimen>
     <dimen name="NumGameNumLineIVMarginLeft">40dp</dimen>
-    <dimen name="NumGameNumLineMarginBottom">20dp</dimen>
-    <dimen name="NumGameNumLineWidth">300dp</dimen>
-    <dimen name="NumGameNumLineHeight">100dp</dimen>
+    <dimen name="NumGameNumLineMarginBottom">10dp</dimen>
+    <dimen name="NumGameNumLineWidth">350dp</dimen>
+    <dimen name="NumGameNumLineHeight">85dp</dimen>
     <dimen name="SingleFishWidth">66dp</dimen>
     <dimen name="SingleFishHeight">51dp</dimen>
     <dimen name="SingleFishMargin">5dp</dimen>
-    <dimen name="RowFishMarginLeft">30dp</dimen>
+    <dimen name="RowFishMarginLeft">10dp</dimen>
+
 
 </resources>

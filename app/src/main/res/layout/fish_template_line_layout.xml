@@ -16,124 +16,79 @@
 
         <LinearLayout
             android:id="@+id/line1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:orientation="horizontal">
+            style="@style/LineFish">
 
             <ImageView
                 android:id="@+id/line1_fish1"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish"
+                style="@style/SingleFish"
 
                 />
 
             <ImageView
                 android:id="@+id/line1_fish2"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish" />
+                style="@style/SingleFish" />
 
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/line2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:orientation="horizontal">
+            style="@style/LineFish">
 
             <ImageView
                 android:id="@+id/line2_fish1"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish"
+                style="@style/SingleFish"
 
                 />
 
             <ImageView
                 android:id="@+id/line2_fish2"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish" />
+                style="@style/SingleFish" />
 
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/line3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:orientation="horizontal">
+            style="@style/LineFish">
 
             <ImageView
                 android:id="@+id/line3_fish1"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish"
+                style="@style/SingleFish"
 
                 />
 
             <ImageView
                 android:id="@+id/line3_fish2"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish" />
+                style="@style/SingleFish" />
 
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/line4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:orientation="horizontal">
+            style="@style/LineFish">
 
             <ImageView
                 android:id="@+id/line4_fish1"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish"
+                style="@style/SingleFish"
 
                 />
 
             <ImageView
                 android:id="@+id/line4_fish2"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish" />
+                style="@style/SingleFish" />
 
         </LinearLayout>
 
 
-
-
-
-
-
-
-
         <LinearLayout
             android:id="@+id/line5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-
-            android:orientation="horizontal">
+            style="@style/LineFish">
 
             <ImageView
                 android:id="@+id/line5_fish1"
-                android:layout_width="@dimen/NumGameNumLineIVWidth"
-                android:layout_height="@dimen/NumGameNumLineIVHeight"
-                android:src="@drawable/fish"
+                style="@style/SingleFish"
 
                 />
 

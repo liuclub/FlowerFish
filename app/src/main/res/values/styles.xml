@@ -24,7 +24,7 @@
     </style>
 
     <style name="NumberGameNumLineImagineView">
-
+         <item name="android:layout_margin">@dimen/NumGameNumLineIVMargin</item>
         <item name="android:layout_width">@dimen/NumGameNumLineIVWidth</item>
         <item name="android:layout_height">@dimen/NumGameNumLineIVHeight</item>
 
@@ -36,14 +36,14 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginBottom">@dimen/NumGameNumLineMarginBottom</item>
-
+        <item name="android:background">@drawable/num_line_bg</item>
 
     </style>
 
     <style name="SingleFish">
         <item name="android:layout_width">@dimen/SingleFishWidth</item>
         <item name="android:layout_height">@dimen/SingleFishHeight</item>
-        <item name="android:layout_margin">@dimen/SingleFishMargin</item>
+
         <item name="android:src">@drawable/fish</item>
     </style>
 
@@ -52,8 +52,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/RowFishMarginLeft</item>
        <item name="android:orientation">vertical</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
 
+    <style name="LineFish">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
 
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
 

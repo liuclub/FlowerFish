@@ -50,18 +50,16 @@ public class NumberGameView extends RelativeLayout {
     ImageView mfish1_line, mfish2_line, mfish3_line, mfish4_line, mfish5_line, mfish6_line, mfish7_line, mfish8_line, mfish9_line;
 
 
-    List<ImageView> mFishsIV_row,mFishsIV_line;
-
-
+    List<ImageView> mFishsIV_row, mFishsIV_line;
 
 
     List<ImageView> mNumIVs;
 
     int mFishsNumDrawables[];
 
-    Button mBtnRand;
 
-    LinearLayout mLlFishTemplateRow,mLlFishTemplateLine;
+
+    LinearLayout mLlFishTemplateRow, mLlFishTemplateLine;
 
     private int fishNum;  //正确的鱼数量
 
@@ -107,7 +105,7 @@ public class NumberGameView extends RelativeLayout {
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(Tag, "left~down");
+                        //Log.d(Tag, "left~down");
 
                         RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
 
@@ -126,7 +124,7 @@ public class NumberGameView extends RelativeLayout {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        Log.d(Tag, "left~up");
+                        //Log.d(Tag, "left~up");
 
 
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
@@ -153,7 +151,7 @@ public class NumberGameView extends RelativeLayout {
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(Tag, "center~down");
+                       // Log.d(Tag, "center~down");
 
                         RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
 
@@ -172,7 +170,7 @@ public class NumberGameView extends RelativeLayout {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        Log.d(Tag, "center~up");
+                       // Log.d(Tag, "center~up");
 
 
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
@@ -201,7 +199,7 @@ public class NumberGameView extends RelativeLayout {
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(Tag, "right~down");
+                        //Log.d(Tag, "right~down");
 
                         RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
 
@@ -222,7 +220,7 @@ public class NumberGameView extends RelativeLayout {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                        Log.d(Tag, "right~up");
+                       // Log.d(Tag, "right~up");
 
 
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
@@ -254,8 +252,11 @@ public class NumberGameView extends RelativeLayout {
         if ((int) mNumIV.getTag() == fishNum) {
 
             Log.d(Tag, "duile");
+            initGame();
+
         } else {
             Log.d(Tag, "cuole");
+
         }
     }
 
@@ -281,15 +282,15 @@ public class NumberGameView extends RelativeLayout {
         }
 
 
-        mBtnRand.setText(fishNum + "");
+
 
 
         Random r = new Random();
 
 
-       int template=  Math.abs(r.nextInt() % 2);
+        int template = Math.abs(r.nextInt() % 2);
 
-        if(template==0){ //行模版
+        if (template == 0) { //行模版
             mLlFishTemplateRow.setVisibility(View.GONE);
 
             mLlFishTemplateLine.setVisibility(View.VISIBLE);
@@ -322,8 +323,7 @@ public class NumberGameView extends RelativeLayout {
 
             }
 
-        }
-        else{  //列模版
+        } else {  //列模版
             mLlFishTemplateRow.setVisibility(View.VISIBLE);
 
             mLlFishTemplateLine.setVisibility(View.GONE);
@@ -361,37 +361,12 @@ public class NumberGameView extends RelativeLayout {
         }
 
 
-
-
-
-
-      //生成随机模版
-        //行模版
-
-
-
-
-
-
-
-
-        //列模版
-       /* */
-
-
     }
 
 
     private void findView() {
 
-        mBtnRand = (Button) findViewById(R.id.btn_rand);
 
-        mBtnRand.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initGame();
-            }
-        });
 
         mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
         mIvNumLeft = (ImageView) findViewById(R.id.iv_num_left);
@@ -408,10 +383,9 @@ public class NumberGameView extends RelativeLayout {
         mFlFishParent = (FrameLayout) findViewById(R.id.fl_fish_parent);
 
 
+        mLlFishTemplateRow = (LinearLayout) findViewById(R.id.ll_fish_template_row);
 
-        mLlFishTemplateRow=(LinearLayout)findViewById(R.id.ll_fish_template_row);
-
-        mLlFishTemplateLine=(LinearLayout)findViewById(R.id.ll_fish_template_line);
+        mLlFishTemplateLine = (LinearLayout) findViewById(R.id.ll_fish_template_line);
 
         findFishView();
 
@@ -524,7 +498,6 @@ public class NumberGameView extends RelativeLayout {
         Random r = new Random();
 
 
-
         return Math.abs(r.nextInt() % 3);
     }
 
@@ -565,7 +538,6 @@ public class NumberGameView extends RelativeLayout {
         mFishsIV_row.add(mfish9_row);
 
 
-
         mfish1_line = (ImageView) findViewById(R.id.line1_fish1);
         mfish2_line = (ImageView) findViewById(R.id.line1_fish2);
         mfish3_line = (ImageView) findViewById(R.id.line2_fish1);
@@ -586,7 +558,6 @@ public class NumberGameView extends RelativeLayout {
         mFishsIV_line.add(mfish7_line);
         mFishsIV_line.add(mfish8_line);
         mFishsIV_line.add(mfish9_line);
-
 
 
     }
