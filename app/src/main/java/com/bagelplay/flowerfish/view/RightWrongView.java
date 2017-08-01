@@ -39,6 +39,7 @@ public class RightWrongView extends LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.right_wrong_layout, this, true);
         mIvRight = (ImageView) findViewById(R.id.iv_right);
         mIvWrong = (ImageView) findViewById(R.id.iv_wrong);
+
         mLlParent = (LinearLayout) findViewById(R.id.ll_parent);
 
 

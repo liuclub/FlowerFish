@@ -1,6 +1,7 @@
 package com.bagelplay.flowerfish.view;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -24,6 +25,13 @@ public class NumGameCongrationView extends LinearLayout {
     RelativeLayout mRlCongrationLine;
 
     Context mContext;
+
+    private Handler timeHandler;
+
+    private int TIME = 1000;
+    private int i = 0;
+
+    private int MaxTime=5;
 
 
     public NumGameCongrationView(Context context) {
@@ -54,13 +62,59 @@ public class NumGameCongrationView extends LinearLayout {
 
     public void startAnimation(){
 
+
+        i=0;
         scaleAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_congration_anim);
 
 
 
         mRlCongrationLine.startAnimation(scaleAnimation);
 
+        timeHandler = new Handler();
+
+        timeHandler.postDelayed(runnable, TIME);
+
+
+
     }
+
+    private NumGameCongrationFinishListener mNumGameCongrationFinishListener;
+
+    public void setOnNumGameCongrationFinishListener( NumGameCongrationFinishListener numGameCongrationFinishListener){
+        this.mNumGameCongrationFinishListener=numGameCongrationFinishListener;
+    }
+   public interface NumGameCongrationFinishListener{
+        void numGameConfigurationFinish();
+    }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            try {
+                i++;
+                if(i<MaxTime){
+                    timeHandler.postDelayed(this, TIME);
+                 }else{
+                    if(timeHandler!=null){
+                        timeHandler=null;
+                        i=0;
+                        if(mNumGameCongrationFinishListener!=null){
+                            mNumGameCongrationFinishListener.numGameConfigurationFinish();
+                        }
+
+                    }
+                }
+
+
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+
+            }
+        }
+    };
 
 
 

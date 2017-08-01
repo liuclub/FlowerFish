@@ -19,4 +19,5 @@
         style="@style/RightWrongBtn"
 
         android:src="@drawable/wrong_btn" />
+
 </LinearLayout>

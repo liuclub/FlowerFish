@@ -1,23 +1,15 @@
 package com.bagelplay.flowerfish;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.bagelplay.flowerfish.view.FinishGameView;
 import com.bagelplay.flowerfish.view.FlowerView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.RightWrongView;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity {
     String Tag = "MainActivity";
@@ -28,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     NumberGameView mNgvView;
 
-    NumGameCongrationView ngc_view;
+    NumGameCongrationView mNgcView;
+
+    FinishGameView mFgvView;
 
 
     @Override
@@ -75,15 +69,24 @@ public class MainActivity extends AppCompatActivity {
 
                 mNgvView.setVisibility(View.GONE);
 
-                ngc_view.startAnimation();
+                mNgcView.startAnimation();
+
+
 
 
             }
         });
-        ngc_view= (NumGameCongrationView) findViewById(R.id.ngc_view);
+        mNgcView = (NumGameCongrationView) findViewById(R.id.ngc_view);
+
+        mNgcView.setOnNumGameCongrationFinishListener(new NumGameCongrationView.NumGameCongrationFinishListener() {
+            @Override
+            public void numGameConfigurationFinish() {
+                mNgcView.setVisibility(View.GONE);
+            }
+        });
 
 
-
+        mFgvView= (FinishGameView) findViewById(R.id.fgv_view);
 
     }
 

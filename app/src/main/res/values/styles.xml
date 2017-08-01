@@ -23,6 +23,12 @@
         <item name="android:layout_margin">@dimen/RightWrongBtnMargin</item>
     </style>
 
+    <style name="FinishGameRightWrongBtn">
+        <item name="android:layout_height">@dimen/FinishGameRightWrongBtnHeight</item>
+        <item name="android:layout_width">@dimen/FinishGameRightWrongBtnWidth</item>
+        <item name="android:layout_margin">@dimen/FinishGameRightWrongBtnMargin</item>
+    </style>
+
     <style name="NumberGameNumLineImagineView">
          <item name="android:layout_margin">@dimen/NumGameNumLineIVMargin</item>
         <item name="android:layout_width">@dimen/NumGameNumLineIVWidth</item>
