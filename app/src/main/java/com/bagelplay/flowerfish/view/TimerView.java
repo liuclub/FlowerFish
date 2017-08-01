@@ -49,11 +49,11 @@ public class TimerView extends LinearLayout {
 
         if(timeHandler!=null) {
 
-            timeHandler.removeCallbacks(runnable);
+            //timeHandler.removeCallbacks(runnable);
             i = 0;
             mTvTimeShow.setText(Integer.toString(i));
 
-            timeHandler.postDelayed(runnable, TIME);
+            //timeHandler.postDelayed(runnable, TIME);
         }
 
     }
