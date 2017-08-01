@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bagelplay.flowerfish.view.FinishGameView;
 import com.bagelplay.flowerfish.view.FlowerView;
@@ -82,11 +83,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void numGameConfigurationFinish() {
                 mNgcView.setVisibility(View.GONE);
+
+                mFgvView.startAnimation();
             }
         });
 
 
         mFgvView= (FinishGameView) findViewById(R.id.fgv_view);
+
+        mFgvView.setOnRightWrongClickLinstener(new FinishGameView.RightWrongClickLinstener() {
+            @Override
+            public void RightClick() {
+
+                Toast.makeText(MainActivity.this,"该按钮还没写好",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void WrongClick() {
+                mFgvView.setVisibility(View.GONE);
+            }
+        });
 
     }
 

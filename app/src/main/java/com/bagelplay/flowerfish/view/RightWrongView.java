@@ -171,6 +171,8 @@ public class RightWrongView extends LinearLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
+
+
     RightWrongClickLinstener mRightWrongClickLinstener;
 
     public void setOnRightWrongClickLinstener(RightWrongClickLinstener mRightWrongClickLinstener) {

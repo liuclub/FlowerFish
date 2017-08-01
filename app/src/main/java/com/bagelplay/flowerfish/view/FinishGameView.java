@@ -51,32 +51,7 @@ public class FinishGameView extends RelativeLayout {
         });
 
 
-        fishAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_fish_anim);
 
-        fishAnimation.setAnimationListener(
-                new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-                        Log.d(Tag, "onAnimationStart");
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        Log.d(Tag, "onAnimationEnd");
-
-                        mIvPetal.startAnimation(petalAnimation);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-                        Log.d(Tag, "onAnimationRepeat");
-                    }
-                }
-        );
-
-        mIvFish.startAnimation(fishAnimation);
-
-        petalAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_petal_anim);
 
 
         int w = getResources().getDimensionPixelSize(R.dimen.FinishGameRightWrongBtnWidth);
@@ -129,9 +104,9 @@ public class FinishGameView extends RelativeLayout {
                         para1.width = mIvWidth;
                         mIvRight.setLayoutParams(para1);
 
-//                        if (mRightWrongClickLinstener != null) {
-//                            mRightWrongClickLinstener.RightClick();
-//                        }
+                        if (mRightWrongClickLinstener != null) {
+                            mRightWrongClickLinstener.RightClick();
+                        }
 
                         break;
                 }
@@ -172,9 +147,9 @@ public class FinishGameView extends RelativeLayout {
                         para1.height = mIvHeight;
                         para1.width = mIvWidth;
                         mIvWrong.setLayoutParams(para1);
-//                        if (mRightWrongClickLinstener != null) {
-//                            mRightWrongClickLinstener.WrongClick();
-//                        }
+                        if (mRightWrongClickLinstener != null) {
+                            mRightWrongClickLinstener.WrongClick();
+                        }
 
                         break;
                 }
@@ -185,6 +160,49 @@ public class FinishGameView extends RelativeLayout {
         });
 
 
+    }
+
+    public void startAnimation() {
+        fishAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_fish_anim);
+
+        fishAnimation.setAnimationListener(
+                new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        Log.d(Tag, "onAnimationStart");
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Log.d(Tag, "onAnimationEnd");
+
+                        mIvPetal.startAnimation(petalAnimation);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        Log.d(Tag, "onAnimationRepeat");
+                    }
+                }
+        );
+
+        mIvFish.startAnimation(fishAnimation);
+
+        petalAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_petal_anim);
+    }
+
+
+    RightWrongClickLinstener mRightWrongClickLinstener;
+
+    public void setOnRightWrongClickLinstener(RightWrongClickLinstener mRightWrongClickLinstener) {
+        this.mRightWrongClickLinstener = mRightWrongClickLinstener;
+    }
+
+
+    public interface RightWrongClickLinstener {
+        void RightClick();
+
+        void WrongClick();
     }
 
     private void findView() {
