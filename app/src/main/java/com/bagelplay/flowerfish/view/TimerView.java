@@ -63,6 +63,7 @@ public class TimerView extends LinearLayout {
             timeHandler.removeCallbacks(runnable);
             timeHandler = null;
             i = 0;
+            mTvTimeShow.setText(Integer.toString(i));
         }
 
 

@@ -65,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
 
         mNgvView= (NumberGameView) findViewById(R.id.ngv_view);
 
+        mNgvView.setOnNumGameFinishListener(new NumberGameView.NumGameFinishListener() {
+            @Override
+            public void numGameFinish() {
+                Log.d(Tag, "gamewangchen");
+
+
+
+
+            }
+        });
+
+
 
     }
 

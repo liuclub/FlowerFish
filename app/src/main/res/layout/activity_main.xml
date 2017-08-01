@@ -4,14 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bagelplay.flowerfish.MainActivity"
-
-    >
+    tools:context="com.bagelplay.flowerfish.MainActivity">
 
 
     <com.bagelplay.flowerfish.view.FlowerView
-
-
         android:id="@+id/fv_flower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,15 +24,12 @@
 
     </com.bagelplay.flowerfish.view.RightWrongView>
 
-   <com.bagelplay.flowerfish.view.NumberGameView
+    <com.bagelplay.flowerfish.view.NumberGameView
+        android:id="@+id/ngv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-       android:id="@+id/ngv_view"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-
-       >
-
-   </com.bagelplay.flowerfish.view.NumberGameView>
+    </com.bagelplay.flowerfish.view.NumberGameView>
 
 
 </FrameLayout>

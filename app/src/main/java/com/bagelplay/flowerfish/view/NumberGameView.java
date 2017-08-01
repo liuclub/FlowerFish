@@ -64,6 +64,9 @@ public class NumberGameView extends RelativeLayout {
     private int fishNum;  //正确的鱼数量
 
      private TimerView mTimerView;
+
+    private int  MaxGameTime=4;
+    private int  CurrentGameTime=0;
     public NumberGameView(Context context) {
         super(context);
     }
@@ -252,12 +255,34 @@ public class NumberGameView extends RelativeLayout {
         if ((int) mNumIV.getTag() == fishNum) {
 
             Log.d(Tag, "duile");
-            initGame();
+            CurrentGameTime++;
+            if(CurrentGameTime==MaxGameTime){
+                CurrentGameTime=0;
+              if(mNumGameFinishListener!=null) {
+                  mNumGameFinishListener.numGameFinish();
+                  mTimerView.stopTimer();
+              }
+
+            }else{
+                initGame();
+            }
+
 
         } else {
             Log.d(Tag, "cuole");
 
         }
+    }
+
+
+    private NumGameFinishListener mNumGameFinishListener;
+
+    public void setOnNumGameFinishListener(NumGameFinishListener numGameFinishListener){
+        this.mNumGameFinishListener=numGameFinishListener;
+    }
+
+    public interface NumGameFinishListener{
+        void numGameFinish();
     }
 
 
