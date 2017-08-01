@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -74,7 +73,7 @@ public class NumberGameView extends RelativeLayout {
     public NumberGameView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        LayoutInflater.from(context).inflate(R.layout.number_game_layout, this, true);
+        LayoutInflater.from(context).inflate(R.layout.num_game_layout, this, true);
 
         findView();
 

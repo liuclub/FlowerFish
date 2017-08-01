@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bagelplay.flowerfish.view.FlowerView;
+import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.RightWrongView;
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     RightWrongView mRwView;
 
     NumberGameView mNgvView;
+
+    NumGameCongrationView ngc_view;
 
 
     @Override
@@ -70,11 +73,15 @@ public class MainActivity extends AppCompatActivity {
             public void numGameFinish() {
                 Log.d(Tag, "gamewangchen");
 
+                mNgvView.setVisibility(View.GONE);
 
+                ngc_view.startAnimation();
 
 
             }
         });
+        ngc_view= (NumGameCongrationView) findViewById(R.id.ngc_view);
+
 
 
 
