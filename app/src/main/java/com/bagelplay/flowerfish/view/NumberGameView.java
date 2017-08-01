@@ -63,7 +63,7 @@ public class NumberGameView extends RelativeLayout {
 
     private int fishNum;  //正确的鱼数量
 
-
+     private TimerView mTimerView;
     public NumberGameView(Context context) {
         super(context);
     }
@@ -264,6 +264,9 @@ public class NumberGameView extends RelativeLayout {
     private void initGame() {
 
 
+        mTimerView.reStartTimer();
+
+
         fishNum = randNumfrom_1_9();
 
         int numPosition = randNumfrom_0_2();
@@ -390,6 +393,9 @@ public class NumberGameView extends RelativeLayout {
         findFishView();
 
         findFinshNumImage();
+
+        mTimerView= (TimerView) findViewById(R.id.timer_view);
+        mTimerView.startTimer();
 
 
     }
