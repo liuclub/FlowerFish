@@ -1,15 +1,13 @@
 package com.bagelplay.flowerfish;
 
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.bagelplay.flowerfish.utils.SoundUtil;
 import com.bagelplay.flowerfish.view.FinishGameView;
@@ -17,10 +15,6 @@ import com.bagelplay.flowerfish.view.FlowerView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.RightWrongView;
-
-import java.io.IOException;
-
-import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends AppCompatActivity {
     String Tag = "MainActivity";
@@ -38,10 +32,22 @@ public class MainActivity extends AppCompatActivity {
     SoundUtil mSoundUtil;
 
 
+
+
+
+    VideoView mVvVideo;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
 
 
         mFv_flower = (FlowerView) findViewById(R.id.fv_flower);
@@ -143,6 +149,34 @@ public class MainActivity extends AppCompatActivity {
 
 
         mSoundUtil = new SoundUtil(MainActivity.this);
+
+
+        mVvVideo= (VideoView) findViewById(R.id.vv_video);
+
+        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mVvVideo.stopPlayback();
+
+                mVvVideo.setVisibility(View.GONE);
+
+            }
+        });
+
+        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+
+
+
+        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
+
+
+        mVvVideo.start();
 
     }
 
