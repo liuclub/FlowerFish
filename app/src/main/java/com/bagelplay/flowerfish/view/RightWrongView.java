@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bagelplay.flowerfish.R;
 import com.bagelplay.flowerfish.utils.DimenUtil;
@@ -20,11 +21,11 @@ import static com.bagelplay.flowerfish.utils.DimenUtil.px2Dp;
  * Created by zhangtianjie on 2017/7/28.
  */
 
-public class RightWrongView extends LinearLayout {
+public class RightWrongView extends RelativeLayout {
     ImageView mIvRight, mIvWrong;
     String Tag = "RightWrongView";
 
-    LinearLayout mLlParent;
+    RelativeLayout mRlParent;
 
     int mIvWidth, mIvHeight;
 
@@ -40,7 +41,7 @@ public class RightWrongView extends LinearLayout {
         mIvRight = (ImageView) findViewById(R.id.iv_right);
         mIvWrong = (ImageView) findViewById(R.id.iv_wrong);
 
-        mLlParent = (LinearLayout) findViewById(R.id.ll_parent);
+        mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
 
 
         int w = getResources().getDimensionPixelSize(R.dimen.RightWrongBtnWidth);
@@ -57,7 +58,7 @@ public class RightWrongView extends LinearLayout {
         mIvHeight = DimenUtil.dip2px(context, h);
 
 
-        mLlParent.setOnTouchListener(new OnTouchListener() {
+        mRlParent.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -75,7 +76,7 @@ public class RightWrongView extends LinearLayout {
                     case MotionEvent.ACTION_DOWN:
                         // Log.d(Tag, "R~down");
 
-                        LayoutParams para = (LayoutParams) mIvRight.getLayoutParams();
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
 
 
                         para.height = (int) (mIvWidth * 1.5);
@@ -95,7 +96,7 @@ public class RightWrongView extends LinearLayout {
                         //  Log.d(Tag, "R~up");
 
 
-                        LayoutParams para1 = (LayoutParams) mIvRight.getLayoutParams();
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
 
 
                         para1.height = mIvHeight;
@@ -122,7 +123,7 @@ public class RightWrongView extends LinearLayout {
                     case MotionEvent.ACTION_DOWN:
                         //   Log.d(Tag, "W~down");
 
-                        LayoutParams para = (LayoutParams) mIvWrong.getLayoutParams();
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
 
 
                         para.height = (int) (mIvWidth * 1.5);
@@ -139,7 +140,7 @@ public class RightWrongView extends LinearLayout {
                     case MotionEvent.ACTION_UP:
                         //  Log.d(Tag, "W~up");
 
-                        LayoutParams para1 = (LayoutParams) mIvWrong.getLayoutParams();
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
 
 
                         para1.height = mIvHeight;
@@ -167,9 +168,7 @@ public class RightWrongView extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public RightWrongView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
+
 
 
 

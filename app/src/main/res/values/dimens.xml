@@ -23,7 +23,7 @@
 
     <dimen name="FinishGameRightWrongBtnWidth">60dp</dimen>
     <dimen name="FinishGameRightWrongBtnHeight">60dp</dimen>
-    <dimen name="FinishGameRightWrongBtnMargin">30dp</dimen>
+    <dimen name="FinishGameRightWrongBtnMargin">10dp</dimen>
 
 
 </resources>

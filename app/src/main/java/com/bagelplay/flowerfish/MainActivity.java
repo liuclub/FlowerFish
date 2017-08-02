@@ -1,16 +1,26 @@
 package com.bagelplay.flowerfish;
 
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bagelplay.flowerfish.utils.SoundUtil;
 import com.bagelplay.flowerfish.view.FinishGameView;
 import com.bagelplay.flowerfish.view.FlowerView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.RightWrongView;
+
+import java.io.IOException;
+
+import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends AppCompatActivity {
     String Tag = "MainActivity";
@@ -24,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     NumGameCongrationView mNgcView;
 
     FinishGameView mFgvView;
+
+    SoundUtil mSoundUtil;
 
 
     @Override
@@ -50,18 +62,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void RightClick() {
                 Log.d(Tag, "Rightclick");
+
+                mSoundUtil.startPlaySound(R.raw.agree);
             }
 
             @Override
             public void WrongClick() {
                 Log.d(Tag, "Wrongclick");
 
-                mRwView.setVisibility(View.GONE);
+                mSoundUtil.startPlaySound(R.raw.disagree);
+
+               // mRwView.setVisibility(View.GONE);
             }
         });
 
 
-        mNgvView= (NumberGameView) findViewById(R.id.ngv_view);
+        mNgvView = (NumberGameView) findViewById(R.id.ngv_view);
 
         mNgvView.setOnNumGameFinishListener(new NumberGameView.NumGameFinishListener() {
             @Override
@@ -73,10 +89,23 @@ public class MainActivity extends AppCompatActivity {
                 mNgcView.startAnimation();
 
 
+                mSoundUtil.startPlaySound(R.raw.congration);
 
+            }
+
+            @Override
+            public void numGameChooseRight() {
+
+            }
+
+            @Override
+            public void numGameChooseWrong() {
 
             }
         });
+
+
+
         mNgcView = (NumGameCongrationView) findViewById(R.id.ngc_view);
 
         mNgcView.setOnNumGameCongrationFinishListener(new NumGameCongrationView.NumGameCongrationFinishListener() {
@@ -85,24 +114,35 @@ public class MainActivity extends AppCompatActivity {
                 mNgcView.setVisibility(View.GONE);
 
                 mFgvView.startAnimation();
+
+                mSoundUtil.startPlaySound(R.raw.win_petal);
+
+
             }
         });
 
 
-        mFgvView= (FinishGameView) findViewById(R.id.fgv_view);
+        mFgvView = (FinishGameView) findViewById(R.id.fgv_view);
 
         mFgvView.setOnRightWrongClickLinstener(new FinishGameView.RightWrongClickLinstener() {
             @Override
             public void RightClick() {
+                mSoundUtil.startPlaySound(R.raw.agree);
 
-                Toast.makeText(MainActivity.this,"该按钮还没写好",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void WrongClick() {
+
                 mFgvView.setVisibility(View.GONE);
+
+                mSoundUtil.startPlaySound(R.raw.disagree);
+
             }
         });
+
+
+        mSoundUtil = new SoundUtil(MainActivity.this);
 
     }
 

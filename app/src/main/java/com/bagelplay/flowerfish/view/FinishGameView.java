@@ -77,7 +77,7 @@ public class FinishGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         // Log.d(Tag, "R~down");
 
-                        LinearLayout.LayoutParams para = (LinearLayout.LayoutParams) mIvRight.getLayoutParams();
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
 
 
                         para.height = (int) (mIvWidth * 1.5);
@@ -97,7 +97,7 @@ public class FinishGameView extends RelativeLayout {
                           Log.d(Tag, "R~up");
 
 
-                        LinearLayout.LayoutParams para1 = (LinearLayout.LayoutParams) mIvRight.getLayoutParams();
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
 
 
                         para1.height = mIvHeight;
@@ -124,7 +124,7 @@ public class FinishGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         //   Log.d(Tag, "W~down");
 
-                        LinearLayout.LayoutParams para = (LinearLayout.LayoutParams) mIvWrong.getLayoutParams();
+                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
 
 
                         para.height = (int) (mIvWidth * 1.5);
@@ -141,7 +141,7 @@ public class FinishGameView extends RelativeLayout {
                     case MotionEvent.ACTION_UP:
                          Log.d(Tag, "W~up");
 
-                        LinearLayout.LayoutParams para1 = (LinearLayout.LayoutParams) mIvWrong.getLayoutParams();
+                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
 
 
                         para1.height = mIvHeight;

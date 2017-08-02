@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,7 +43,7 @@ public class NumberGameView extends RelativeLayout {
 
     int mNumIvWidth, mNumIvHeight;
 
-    FrameLayout mFlFishParent;
+    FrameLayout mFlFishParent,mFlFishContent;
 
     ImageView mfish1_row, mfish2_row, mfish3_row, mfish4_row, mfish5_row, mfish6_row, mfish7_row, mfish8_row, mfish9_row;
 
@@ -56,6 +58,8 @@ public class NumberGameView extends RelativeLayout {
 
     int mFishsNumDrawables[];
 
+    private Animation wrongAnimation;
+
 
 
     LinearLayout mLlFishTemplateRow, mLlFishTemplateLine;
@@ -66,12 +70,15 @@ public class NumberGameView extends RelativeLayout {
 
     private int  MaxGameTime=4;
     private int  CurrentGameTime=0;
+    private Context mContext;
     public NumberGameView(Context context) {
         super(context);
     }
 
     public NumberGameView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        mContext=context;
 
         LayoutInflater.from(context).inflate(R.layout.num_game_layout, this, true);
 
@@ -254,6 +261,10 @@ public class NumberGameView extends RelativeLayout {
         if ((int) mNumIV.getTag() == fishNum) {
 
             Log.d(Tag, "duile");
+           if(mNumGameFinishListener!=null){
+               mNumGameFinishListener.numGameChooseRight();
+           }
+
             CurrentGameTime++;
             if(CurrentGameTime==MaxGameTime){
                 CurrentGameTime=0;
@@ -270,6 +281,18 @@ public class NumberGameView extends RelativeLayout {
         } else {
             Log.d(Tag, "cuole");
 
+
+
+
+
+            mFlFishContent.startAnimation(wrongAnimation);
+
+
+
+            if(mNumGameFinishListener!=null){
+                mNumGameFinishListener.numGameChooseWrong();
+            }
+
         }
     }
 
@@ -282,7 +305,13 @@ public class NumberGameView extends RelativeLayout {
 
     public interface NumGameFinishListener{
         void numGameFinish();
+
+        void numGameChooseRight();
+
+        void numGameChooseWrong();
     }
+
+
 
 
     private void initGame() {
@@ -396,6 +425,7 @@ public class NumberGameView extends RelativeLayout {
 
 
         mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
+
         mIvNumLeft = (ImageView) findViewById(R.id.iv_num_left);
         mIvNumCenter = (ImageView) findViewById(R.id.iv_num_center);
         mIvNumRight = (ImageView) findViewById(R.id.iv_num_right);
@@ -408,7 +438,7 @@ public class NumberGameView extends RelativeLayout {
         mLlNumLine = (RelativeLayout) findViewById(R.id.ll_num_line);
 
         mFlFishParent = (FrameLayout) findViewById(R.id.fl_fish_parent);
-
+        mFlFishContent=(FrameLayout)findViewById(R.id.fl_fish_content);
 
         mLlFishTemplateRow = (LinearLayout) findViewById(R.id.ll_fish_template_row);
 
@@ -421,7 +451,7 @@ public class NumberGameView extends RelativeLayout {
         mTimerView= (TimerView) findViewById(R.id.timer_view);
         mTimerView.startTimer();
 
-
+        wrongAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_wrong_anim);
     }
 
 

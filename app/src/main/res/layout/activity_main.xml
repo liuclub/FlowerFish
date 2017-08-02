@@ -28,7 +28,8 @@
     <com.bagelplay.flowerfish.view.FinishGameView
         android:id="@+id/fgv_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
     </com.bagelplay.flowerfish.view.FinishGameView>
 

@@ -21,12 +21,15 @@
         <item name="android:layout_height">@dimen/RightWrongBtnHeight</item>
         <item name="android:layout_width">@dimen/RightWrongBtnWidth</item>
         <item name="android:layout_margin">@dimen/RightWrongBtnMargin</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 
     <style name="FinishGameRightWrongBtn">
         <item name="android:layout_height">@dimen/FinishGameRightWrongBtnHeight</item>
         <item name="android:layout_width">@dimen/FinishGameRightWrongBtnWidth</item>
         <item name="android:layout_margin">@dimen/FinishGameRightWrongBtnMargin</item>
+        <item name="android:layout_centerVertical">true</item>
+
     </style>
 
     <style name="NumberGameNumLineImagineView">

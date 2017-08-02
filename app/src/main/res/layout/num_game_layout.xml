@@ -50,11 +50,15 @@
         android:layout_marginBottom="@dimen/NumGameNumLineHeight"
         >
 
+        <FrameLayout
+            android:id="@+id/fl_fish_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <include layout="@layout/fish_template_row_layout"></include>
 
         <include layout="@layout/fish_template_line_layout"></include>
-
+        </FrameLayout>
        <com.bagelplay.flowerfish.view.TimerView
            android:id="@+id/timer_view"
            android:layout_width="wrap_content"
