@@ -52,11 +52,12 @@
 
     </com.bagelplay.flowerfish.view.NumberGameView>
 
-    <VideoView
+    <com.bagelplay.flowerfish.view.FllScreenVideoView
 
         android:id="@+id/vv_video"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 
 </FrameLayout>

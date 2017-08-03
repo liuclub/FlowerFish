@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static android.R.attr.max;
 import static android.media.CamcorderProfile.get;
 import static com.bagelplay.flowerfish.R.drawable.num1;
 import static com.bagelplay.flowerfish.R.drawable.num2;
@@ -43,15 +44,21 @@ public class NumberGameView extends RelativeLayout {
 
     int mNumIvWidth, mNumIvHeight;
 
-    FrameLayout mFlFishParent,mFlFishContent;
+    FrameLayout mFlFishParent, mFlFishContent;
 
     ImageView mfish1_row, mfish2_row, mfish3_row, mfish4_row, mfish5_row, mfish6_row, mfish7_row, mfish8_row, mfish9_row;
 
 
     ImageView mfish1_line, mfish2_line, mfish3_line, mfish4_line, mfish5_line, mfish6_line, mfish7_line, mfish8_line, mfish9_line;
 
+    ImageView mfish1_row_template2, mfish2_row_template2, mfish3_row_template2, mfish4_row_template2, mfish5_row_template2, mfish6_row_template2,
+            mfish7_row_template2, mfish8_row_template2, mfish9_row_template2;
 
-    List<ImageView> mFishsIV_row, mFishsIV_line;
+    ImageView mfish1_line_template2, mfish2_line_template2, mfish3_line_template2, mfish4_line_template2, mfish5_line_template2,
+            mfish6_line_template2, mfish7_line_template2, mfish8_line_template2, mfish9_line_template2;
+
+
+    List<ImageView> mFishsIV_row, mFishsIV_line, mFishsIV_row_template2, mFishsIV_line_template2;
 
 
     List<ImageView> mNumIVs;
@@ -61,16 +68,22 @@ public class NumberGameView extends RelativeLayout {
     private Animation wrongAnimation;
 
 
-
-    LinearLayout mLlFishTemplateRow, mLlFishTemplateLine;
+    LinearLayout mLlFishTemplateRow, mLlFishTemplateLine, mLlFishTemplate2Row, mLlFishTemplate2Line;
 
     private int fishNum;  //正确的鱼数量
 
-     private TimerView mTimerView;
+    private TimerView mTimerView;
 
-    private int  MaxGameTime=4;
-    private int  CurrentGameTime=0;
+    private int MaxGameTime = 4;
+
+    private int CurrentGameTime = 0;
+
+    private int CurrentStage = 0;//当前关卡
+
+
+
     private Context mContext;
+
     public NumberGameView(Context context) {
         super(context);
     }
@@ -78,7 +91,7 @@ public class NumberGameView extends RelativeLayout {
     public NumberGameView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        mContext=context;
+        mContext = context;
 
         LayoutInflater.from(context).inflate(R.layout.num_game_layout, this, true);
 
@@ -160,7 +173,7 @@ public class NumberGameView extends RelativeLayout {
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                       // Log.d(Tag, "center~down");
+                        // Log.d(Tag, "center~down");
 
                         RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
 
@@ -179,7 +192,7 @@ public class NumberGameView extends RelativeLayout {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                       // Log.d(Tag, "center~up");
+                        // Log.d(Tag, "center~up");
 
 
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
@@ -229,7 +242,7 @@ public class NumberGameView extends RelativeLayout {
                         break;
 
                     case MotionEvent.ACTION_UP:
-                       // Log.d(Tag, "right~up");
+                        // Log.d(Tag, "right~up");
 
 
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
@@ -261,19 +274,30 @@ public class NumberGameView extends RelativeLayout {
         if ((int) mNumIV.getTag() == fishNum) {
 
             Log.d(Tag, "duile");
-           if(mNumGameFinishListener!=null){
-               mNumGameFinishListener.numGameChooseRight();
-           }
+            if (mNumGameFinishListener != null) {
+                mNumGameFinishListener.numGameChooseRight();
+            }
 
             CurrentGameTime++;
-            if(CurrentGameTime==MaxGameTime){
-                CurrentGameTime=0;
-              if(mNumGameFinishListener!=null) {
-                  mNumGameFinishListener.numGameFinish();
-                  mTimerView.stopTimer();
-              }
+            if (CurrentGameTime == MaxGameTime) {
+                CurrentGameTime = 0;
+                if (mNumGameFinishListener != null) {
 
-            }else{
+
+
+                     CurrentStage++;
+
+                     mNumGameFinishListener.numGameFinish(CurrentStage);
+                    initGame();
+                    if(CurrentStage==2){
+                        CurrentStage=0;
+                        mTimerView.stopTimer();
+                    }
+
+
+                }
+
+            } else {
                 initGame();
             }
 
@@ -282,14 +306,10 @@ public class NumberGameView extends RelativeLayout {
             Log.d(Tag, "cuole");
 
 
-
-
-
             mFlFishContent.startAnimation(wrongAnimation);
 
 
-
-            if(mNumGameFinishListener!=null){
+            if (mNumGameFinishListener != null) {
                 mNumGameFinishListener.numGameChooseWrong();
             }
 
@@ -299,19 +319,17 @@ public class NumberGameView extends RelativeLayout {
 
     private NumGameFinishListener mNumGameFinishListener;
 
-    public void setOnNumGameFinishListener(NumGameFinishListener numGameFinishListener){
-        this.mNumGameFinishListener=numGameFinishListener;
+    public void setOnNumGameFinishListener(NumGameFinishListener numGameFinishListener) {
+        this.mNumGameFinishListener = numGameFinishListener;
     }
 
-    public interface NumGameFinishListener{
-        void numGameFinish();
+    public interface NumGameFinishListener {
+        void numGameFinish(int currentstage);
 
         void numGameChooseRight();
 
         void numGameChooseWrong();
     }
-
-
 
 
     private void initGame() {
@@ -338,76 +356,126 @@ public class NumberGameView extends RelativeLayout {
         }
 
 
-
-
-
         Random r = new Random();
 
 
         int template = Math.abs(r.nextInt() % 2);
 
-        if (template == 0) { //行模版
-            mLlFishTemplateRow.setVisibility(View.GONE);
 
-            mLlFishTemplateLine.setVisibility(View.VISIBLE);
-            if (fishNum % 2 == 0) {
-                for (int i = 0; i < mFishsIV_line.size(); i++) {
+        //第一关
+        if (CurrentStage ==0 ){
+            mLlFishTemplate2Row.setVisibility(View.GONE);
 
-                    if (i < fishNum) {
-                        mFishsIV_line.get(i).setVisibility(View.VISIBLE);
-                    } else {
-                        mFishsIV_line.get(i).setVisibility(View.GONE);
+            mLlFishTemplate2Line.setVisibility(View.GONE);
+
+
+            if (template == 0) { //行模版
+                mLlFishTemplateRow.setVisibility(View.GONE);
+
+                mLlFishTemplateLine.setVisibility(View.VISIBLE);
+                if (fishNum % 2 == 0) {
+                    for (int i = 0; i < mFishsIV_line.size(); i++) {
+
+                        if (i < fishNum) {
+                            mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+                        } else {
+                            mFishsIV_line.get(i).setVisibility(View.GONE);
+                        }
+
+                    }
+
+
+                } else {
+
+                    for (int i = 0; i < mFishsIV_line.size(); i++) {
+
+                        if (i < fishNum) {
+                            mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+                        } else if (i >= fishNum && i < mFishsIV_line.size()) {
+                            mFishsIV_line.get(i).setVisibility(View.GONE);
+                        } else {
+                            mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+                        }
+
+
                     }
 
                 }
 
+            } else {  //列模版
+                mLlFishTemplateRow.setVisibility(View.VISIBLE);
 
-            } else {
+                mLlFishTemplateLine.setVisibility(View.GONE);
 
-                for (int i = 0; i < mFishsIV_line.size(); i++) {
+                if (fishNum % 2 == 0) {
+                    for (int i = 0; i < mFishsIV_row.size(); i++) {
 
-                    if (i < fishNum) {
-                        mFishsIV_line.get(i).setVisibility(View.VISIBLE);
-                    } else if (i >= fishNum && i < mFishsIV_line.size()) {
-                        mFishsIV_line.get(i).setVisibility(View.GONE);
-                    } else {
-                        mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+                        if (i < fishNum) {
+                            mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                        } else {
+                            mFishsIV_row.get(i).setVisibility(View.GONE);
+                        }
+
                     }
 
 
+                } else {
+
+                    for (int i = 0; i < mFishsIV_row.size(); i++) {
+
+                        if (i < fishNum) {
+                            mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                        } else if (i >= fishNum && i < mFishsIV_row.size()) {
+                            mFishsIV_row.get(i).setVisibility(View.GONE);
+                        } else {
+                            mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                        }
+
+
+                    }
+
                 }
+
 
             }
 
-        } else {  //列模版
-            mLlFishTemplateRow.setVisibility(View.VISIBLE);
+
+        } else if (CurrentStage ==1) {  //第二关
+            mLlFishTemplateRow.setVisibility(View.GONE);
 
             mLlFishTemplateLine.setVisibility(View.GONE);
 
-            if (fishNum % 2 == 0) {
-                for (int i = 0; i < mFishsIV_row.size(); i++) {
+
+            if (template == 0) { //行模版
+                mLlFishTemplate2Row.setVisibility(View.GONE);
+
+                mLlFishTemplate2Line.setVisibility(View.VISIBLE);
+
+
+                for (int i = 0; i < mFishsIV_line_template2.size(); i++) {
 
                     if (i < fishNum) {
-                        mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                        mFishsIV_line_template2.get(i).setVisibility(View.VISIBLE);
                     } else {
-                        mFishsIV_row.get(i).setVisibility(View.GONE);
+                        mFishsIV_line_template2.get(i).setVisibility(View.GONE);
                     }
 
                 }
 
 
-            } else {
+            } else {//列模版
+                mLlFishTemplate2Line.setVisibility(View.GONE);
 
-                for (int i = 0; i < mFishsIV_row.size(); i++) {
+                mLlFishTemplate2Row.setVisibility(View.VISIBLE);
+
+
+                for (int i = 0; i < mFishsIV_row_template2.size(); i++) {
 
                     if (i < fishNum) {
-                        mFishsIV_row.get(i).setVisibility(View.VISIBLE);
-                    } else if (i >= fishNum && i < mFishsIV_row.size()) {
-                        mFishsIV_row.get(i).setVisibility(View.GONE);
+                        mFishsIV_row_template2.get(i).setVisibility(View.VISIBLE);
                     } else {
-                        mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                        mFishsIV_row_template2.get(i).setVisibility(View.GONE);
                     }
-
 
                 }
 
@@ -421,7 +489,6 @@ public class NumberGameView extends RelativeLayout {
 
 
     private void findView() {
-
 
 
         mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
@@ -438,17 +505,22 @@ public class NumberGameView extends RelativeLayout {
         mLlNumLine = (RelativeLayout) findViewById(R.id.ll_num_line);
 
         mFlFishParent = (FrameLayout) findViewById(R.id.fl_fish_parent);
-        mFlFishContent=(FrameLayout)findViewById(R.id.fl_fish_content);
+        mFlFishContent = (FrameLayout) findViewById(R.id.fl_fish_content);
 
         mLlFishTemplateRow = (LinearLayout) findViewById(R.id.ll_fish_template_row);
 
         mLlFishTemplateLine = (LinearLayout) findViewById(R.id.ll_fish_template_line);
 
+
+        mLlFishTemplate2Row = (LinearLayout) findViewById(R.id.ll_fish_template2_row);
+
+        mLlFishTemplate2Line = (LinearLayout) findViewById(R.id.ll_fish_template2_line);
+
         findFishView();
 
         findFinshNumImage();
 
-        mTimerView= (TimerView) findViewById(R.id.timer_view);
+        mTimerView = (TimerView) findViewById(R.id.timer_view);
         mTimerView.startTimer();
 
         wrongAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_wrong_anim);
@@ -618,6 +690,48 @@ public class NumberGameView extends RelativeLayout {
         mFishsIV_line.add(mfish7_line);
         mFishsIV_line.add(mfish8_line);
         mFishsIV_line.add(mfish9_line);
+
+
+        mfish1_row_template2 = (ImageView) findViewById(R.id.template2_row1_fish1);
+        mfish2_row_template2 = (ImageView) findViewById(R.id.template2_row1_fish2);
+        mfish3_row_template2 = (ImageView) findViewById(R.id.template2_row1_fish3);
+        mfish4_row_template2 = (ImageView) findViewById(R.id.template2_row2_fish1);
+        mfish5_row_template2 = (ImageView) findViewById(R.id.template2_row2_fish2);
+        mfish6_row_template2 = (ImageView) findViewById(R.id.template2_row2_fish3);
+        mfish7_row_template2 = (ImageView) findViewById(R.id.template2_row3_fish1);
+        mfish8_row_template2 = (ImageView) findViewById(R.id.template2_row3_fish2);
+        mfish9_row_template2 = (ImageView) findViewById(R.id.template2_row3_fish3);
+        mFishsIV_row_template2 = new ArrayList<ImageView>();
+        mFishsIV_row_template2.add(mfish1_row_template2);
+        mFishsIV_row_template2.add(mfish2_row_template2);
+        mFishsIV_row_template2.add(mfish3_row_template2);
+        mFishsIV_row_template2.add(mfish4_row_template2);
+        mFishsIV_row_template2.add(mfish5_row_template2);
+        mFishsIV_row_template2.add(mfish6_row_template2);
+        mFishsIV_row_template2.add(mfish7_row_template2);
+        mFishsIV_row_template2.add(mfish8_row_template2);
+        mFishsIV_row_template2.add(mfish9_row_template2);
+
+
+        mfish1_line_template2 = (ImageView) findViewById(R.id.template2_line1_fish1);
+        mfish2_line_template2 = (ImageView) findViewById(R.id.template2_line1_fish2);
+        mfish3_line_template2 = (ImageView) findViewById(R.id.template2_line1_fish3);
+        mfish4_line_template2 = (ImageView) findViewById(R.id.template2_line2_fish1);
+        mfish5_line_template2 = (ImageView) findViewById(R.id.template2_line2_fish2);
+        mfish6_line_template2 = (ImageView) findViewById(R.id.template2_line2_fish3);
+        mfish7_line_template2 = (ImageView) findViewById(R.id.template2_line3_fish1);
+        mfish8_line_template2 = (ImageView) findViewById(R.id.template2_line3_fish2);
+        mfish9_line_template2 = (ImageView) findViewById(R.id.template2_line3_fish3);
+        mFishsIV_line_template2 = new ArrayList<ImageView>();
+        mFishsIV_line_template2.add(mfish1_line_template2);
+        mFishsIV_line_template2.add(mfish2_line_template2);
+        mFishsIV_line_template2.add(mfish3_line_template2);
+        mFishsIV_line_template2.add(mfish4_line_template2);
+        mFishsIV_line_template2.add(mfish5_line_template2);
+        mFishsIV_line_template2.add(mfish6_line_template2);
+        mFishsIV_line_template2.add(mfish7_line_template2);
+        mFishsIV_line_template2.add(mfish8_line_template2);
+        mFishsIV_line_template2.add(mfish9_line_template2);
 
 
     }

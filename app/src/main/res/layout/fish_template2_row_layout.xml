@@ -1,101 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_fish_template2_row"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:id="@+id/ll_fish_template_row"
     android:orientation="horizontal">
 
     <LinearLayout
-
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/row1"
-
+            android:id="@+id/template2_row1"
             style="@style/RowFish">
 
             <ImageView
-                android:id="@+id/row1_fish1"
-               style="@style/SingleFish"
+                android:id="@+id/template2_row1_fish1"
+                style="@style/SingleFish"
 
                 />
 
             <ImageView
-                android:id="@+id/row1_fish2"
+                android:id="@+id/template2_row1_fish2"
+                style="@style/SingleFish"/>
+
+            <ImageView
+                android:id="@+id/template2_row1_fish3"
                 style="@style/SingleFish"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row2"
-
+            android:id="@+id/template2_row2"
             style="@style/RowFish">
 
             <ImageView
-                android:id="@+id/row2_fish1"
+                android:id="@+id/template2_row2_fish1"
                 style="@style/SingleFish"
 
                 />
 
             <ImageView
-                android:id="@+id/row2_fish2"
-                style="@style/SingleFish" />
+                android:id="@+id/template2_row2_fish2"
+                style="@style/SingleFish"/>
+
+            <ImageView
+                android:id="@+id/template2_row2_fish3"
+                style="@style/SingleFish"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/row3"
-
+            android:id="@+id/template2_row3"
             style="@style/RowFish">
 
             <ImageView
-                android:id="@+id/row3_fish1"
+                android:id="@+id/template2_row3_fish1"
                 style="@style/SingleFish"
 
                 />
 
             <ImageView
-                android:id="@+id/row3_fish2"
-                style="@style/SingleFish" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row4"
-            style="@style/RowFish">
+                android:id="@+id/template2_row3_fish2"
+                style="@style/SingleFish"/>
 
             <ImageView
-                android:id="@+id/row4_fish1"
-                style="@style/SingleFish"
-
-                />
-
-            <ImageView
-                android:id="@+id/row4_fish2"
-                style="@style/SingleFish" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row5"
-            style="@style/RowFish">
-
-            <ImageView
-                android:id="@+id/row5_fish1"
-                style="@style/SingleFish"
-
-                />
-
+                android:id="@+id/template2_row3_fish3"
+                style="@style/SingleFish"/>
 
         </LinearLayout>
 
 
     </LinearLayout>
-
 
 </LinearLayout>

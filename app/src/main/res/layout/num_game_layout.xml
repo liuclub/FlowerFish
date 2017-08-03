@@ -47,26 +47,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/ll_num_line"
-        android:layout_marginBottom="@dimen/NumGameNumLineHeight"
-        >
+        android:layout_marginBottom="@dimen/NumGameNumLineHeight">
 
         <FrameLayout
             android:id="@+id/fl_fish_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <include layout="@layout/fish_template_row_layout"></include>
+            <include layout="@layout/fish_template_row_layout"></include>
 
-        <include layout="@layout/fish_template_line_layout"></include>
+            <include layout="@layout/fish_template_line_layout"></include>
+
+            <include layout="@layout/fish_template2_row_layout"></include>
+
+            <include layout="@layout/fish_template2_line_layout"></include>
         </FrameLayout>
-       <com.bagelplay.flowerfish.view.TimerView
-           android:id="@+id/timer_view"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_margin="10dp"
-           android:layout_gravity="right|top">
 
-       </com.bagelplay.flowerfish.view.TimerView>
+        <com.bagelplay.flowerfish.view.TimerView
+            android:id="@+id/timer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_margin="10dp">
+
+        </com.bagelplay.flowerfish.view.TimerView>
 
 
     </FrameLayout>

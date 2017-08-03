@@ -1,5 +1,6 @@
 package com.bagelplay.flowerfish;
 
+import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.VideoView;
 
 import com.bagelplay.flowerfish.utils.SoundUtil;
 import com.bagelplay.flowerfish.view.FinishGameView;
+import com.bagelplay.flowerfish.view.FllScreenVideoView;
 import com.bagelplay.flowerfish.view.FlowerView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
@@ -32,24 +34,15 @@ public class MainActivity extends AppCompatActivity {
     SoundUtil mSoundUtil;
 
 
-
-
-
-    VideoView mVvVideo;
-
-
+    FllScreenVideoView mVvVideo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
-
-
+         //去除黑边
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         mFv_flower = (FlowerView) findViewById(R.id.fv_flower);
 
 
@@ -78,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                 mSoundUtil.startPlaySound(R.raw.disagree);
 
-               // mRwView.setVisibility(View.GONE);
+                // mRwView.setVisibility(View.GONE);
             }
         });
 
@@ -86,16 +79,30 @@ public class MainActivity extends AppCompatActivity {
         mNgvView = (NumberGameView) findViewById(R.id.ngv_view);
 
         mNgvView.setOnNumGameFinishListener(new NumberGameView.NumGameFinishListener() {
+
+
             @Override
-            public void numGameFinish() {
+            public void numGameFinish(int currentstage) {
                 Log.d(Tag, "gamewangchen");
 
-                mNgvView.setVisibility(View.GONE);
 
-                mNgcView.startAnimation();
+                if(currentstage==1){
+
+                    mSoundUtil.startPlaySound(R.raw.next_stage);
+
+                }
+
+                else if(currentstage==2){
+                    mNgvView.setVisibility(View.GONE);
+
+                    mNgcView.startAnimation();
 
 
-                mSoundUtil.startPlaySound(R.raw.congration);
+                    mSoundUtil.startPlaySound(R.raw.congration);
+                }
+
+
+
 
             }
 
@@ -109,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         mNgcView = (NumGameCongrationView) findViewById(R.id.ngc_view);
@@ -151,32 +157,37 @@ public class MainActivity extends AppCompatActivity {
         mSoundUtil = new SoundUtil(MainActivity.this);
 
 
-        mVvVideo= (VideoView) findViewById(R.id.vv_video);
+        mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
 
-        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mVvVideo.stopPlayback();
-
-                mVvVideo.setVisibility(View.GONE);
-
-            }
-        });
-
-        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
-
-
-
-        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
-
-
-        mVvVideo.start();
+//        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                mVvVideo.stopPlayback();
+//
+//                mVvVideo.setVisibility(View.GONE);
+//
+//            }
+//        });
+//
+//
+//
+//
+//
+//
+//
+//        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                return true;
+//            }
+//        });
+//
+//       // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
+//        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
+//
+//
+//
+//        mVvVideo.start();
 
     }
 
