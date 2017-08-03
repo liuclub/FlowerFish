@@ -72,14 +72,13 @@ public class NumberGameView extends RelativeLayout {
 
     private int fishNum;  //正确的鱼数量
 
-    private TimerView mTimerView;
+    //private TimerView mTimerView;
 
     private int MaxGameTime = 4;
 
     private int CurrentGameTime = 0;
 
     private int CurrentStage = 0;//当前关卡
-
 
 
     private Context mContext;
@@ -284,14 +283,13 @@ public class NumberGameView extends RelativeLayout {
                 if (mNumGameFinishListener != null) {
 
 
+                    CurrentStage++;
 
-                     CurrentStage++;
-
-                     mNumGameFinishListener.numGameFinish(CurrentStage);
+                    mNumGameFinishListener.numGameFinish(CurrentStage);
                     initGame();
-                    if(CurrentStage==2){
-                        CurrentStage=0;
-                        mTimerView.stopTimer();
+                    if (CurrentStage == 3) {
+                        CurrentStage = 0;
+                       // mTimerView.stopTimer();
                     }
 
 
@@ -335,10 +333,31 @@ public class NumberGameView extends RelativeLayout {
     private void initGame() {
 
 
-        mTimerView.reStartTimer();
+        //mTimerView.reStartTimer();
 
+        if (CurrentStage == 0) {
+            while (true) {
+                fishNum = randNumfrom_1_9();
+                if (fishNum % 2 == 0) {
+                    break;
+                }
+            }
+        } else if (CurrentStage == 1) {
+            while (true) {
+                fishNum = randNumfrom_1_9();
+                if (fishNum % 2 != 0&&fishNum>2) {
+                    break;
+                }
+            }
+        } else {
+            while (true) {
+                fishNum = randNumfrom_1_9();
+                if (fishNum >= 3) {
+                    break;
+                }
+            }
+        }
 
-        fishNum = randNumfrom_1_9();
 
         int numPosition = randNumfrom_0_2();
 
@@ -363,7 +382,7 @@ public class NumberGameView extends RelativeLayout {
 
 
         //第一关
-        if (CurrentStage ==0 ){
+        if (CurrentStage == 0 || CurrentStage == 1) {
             mLlFishTemplate2Row.setVisibility(View.GONE);
 
             mLlFishTemplate2Line.setVisibility(View.GONE);
@@ -440,7 +459,7 @@ public class NumberGameView extends RelativeLayout {
             }
 
 
-        } else if (CurrentStage ==1) {  //第二关
+        } else if (CurrentStage == 2) {  //第三关
             mLlFishTemplateRow.setVisibility(View.GONE);
 
             mLlFishTemplateLine.setVisibility(View.GONE);
@@ -520,8 +539,8 @@ public class NumberGameView extends RelativeLayout {
 
         findFinshNumImage();
 
-        mTimerView = (TimerView) findViewById(R.id.timer_view);
-        mTimerView.startTimer();
+//        mTimerView = (TimerView) findViewById(R.id.timer_view);
+//        mTimerView.startTimer();
 
         wrongAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_wrong_anim);
     }

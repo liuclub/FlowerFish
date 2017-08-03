@@ -63,14 +63,14 @@
             <include layout="@layout/fish_template2_line_layout"></include>
         </FrameLayout>
 
-        <com.bagelplay.flowerfish.view.TimerView
+    <!--    <com.bagelplay.flowerfish.view.TimerView
             android:id="@+id/timer_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|top"
             android:layout_margin="10dp">
 
-        </com.bagelplay.flowerfish.view.TimerView>
+        </com.bagelplay.flowerfish.view.TimerView>-->
 
 
     </FrameLayout>

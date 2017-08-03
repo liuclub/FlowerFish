@@ -31,7 +31,7 @@ public class NumGameCongrationView extends LinearLayout {
     private int TIME = 1000;
     private int i = 0;
 
-    private int MaxTime=5;
+    private int MaxTime=9;
 
 
     public NumGameCongrationView(Context context) {

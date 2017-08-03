@@ -36,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
     FllScreenVideoView mVvVideo;
 
+    int numGameCurrentStage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         //去除黑边
+        //去除黑边
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         mFv_flower = (FlowerView) findViewById(R.id.fv_flower);
 
@@ -63,6 +65,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(Tag, "Rightclick");
 
                 mSoundUtil.startPlaySound(R.raw.agree);
+
+
+                if (numGameCurrentStage == 0){
+
+                    mNgvView.setVisibility(View.VISIBLE);
+                    mSoundUtil.startPlaySound(R.raw.num_game_introduce);
+                }else if(numGameCurrentStage == 1){
+                    mNgvView.setVisibility(View.VISIBLE);
+
+                }else if(numGameCurrentStage == 2){
+                    mNgvView.setVisibility(View.VISIBLE);
+                }
+
+
+
+
+
             }
 
             @Override
@@ -72,6 +91,19 @@ public class MainActivity extends AppCompatActivity {
                 mSoundUtil.startPlaySound(R.raw.disagree);
 
                 // mRwView.setVisibility(View.GONE);
+
+
+
+//                    mNgvView.setVisibility(View.VISIBLE);
+//                    mSoundUtil.startPlaySound(R.raw.num_game_introduce);
+
+                    mRwView.setVisibility(View.GONE);
+
+
+
+
+
+
             }
         });
 
@@ -85,23 +117,28 @@ public class MainActivity extends AppCompatActivity {
             public void numGameFinish(int currentstage) {
                 Log.d(Tag, "gamewangchen");
 
-
-                if(currentstage==1){
+                numGameCurrentStage = currentstage;
+                if (currentstage == 1) {
 
                     mSoundUtil.startPlaySound(R.raw.next_stage);
-
-                }
-
-                else if(currentstage==2){
                     mNgvView.setVisibility(View.GONE);
+                    mNgcView.setVisibility(View.VISIBLE);
+                    mNgcView.startAnimation();
 
+                } else if (currentstage == 2) {
+                    mSoundUtil.startPlaySound(R.raw.next_stage);
+                    mNgvView.setVisibility(View.GONE);
+                    mNgcView.setVisibility(View.VISIBLE);
                     mNgcView.startAnimation();
 
 
+                } else if (currentstage == 3) {
                     mSoundUtil.startPlaySound(R.raw.congration);
+                    mNgvView.setVisibility(View.GONE);
+                    mNgcView.setVisibility(View.VISIBLE);
+                    mNgcView.startAnimation();
+
                 }
-
-
 
 
             }
@@ -123,11 +160,26 @@ public class MainActivity extends AppCompatActivity {
         mNgcView.setOnNumGameCongrationFinishListener(new NumGameCongrationView.NumGameCongrationFinishListener() {
             @Override
             public void numGameConfigurationFinish() {
-                mNgcView.setVisibility(View.GONE);
 
-                mFgvView.startAnimation();
+                if (numGameCurrentStage == 3) {
 
-                mSoundUtil.startPlaySound(R.raw.win_petal);
+                    mNgcView.setVisibility(View.GONE);
+
+                    mRwView.setVisibility(View.GONE);
+                    mFgvView.setVisibility(View.VISIBLE);
+
+                    mFgvView.startAnimation();
+
+                    mSoundUtil.startPlaySound(R.raw.win_petal);
+
+
+                }
+                else{
+                    mNgcView.setVisibility(View.GONE);
+
+                    mRwView.setVisibility(View.VISIBLE);
+
+                }
 
 
             }

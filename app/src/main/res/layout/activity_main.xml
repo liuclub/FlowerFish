@@ -17,6 +17,17 @@
     </com.bagelplay.flowerfish.view.FlowerView>
 
 
+
+
+
+    <com.bagelplay.flowerfish.view.FinishGameView
+        android:id="@+id/fgv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+    </com.bagelplay.flowerfish.view.FinishGameView>
+
     <com.bagelplay.flowerfish.view.RightWrongView
         android:id="@+id/rw_view"
         android:layout_width="match_parent"
@@ -25,19 +36,13 @@
     </com.bagelplay.flowerfish.view.RightWrongView>
 
 
-    <com.bagelplay.flowerfish.view.FinishGameView
-        android:id="@+id/fgv_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
 
-    </com.bagelplay.flowerfish.view.FinishGameView>
 
     <com.bagelplay.flowerfish.view.NumGameCongrationView
         android:id="@+id/ngc_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:visibility="gone"
         >
 
     </com.bagelplay.flowerfish.view.NumGameCongrationView>
@@ -47,7 +52,7 @@
         android:id="@+id/ngv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:visibility="gone"
        >
 
     </com.bagelplay.flowerfish.view.NumberGameView>
