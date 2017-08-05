@@ -73,4 +73,24 @@
     </style>
 
 
+
+    <style name="PauseBg" >
+        <item name="android:layout_width">@dimen/PauseBgWidth</item>
+        <item name="android:layout_height">@dimen/PauseBgHeight</item>
+    </style>
+    <style name="PauseRestart" >
+        <item name="android:layout_width">@dimen/PauseRestartWidth</item>
+        <item name="android:layout_height">@dimen/PauseRestartHeight</item>
+    </style>
+    <style name="PauseBackHome" >
+        <item name="android:layout_width">@dimen/PauseBackHomeWidth</item>
+        <item name="android:layout_height">@dimen/PauseBackHomeHeight</item>
+    </style>
+
+    <style name="PauseBack" >
+        <item name="android:layout_width">@dimen/PauseBackWidth</item>
+        <item name="android:layout_height">@dimen/PauseBackHeight</item>
+    </style>
+
+
 </resources>

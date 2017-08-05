@@ -8,18 +8,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.VideoView;
 
 import com.bagelplay.flowerfish.utils.SoundUtil;
 import com.bagelplay.flowerfish.view.FinishGameView;
 import com.bagelplay.flowerfish.view.FllScreenVideoView;
 import com.bagelplay.flowerfish.view.FlowerView;
+import com.bagelplay.flowerfish.view.GamePauseView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.RightWrongView;
 
 public class MainActivity extends AppCompatActivity {
     String Tag = "MainActivity";
+
+    GamePauseView mGpvView;
 
     FlowerView mFv_flower;
 
@@ -39,12 +41,38 @@ public class MainActivity extends AppCompatActivity {
     int numGameCurrentStage;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //去除黑边
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
+
+        //暂停控件
+        mGpvView= (GamePauseView) findViewById(R.id.gpv_view);
+
+        mGpvView.setOnGamePauseClickLinstener(new GamePauseView.GamePauseClickLinstener() {
+            @Override
+            public void pauseRestart() {
+                Log.d(Tag,"restart");
+            }
+
+            @Override
+            public void pauseBackHome() {
+                Log.d(Tag,"backhome");
+            }
+
+            @Override
+            public void pauseBack() {
+                Log.d(Tag,"back");
+            }
+        });
+
+
+
+         //鲜花控件
         mFv_flower = (FlowerView) findViewById(R.id.fv_flower);
 
 
@@ -54,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this,"第"+chooseid+"关",Toast.LENGTH_SHORT).show();
 
                 Log.d(Tag, "第" + chooseid + "关");
+
+                mRwView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -99,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
 
                     mRwView.setVisibility(View.GONE);
 
+                   numGameCurrentStage = 0;
 
-
-
+                   mNgvView.restartNumGame();
 
 
             }
@@ -126,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     mNgcView.startAnimation();
 
                 } else if (currentstage == 2) {
-                    mSoundUtil.startPlaySound(R.raw.next_stage);
+                    mSoundUtil.startPlaySound(R.raw.three_stage);
                     mNgvView.setVisibility(View.GONE);
                     mNgcView.setVisibility(View.VISIBLE);
                     mNgcView.startAnimation();
@@ -145,12 +175,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void numGameChooseRight() {
-
+                mSoundUtil.startPlaySound(R.raw.right);
             }
 
             @Override
             public void numGameChooseWrong() {
-
+                mSoundUtil.startPlaySound(R.raw.wrong);
             }
         });
 
@@ -211,35 +241,72 @@ public class MainActivity extends AppCompatActivity {
 
         mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
 
-//        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                mVvVideo.stopPlayback();
+        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mVvVideo.stopPlayback();
+
+                mVvVideo.setVisibility(View.GONE);
+
+            }
+        });
 //
-//                mVvVideo.setVisibility(View.GONE);
 //
+//
+//
+//
+//
+//
+        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+       // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
+        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
+
+
+
+        mVvVideo.start();
+
+
+        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+
+
+
+
+
+//        CustomDialog.Builder builder = new CustomDialog.Builder(this);
+//        builder.setMessage("这个就是自定义的提示框");
+//        builder.setTitle("提示");
+//        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//                //设置你的操作事项
 //            }
 //        });
 //
+//        builder.setNegativeButton("取消",
+//                new android.content.DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
 //
-//
-//
-//
-//
-//
-//        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                return true;
-//            }
-//        });
-//
-//       // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
-//        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
-//
-//
-//
-//        mVvVideo.start();
+//        builder.create().show();
+
+
+
+
+
 
     }
 

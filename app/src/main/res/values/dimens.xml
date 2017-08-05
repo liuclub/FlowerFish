@@ -25,5 +25,16 @@
     <dimen name="FinishGameRightWrongBtnHeight">60dp</dimen>
     <dimen name="FinishGameRightWrongBtnMargin">10dp</dimen>
 
+    <dimen name="PauseBgWidth">163dp</dimen>
+    <dimen name="PauseBgHeight">159dp</dimen>
+
+    <dimen name="PauseRestartWidth">137dp</dimen>
+    <dimen name="PauseRestartHeight">23dp</dimen>
+
+    <dimen name="PauseBackHomeWidth">135dp</dimen>
+    <dimen name="PauseBackHomeHeight">25dp</dimen>
+
+    <dimen name="PauseBackWidth">75dp</dimen>
+    <dimen name="PauseBackHeight">16dp</dimen>
 
 </resources>

@@ -330,6 +330,11 @@ public class NumberGameView extends RelativeLayout {
     }
 
 
+    public void restartNumGame(){
+        CurrentStage=0;
+        initGame();
+    }
+
     private void initGame() {
 
 

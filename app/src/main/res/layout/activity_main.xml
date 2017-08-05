@@ -7,43 +7,20 @@
     tools:context="com.bagelplay.flowerfish.MainActivity">
 
 
-    <com.bagelplay.flowerfish.view.FlowerView
-        android:id="@+id/fv_flower"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-
-    </com.bagelplay.flowerfish.view.FlowerView>
-
-
-
-
-
     <com.bagelplay.flowerfish.view.FinishGameView
         android:id="@+id/fgv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
+
     </com.bagelplay.flowerfish.view.FinishGameView>
-
-    <com.bagelplay.flowerfish.view.RightWrongView
-        android:id="@+id/rw_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </com.bagelplay.flowerfish.view.RightWrongView>
-
-
 
 
     <com.bagelplay.flowerfish.view.NumGameCongrationView
         android:id="@+id/ngc_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
     </com.bagelplay.flowerfish.view.NumGameCongrationView>
 
@@ -52,17 +29,45 @@
         android:id="@+id/ngv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-       >
+
+        >
 
     </com.bagelplay.flowerfish.view.NumberGameView>
+
+    <com.bagelplay.flowerfish.view.RightWrongView
+        android:id="@+id/rw_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </com.bagelplay.flowerfish.view.RightWrongView>
+
+
+    <com.bagelplay.flowerfish.view.GamePauseView
+        android:id="@+id/gpv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.bagelplay.flowerfish.view.GamePauseView>
+
+
+    <com.bagelplay.flowerfish.view.FlowerView
+        android:id="@+id/fv_flower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        >
+
+
+    </com.bagelplay.flowerfish.view.FlowerView>
 
     <com.bagelplay.flowerfish.view.FllScreenVideoView
 
         android:id="@+id/vv_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 
 </FrameLayout>

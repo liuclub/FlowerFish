@@ -36,6 +36,8 @@ public class FlowerView extends FrameLayout {
 
     ImageView[] mFlowerImageViews;
 
+    FrameLayout mFlParent;
+
 
     int mFlowerBitmapsSelect[];
 
@@ -56,6 +58,14 @@ public class FlowerView extends FrameLayout {
         mFlowerImageViews = new ImageView[flowerSize];
 
 
+        mFlParent= (FrameLayout) findViewById(R.id.fl_parent);
+
+        mFlParent.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         iv1 = (ImageView) findViewById(R.id.im_flower1);
         iv2 = (ImageView) findViewById(R.id.im_flower2);
         iv3 = (ImageView) findViewById(R.id.im_flower3);
