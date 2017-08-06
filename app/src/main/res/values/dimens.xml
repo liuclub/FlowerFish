@@ -37,4 +37,9 @@
     <dimen name="PauseBackWidth">75dp</dimen>
     <dimen name="PauseBackHeight">16dp</dimen>
 
+
+    <dimen name="PauseHomeWidth">70dp</dimen>
+    <dimen name="PauseHomeHeight">70dp</dimen>
+    <dimen name="PauseHomeMargin">20dp</dimen>
+
 </resources>

@@ -92,5 +92,11 @@
         <item name="android:layout_height">@dimen/PauseBackHeight</item>
     </style>
 
+    <style name="PauseHome">
+        <item name="android:layout_width">@dimen/PauseHomeWidth</item>
+        <item name="android:layout_height">@dimen/PauseHomeHeight</item>
+        <item name="android:layout_margin">@dimen/PauseHomeMargin</item>
+    </style>
+
 
 </resources>

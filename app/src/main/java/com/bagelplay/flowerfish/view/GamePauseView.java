@@ -125,12 +125,11 @@ public class GamePauseView extends RelativeLayout {
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvPauseRestart.getLayoutParams();
 
 
-
                         para1.width = mIvPauseRestartWidth;
                         para1.height = mIvPauseRestartHeight;
                         mIvPauseRestart.setLayoutParams(para1);
 
-                        if(mGamePauseClickLinstener!=null){
+                        if (mGamePauseClickLinstener != null) {
                             mGamePauseClickLinstener.pauseRestart();
                         }
 
@@ -172,12 +171,11 @@ public class GamePauseView extends RelativeLayout {
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvPauseBackHome.getLayoutParams();
 
 
-
                         para1.width = mIvPauseBackHomeWidth;
                         para1.height = mIvPauseBackHomeHeight;
                         mIvPauseBackHome.setLayoutParams(para1);
 
-                        if(mGamePauseClickLinstener!=null){
+                        if (mGamePauseClickLinstener != null) {
                             mGamePauseClickLinstener.pauseBackHome();
                         }
 
@@ -219,12 +217,11 @@ public class GamePauseView extends RelativeLayout {
                         RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvPauseBack.getLayoutParams();
 
 
-
                         para1.width = mIvPauseBackWidth;
                         para1.height = mIvPauseBackHeight;
                         mIvPauseBack.setLayoutParams(para1);
 
-                        if(mGamePauseClickLinstener!=null){
+                        if (mGamePauseClickLinstener != null) {
                             mGamePauseClickLinstener.pauseBack();
                         }
 
@@ -240,8 +237,6 @@ public class GamePauseView extends RelativeLayout {
     }
 
 
-
-
     private void findView() {
         mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
         mIvPauseRestart = (ImageView) findViewById(R.id.iv_pause_restart);
@@ -254,8 +249,6 @@ public class GamePauseView extends RelativeLayout {
     public GamePauseView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
-
 
 
     GamePauseClickLinstener mGamePauseClickLinstener;

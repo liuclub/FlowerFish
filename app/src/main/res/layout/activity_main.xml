@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.bagelplay.flowerfish.MainActivity">
 
-
+    <!--奖励-->
     <com.bagelplay.flowerfish.view.FinishGameView
         android:id="@+id/fgv_view"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
 
     </com.bagelplay.flowerfish.view.FinishGameView>
 
-
+    <!--鼓励-->
     <com.bagelplay.flowerfish.view.NumGameCongrationView
         android:id="@+id/ngc_view"
         android:layout_width="match_parent"
@@ -24,16 +24,17 @@
 
     </com.bagelplay.flowerfish.view.NumGameCongrationView>
 
-
+    <!--游戏-->
     <com.bagelplay.flowerfish.view.NumberGameView
         android:id="@+id/ngv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        >
+        android:visibility="gone">
 
     </com.bagelplay.flowerfish.view.NumberGameView>
 
+
+    <!--选择-->
     <com.bagelplay.flowerfish.view.RightWrongView
         android:id="@+id/rw_view"
         android:layout_width="match_parent"
@@ -43,31 +44,44 @@
     </com.bagelplay.flowerfish.view.RightWrongView>
 
 
+
+
+    <!--home按钮-->
+    <com.bagelplay.flowerfish.view.PauseButtonView
+        android:id="@+id/pbv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.bagelplay.flowerfish.view.PauseButtonView>
+
+
+    <!--暂停-->
     <com.bagelplay.flowerfish.view.GamePauseView
         android:id="@+id/gpv_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
     </com.bagelplay.flowerfish.view.GamePauseView>
 
 
+    <!--主页-->
+
+
     <com.bagelplay.flowerfish.view.FlowerView
         android:id="@+id/fv_flower"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
+     </com.bagelplay.flowerfish.view.FlowerView>
 
-
-    </com.bagelplay.flowerfish.view.FlowerView>
-
+    <!--视频-->
     <com.bagelplay.flowerfish.view.FllScreenVideoView
 
         android:id="@+id/vv_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
-
+        />
 
 </FrameLayout>

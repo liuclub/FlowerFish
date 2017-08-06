@@ -332,35 +332,52 @@ public class NumberGameView extends RelativeLayout {
 
     public void restartNumGame(){
         CurrentStage=0;
+        CurrentGameTime=0;
         initGame();
     }
 
+
+    int lastFishNum=0;
     private void initGame() {
 
 
         //mTimerView.reStartTimer();
 
-        if (CurrentStage == 0) {
-            while (true) {
-                fishNum = randNumfrom_1_9();
-                if (fishNum % 2 == 0) {
-                    break;
+
+        while(true) {
+
+
+            if (CurrentStage == 0) {
+                while (true) {
+                    fishNum = randNumfrom_1_9();
+                    if (fishNum % 2 == 0) {
+                        break;
+                    }
+                }
+            } else if (CurrentStage == 1) {
+                while (true) {
+                    fishNum = randNumfrom_1_9();
+                    if (fishNum % 2 != 0 && fishNum > 2) {
+                        break;
+                    }
+                }
+            } else {
+                while (true) {
+                    fishNum = randNumfrom_1_9();
+                    if (fishNum >= 3) {
+                        break;
+                    }
                 }
             }
-        } else if (CurrentStage == 1) {
-            while (true) {
-                fishNum = randNumfrom_1_9();
-                if (fishNum % 2 != 0&&fishNum>2) {
-                    break;
-                }
+
+
+            if(fishNum!=lastFishNum) {
+
+                lastFishNum=fishNum;
+                break;
+
             }
-        } else {
-            while (true) {
-                fishNum = randNumfrom_1_9();
-                if (fishNum >= 3) {
-                    break;
-                }
-            }
+
         }
 
 
@@ -642,11 +659,11 @@ public class NumberGameView extends RelativeLayout {
 
     }
 
+
+
     private int randNumfrom_1_9() {
         Random r = new Random();
-
-
-        return Math.abs(r.nextInt() % 9) + 1;
+        return   Math.abs(r.nextInt() % 9) + 1;
     }
 
 

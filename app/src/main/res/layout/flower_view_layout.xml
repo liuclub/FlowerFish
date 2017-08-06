@@ -1,40 +1,55 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fl_parent"
-    style="@style/FlowerImageView">
+    android:background="#ffffff"
+    android:layout_width="match_parent"
 
-    <ImageView
-        style="@style/FlowerImageView"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerInParent="true">
+
+    <FrameLayout
+
+        style="@style/FlowerImageView">
+
+        <ImageView
+            style="@style/FlowerImageView"
 
 
-        android:src="@drawable/flower_0" />
+            android:src="@drawable/flower_0" />
 
-    <ImageView
-        android:id="@+id/im_flower5"
-        style="@style/FlowerImageView"
+        <ImageView
+            android:id="@+id/im_flower5"
+            style="@style/FlowerImageView"
 
-        android:src="@drawable/newflower_5_0" />
+            android:src="@drawable/newflower_5_0" />
 
-    <ImageView
-        android:id="@+id/im_flower4"
-        style="@style/FlowerImageView"
+        <ImageView
+            android:id="@+id/im_flower4"
+            style="@style/FlowerImageView"
 
-        android:src="@drawable/newflower_4_0" />
+            android:src="@drawable/newflower_4_0" />
 
-    <ImageView
-        android:id="@+id/im_flower3"
-        style="@style/FlowerImageView"
+        <ImageView
+            android:id="@+id/im_flower3"
+            style="@style/FlowerImageView"
 
-        android:src="@drawable/newflower_3_0" />
+            android:src="@drawable/newflower_3_0" />
 
-    <ImageView
-        android:id="@+id/im_flower2"
-        style="@style/FlowerImageView"
+        <ImageView
+            android:id="@+id/im_flower2"
+            style="@style/FlowerImageView"
 
-        android:src="@drawable/newflower_2_0" />
+            android:src="@drawable/newflower_2_0" />
 
-    <ImageView
-        android:id="@+id/im_flower1"
-        style="@style/FlowerImageView"
+        <ImageView
+            android:id="@+id/im_flower1"
+            style="@style/FlowerImageView"
 
-        android:src="@drawable/newflower_1_0" />
-</FrameLayout>
+            android:src="@drawable/newflower_1_0" />
+    </FrameLayout>
+    </RelativeLayout>
+</RelativeLayout>

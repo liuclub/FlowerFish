@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.bagelplay.flowerfish.utils.SoundUtil;
 import com.bagelplay.flowerfish.view.FinishGameView;
@@ -16,6 +17,7 @@ import com.bagelplay.flowerfish.view.FlowerView;
 import com.bagelplay.flowerfish.view.GamePauseView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumberGameView;
+import com.bagelplay.flowerfish.view.PauseButtonView;
 import com.bagelplay.flowerfish.view.RightWrongView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     GamePauseView mGpvView;
 
-    FlowerView mFv_flower;
+    FlowerView mFvFlower;
 
     RightWrongView mRwView;
 
@@ -40,53 +42,136 @@ public class MainActivity extends AppCompatActivity {
 
     int numGameCurrentStage;
 
-
+    PauseButtonView mPbvView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         //去除黑边
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
+        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
+                WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_main);
+
+
+        mSoundUtil = new SoundUtil(MainActivity.this);
+
+        //home按钮
+
+        mPbvView = (PauseButtonView) findViewById(R.id.pbv_view);
+        mPbvView.setOnPauseButtonViewClickLinstener(new PauseButtonView.PauseButtonViewClickLinstener() {
+            @Override
+            public void pauseHomeClick() {
+                mGpvView.setVisibility(View.VISIBLE);
+            }
+        });
+
+
         //暂停控件
-        mGpvView= (GamePauseView) findViewById(R.id.gpv_view);
+        mGpvView = (GamePauseView) findViewById(R.id.gpv_view);
+
 
         mGpvView.setOnGamePauseClickLinstener(new GamePauseView.GamePauseClickLinstener() {
             @Override
             public void pauseRestart() {
-                Log.d(Tag,"restart");
+                Log.d(Tag, "restart");
+
+                numGameCurrentStage = 0;
+
+                mNgvView.restartNumGame();
+
+                mNgvView.setVisibility(View.VISIBLE);
+
+                mGpvView.setVisibility(View.GONE);
+
+                mRwView.setVisibility(View.GONE);
+
+                mSoundUtil.startPlaySound(R.raw.num_game_introduce);
+
             }
 
             @Override
             public void pauseBackHome() {
-                Log.d(Tag,"backhome");
+                Log.d(Tag, "backhome");
+
+                mFvFlower.setVisibility(View.VISIBLE);
+                numGameCurrentStage = 0;
+
+                mNgvView.restartNumGame();
+
+                mGpvView.setVisibility(View.GONE);
             }
 
             @Override
             public void pauseBack() {
-                Log.d(Tag,"back");
+                Log.d(Tag, "back");
+
+                mGpvView.setVisibility(View.GONE);
             }
         });
 
 
 
-         //鲜花控件
-        mFv_flower = (FlowerView) findViewById(R.id.fv_flower);
+        //视频
+        mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
+
+        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mVvVideo.stopPlayback();
+
+                mVvVideo.setVisibility(View.GONE);
+
+                mFvFlower.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+        // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
+        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
 
 
-        mFv_flower.setonFlowerChooseListener(new FlowerView.FlowerChoose() {
+        mVvVideo.start();
+
+
+        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+
+
+
+        //鲜花控件
+        mFvFlower = (FlowerView) findViewById(R.id.fv_flower);
+
+
+        mFvFlower.setonFlowerChooseListener(new FlowerView.FlowerChoose() {
             @Override
             public void flowerChoose(int chooseid) {
                 //Toast.makeText(MainActivity.this,"第"+chooseid+"关",Toast.LENGTH_SHORT).show();
 
                 Log.d(Tag, "第" + chooseid + "关");
 
+                mFvFlower.setVisibility(View.GONE);
+
                 mRwView.setVisibility(View.VISIBLE);
             }
         });
 
+
+        //判断
         mRwView = (RightWrongView) findViewById(R.id.rw_view);
 
         mRwView.setOnRightWrongClickLinstener(new RightWrongView.RightWrongClickLinstener() {
@@ -96,20 +181,17 @@ public class MainActivity extends AppCompatActivity {
 
                 mSoundUtil.startPlaySound(R.raw.agree);
 
-
-                if (numGameCurrentStage == 0){
+                mRwView.setVisibility(View.GONE);
+                if (numGameCurrentStage == 0) {
 
                     mNgvView.setVisibility(View.VISIBLE);
                     mSoundUtil.startPlaySound(R.raw.num_game_introduce);
-                }else if(numGameCurrentStage == 1){
+                } else if (numGameCurrentStage == 1) {
                     mNgvView.setVisibility(View.VISIBLE);
 
-                }else if(numGameCurrentStage == 2){
+                } else if (numGameCurrentStage == 2) {
                     mNgvView.setVisibility(View.VISIBLE);
                 }
-
-
-
 
 
             }
@@ -120,24 +202,22 @@ public class MainActivity extends AppCompatActivity {
 
                 mSoundUtil.startPlaySound(R.raw.disagree);
 
-                // mRwView.setVisibility(View.GONE);
 
 
+                mRwView.setVisibility(View.GONE);
 
-//                    mNgvView.setVisibility(View.VISIBLE);
-//                    mSoundUtil.startPlaySound(R.raw.num_game_introduce);
+                mFvFlower.setVisibility(View.VISIBLE);
 
-                    mRwView.setVisibility(View.GONE);
+                numGameCurrentStage = 0;
 
-                   numGameCurrentStage = 0;
-
-                   mNgvView.restartNumGame();
+                mNgvView.restartNumGame();
 
 
             }
         });
 
 
+        //游戏
         mNgvView = (NumberGameView) findViewById(R.id.ngv_view);
 
         mNgvView.setOnNumGameFinishListener(new NumberGameView.NumGameFinishListener() {
@@ -185,6 +265,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+        //鼓励
         mNgcView = (NumGameCongrationView) findViewById(R.id.ngc_view);
 
         mNgcView.setOnNumGameCongrationFinishListener(new NumGameCongrationView.NumGameCongrationFinishListener() {
@@ -194,17 +276,14 @@ public class MainActivity extends AppCompatActivity {
                 if (numGameCurrentStage == 3) {
 
                     mNgcView.setVisibility(View.GONE);
-
-                    mRwView.setVisibility(View.GONE);
                     mFgvView.setVisibility(View.VISIBLE);
-
+                    mSoundUtil.startPlaySound(R.raw.win_petal);
                     mFgvView.startAnimation();
 
-                    mSoundUtil.startPlaySound(R.raw.win_petal);
 
 
-                }
-                else{
+
+                } else {
                     mNgcView.setVisibility(View.GONE);
 
                     mRwView.setVisibility(View.VISIBLE);
@@ -216,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        //奖励
         mFgvView = (FinishGameView) findViewById(R.id.fgv_view);
 
         mFgvView.setOnRightWrongClickLinstener(new FinishGameView.RightWrongClickLinstener() {
@@ -230,81 +310,16 @@ public class MainActivity extends AppCompatActivity {
 
                 mFgvView.setVisibility(View.GONE);
 
+
+                numGameCurrentStage = 0;
+                mNgvView.restartNumGame();
+
+                mFvFlower.setVisibility(View.VISIBLE);
+
                 mSoundUtil.startPlaySound(R.raw.disagree);
 
             }
         });
-
-
-        mSoundUtil = new SoundUtil(MainActivity.this);
-
-
-        mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
-
-        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mVvVideo.stopPlayback();
-
-                mVvVideo.setVisibility(View.GONE);
-
-            }
-        });
-//
-//
-//
-//
-//
-//
-//
-        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
-       // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
-        mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
-
-
-
-        mVvVideo.start();
-
-
-        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
-
-
-
-
-
-//        CustomDialog.Builder builder = new CustomDialog.Builder(this);
-//        builder.setMessage("这个就是自定义的提示框");
-//        builder.setTitle("提示");
-//        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//                //设置你的操作事项
-//            }
-//        });
-//
-//        builder.setNegativeButton("取消",
-//                new android.content.DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//        builder.create().show();
-
-
-
 
 
 

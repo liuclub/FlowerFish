@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bagelplay.flowerfish.R;
 import com.bagelplay.flowerfish.utils.DimenUtil;
@@ -25,7 +26,7 @@ import com.bagelplay.flowerfish.utils.DimenUtil;
  * Created by zhangtianjie on 2017/7/28.
  */
 
-public class FlowerView extends FrameLayout {
+public class FlowerView extends RelativeLayout {
     String Tag = "FlowerView";
 
     private ImageView iv1, iv2, iv3, iv4, iv5;
@@ -36,7 +37,7 @@ public class FlowerView extends FrameLayout {
 
     ImageView[] mFlowerImageViews;
 
-    FrameLayout mFlParent;
+    RelativeLayout mFlParent;
 
 
     int mFlowerBitmapsSelect[];
@@ -58,7 +59,7 @@ public class FlowerView extends FrameLayout {
         mFlowerImageViews = new ImageView[flowerSize];
 
 
-        mFlParent= (FrameLayout) findViewById(R.id.fl_parent);
+        mFlParent= (RelativeLayout) findViewById(R.id.fl_parent);
 
         mFlParent.setOnTouchListener(new OnTouchListener() {
             @Override
