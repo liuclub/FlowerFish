@@ -61,6 +61,7 @@
             <include layout="@layout/fish_template2_row_layout"></include>
 
             <include layout="@layout/fish_template2_line_layout"></include>
+
         </FrameLayout>
 
     <!--    <com.bagelplay.flowerfish.view.TimerView

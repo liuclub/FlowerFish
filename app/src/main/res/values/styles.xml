@@ -52,7 +52,6 @@
     <style name="SingleFish">
         <item name="android:layout_width">@dimen/SingleFishWidth</item>
         <item name="android:layout_height">@dimen/SingleFishHeight</item>
-
         <item name="android:src">@drawable/fish</item>
     </style>
 
@@ -62,6 +61,11 @@
         <item name="android:layout_marginLeft">@dimen/RowFishMarginLeft</item>
        <item name="android:orientation">vertical</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="RowFishBlank">
+    <item name="android:layout_width">50dp</item>
+    <item name="android:layout_height">50dp</item>
     </style>
 
     <style name="LineFish">

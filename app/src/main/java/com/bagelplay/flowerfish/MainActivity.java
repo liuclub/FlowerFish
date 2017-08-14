@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
+
         mVvVideo.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.welcome));
 
 

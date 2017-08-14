@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 import static android.R.attr.max;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static android.media.CamcorderProfile.get;
 import static com.bagelplay.flowerfish.R.drawable.num1;
 import static com.bagelplay.flowerfish.R.drawable.num2;
@@ -68,7 +69,8 @@ public class NumberGameView extends RelativeLayout {
     private Animation wrongAnimation;
 
 
-    LinearLayout mLlFishTemplateRow, mLlFishTemplateLine, mLlFishTemplate2Row, mLlFishTemplate2Line;
+    LinearLayout mLlFishTemplateRow, mLlFishTemplateLine, mLlFishTemplate2Row, mLlFishTemplate2Line,
+            mLiFishTemplateRowFishBlank, mLiFishTemplateRowFishBlank1;
 
     private int fishNum;  //正确的鱼数量
 
@@ -289,7 +291,7 @@ public class NumberGameView extends RelativeLayout {
                     initGame();
                     if (CurrentStage == 3) {
                         CurrentStage = 0;
-                       // mTimerView.stopTimer();
+                        // mTimerView.stopTimer();
                     }
 
 
@@ -330,21 +332,22 @@ public class NumberGameView extends RelativeLayout {
     }
 
 
-    public void restartNumGame(){
-        CurrentStage=0;
-        CurrentGameTime=0;
+    public void restartNumGame() {
+        CurrentStage = 0;
+        CurrentGameTime = 0;
         initGame();
     }
 
 
-    int lastFishNum=0;
+    int lastFishNum = 0;
+
     private void initGame() {
 
 
         //mTimerView.reStartTimer();
 
 
-        while(true) {
+        while (true) {
 
 
             if (CurrentStage == 0) {
@@ -371,9 +374,9 @@ public class NumberGameView extends RelativeLayout {
             }
 
 
-            if(fishNum!=lastFishNum) {
+            if (fishNum != lastFishNum) {
 
-                lastFishNum=fishNum;
+                lastFishNum = fishNum;
                 break;
 
             }
@@ -411,6 +414,7 @@ public class NumberGameView extends RelativeLayout {
 
 
             if (template == 0) { //行模版
+
                 mLlFishTemplateRow.setVisibility(View.GONE);
 
                 mLlFishTemplateLine.setVisibility(View.VISIBLE);
@@ -444,6 +448,23 @@ public class NumberGameView extends RelativeLayout {
                 }
 
             } else {  //列模版
+
+
+                //中间有没有空
+                if (fishNum == 7 || fishNum == 8) {
+                    mLiFishTemplateRowFishBlank.setVisibility(View.VISIBLE);
+                    mLiFishTemplateRowFishBlank1.setVisibility(View.GONE);
+
+                } else if (fishNum == 9) {
+                    mLiFishTemplateRowFishBlank.setVisibility(View.VISIBLE);
+                    mLiFishTemplateRowFishBlank1.setVisibility(View.VISIBLE);
+
+                } else {
+                    mLiFishTemplateRowFishBlank.setVisibility(View.GONE);
+                    mLiFishTemplateRowFishBlank1.setVisibility(View.GONE);
+                }
+
+
                 mLlFishTemplateRow.setVisibility(View.VISIBLE);
 
                 mLlFishTemplateLine.setVisibility(View.GONE);
@@ -565,6 +586,11 @@ public class NumberGameView extends RelativeLayout {
 //        mTimerView.startTimer();
 
         wrongAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_wrong_anim);
+
+
+        mLiFishTemplateRowFishBlank = (LinearLayout) findViewById(R.id.row_fish_blank);
+        mLiFishTemplateRowFishBlank1 = (LinearLayout) findViewById(R.id.row_fish_blank1);
+
     }
 
 
@@ -660,10 +686,9 @@ public class NumberGameView extends RelativeLayout {
     }
 
 
-
     private int randNumfrom_1_9() {
         Random r = new Random();
-        return   Math.abs(r.nextInt() % 9) + 1;
+        return Math.abs(r.nextInt() % 9) + 1;
     }
 
 

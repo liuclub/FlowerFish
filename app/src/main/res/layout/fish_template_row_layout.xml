@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_fish_template_row"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:id="@+id/ll_fish_template_row"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -21,13 +21,13 @@
 
             <ImageView
                 android:id="@+id/row1_fish1"
-               style="@style/SingleFish"
+                style="@style/SingleFish"
 
                 />
 
             <ImageView
                 android:id="@+id/row1_fish2"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish" />
 
         </LinearLayout>
 
@@ -45,6 +45,14 @@
             <ImageView
                 android:id="@+id/row2_fish2"
                 style="@style/SingleFish" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_fish_blank"
+            style="@style/RowFishBlank"
+            android:orientation="vertical"
+            android:visibility="gone">
 
         </LinearLayout>
 
@@ -78,6 +86,14 @@
             <ImageView
                 android:id="@+id/row4_fish2"
                 style="@style/SingleFish" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_fish_blank1"
+            style="@style/RowFishBlank"
+            android:orientation="vertical"
+            android:visibility="gone">
 
         </LinearLayout>
 
