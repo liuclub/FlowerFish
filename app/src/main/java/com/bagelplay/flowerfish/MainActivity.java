@@ -16,6 +16,8 @@ import com.bagelplay.flowerfish.view.FllScreenVideoView;
 import com.bagelplay.flowerfish.view.FlowerView;
 import com.bagelplay.flowerfish.view.GamePauseView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
+import com.bagelplay.flowerfish.view.NumGameReleaseView;
+import com.bagelplay.flowerfish.view.NumPauseButtonView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.PauseButtonView;
 import com.bagelplay.flowerfish.view.RightWrongView;
@@ -23,11 +25,11 @@ import com.bagelplay.flowerfish.view.RightWrongView;
 public class MainActivity extends AppCompatActivity {
     String Tag = "MainActivity";
 
-    GamePauseView mGpvView;
+    NumGameReleaseView mNgrView;
 
     FlowerView mFvFlower;
 
-    RightWrongView mRwView;
+   /* RightWrongView mRwView;*/
 
     NumberGameView mNgvView;
 
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     int numGameCurrentStage;
 
-    PauseButtonView mPbvView;
+    NumPauseButtonView mNpbvView;
 
 
     @Override
@@ -58,59 +60,33 @@ public class MainActivity extends AppCompatActivity {
 
         mSoundUtil = new SoundUtil(MainActivity.this);
 
-        //home按钮
+        //暂停按钮
 
-        mPbvView = (PauseButtonView) findViewById(R.id.pbv_view);
-        mPbvView.setOnPauseButtonViewClickLinstener(new PauseButtonView.PauseButtonViewClickLinstener() {
+        mNpbvView = (NumPauseButtonView) findViewById(R.id.npbv_view);
+
+        mNpbvView.setOnPauseButtonViewClickLinstener(new NumPauseButtonView.PauseButtonViewClickLinstener() {
             @Override
             public void pauseHomeClick() {
-                mGpvView.setVisibility(View.VISIBLE);
+                mNgrView.setVisibility(View.VISIBLE);
+
+
+                mSoundUtil.stopPlaySound();
             }
         });
 
 
-        //暂停控件
-        mGpvView = (GamePauseView) findViewById(R.id.gpv_view);
 
-
-        mGpvView.setOnGamePauseClickLinstener(new GamePauseView.GamePauseClickLinstener() {
+        //停止暂停控件
+        mNgrView = (NumGameReleaseView) findViewById(R.id.ngr_view);
+        mNgrView.setOnReleaseButtonViewClickLinstener(new NumGameReleaseView.ReleaseButtonViewClickLinstener() {
             @Override
-            public void pauseRestart() {
-                Log.d(Tag, "restart");
+            public void releaseButtonClick() {
 
-                numGameCurrentStage = 0;
-
-                mNgvView.restartNumGame();
-
-                mNgvView.setVisibility(View.VISIBLE);
-
-                mGpvView.setVisibility(View.GONE);
-
-                mRwView.setVisibility(View.GONE);
-
-                mSoundUtil.startPlaySound(R.raw.num_game_introduce);
-
-            }
-
-            @Override
-            public void pauseBackHome() {
-                Log.d(Tag, "backhome");
-
-                mFvFlower.setVisibility(View.VISIBLE);
-                numGameCurrentStage = 0;
-
-                mNgvView.restartNumGame();
-
-                mGpvView.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void pauseBack() {
-                Log.d(Tag, "back");
-
-                mGpvView.setVisibility(View.GONE);
+                mNgrView.setVisibility(View.GONE);
             }
         });
+
+
 
 
 
@@ -167,12 +143,14 @@ public class MainActivity extends AppCompatActivity {
 
                 mFvFlower.setVisibility(View.GONE);
 
-                mRwView.setVisibility(View.VISIBLE);
+                mNgvView.setVisibility(View.VISIBLE);
             }
         });
 
 
-        //判断
+
+
+      /*  //判断
         mRwView = (RightWrongView) findViewById(R.id.rw_view);
 
         mRwView.setOnRightWrongClickLinstener(new RightWrongView.RightWrongClickLinstener() {
@@ -215,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
         //游戏
@@ -287,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     mNgcView.setVisibility(View.GONE);
 
-                    mRwView.setVisibility(View.VISIBLE);
+                    mNgvView.setVisibility(View.VISIBLE);
 
                 }
 

@@ -98,6 +98,8 @@ public class NumberGameView extends RelativeLayout {
 
         findView();
 
+        initAnimation();
+
         int w = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVWidth);
 
         int h = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVHeight);
@@ -418,11 +420,17 @@ public class NumberGameView extends RelativeLayout {
                 mLlFishTemplateRow.setVisibility(View.GONE);
 
                 mLlFishTemplateLine.setVisibility(View.VISIBLE);
+
+
+
+
                 if (fishNum % 2 == 0) {
                     for (int i = 0; i < mFishsIV_line.size(); i++) {
 
                         if (i < fishNum) {
                             mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+
+                            mFishsIV_line.get(i).startAnimation(leftAnimation);
                         } else {
                             mFishsIV_line.get(i).setVisibility(View.GONE);
                         }
@@ -436,10 +444,13 @@ public class NumberGameView extends RelativeLayout {
 
                         if (i < fishNum) {
                             mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+                            mFishsIV_line.get(i).startAnimation(leftAnimation);
+
                         } else if (i >= fishNum && i < mFishsIV_line.size()) {
                             mFishsIV_line.get(i).setVisibility(View.GONE);
                         } else {
                             mFishsIV_line.get(i).setVisibility(View.VISIBLE);
+                            mFishsIV_line.get(i).startAnimation(leftAnimation);
                         }
 
 
@@ -474,6 +485,7 @@ public class NumberGameView extends RelativeLayout {
 
                         if (i < fishNum) {
                             mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                            mFishsIV_row.get(i).startAnimation(leftAnimation);
                         } else {
                             mFishsIV_row.get(i).setVisibility(View.GONE);
                         }
@@ -487,10 +499,12 @@ public class NumberGameView extends RelativeLayout {
 
                         if (i < fishNum) {
                             mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                            mFishsIV_row.get(i).startAnimation(leftAnimation);
                         } else if (i >= fishNum && i < mFishsIV_row.size()) {
                             mFishsIV_row.get(i).setVisibility(View.GONE);
                         } else {
                             mFishsIV_row.get(i).setVisibility(View.VISIBLE);
+                            mFishsIV_row.get(i).startAnimation(leftAnimation);
                         }
 
 
@@ -518,6 +532,7 @@ public class NumberGameView extends RelativeLayout {
 
                     if (i < fishNum) {
                         mFishsIV_line_template2.get(i).setVisibility(View.VISIBLE);
+                        mFishsIV_line_template2.get(i).startAnimation(leftAnimation);
                     } else {
                         mFishsIV_line_template2.get(i).setVisibility(View.GONE);
                     }
@@ -535,6 +550,7 @@ public class NumberGameView extends RelativeLayout {
 
                     if (i < fishNum) {
                         mFishsIV_row_template2.get(i).setVisibility(View.VISIBLE);
+                        mFishsIV_row_template2.get(i).startAnimation(leftAnimation);
                     } else {
                         mFishsIV_row_template2.get(i).setVisibility(View.GONE);
                     }
@@ -547,6 +563,17 @@ public class NumberGameView extends RelativeLayout {
         }
 
 
+    }
+
+    Animation leftAnimation,rightAnimation;
+
+    public void initAnimation() {
+        leftAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_left_anim);
+
+
+
+
+        rightAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_right_anim);
     }
 
 

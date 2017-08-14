@@ -55,6 +55,13 @@
         <item name="android:src">@drawable/fish</item>
     </style>
 
+    <style name="SingleFishLine">
+        <item name="android:layout_width">@dimen/SingleFishWidth</item>
+        <item name="android:layout_height">@dimen/SingleFishHeight</item>
+        <item name="android:src">@drawable/fish</item>
+        <item name="android:layout_marginLeft">@dimen/RowFishMarginLeft</item>
+    </style>
+
     <style name="RowFish">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -102,5 +109,16 @@
         <item name="android:layout_margin">@dimen/PauseHomeMargin</item>
     </style>
 
+    <style name="PauseButton">
+        <item name="android:layout_width">@dimen/PauseButtonWidth</item>
+        <item name="android:layout_height">@dimen/PauseButtonHeight</item>
+        <item name="android:layout_margin">@dimen/PauseButtonMargin</item>
+    </style>
+
+    <style name="ReleaseButton">
+        <item name="android:layout_width">@dimen/ReleaseButtonWidth</item>
+        <item name="android:layout_height">@dimen/ReleaseButtonHeight</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
 
 </resources>

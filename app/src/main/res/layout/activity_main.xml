@@ -34,35 +34,35 @@
     </com.bagelplay.flowerfish.view.NumberGameView>
 
 
-    <!--选择-->
+<!--    &lt;!&ndash;选择&ndash;&gt;
     <com.bagelplay.flowerfish.view.RightWrongView
         android:id="@+id/rw_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
 
-    </com.bagelplay.flowerfish.view.RightWrongView>
+    </com.bagelplay.flowerfish.view.RightWrongView>-->
 
 
 
 
-    <!--home按钮-->
-    <com.bagelplay.flowerfish.view.PauseButtonView
-        android:id="@+id/pbv_view"
+    <!--暂停按钮-->
+    <com.bagelplay.flowerfish.view.NumPauseButtonView
+        android:id="@+id/npbv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.bagelplay.flowerfish.view.PauseButtonView>
+    </com.bagelplay.flowerfish.view.NumPauseButtonView>
 
 
-    <!--暂停-->
-    <com.bagelplay.flowerfish.view.GamePauseView
-        android:id="@+id/gpv_view"
+    <!--停止暂停-->
+    <com.bagelplay.flowerfish.view.NumGameReleaseView
+        android:id="@+id/ngr_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
 
-    </com.bagelplay.flowerfish.view.GamePauseView>
+    </com.bagelplay.flowerfish.view.NumGameReleaseView>
 
 
     <!--主页-->
