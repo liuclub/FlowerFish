@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="FlowerImangeViewWidth" >120dp</dimen>
-    <dimen name="FlowerImangeViewHeight" >120dp</dimen>
+    <dimen name="FlowerImangeViewWidth" >180dp</dimen>
+    <dimen name="FlowerImangeViewHeight" >180dp</dimen>
     <dimen name="RightWrongBtnWidth">100dp</dimen>
     <dimen name="RightWrongBtnHeight">100dp</dimen>
     <dimen name="RightWrongBtnMargin">40dp</dimen>

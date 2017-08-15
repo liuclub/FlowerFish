@@ -29,7 +29,7 @@ import com.bagelplay.flowerfish.utils.DimenUtil;
 public class FlowerView extends RelativeLayout {
     String Tag = "FlowerView";
 
-    private ImageView iv1, iv2, iv3, iv4, iv5;
+    private ImageView iv1, iv2, iv3, iv4, iv5,iv6;
 
 
     Bitmap[] mFlowerBitmaps;
@@ -42,7 +42,12 @@ public class FlowerView extends RelativeLayout {
 
     int mFlowerBitmapsSelect[];
 
-    int flowerSize = 5;
+    int flowerSize = 6;
+
+    //判断该关是否通过
+     boolean[] isPassed;
+
+   public  int CURRENT_SATGE;
 
 
     public FlowerView(Context context) {
@@ -57,7 +62,7 @@ public class FlowerView extends RelativeLayout {
         mFlowerBitmaps = new Bitmap[flowerSize];
         mFlowerBitmapsSelect = new int[flowerSize];
         mFlowerImageViews = new ImageView[flowerSize];
-
+        isPassed=new boolean[flowerSize];
 
         mFlParent= (RelativeLayout) findViewById(R.id.fl_parent);
 
@@ -72,18 +77,21 @@ public class FlowerView extends RelativeLayout {
         iv3 = (ImageView) findViewById(R.id.im_flower3);
         iv4 = (ImageView) findViewById(R.id.im_flower4);
         iv5 = (ImageView) findViewById(R.id.im_flower5);
+        iv6 = (ImageView) findViewById(R.id.im_flower6);
 
         mFlowerImageViews[0] = iv1;
         mFlowerImageViews[1] = iv2;
         mFlowerImageViews[2] = iv3;
         mFlowerImageViews[3] = iv4;
         mFlowerImageViews[4] = iv5;
+        mFlowerImageViews[5] = iv6;
 
-        mFlowerBitmapsSelect[0] = R.drawable.newflower_1_1;
-        mFlowerBitmapsSelect[1] = R.drawable.newflower_2_1;
-        mFlowerBitmapsSelect[2] = R.drawable.newflower_3_1;
-        mFlowerBitmapsSelect[3] = R.drawable.newflower_4_1;
-        mFlowerBitmapsSelect[4] = R.drawable.newflower_5_1;
+        mFlowerBitmapsSelect[0] = R.drawable.flower1_1;
+        mFlowerBitmapsSelect[1] = R.drawable.flower2_1;
+        mFlowerBitmapsSelect[2] = R.drawable.flower3_1;
+        mFlowerBitmapsSelect[3] = R.drawable.flower4_1;
+        mFlowerBitmapsSelect[4] = R.drawable.flower5_1;
+        mFlowerBitmapsSelect[5] = R.drawable.flower6_1;
 
         for (int i = 0; i < mFlowerImageViews.length; i++) {
 
@@ -118,11 +126,13 @@ public class FlowerView extends RelativeLayout {
 
                             // Log.i(Tag, "图" + i + "实体区域");
 
-                            mFlowerImageViews[i].setImageResource(mFlowerBitmapsSelect[i]);
+                           // mFlowerImageViews[i].setImageResource(mFlowerBitmapsSelect[i]);
 
                             if (mFlowerChoose != null) {
 
-                                mFlowerChoose.flowerChoose(i);
+
+                                CURRENT_SATGE=i;
+                                mFlowerChoose.flowerChoose(i,isPassed[i]);
 
                             }
 
@@ -138,6 +148,15 @@ public class FlowerView extends RelativeLayout {
 
             }
         });
+    }
+
+
+
+    public void setFlowerStagePass(int stage){
+
+        mFlowerImageViews[stage].setImageResource(mFlowerBitmapsSelect[stage]);
+        //该关卡通过
+        isPassed[stage]=true;
     }
 
 
@@ -194,7 +213,7 @@ public class FlowerView extends RelativeLayout {
 
     public interface FlowerChoose {
 
-        public void flowerChoose(int chooseid);
+        public void flowerChoose(int chooseid,boolean isPassed);
 
 
     }

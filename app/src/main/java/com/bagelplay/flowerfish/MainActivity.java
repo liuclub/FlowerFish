@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     NumPauseButtonView mNpbvView;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,10 @@ public class MainActivity extends AppCompatActivity {
         mNpbvView.setOnPauseButtonViewClickLinstener(new NumPauseButtonView.PauseButtonViewClickLinstener() {
             @Override
             public void pauseHomeClick() {
+
                 mNgrView.setVisibility(View.VISIBLE);
+
+
 
 
                 mSoundUtil.stopPlaySound();
@@ -136,10 +141,11 @@ public class MainActivity extends AppCompatActivity {
 
         mFvFlower.setonFlowerChooseListener(new FlowerView.FlowerChoose() {
             @Override
-            public void flowerChoose(int chooseid) {
-                //Toast.makeText(MainActivity.this,"第"+chooseid+"关",Toast.LENGTH_SHORT).show();
+            public void flowerChoose(int chooseid,boolean isPassed) {
 
-                Log.d(Tag, "第" + chooseid + "关");
+                Log.d(Tag, "第" + chooseid + "关"+"通过"+isPassed);
+
+
 
                 mFvFlower.setVisibility(View.GONE);
 
@@ -226,6 +232,11 @@ public class MainActivity extends AppCompatActivity {
                     mNgvView.setVisibility(View.GONE);
                     mNgcView.setVisibility(View.VISIBLE);
                     mNgcView.startAnimation();
+
+                    //通关
+
+
+                    mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
 
                 }
 
