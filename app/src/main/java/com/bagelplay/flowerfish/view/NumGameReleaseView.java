@@ -2,6 +2,7 @@ package com.bagelplay.flowerfish.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.RelativeLayout;
 
 import com.bagelplay.flowerfish.R;
 import com.bagelplay.flowerfish.utils.DimenUtil;
+
+import static android.R.attr.start;
 
 /**
  * Created by zhangtianjie on 2017/8/14.
@@ -28,6 +31,9 @@ public class NumGameReleaseView extends RelativeLayout {
 
     public NumGameReleaseView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+
+
         LayoutInflater.from(context).inflate(R.layout.num_game_release_view_layout, this, true);
 
         mRlParent= (RelativeLayout) findViewById(R.id.rl_parent);

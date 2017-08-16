@@ -45,20 +45,20 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginBottom">@dimen/NumGameNumLineMarginBottom</item>
-        <item name="android:background">@drawable/num_line_bg</item>
+        <item name="android:background">@mipmap/num_line_bg</item>
 
     </style>
 
     <style name="SingleFish">
         <item name="android:layout_width">@dimen/SingleFishWidth</item>
         <item name="android:layout_height">@dimen/SingleFishHeight</item>
-        <item name="android:src">@drawable/fish</item>
+        <item name="android:src">@mipmap/fish</item>
     </style>
 
     <style name="SingleFishLine">
         <item name="android:layout_width">@dimen/SingleFishWidth</item>
         <item name="android:layout_height">@dimen/SingleFishHeight</item>
-        <item name="android:src">@drawable/fish</item>
+        <item name="android:src">@mipmap/fish</item>
         <item name="android:layout_marginLeft">@dimen/RowFishMarginLeft</item>
     </style>
 

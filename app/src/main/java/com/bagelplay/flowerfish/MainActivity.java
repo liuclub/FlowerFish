@@ -1,10 +1,14 @@
 package com.bagelplay.flowerfish;
 
+
+import android.app.Activity;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +25,7 @@ import com.bagelplay.flowerfish.view.NumPauseButtonView;
 import com.bagelplay.flowerfish.view.NumberGameView;
 import com.bagelplay.flowerfish.view.PauseButtonView;
 import com.bagelplay.flowerfish.view.RightWrongView;
+import com.bagelplay.sdk.cocos.SDKCocosManager;
 
 public class MainActivity extends AppCompatActivity {
     String Tag = "MainActivity";
@@ -57,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
                 WindowManager.LayoutParams. FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
+        SDKCocosManager.getInstance(this).addWindowCallBack(this);
 
 
         mSoundUtil = new SoundUtil(MainActivity.this);

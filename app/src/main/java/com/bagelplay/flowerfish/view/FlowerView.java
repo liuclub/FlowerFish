@@ -86,12 +86,12 @@ public class FlowerView extends RelativeLayout {
         mFlowerImageViews[4] = iv5;
         mFlowerImageViews[5] = iv6;
 
-        mFlowerBitmapsSelect[0] = R.drawable.flower1_1;
-        mFlowerBitmapsSelect[1] = R.drawable.flower2_1;
-        mFlowerBitmapsSelect[2] = R.drawable.flower3_1;
-        mFlowerBitmapsSelect[3] = R.drawable.flower4_1;
-        mFlowerBitmapsSelect[4] = R.drawable.flower5_1;
-        mFlowerBitmapsSelect[5] = R.drawable.flower6_1;
+        mFlowerBitmapsSelect[0] = R.mipmap.flower1_1;
+        mFlowerBitmapsSelect[1] = R.mipmap.flower2_1;
+        mFlowerBitmapsSelect[2] = R.mipmap.flower3_1;
+        mFlowerBitmapsSelect[3] = R.mipmap.flower4_1;
+        mFlowerBitmapsSelect[4] = R.mipmap.flower5_1;
+        mFlowerBitmapsSelect[5] = R.mipmap.flower6_1;
 
         for (int i = 0; i < mFlowerImageViews.length; i++) {
 

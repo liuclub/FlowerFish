@@ -8,9 +8,9 @@
     <RelativeLayout
         android:id="@+id/rl_flower"
         style="@style/FlowerImageView"
-        android:layout_marginBottom="-30dp"
+        android:layout_centerHorizontal="true"
 
-        android:layout_centerHorizontal="true">
+        android:layout_marginBottom="-30dp">
 
         <FrameLayout
 
@@ -18,43 +18,43 @@
 
             <ImageView
                 style="@style/FlowerImageView"
-                android:src="@drawable/flower0" />
+                android:src="@mipmap/flower0" />
 
             <ImageView
                 android:id="@+id/im_flower6"
                 style="@style/FlowerImageView"
 
-                android:src="@drawable/flower6_0" />
+                android:src="@mipmap/flower6_0" />
 
             <ImageView
                 android:id="@+id/im_flower5"
                 style="@style/FlowerImageView"
 
-                android:src="@drawable/flower5_0" />
+                android:src="@mipmap/flower5_0" />
 
             <ImageView
                 android:id="@+id/im_flower4"
                 style="@style/FlowerImageView"
 
-                android:src="@drawable/flower4_0" />
+                android:src="@mipmap/flower4_0" />
 
             <ImageView
                 android:id="@+id/im_flower3"
                 style="@style/FlowerImageView"
 
-                android:src="@drawable/flower3_0" />
+                android:src="@mipmap/flower3_0" />
 
             <ImageView
                 android:id="@+id/im_flower2"
                 style="@style/FlowerImageView"
 
-                android:src="@drawable/flower2_0" />
+                android:src="@mipmap/flower2_0" />
 
             <ImageView
                 android:id="@+id/im_flower1"
                 style="@style/FlowerImageView"
 
-                android:src="@drawable/flower1_0" />
+                android:src="@mipmap/flower1_0" />
 
         </FrameLayout>
 
@@ -76,17 +76,14 @@
             android:id="@+id/fireworks"
             android:layout_width="198dp"
             android:layout_height="75dp"
-
-
-            android:src="@drawable/fireworks" />
+            android:src="@mipmap/fireworks" />
 
         <ImageView
-
             android:id="@+id/box"
             android:layout_width="100dp"
             android:layout_height="133dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/box_open" />
+            android:src="@mipmap/box_open" />
 
 
     </RelativeLayout>

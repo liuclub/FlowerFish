@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-
-    android:id="@+id/rl_parent">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/iv_pause"
+
         style="@style/PauseButton"
         android:layout_alignParentRight="true"
-        android:src="@drawable/pause_button"
-      />
+        android:src="@mipmap/pause_button" />
 
 </RelativeLayout>

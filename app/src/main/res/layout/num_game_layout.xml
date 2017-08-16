@@ -4,7 +4,7 @@
     android:id="@+id/rl_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sea_bg"
+    android:background="@mipmap/sea_bg"
     android:orientation="vertical">
 
 
@@ -18,7 +18,7 @@
             style="@style/NumberGameNumLineImagineView"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/num0"
+            android:src="@mipmap/num0"
 
             />
 
@@ -29,7 +29,7 @@
 
             android:layout_centerInParent="true"
 
-            android:src="@drawable/num1" />
+            android:src="@mipmap/num1" />
 
 
         <ImageView
@@ -37,7 +37,7 @@
             style="@style/NumberGameNumLineImagineView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/num2" />
+            android:src="@mipmap/num2" />
 
 
     </RelativeLayout>

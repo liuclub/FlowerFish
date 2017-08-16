@@ -2,10 +2,12 @@ package com.bagelplay.flowerfish.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bagelplay.flowerfish.R;
@@ -20,17 +22,23 @@ public class NumPauseButtonView extends RelativeLayout {
     ImageView mIvPause;
     RelativeLayout mRlParent;
 
-    int mIvPauseWidth,mIvPauseHeight;
+    int mIvPauseWidth, mIvPauseHeight;
 
+    String Tag="NumPauseButtonView";
     public NumPauseButtonView(Context context) {
         super(context);
+        Log.d(Tag,"1start");
     }
 
     public NumPauseButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        Log.d(Tag,"2start");
+
         LayoutInflater.from(context).inflate(R.layout.num_pause_button_view_layout, this, true);
-        mRlParent= (RelativeLayout) findViewById(R.id.rl_parent);
+        Log.d(Tag,"2end");
+
+        mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
         mRlParent.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -52,7 +60,7 @@ public class NumPauseButtonView extends RelativeLayout {
         mIvPauseWidth = DimenUtil.dip2px(context, w);
         mIvPauseHeight = DimenUtil.dip2px(context, h);
 
-        mIvPause= (ImageView) findViewById(R.id.iv_pause);
+        mIvPause = (ImageView) findViewById(R.id.iv_pause);
 
         mIvPause.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -101,8 +109,8 @@ public class NumPauseButtonView extends RelativeLayout {
 
     public NumPauseButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        Log.d(Tag,"3start");
     }
-
 
 
     PauseButtonViewClickLinstener mPauseButtonViewClickLinstener;

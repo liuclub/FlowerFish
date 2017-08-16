@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/congration_bg"
+    android:background="@mipmap/congration_bg"
     android:gravity="center"
     android:id="@+id/ll_parent"
     >
@@ -19,14 +19,14 @@
             android:id="@+id/iv_congration_fish"
             android:layout_width="66dp"
             android:layout_height="51dp"
-            android:src="@drawable/fish"/>
+            android:src="@mipmap/fish"/>
         <ImageView
             android:id="@+id/iv_congration_word"
             android:layout_width="231dp"
             android:layout_height="68dp"
             android:layout_toRightOf="@+id/iv_congration_fish"
             android:layout_toEndOf="@+id/iv_congration_fish"
-            android:src="@drawable/congration_word"/>
+            android:src="@mipmap/congration_word"/>
     </RelativeLayout>
 
 

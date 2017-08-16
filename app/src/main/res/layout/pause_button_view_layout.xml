@@ -10,7 +10,7 @@
         android:id="@+id/iv_home"
         style="@style/PauseHome"
         android:layout_alignParentRight="true"
-        android:src="@drawable/home_button"
+        android:src="@mipmap/home_button"
 
     />
 

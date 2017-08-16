@@ -1,0 +1,67 @@
+{
+	"devScreenWidth":2560,
+	"devScreenHeight":1440,
+	"rightStickAsMouse":true,
+	"alwaysRightStickAsMouse":true,
+	"leftStickAsSensor":false,
+	 
+	"leftStick":
+	{
+		"centerX":300,
+		"centerY":1155,
+		"radius":230
+	},
+	
+	"key_click":[
+			{
+				"name":"KEY_L1",
+				"x":2420,
+				"y":550
+			},
+			
+			{
+				"name":"KEY_R1",
+				"x":2420,
+				"y":780
+			},
+			
+			{
+				"name":"KEY_R1",
+				"x":1780,
+				"y":1230
+			},
+			
+			{
+				"name":"KEY_X",
+				"x":1780,
+				"y":1230
+			},
+			
+			{
+				"name":"KEY_A",
+				"x":1070,
+				"y":1330
+			},
+			
+			{
+				"name":"KEY_B",
+				"x":1295,
+				"y":1330
+			},
+			
+			{
+				"name":"KEY_Y",
+				"x":1530,
+				"y":1330
+			}
+	],
+	
+	"key_slide":[
+			{
+				"name":"KEY_LEFT",
+				"x":640,
+				"y":380,
+				"slide":"left"
+  			}
+	]
+}

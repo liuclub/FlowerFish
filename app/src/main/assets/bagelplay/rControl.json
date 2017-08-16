@@ -1,0 +1,41 @@
+{
+	"devScreenWidth":1280,
+	"devScreenHeight":760,
+	
+	"asMouse":
+	{
+		"speed":2,
+		"aSpeed":3
+	},
+	
+	"leftStick":
+	{
+		"centerX":250,
+		"centerY":810,
+		"radius":120
+	},
+	
+	"rightStick":
+	{
+		"centerX":1610,
+		"centerY":810,
+		"radius":120
+	},
+
+	"key_click":[
+			{
+				"name":"KEY_UP",
+				"x":640,
+				"y":380
+  			}
+	],
+	
+	"key_slide":[
+			{
+				"name":"KEY_LEFT",
+				"x":640,
+				"y":380,
+				"slide":"left"
+  			}
+	]
+}

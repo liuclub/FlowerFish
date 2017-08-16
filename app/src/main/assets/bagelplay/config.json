@@ -1,0 +1,32 @@
+{
+	"show_gameHandler_remoteControl_dialog":false,
+	"gameHandler_remoteControl":true,
+	"gun_control":false,
+	"openTouchDebug":false,
+	"youmeng":false,
+	"mouse":[
+			{
+				"id":501,
+				"pic":{
+						"normal":"mouse1.png",
+						"press":"mouse1_press.png"
+						}
+			},
+			
+			{
+				"id":502,
+				"pic":{
+						"normal":"mouse2.png",
+						"press":"mouse2_press.png"
+						}
+			},
+			
+			{
+				"id":503,
+				"pic":{
+						"normal":"mouse3.png",
+						"press":"mouse3_press.png"
+						}
+			}
+		]
+}

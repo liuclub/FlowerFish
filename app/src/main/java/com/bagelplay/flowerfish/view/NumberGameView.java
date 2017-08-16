@@ -20,11 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static android.R.attr.max;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
-import static android.media.CamcorderProfile.get;
-import static com.bagelplay.flowerfish.R.drawable.num1;
-import static com.bagelplay.flowerfish.R.drawable.num2;
+
+import static com.bagelplay.flowerfish.R.mipmap.num1;
+import static com.bagelplay.flowerfish.R.mipmap.num2;
 
 
 /**
@@ -728,16 +726,16 @@ public class NumberGameView extends RelativeLayout {
 
     private void findFinshNumImage() {
         mFishsNumDrawables = new int[10];
-        mFishsNumDrawables[0] = R.drawable.num0;
-        mFishsNumDrawables[1] = num1;
-        mFishsNumDrawables[2] = num2;
-        mFishsNumDrawables[3] = R.drawable.num3;
-        mFishsNumDrawables[4] = R.drawable.num4;
-        mFishsNumDrawables[5] = R.drawable.num5;
-        mFishsNumDrawables[6] = R.drawable.num6;
-        mFishsNumDrawables[7] = R.drawable.num7;
-        mFishsNumDrawables[8] = R.drawable.num8;
-        mFishsNumDrawables[9] = R.drawable.num9;
+        mFishsNumDrawables[0] = R.mipmap.num0;
+        mFishsNumDrawables[1] = R.mipmap.num1;
+        mFishsNumDrawables[2] = R.mipmap.num2;
+        mFishsNumDrawables[3] = R.mipmap.num3;
+        mFishsNumDrawables[4] = R.mipmap.num4;
+        mFishsNumDrawables[5] = R.mipmap.num5;
+        mFishsNumDrawables[6] = R.mipmap.num6;
+        mFishsNumDrawables[7] = R.mipmap.num7;
+        mFishsNumDrawables[8] = R.mipmap.num8;
+        mFishsNumDrawables[9] = R.mipmap.num9;
     }
 
     private void findFishView() {

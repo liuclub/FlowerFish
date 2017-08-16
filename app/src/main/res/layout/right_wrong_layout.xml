@@ -3,7 +3,7 @@
     android:id="@+id/rl_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sea_bg"
+    android:background="@mipmap/sea_bg"
 
    >
 
@@ -19,12 +19,12 @@
         style="@style/RightWrongBtn"
         android:layout_alignParentLeft="true"
 
-        android:src="@drawable/right_btn" />
+        android:src="@mipmap/right_btn" />
 
     <ImageView
         android:id="@+id/iv_wrong"
         style="@style/RightWrongBtn"
         android:layout_alignParentRight="true"
-        android:src="@drawable/wrong_btn" />
+        android:src="@mipmap/wrong_btn" />
     </RelativeLayout>
 </RelativeLayout>
