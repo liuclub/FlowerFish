@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="FlowerImangeViewWidth" >350dp</dimen>
+    <dimen name="FlowerImangeViewHeight" >350dp</dimen>
+    <dimen name="RightWrongBtnWidth">100dp</dimen>
+    <dimen name="RightWrongBtnHeight">100dp</dimen>
+    <dimen name="RightWrongBtnMargin">40dp</dimen>
+
+
+    <dimen name="NumGameNumLineIVWidth">50dp</dimen>
+    <dimen name="NumGameNumLineIVHeight">50dp</dimen>
+    <dimen name="NumGameNumLineIVMargin">10dp</dimen>
+    <dimen name="NumGameNumLineIVMarginLeft">40dp</dimen>
+    <dimen name="NumGameNumLineMarginBottom">10dp</dimen>
+    <dimen name="NumGameNumLineWidth">380dp</dimen>
+    <dimen name="NumGameNumLineHeight">85dp</dimen>
+    <dimen name="SingleFishWidth">66dp</dimen>
+    <dimen name="SingleFishHeight">54dp</dimen>
+    <dimen name="SingleFishMargin">5dp</dimen>
+    <dimen name="RowFishMarginLeft">20dp</dimen>
+
+
+    <dimen name="FinishGameRightWrongBtnWidth">60dp</dimen>
+    <dimen name="FinishGameRightWrongBtnHeight">60dp</dimen>
+    <dimen name="FinishGameRightWrongBtnMargin">10dp</dimen>
+
+    <dimen name="PauseBgWidth">163dp</dimen>
+    <dimen name="PauseBgHeight">159dp</dimen>
+
+    <dimen name="PauseRestartWidth">137dp</dimen>
+    <dimen name="PauseRestartHeight">23dp</dimen>
+
+    <dimen name="PauseBackHomeWidth">135dp</dimen>
+    <dimen name="PauseBackHomeHeight">25dp</dimen>
+
+    <dimen name="PauseBackWidth">75dp</dimen>
+    <dimen name="PauseBackHeight">16dp</dimen>
+
+
+    <dimen name="PauseHomeWidth">70dp</dimen>
+    <dimen name="PauseHomeHeight">70dp</dimen>
+    <dimen name="PauseHomeMargin">20dp</dimen>
+
+    <dimen name="PauseButtonWidth">50dp</dimen>
+    <dimen name="PauseButtonHeight">50dp</dimen>
+    <dimen name="PauseButtonMargin">20dp</dimen>
+
+    <dimen name="ReleaseButtonWidth">120dp</dimen>
+    <dimen name="ReleaseButtonHeight">120dp</dimen>
+
+
+</resources>
