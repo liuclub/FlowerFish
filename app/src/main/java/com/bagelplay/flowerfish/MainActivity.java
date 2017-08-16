@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -320,6 +321,48 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (SDKCocosManager.getInstance().dispatchKeyEvent(event))
+            return true;
+        return super.dispatchKeyEvent(event);
+    }
+
+    public boolean dispatchGenericMotionEvent(MotionEvent ev) {
+        if (SDKCocosManager.getInstance().dispatchGenericMotionEvent(ev))
+            return true;
+        return super.dispatchGenericMotionEvent(ev);
+
+    }
+
+    protected void onStop() {
+        super.onStop();
+        SDKCocosManager.getInstance().onStop();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        com.bagelplay.sdk.cocos.SDKCocosManager.getInstance().onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        com.bagelplay.sdk.cocos.SDKCocosManager.getInstance().onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+
+        super.onDestroy();
+
+        SDKCocosManager.getInstance().removeWindowCallBack(this);
     }
 
 

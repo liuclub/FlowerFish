@@ -19,6 +19,8 @@ android {
     }
     compileOptions {
     }
+
+
 }
 
 dependencies {
@@ -28,8 +30,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile files('libs/android-support-v4.jar')
+    compile 'junit:junit:4.12'
     compile files('libs/bagelplay_sdk.jar')
     compile files('libs/gh.jar')
     compile files('libs/httpclient-4.2.5.jar')
