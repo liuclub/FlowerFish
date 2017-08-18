@@ -17,17 +17,33 @@ public class SoundUtil {
     private static MediaPlayer player;
     private static boolean isPlayComplete = true;
 
-    private Context mContext;
+    private static Context mContext;
+
+    private static SoundUtil soundUtil;
 
 
-
-
-    public SoundUtil(Context context) {
-        if(player==null) {
-            this.player = new MediaPlayer();
+    public static SoundUtil getInstance(Context context){
+        if (soundUtil==null){
+            soundUtil=new SoundUtil();
         }
+
+        if(player==null) {
+            player = new MediaPlayer();
+        }
+
         mContext=context;
+
+        return soundUtil;
+
     }
+
+
+//    public SoundUtil(Context context) {
+//        if(player==null) {
+//            this.player = new MediaPlayer();
+//        }
+//        mContext=context;
+//    }
 
     public  void startPlaySound(int path) {
         if (isPlayComplete) {
@@ -57,8 +73,9 @@ public class SoundUtil {
         });
 
         try {
-            player.start();
             isPlayComplete = false;
+            player.start();
+
         } catch (IllegalArgumentException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -77,9 +94,7 @@ public class SoundUtil {
         if (player != null) {
             player.release();
             isPlayComplete = true;
-
-
-        }
+          }
 
     }
 }

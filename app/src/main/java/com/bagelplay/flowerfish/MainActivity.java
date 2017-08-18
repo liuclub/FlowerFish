@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     FinishGameView mFgvView;
 
-    SoundUtil mSoundUtil;
+   // SoundUtil mSoundUtil;
 
 
     FllScreenVideoView mVvVideo;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
 
 
-        mSoundUtil = new SoundUtil(MainActivity.this);
+        //mSoundUtil = new SoundUtil(MainActivity.this);
 
         //暂停按钮
 
@@ -81,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 mNgrView.setVisibility(View.VISIBLE);
 
 
+                SoundUtil.getInstance(MainActivity.this).stopPlaySound();
 
-
-                mSoundUtil.stopPlaySound();
+               // mSoundUtil.stopPlaySound();
             }
         });
 
@@ -222,21 +222,23 @@ public class MainActivity extends AppCompatActivity {
 
                 numGameCurrentStage = currentstage;
                 if (currentstage == 1) {
-
-                    mSoundUtil.startPlaySound(R.raw.next_stage);
+                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.next_stage);
+                    //mSoundUtil.startPlaySound(R.raw.next_stage);
                     mNgvView.setVisibility(View.GONE);
                     mNgcView.setVisibility(View.VISIBLE);
                     mNgcView.startAnimation();
 
                 } else if (currentstage == 2) {
-                    mSoundUtil.startPlaySound(R.raw.three_stage);
+                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.three_stage);
+                   // mSoundUtil.startPlaySound(R.raw.three_stage);
                     mNgvView.setVisibility(View.GONE);
                     mNgcView.setVisibility(View.VISIBLE);
                     mNgcView.startAnimation();
 
 
                 } else if (currentstage == 3) {
-                    mSoundUtil.startPlaySound(R.raw.congration);
+                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.congration);
+                   // mSoundUtil.startPlaySound(R.raw.congration);
                     mNgvView.setVisibility(View.GONE);
                     mNgcView.setVisibility(View.VISIBLE);
                     mNgcView.startAnimation();
@@ -253,12 +255,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void numGameChooseRight() {
-                mSoundUtil.startPlaySound(R.raw.right);
+                SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.right);
+                //mSoundUtil.startPlaySound(R.raw.right);
             }
 
             @Override
             public void numGameChooseWrong() {
-                mSoundUtil.startPlaySound(R.raw.wrong);
+                SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.wrong);
+               // mSoundUtil.startPlaySound(R.raw.wrong);
             }
         });
 
@@ -275,7 +279,8 @@ public class MainActivity extends AppCompatActivity {
 
                     mNgcView.setVisibility(View.GONE);
                     mFgvView.setVisibility(View.VISIBLE);
-                    mSoundUtil.startPlaySound(R.raw.win_petal);
+                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.win_petal);
+                  //  mSoundUtil.startPlaySound(R.raw.win_petal);
                     mFgvView.startAnimation();
 
 
@@ -299,7 +304,8 @@ public class MainActivity extends AppCompatActivity {
         mFgvView.setOnRightWrongClickLinstener(new FinishGameView.RightWrongClickLinstener() {
             @Override
             public void RightClick() {
-                mSoundUtil.startPlaySound(R.raw.agree);
+                SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.agree);
+                //mSoundUtil.startPlaySound(R.raw.agree);
 
             }
 
@@ -313,8 +319,8 @@ public class MainActivity extends AppCompatActivity {
                 mNgvView.restartNumGame();
 
                 mFvFlower.setVisibility(View.VISIBLE);
-
-                mSoundUtil.startPlaySound(R.raw.disagree);
+                SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.disagree);
+               // mSoundUtil.startPlaySound(R.raw.disagree);
 
             }
         });
