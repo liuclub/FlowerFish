@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="size_16">16.0px</dimen>
     <dimen name="size_415">415.0px</dimen>
     <dimen name="size_13">13.0px</dimen>
@@ -218,7 +219,6 @@
     <dimen name="size_455">455.0px</dimen>
     <dimen name="size_132">132.0px</dimen>
     <dimen name="size_379">379.0px</dimen>
-
     <dimen name="size_126">126.0px</dimen>
     <dimen name="size_580">580.0px</dimen>
     <dimen name="size_359">359.0px</dimen>
@@ -229,7 +229,6 @@
     <dimen name="size_310">310.0px</dimen>
     <dimen name="size_195">195.0px</dimen>
     <dimen name="size_246">246.0px</dimen>
-
     <dimen name="size_241">241.0px</dimen>
     <dimen name="size_210">210.0px</dimen>
     <dimen name="size_719">719.0px</dimen>
@@ -264,10 +263,12 @@
     <dimen name="size_41">41.0px</dimen>
     <dimen name="size_398">398.0px</dimen>
     <dimen name="size_459">459.0px</dimen>
+
     <dimen name="size_746">746.0px</dimen>
     <dimen name="size_390">390.0px</dimen>
     <dimen name="size_199">199.0px</dimen>
     <dimen name="size_239">239.0px</dimen>
     <dimen name="size_785">785.0px</dimen>
     <dimen name="size_590">590.0px</dimen>
+
 </resources>

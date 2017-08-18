@@ -218,7 +218,6 @@
     <dimen name="size_455">455.0px</dimen>
     <dimen name="size_132">132.0px</dimen>
     <dimen name="size_379">379.0px</dimen>
-
     <dimen name="size_126">126.0px</dimen>
     <dimen name="size_580">580.0px</dimen>
     <dimen name="size_359">359.0px</dimen>
@@ -229,12 +228,10 @@
     <dimen name="size_310">310.0px</dimen>
     <dimen name="size_195">195.0px</dimen>
     <dimen name="size_246">246.0px</dimen>
-
     <dimen name="size_241">241.0px</dimen>
     <dimen name="size_210">210.0px</dimen>
     <dimen name="size_719">719.0px</dimen>
     <dimen name="size_892">892.0px</dimen>
-
     <dimen name="size_258">258.0px</dimen>
     <dimen name="size_396">396.0px</dimen>
     <dimen name="size_261">261.0px</dimen>

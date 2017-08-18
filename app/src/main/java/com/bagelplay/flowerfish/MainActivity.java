@@ -1,13 +1,10 @@
 package com.bagelplay.flowerfish;
 
 
-import android.app.Activity;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
-
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -19,13 +16,10 @@ import com.bagelplay.flowerfish.utils.SoundUtil;
 import com.bagelplay.flowerfish.view.FinishGameView;
 import com.bagelplay.flowerfish.view.FllScreenVideoView;
 import com.bagelplay.flowerfish.view.FlowerView;
-import com.bagelplay.flowerfish.view.GamePauseView;
 import com.bagelplay.flowerfish.view.NumGameCongrationView;
 import com.bagelplay.flowerfish.view.NumGameReleaseView;
 import com.bagelplay.flowerfish.view.NumPauseButtonView;
 import com.bagelplay.flowerfish.view.NumberGameView;
-import com.bagelplay.flowerfish.view.PauseButtonView;
-import com.bagelplay.flowerfish.view.RightWrongView;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
 public class MainActivity extends AppCompatActivity {
