@@ -7,27 +7,24 @@
     android:orientation="horizontal">
 
     <LinearLayout
-
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <LinearLayout
             android:id="@+id/row1"
-
-            style="@style/RowFish">
+            style="@style/RowFish"
+            >
 
             <ImageView
                 android:id="@+id/row1_fish1"
-                style="@style/SingleFish"
-
-                />
+                style="@style/SingleFish0" />
 
             <ImageView
                 android:id="@+id/row1_fish2"
-                style="@style/SingleFish" />
+                style="@style/SingleFish0" />
 
         </LinearLayout>
 
@@ -38,13 +35,13 @@
 
             <ImageView
                 android:id="@+id/row2_fish1"
-                style="@style/SingleFish"
+                style="@style/SingleFish0"
 
                 />
 
             <ImageView
                 android:id="@+id/row2_fish2"
-                style="@style/SingleFish" />
+                style="@style/SingleFish0" />
 
         </LinearLayout>
 
@@ -63,13 +60,13 @@
 
             <ImageView
                 android:id="@+id/row3_fish1"
-                style="@style/SingleFish"
+                style="@style/SingleFish0"
 
                 />
 
             <ImageView
                 android:id="@+id/row3_fish2"
-                style="@style/SingleFish" />
+                style="@style/SingleFish0" />
 
         </LinearLayout>
 
@@ -79,13 +76,13 @@
 
             <ImageView
                 android:id="@+id/row4_fish1"
-                style="@style/SingleFish"
+                style="@style/SingleFish0"
 
                 />
 
             <ImageView
                 android:id="@+id/row4_fish2"
-                style="@style/SingleFish" />
+                style="@style/SingleFish0" />
 
         </LinearLayout>
 
@@ -103,7 +100,7 @@
 
             <ImageView
                 android:id="@+id/row5_fish1"
-                style="@style/SingleFish"
+                style="@style/SingleFish0"
 
                 />
 

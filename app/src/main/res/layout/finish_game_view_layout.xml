@@ -7,14 +7,14 @@
 
     <RelativeLayout
         android:id="@+id/rl_anim"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+        style="@style/FinishGameAnim"
+
+
         android:layout_centerHorizontal="true">
 
         <ImageView
             android:id="@+id/iv_fish"
-            android:layout_width="132dp"
-            android:layout_height="102dp"
+            style="@style/FinishGameAnimFish"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
@@ -22,10 +22,9 @@
 
         <ImageView
             android:id="@+id/iv_petal"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            style="@style/FinishGameAnimPetal"
             android:layout_below="@+id/iv_fish"
-            android:layout_marginLeft="130dp"
+
             android:src="@mipmap/petal" />
 
 
@@ -34,12 +33,10 @@
 
     <RelativeLayout
         android:id="@+id/ll_right_wrong_line"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
 
-     >
+        style="@style/FinishGameRightWrongLine"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <ImageView
 
@@ -51,8 +48,8 @@
 
         <ImageView
             android:id="@+id/iv_wrong"
-            android:layout_alignParentRight="true"
             style="@style/FinishGameRightWrongBtn"
+            android:layout_alignParentRight="true"
 
             android:src="@mipmap/wrong_btn" />
 

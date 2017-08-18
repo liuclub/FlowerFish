@@ -18,17 +18,16 @@
 
             <ImageView
                 android:id="@+id/template2_row1_fish1"
-                style="@style/SingleFish"
-
-                />
+                style="@style/SingleFish0"
+                    />
 
             <ImageView
                 android:id="@+id/template2_row1_fish2"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish0"/>
 
             <ImageView
                 android:id="@+id/template2_row1_fish3"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish0"/>
 
         </LinearLayout>
 
@@ -38,17 +37,17 @@
 
             <ImageView
                 android:id="@+id/template2_row2_fish1"
-                style="@style/SingleFish"
+                style="@style/SingleFish0"
 
                 />
 
             <ImageView
                 android:id="@+id/template2_row2_fish2"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish0"/>
 
             <ImageView
                 android:id="@+id/template2_row2_fish3"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish0"/>
 
         </LinearLayout>
 
@@ -58,17 +57,17 @@
 
             <ImageView
                 android:id="@+id/template2_row3_fish1"
-                style="@style/SingleFish"
+                style="@style/SingleFish0"
 
                 />
 
             <ImageView
                 android:id="@+id/template2_row3_fish2"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish0"/>
 
             <ImageView
                 android:id="@+id/template2_row3_fish3"
-                style="@style/SingleFish"/>
+                style="@style/SingleFish0"/>
 
         </LinearLayout>
 

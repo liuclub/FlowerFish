@@ -27,16 +27,16 @@ public class NumPauseButtonView extends RelativeLayout {
     String Tag="NumPauseButtonView";
     public NumPauseButtonView(Context context) {
         super(context);
-        Log.d(Tag,"1start");
+
     }
 
     public NumPauseButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        Log.d(Tag,"2start");
+
 
         LayoutInflater.from(context).inflate(R.layout.num_pause_button_view_layout, this, true);
-        Log.d(Tag,"2end");
+
 
         mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
         mRlParent.setOnTouchListener(new OnTouchListener() {
@@ -109,7 +109,7 @@ public class NumPauseButtonView extends RelativeLayout {
 
     public NumPauseButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        Log.d(Tag,"3start");
+
     }
 
 

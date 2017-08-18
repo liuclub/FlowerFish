@@ -1,29 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="FlowerImangeViewWidth" >200dp</dimen>
-    <dimen name="FlowerImangeViewHeight" >200dp</dimen>
-    <dimen name="RightWrongBtnWidth">100dp</dimen>
-    <dimen name="RightWrongBtnHeight">100dp</dimen>
-    <dimen name="RightWrongBtnMargin">40dp</dimen>
+    <dimen name="FlowerImangeViewWidth">@dimen/size_500</dimen>
+    <dimen name="FlowerImangeViewHeight">@dimen/size_500</dimen>
 
 
-    <dimen name="NumGameNumLineIVWidth">50dp</dimen>
-    <dimen name="NumGameNumLineIVHeight">50dp</dimen>
-    <dimen name="NumGameNumLineIVMargin">10dp</dimen>
-    <dimen name="NumGameNumLineIVMarginLeft">40dp</dimen>
-    <dimen name="NumGameNumLineMarginBottom">10dp</dimen>
-    <dimen name="NumGameNumLineWidth">380dp</dimen>
-    <dimen name="NumGameNumLineHeight">85dp</dimen>
-    <dimen name="SingleFishWidth">66dp</dimen>
-    <dimen name="SingleFishHeight">54dp</dimen>
-    <dimen name="SingleFishMargin">5dp</dimen>
-    <dimen name="RowFishMarginLeft">20dp</dimen>
+    <dimen name="NumGameNumLineIVWidth">@dimen/size_80</dimen>
+    <dimen name="NumGameNumLineIVHeight">@dimen/size_80</dimen>
+    <dimen name="NumGameNumLineIVMargin">@dimen/size_5</dimen>
+
+    <dimen name="NumGameNumLineWidth">@dimen/size_770</dimen>
+    <dimen name="NumGameNumLineHeight">@dimen/size_150</dimen>
+    <dimen name="NumGameNumLineMarginBottom">@dimen/size_10</dimen>
+    <dimen name="NumGameNumLinePaddingRight">@dimen/size_35</dimen>
+    <dimen name="NumGameNumLinePaddingLeft">@dimen/size_35</dimen>
+
+    <dimen name="SingleFishWidth">@dimen/size_105</dimen>
+    <dimen name="SingleFishHeight">@dimen/size_80</dimen>
+
+    <dimen name="RowFishMarginLeft">@dimen/size_20</dimen>
+    <dimen name="RowFishMarginRight">@dimen/size_20</dimen>
+    <dimen name="RowFishPadding">@dimen/size_20</dimen>
+
+    <dimen name="LineFishMarginTop">@dimen/size_40</dimen>
+    <dimen name="RowFishBlank">@dimen/size_60</dimen>
 
 
-    <dimen name="FinishGameRightWrongBtnWidth">60dp</dimen>
-    <dimen name="FinishGameRightWrongBtnHeight">60dp</dimen>
-    <dimen name="FinishGameRightWrongBtnMargin">10dp</dimen>
+    <dimen name="PauseButtonWidth">@dimen/size_80</dimen>
+    <dimen name="PauseButtonHeight">@dimen/size_80</dimen>
+    <dimen name="PauseButtonMargin">@dimen/size_40</dimen>
+
+    <dimen name="ReleaseButtonWidth">@dimen/size_250</dimen>
+    <dimen name="ReleaseButtonHeight">@dimen/size_250</dimen>
+
+    <dimen name="CongrationFishWidth">@dimen/size_160</dimen>
+    <dimen name="CongrationFishHeight">@dimen/size_120</dimen>
+
+    <dimen name="CongrationWordWidth">@dimen/size_345</dimen>
+    <dimen name="CongrationWordHeight">@dimen/size_105</dimen>
+
+    <dimen name="FinishGameAnimWidth">@dimen/size_750</dimen>
+    <dimen name="FinishGameAnimHeight">@dimen/size_400</dimen>
+
+    <dimen name="FinishGameAnimFishWidth">@dimen/size_200</dimen>
+    <dimen name="FinishGameAnimFishHeight">@dimen/size_150</dimen>
+
+    <dimen name="FinishGameAnimPetalWidth">@dimen/size_40</dimen>
+    <dimen name="FinishGameAnimPetalHeight">@dimen/size_40</dimen>
+    <dimen name="FinishGameAnimPetalMarginLeft">@dimen/size_190</dimen>
+
+    <dimen name="FinishGameRightWrongLineWidth">@dimen/size_500</dimen>
+    <dimen name="FinishGameRightWrongLineHeight">@dimen/size_280</dimen>
+
+
+    <dimen name="FinishGameRightWrongBtnWidth">@dimen/size_120</dimen>
+    <dimen name="FinishGameRightWrongBtnHeight">@dimen/size_120</dimen>
+    <dimen name="FinishGameRightWrongBtnMargin">@dimen/size_20</dimen>
+
+
 
     <dimen name="PauseBgWidth">163dp</dimen>
     <dimen name="PauseBgHeight">159dp</dimen>
@@ -42,12 +76,9 @@
     <dimen name="PauseHomeHeight">70dp</dimen>
     <dimen name="PauseHomeMargin">20dp</dimen>
 
-    <dimen name="PauseButtonWidth">50dp</dimen>
-    <dimen name="PauseButtonHeight">50dp</dimen>
-    <dimen name="PauseButtonMargin">20dp</dimen>
 
-    <dimen name="ReleaseButtonWidth">120dp</dimen>
-    <dimen name="ReleaseButtonHeight">120dp</dimen>
-
+    <dimen name="RightWrongBtnWidth">100dp</dimen>
+    <dimen name="RightWrongBtnHeight">100dp</dimen>
+    <dimen name="RightWrongBtnMargin">40dp</dimen>
 
 </resources>

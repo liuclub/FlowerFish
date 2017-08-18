@@ -13,7 +13,7 @@
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/template2_line1"
-            style="@style/LineFish">
+            style="@style/LineFish2">
 
             <ImageView
                 android:id="@+id/template2_line1_fish1"
@@ -32,7 +32,7 @@
 
         <LinearLayout
             android:id="@+id/template2_line2"
-            style="@style/LineFish">
+            style="@style/LineFish2">
 
             <ImageView
                 android:id="@+id/template2_line2_fish1"
@@ -50,7 +50,7 @@
 
         <LinearLayout
             android:id="@+id/template2_line3"
-            style="@style/LineFish">
+            style="@style/LineFish2">
 
             <ImageView
                 android:id="@+id/template2_line3_fish1"

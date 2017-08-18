@@ -486,6 +486,8 @@ public class NumberGameView extends RelativeLayout {
                             mFishsIV_row.get(i).startAnimation(leftAnimation);
                         } else {
                             mFishsIV_row.get(i).setVisibility(View.GONE);
+
+
                         }
 
                     }

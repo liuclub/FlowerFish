@@ -160,6 +160,9 @@ public class FinishGameView extends RelativeLayout {
         });
 
 
+
+
+
     }
 
     public void startAnimation() {

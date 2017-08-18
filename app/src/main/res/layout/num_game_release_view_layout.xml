@@ -9,8 +9,6 @@
     <ImageView
         android:id="@+id/iv_release"
         style="@style/ReleaseButton"
-
-
         android:src="@mipmap/release_btn" />
 
 </RelativeLayout>
