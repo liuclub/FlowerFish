@@ -1,12 +1,7 @@
-package com.bagelplay.flowerfish.utils;
+package com.bagelplay.gameset.utils;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-
-import com.bagelplay.flowerfish.MainActivity;
-
-import static android.R.attr.path;
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by zhangtianjie on 2017/8/2.

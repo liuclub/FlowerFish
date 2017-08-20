@@ -1,11 +1,8 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.VideoView;
-
-
-import static android.view.View.getDefaultSize;
 
 /**
  * Created by zhangtianjie on 2017/8/3.

@@ -10,14 +10,14 @@
 
     <RelativeLayout
         android:id="@+id/ll_num_line"
-
         style="@style/NumberGameNumLine">
 
         <ImageView
             android:id="@+id/iv_num_left"
             style="@style/NumberGameNumLineImagineView"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/NumGameNumLineIVMargin"
+
             android:src="@mipmap/num0" />
 
         <ImageView
@@ -34,7 +34,7 @@
             android:id="@+id/iv_num_right"
             style="@style/NumberGameNumLineImagineView"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+          android:layout_marginRight="@dimen/NumGameNumLineIVMargin"
             android:src="@mipmap/num2" />
 
 

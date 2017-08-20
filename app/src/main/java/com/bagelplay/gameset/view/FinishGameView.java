@@ -1,7 +1,6 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.view;
 
 import android.content.Context;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,11 +9,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bagelplay.flowerfish.R;
-import com.bagelplay.flowerfish.utils.DimenUtil;
+import com.bagelplay.gameset.R;
 
 /**
  * Created by zhangtianjie on 2017/8/1.

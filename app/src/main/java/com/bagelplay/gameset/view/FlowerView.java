@@ -1,24 +1,20 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bagelplay.flowerfish.R;
-import com.bagelplay.flowerfish.utils.DimenUtil;
+import com.bagelplay.gameset.R;
+import com.bagelplay.gameset.utils.DimenUtil;
 
 
 
@@ -47,7 +43,7 @@ public class FlowerView extends RelativeLayout {
     //判断该关是否通过
      boolean[] isPassed;
 
-   public  int CURRENT_SATGE;
+    public  int CURRENT_SATGE;
 
 
     public FlowerView(Context context) {

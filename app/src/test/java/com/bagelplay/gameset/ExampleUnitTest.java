@@ -1,4 +1,4 @@
-package com.bagelplay.flowerfish;
+package com.bagelplay.gameset;
 
 import org.junit.Test;
 

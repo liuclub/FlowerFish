@@ -26,7 +26,7 @@
 
 
     <style name="NumberGameNumLineImagineView">
-        <item name="android:layout_margin">@dimen/NumGameNumLineIVMargin</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_width">@dimen/NumGameNumLineIVWidth</item>
         <item name="android:layout_height">@dimen/NumGameNumLineIVHeight</item>
 
@@ -41,6 +41,8 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:background">@mipmap/num_line_bg</item>
+
+
 
     </style>
 

@@ -4,82 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bagelplay.flowerfish.MainActivity">
-
-    <!--奖励-->
-    <com.bagelplay.flowerfish.view.FinishGameView
-        android:id="@+id/fgv_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </com.bagelplay.flowerfish.view.FinishGameView>
-
-    <!--鼓励-->
-    <com.bagelplay.flowerfish.view.NumGameCongrationView
-        android:id="@+id/ngc_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </com.bagelplay.flowerfish.view.NumGameCongrationView>
-
-    <!--游戏-->
-    <com.bagelplay.flowerfish.view.NumberGameView
-        android:id="@+id/ngv_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        >
-
-    </com.bagelplay.flowerfish.view.NumberGameView>
-
-
-<!--    &lt;!&ndash;选择&ndash;&gt;
-    <com.bagelplay.flowerfish.view.RightWrongView
-        android:id="@+id/rw_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </com.bagelplay.flowerfish.view.RightWrongView>-->
-
-
-
-
-    <!--暂停按钮-->
-    <com.bagelplay.flowerfish.view.NumPauseButtonView
-        android:id="@+id/npbv_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
-
-    </com.bagelplay.flowerfish.view.NumPauseButtonView>
-
-    <!--停止暂停-->
-    <com.bagelplay.flowerfish.view.NumGameReleaseView
-        android:id="@+id/ngr_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </com.bagelplay.flowerfish.view.NumGameReleaseView>
+    tools:context="com.bagelplay.gameset.activity.MainActivity">
 
 
     <!--主页-->
 
 
-    <com.bagelplay.flowerfish.view.FlowerView
+    <com.bagelplay.gameset.view.FlowerView
         android:id="@+id/fv_flower"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         >
-     </com.bagelplay.flowerfish.view.FlowerView>
+     </com.bagelplay.gameset.view.FlowerView>
 
     <!--视频-->
-    <com.bagelplay.flowerfish.view.FllScreenVideoView
+    <com.bagelplay.gameset.view.FllScreenVideoView
 
         android:id="@+id/vv_video"
         android:layout_width="match_parent"

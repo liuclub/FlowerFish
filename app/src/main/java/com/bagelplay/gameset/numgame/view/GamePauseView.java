@@ -1,4 +1,4 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.numgame.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bagelplay.flowerfish.R;
-import com.bagelplay.flowerfish.utils.DimenUtil;
+import com.bagelplay.gameset.R;
+import com.bagelplay.gameset.utils.DimenUtil;
 
 /**
  * Created by zhangtianjie on 2017/8/5.

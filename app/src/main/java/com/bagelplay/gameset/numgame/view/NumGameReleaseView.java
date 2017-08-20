@@ -1,20 +1,14 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.numgame.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bagelplay.flowerfish.R;
-import com.bagelplay.flowerfish.utils.DimenUtil;
-
-import static android.R.attr.start;
+import com.bagelplay.gameset.R;
 
 /**
  * Created by zhangtianjie on 2017/8/14.

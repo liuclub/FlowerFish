@@ -1,21 +1,16 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.numgame.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bagelplay.flowerfish.R;
-import com.bagelplay.flowerfish.utils.DimenUtil;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static com.bagelplay.flowerfish.utils.DimenUtil.px2Dp;
+import com.bagelplay.gameset.R;
+import com.bagelplay.gameset.utils.DimenUtil;
 
 /**
  * Created by zhangtianjie on 2017/7/28.

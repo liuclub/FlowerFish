@@ -1,4 +1,4 @@
-package com.bagelplay.flowerfish.utils;
+package com.bagelplay.gameset.utils;
 
 import android.content.Context;
 

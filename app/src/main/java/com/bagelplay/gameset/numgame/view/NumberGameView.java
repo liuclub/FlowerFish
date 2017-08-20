@@ -1,4 +1,4 @@
-package com.bagelplay.flowerfish.view;
+package com.bagelplay.gameset.numgame.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,22 +8,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bagelplay.flowerfish.R;
-import com.bagelplay.flowerfish.utils.DimenUtil;
+import com.bagelplay.gameset.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-
-import static com.bagelplay.flowerfish.R.mipmap.num1;
-import static com.bagelplay.flowerfish.R.mipmap.num2;
 
 
 /**
@@ -105,22 +99,7 @@ public class NumberGameView extends RelativeLayout {
 
         initAnimation();
 
-       /* int w = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVWidth);
-
-        int h = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVHeight);
-
-
-        w = DimenUtil.px2Dp(context, w);
-
-        h = DimenUtil.px2Dp(context, h);
-
-
-        mNumIvWidth = DimenUtil.dip2px(context, w);
-
-        mNumIvHeight = DimenUtil.dip2px(context, h);*/
-
-
-        mRlParent.setOnTouchListener(new OnTouchListener() {
+       mRlParent.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
@@ -161,159 +140,7 @@ public class NumberGameView extends RelativeLayout {
             }
         });
 
-
-/*
-        mIvNumLeft.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        //Log.d(Tag, "left~down");
-
-                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
-
-
-                        para.height = (int) (mNumIvWidth * 1.3);
-                        para.width = (int) (mNumIvHeight * 1.3);
-
-
-                        mIvNumLeft.setLayoutParams(para);*//*
-                        v.startAnimation(normalToLargeAnimation);
-
-                        interpretationNum(mIvNumLeft);
-
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        //Log.d(Tag, "left~up");
-
-
-                      *//*  RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
-
-                        para1.height = mNumIvWidth;
-                        para1.width = mNumIvHeight;
-
-                        mIvNumLeft.setLayoutParams(para1);*//*
-
-
-                        break;
-                }
-
-
-                return true;
-            }
-        });
-
-
-        mIvNumCenter.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Log.d(Tag, "center~down");
-
-                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
-
-
-                        para.height = (int) (mNumIvWidth * 1.3);
-                        para.width = (int) (mNumIvHeight * 1.3);
-
-
-                        mIvNumCenter.setLayoutParams(para);*//*
-                        v.startAnimation(normalToLargeAnimation);
-
-                        interpretationNum(mIvNumCenter);
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        // Log.d(Tag, "center~up");
-
-
-                       *//* RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
-
-                        para1.height = mNumIvWidth;
-                        para1.width = mNumIvHeight;
-
-                        mIvNumCenter.setLayoutParams(para1);*//*
-
-
-
-
-                        break;
-                }
-
-
-                return true;
-            }
-        });
-
-
-        mIvNumRight.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        //Log.d(Tag, "right~down");
-
-                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
-
-
-                        para.height = (int) (mNumIvWidth * 1.3);
-                        para.width = (int) (mNumIvHeight * 1.3);
-
-
-                        mIvNumRight.setLayoutParams(para);*//*
-
-
-                        //  mRlParent.setVisibility(View.GONE);
-                        v.startAnimation(normalToLargeAnimation);
-
-                        interpretationNum(mIvNumRight);
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        // Log.d(Tag, "right~up");
-
-
-                       *//* RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
-
-                        para1.height = mNumIvWidth;
-                        para1.width = mNumIvHeight;
-
-                        mIvNumRight.setLayoutParams(para1);*//*
-
-
-
-
-
-                        break;
-                }
-
-
-                return true;
-            }
-        });*/
-
-
-        initGame();
+     initGame();
 
 
     }
