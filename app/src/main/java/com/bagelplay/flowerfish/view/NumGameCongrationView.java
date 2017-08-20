@@ -31,7 +31,7 @@ public class NumGameCongrationView extends LinearLayout {
     private int TIME = 1000;
     private int i = 0;
 
-    private int MaxTime=9;
+    private int MaxTime = 9;
 
 
     public NumGameCongrationView(Context context) {
@@ -42,7 +42,7 @@ public class NumGameCongrationView extends LinearLayout {
     public NumGameCongrationView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        mContext=context;
+        mContext = context;
         LayoutInflater.from(context).inflate(R.layout.num_game_congration_view_layout, this, true);
 
         findView();
@@ -54,18 +54,15 @@ public class NumGameCongrationView extends LinearLayout {
         });
 
 
-
-
-
     }
+
     Animation scaleAnimation;
 
-    public void startAnimation(){
+    public void startAnimation(int animationTime) {
 
-
-        i=0;
+        MaxTime= animationTime;
+        i = 0;
         scaleAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_congration_anim);
-
 
 
         mRlCongrationLine.startAnimation(scaleAnimation);
@@ -75,15 +72,15 @@ public class NumGameCongrationView extends LinearLayout {
         timeHandler.postDelayed(runnable, TIME);
 
 
-
     }
 
     private NumGameCongrationFinishListener mNumGameCongrationFinishListener;
 
-    public void setOnNumGameCongrationFinishListener( NumGameCongrationFinishListener numGameCongrationFinishListener){
-        this.mNumGameCongrationFinishListener=numGameCongrationFinishListener;
+    public void setOnNumGameCongrationFinishListener(NumGameCongrationFinishListener numGameCongrationFinishListener) {
+        this.mNumGameCongrationFinishListener = numGameCongrationFinishListener;
     }
-   public interface NumGameCongrationFinishListener{
+
+    public interface NumGameCongrationFinishListener {
         void numGameConfigurationFinish();
     }
 
@@ -93,19 +90,18 @@ public class NumGameCongrationView extends LinearLayout {
 
             try {
                 i++;
-                if(i<MaxTime){
+                if (i < MaxTime) {
                     timeHandler.postDelayed(this, TIME);
-                 }else{
-                    if(timeHandler!=null){
-                        timeHandler=null;
-                        i=0;
-                        if(mNumGameCongrationFinishListener!=null){
+                } else {
+                    if (timeHandler != null) {
+                        timeHandler = null;
+                        i = 0;
+                        if (mNumGameCongrationFinishListener != null) {
                             mNumGameCongrationFinishListener.numGameConfigurationFinish();
                         }
 
                     }
                 }
-
 
 
             } catch (Exception e) {
@@ -117,13 +113,11 @@ public class NumGameCongrationView extends LinearLayout {
     };
 
 
-
     private void findView() {
 
-        mLlParent= (LinearLayout) findViewById(R.id.ll_parent);
+        mLlParent = (LinearLayout) findViewById(R.id.ll_parent);
 
-        mRlCongrationLine= (RelativeLayout) findViewById(R.id.rl_congration_line);
-
+        mRlCongrationLine = (RelativeLayout) findViewById(R.id.rl_congration_line);
 
 
     }

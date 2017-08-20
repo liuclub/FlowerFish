@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -23,7 +25,9 @@ public class NumGameReleaseView extends RelativeLayout {
     ImageView mIvRelease;
     RelativeLayout mRlParent;
 
-    int mIvReleaseWidth,mIvReleaseHeight;
+    int mIvReleaseWidth, mIvReleaseHeight;
+
+    Context mContext;
 
     public NumGameReleaseView(Context context) {
         super(context);
@@ -32,11 +36,11 @@ public class NumGameReleaseView extends RelativeLayout {
     public NumGameReleaseView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-
+        mContext = context;
 
         LayoutInflater.from(context).inflate(R.layout.num_game_release_view_layout, this, true);
 
-        mRlParent= (RelativeLayout) findViewById(R.id.rl_parent);
+        mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
         mRlParent.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -45,7 +49,7 @@ public class NumGameReleaseView extends RelativeLayout {
         });
 
 
-        int w = getResources().getDimensionPixelSize(R.dimen.ReleaseButtonWidth);
+       /* int w = getResources().getDimensionPixelSize(R.dimen.ReleaseButtonWidth);
 
         int h = getResources().getDimensionPixelSize(R.dimen.ReleaseButtonHeight);
 
@@ -58,9 +62,28 @@ public class NumGameReleaseView extends RelativeLayout {
         mIvReleaseWidth = DimenUtil.dip2px(context, w);
         mIvReleaseHeight = DimenUtil.dip2px(context, h);
 
-        mIvRelease= (ImageView) findViewById(R.id.iv_release);
+        mIvReleaseWidth=w;
+        mIvReleaseHeight=h;*/
 
-        mIvRelease.setOnTouchListener(new OnTouchListener() {
+
+        mIvRelease = (ImageView) findViewById(R.id.iv_release);
+
+
+        mIvRelease.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
+//                v.startAnimation(animation);
+
+                if (mReleaseButtonViewClickLinstener != null) {
+                    mReleaseButtonViewClickLinstener.releaseButtonClick();
+                }
+            }
+        });
+
+
+   /*     mIvRelease.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -68,14 +91,22 @@ public class NumGameReleaseView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         //   Log.d(Tag, "W~down");
 
-                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRelease.getLayoutParams();
+                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRelease.getLayoutParams();
 
 
                         para.width = (int) (mIvReleaseWidth * 1.3);
 
                         para.height = (int) (mIvReleaseHeight * 1.3);
 
-                        mIvRelease.setLayoutParams(para);
+                        mIvRelease.setLayoutParams(para);*//*
+
+
+//                        Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
+//                        v.startAnimation(animation);
+
+                        if (mReleaseButtonViewClickLinstener != null) {
+                            mReleaseButtonViewClickLinstener.releaseButtonClick();
+                        }
                         break;
 
                     case MotionEvent.ACTION_MOVE:
@@ -85,16 +116,13 @@ public class NumGameReleaseView extends RelativeLayout {
                     case MotionEvent.ACTION_UP:
                         //  Log.d(Tag, "W~up");
 
-                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRelease.getLayoutParams();
+                 *//*       RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRelease.getLayoutParams();
 
 
                         para1.width = mIvReleaseWidth;
                         para1.height = mIvReleaseHeight;
-                        mIvRelease.setLayoutParams(para1);
+                        mIvRelease.setLayoutParams(para1);*//*
 
-                        if (mReleaseButtonViewClickLinstener != null) {
-                            mReleaseButtonViewClickLinstener.releaseButtonClick();
-                        }
 
                         break;
                 }
@@ -102,17 +130,13 @@ public class NumGameReleaseView extends RelativeLayout {
 
                 return true;
             }
-        });
+        });*/
 
     }
 
     public NumGameReleaseView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
-
-
-
 
 
     ReleaseButtonViewClickLinstener mReleaseButtonViewClickLinstener;

@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,6 +84,12 @@ public class NumberGameView extends RelativeLayout {
 
     private Context mContext;
 
+    public void setButtonCanClick(boolean buttonCanClick) {
+        this.buttonCanClick = buttonCanClick;
+    }
+
+    private boolean buttonCanClick=true;
+
     public NumberGameView(Context context) {
         super(context);
     }
@@ -98,7 +105,7 @@ public class NumberGameView extends RelativeLayout {
 
         initAnimation();
 
-        int w = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVWidth);
+       /* int w = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVWidth);
 
         int h = getResources().getDimensionPixelSize(R.dimen.NumGameNumLineIVHeight);
 
@@ -110,7 +117,7 @@ public class NumberGameView extends RelativeLayout {
 
         mNumIvWidth = DimenUtil.dip2px(context, w);
 
-        mNumIvHeight = DimenUtil.dip2px(context, h);
+        mNumIvHeight = DimenUtil.dip2px(context, h);*/
 
 
         mRlParent.setOnTouchListener(new OnTouchListener() {
@@ -120,7 +127,42 @@ public class NumberGameView extends RelativeLayout {
             }
         });
 
+        mIvNumLeft.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(buttonCanClick==true) {
 
+                    mIvNumLeft.startAnimation(normalToLargeAnimation);
+
+                    interpretationNum(mIvNumLeft);
+                }
+            }
+        });
+
+
+        mIvNumCenter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(buttonCanClick==true) {
+                    mIvNumCenter.startAnimation(normalToLargeAnimation);
+
+                    interpretationNum(mIvNumCenter);
+                }
+            }
+        });
+
+        mIvNumRight.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(buttonCanClick==true) {
+                    mIvNumRight.startAnimation(normalToLargeAnimation);
+                    interpretationNum(mIvNumRight);
+                }
+            }
+        });
+
+
+/*
         mIvNumLeft.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -130,15 +172,17 @@ public class NumberGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         //Log.d(Tag, "left~down");
 
-                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
+                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
 
 
                         para.height = (int) (mNumIvWidth * 1.3);
                         para.width = (int) (mNumIvHeight * 1.3);
 
 
-                        mIvNumLeft.setLayoutParams(para);
+                        mIvNumLeft.setLayoutParams(para);*//*
+                        v.startAnimation(normalToLargeAnimation);
 
+                        interpretationNum(mIvNumLeft);
 
                         break;
 
@@ -150,14 +194,14 @@ public class NumberGameView extends RelativeLayout {
                         //Log.d(Tag, "left~up");
 
 
-                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
+                      *//*  RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumLeft.getLayoutParams();
 
                         para1.height = mNumIvWidth;
                         para1.width = mNumIvHeight;
 
-                        mIvNumLeft.setLayoutParams(para1);
+                        mIvNumLeft.setLayoutParams(para1);*//*
 
-                        interpretationNum(mIvNumLeft);
+
                         break;
                 }
 
@@ -176,16 +220,17 @@ public class NumberGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         // Log.d(Tag, "center~down");
 
-                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
+                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
 
 
                         para.height = (int) (mNumIvWidth * 1.3);
                         para.width = (int) (mNumIvHeight * 1.3);
 
 
-                        mIvNumCenter.setLayoutParams(para);
+                        mIvNumCenter.setLayoutParams(para);*//*
+                        v.startAnimation(normalToLargeAnimation);
 
-
+                        interpretationNum(mIvNumCenter);
                         break;
 
                     case MotionEvent.ACTION_MOVE:
@@ -196,15 +241,15 @@ public class NumberGameView extends RelativeLayout {
                         // Log.d(Tag, "center~up");
 
 
-                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
+                       *//* RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumCenter.getLayoutParams();
 
                         para1.height = mNumIvWidth;
                         para1.width = mNumIvHeight;
 
-                        mIvNumCenter.setLayoutParams(para1);
+                        mIvNumCenter.setLayoutParams(para1);*//*
 
 
-                        interpretationNum(mIvNumCenter);
+
 
                         break;
                 }
@@ -224,18 +269,20 @@ public class NumberGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         //Log.d(Tag, "right~down");
 
-                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
+                     *//*   RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
 
 
                         para.height = (int) (mNumIvWidth * 1.3);
                         para.width = (int) (mNumIvHeight * 1.3);
 
 
-                        mIvNumRight.setLayoutParams(para);
+                        mIvNumRight.setLayoutParams(para);*//*
 
 
                         //  mRlParent.setVisibility(View.GONE);
+                        v.startAnimation(normalToLargeAnimation);
 
+                        interpretationNum(mIvNumRight);
                         break;
 
                     case MotionEvent.ACTION_MOVE:
@@ -246,15 +293,15 @@ public class NumberGameView extends RelativeLayout {
                         // Log.d(Tag, "right~up");
 
 
-                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
+                       *//* RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvNumRight.getLayoutParams();
 
                         para1.height = mNumIvWidth;
                         para1.width = mNumIvHeight;
 
-                        mIvNumRight.setLayoutParams(para1);
+                        mIvNumRight.setLayoutParams(para1);*//*
 
 
-                        interpretationNum(mIvNumRight);
+
 
 
                         break;
@@ -263,7 +310,7 @@ public class NumberGameView extends RelativeLayout {
 
                 return true;
             }
-        });
+        });*/
 
 
         initGame();
@@ -278,7 +325,6 @@ public class NumberGameView extends RelativeLayout {
             if (mNumGameFinishListener != null) {
                 mNumGameFinishListener.numGameChooseRight();
             }
-
             CurrentGameTime++;
             if (CurrentGameTime == MaxGameTime) {
                 CurrentGameTime = 0;
@@ -288,7 +334,10 @@ public class NumberGameView extends RelativeLayout {
                     CurrentStage++;
 
                     mNumGameFinishListener.numGameFinish(CurrentStage);
-                    initGame();
+                    setButtonCanClick(false);
+
+                   // initGame();
+
                     if (CurrentStage == 3) {
                         CurrentStage = 0;
                         // mTimerView.stopTimer();
@@ -341,7 +390,7 @@ public class NumberGameView extends RelativeLayout {
 
     int lastFishNum = 0;
 
-    private void initGame() {
+    public void initGame() {
 
 
         //mTimerView.reStartTimer();
@@ -561,17 +610,16 @@ public class NumberGameView extends RelativeLayout {
 
 
         }
-
-
+        setButtonCanClick(true);
     }
 
-    Animation leftAnimation,rightAnimation;
+    Animation leftAnimation,normalToLargeAnimation,rightAnimation;
 
     public void initAnimation() {
         leftAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_left_anim);
 
 
-
+        normalToLargeAnimation=AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
 
         rightAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_right_anim);
     }

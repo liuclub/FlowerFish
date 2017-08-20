@@ -5,6 +5,7 @@ import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     NumPauseButtonView mNpbvView;
 
-
+    private Handler timeHandler;
 
 
     @Override
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
 
+        timeHandler = new Handler();
 
         //mSoundUtil = new SoundUtil(MainActivity.this);
 
@@ -152,6 +154,13 @@ public class MainActivity extends AppCompatActivity {
                 mFvFlower.setVisibility(View.GONE);
 
                 mNgvView.setVisibility(View.VISIBLE);
+
+                mNgvView.initGame();
+
+                SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.num_game_introduce);
+
+
+
             }
         });
 
@@ -211,38 +220,48 @@ public class MainActivity extends AppCompatActivity {
 
 
             @Override
-            public void numGameFinish(int currentstage) {
+            public void numGameFinish(final int currentstage) {
                 Log.d(Tag, "gamewangchen");
 
-                numGameCurrentStage = currentstage;
-                if (currentstage == 1) {
-                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.next_stage);
-                    //mSoundUtil.startPlaySound(R.raw.next_stage);
-                    mNgvView.setVisibility(View.GONE);
-                    mNgcView.setVisibility(View.VISIBLE);
-                    mNgcView.startAnimation();
 
-                } else if (currentstage == 2) {
-                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.three_stage);
-                   // mSoundUtil.startPlaySound(R.raw.three_stage);
-                    mNgvView.setVisibility(View.GONE);
-                    mNgcView.setVisibility(View.VISIBLE);
-                    mNgcView.startAnimation();
+                timeHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
+                        numGameCurrentStage = currentstage;
+                        if (currentstage == 1) {
+                            SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.next_stage);
+                            //mSoundUtil.startPlaySound(R.raw.next_stage);
+                            mNgvView.setVisibility(View.GONE);
+                            mNgcView.setVisibility(View.VISIBLE);
+                            mNgcView.startAnimation(9);
 
-                } else if (currentstage == 3) {
-                    SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.congration);
-                   // mSoundUtil.startPlaySound(R.raw.congration);
-                    mNgvView.setVisibility(View.GONE);
-                    mNgcView.setVisibility(View.VISIBLE);
-                    mNgcView.startAnimation();
-
-                    //通关
+                        } else if (currentstage == 2) {
+                            SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.three_stage);
+                            // mSoundUtil.startPlaySound(R.raw.three_stage);
+                            mNgvView.setVisibility(View.GONE);
+                            mNgcView.setVisibility(View.VISIBLE);
+                            mNgcView.startAnimation(4);
 
 
-                    mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
+                        } else if (currentstage == 3) {
+                            SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.congration);
+                            // mSoundUtil.startPlaySound(R.raw.congration);
+                            mNgvView.setVisibility(View.GONE);
+                            mNgcView.setVisibility(View.VISIBLE);
+                            mNgcView.startAnimation(9);
 
-                }
+                            //通关
+
+
+                            mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
+
+                        }
+
+                    }
+                },2000);
+
+
 
 
             }
@@ -269,6 +288,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void numGameConfigurationFinish() {
 
+
+
+
+
                 if (numGameCurrentStage == 3) {
 
                     mNgcView.setVisibility(View.GONE);
@@ -284,6 +307,10 @@ public class MainActivity extends AppCompatActivity {
                     mNgcView.setVisibility(View.GONE);
 
                     mNgvView.setVisibility(View.VISIBLE);
+
+                    mNgvView.initGame();
+
+
 
                 }
 
@@ -306,14 +333,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void WrongClick() {
 
-                mFgvView.setVisibility(View.GONE);
+
+                timeHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mFgvView.setVisibility(View.GONE);
 
 
-                numGameCurrentStage = 0;
-                mNgvView.restartNumGame();
+                        numGameCurrentStage = 0;
+                        mNgvView.restartNumGame();
 
-                mFvFlower.setVisibility(View.VISIBLE);
-                SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.disagree);
+                        mFvFlower.setVisibility(View.VISIBLE);
+                        SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.disagree);
+                    }
+                },1000);
+
+
                // mSoundUtil.startPlaySound(R.raw.disagree);
 
             }

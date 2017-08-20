@@ -1,6 +1,7 @@
 package com.bagelplay.flowerfish.view;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +28,9 @@ public class FinishGameView extends RelativeLayout {
 
     ImageView mIvRight, mIvWrong;
 
-    int mIvWidth, mIvHeight;
+
+
+   // int mIvWidth, mIvHeight;
 
     public FinishGameView(Context context) {
         super(context);
@@ -53,7 +56,7 @@ public class FinishGameView extends RelativeLayout {
 
 
 
-
+/*
         int w = getResources().getDimensionPixelSize(R.dimen.FinishGameRightWrongBtnWidth);
 
         int h = getResources().getDimensionPixelSize(R.dimen.FinishGameRightWrongBtnHeight);
@@ -65,10 +68,40 @@ public class FinishGameView extends RelativeLayout {
 
 
         mIvWidth = DimenUtil.dip2px(context, w);
-        mIvHeight = DimenUtil.dip2px(context, h);
+        mIvHeight = DimenUtil.dip2px(context, h);*/
+
+        mIvRight.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
+                v.startAnimation(animation);
+
+                if (mRightWrongClickLinstener != null) {
+                    mRightWrongClickLinstener.RightClick();
+                }
+            }
+        });
 
 
-        mIvRight.setOnTouchListener(new OnTouchListener() {
+        mIvWrong.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
+                v.startAnimation(animation);
+
+                if (mRightWrongClickLinstener != null) {
+
+                    mRightWrongClickLinstener.WrongClick();
+                }
+            }
+        });
+
+
+
+
+  /*      mIvRight.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -77,14 +110,14 @@ public class FinishGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         // Log.d(Tag, "R~down");
 
-                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
+                    *//*    RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
 
 
                         para.height = (int) (mIvWidth * 1.5);
                         para.width = (int) (mIvHeight * 1.5);
 
 
-                        mIvRight.setLayoutParams(para);
+                        mIvRight.setLayoutParams(para);*//*
 
 
                         break;
@@ -97,16 +130,14 @@ public class FinishGameView extends RelativeLayout {
                           Log.d(Tag, "R~up");
 
 
-                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
+                       *//* RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
 
 
                         para1.height = mIvHeight;
                         para1.width = mIvWidth;
-                        mIvRight.setLayoutParams(para1);
+                        mIvRight.setLayoutParams(para1);*//*
 
-                        if (mRightWrongClickLinstener != null) {
-                            mRightWrongClickLinstener.RightClick();
-                        }
+
 
                         break;
                 }
@@ -124,14 +155,14 @@ public class FinishGameView extends RelativeLayout {
                     case MotionEvent.ACTION_DOWN:
                         //   Log.d(Tag, "W~down");
 
-                        RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
+                   *//*     RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
 
 
                         para.height = (int) (mIvWidth * 1.5);
                         para.width = (int) (mIvHeight * 1.5);
 
 
-                        mIvWrong.setLayoutParams(para);
+                        mIvWrong.setLayoutParams(para);*//*
                         break;
 
                     case MotionEvent.ACTION_MOVE:
@@ -141,12 +172,12 @@ public class FinishGameView extends RelativeLayout {
                     case MotionEvent.ACTION_UP:
                          Log.d(Tag, "W~up");
 
-                        RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
+                   *//*     RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
 
 
                         para1.height = mIvHeight;
                         para1.width = mIvWidth;
-                        mIvWrong.setLayoutParams(para1);
+                        mIvWrong.setLayoutParams(para1);*//*
                         if (mRightWrongClickLinstener != null) {
                             mRightWrongClickLinstener.WrongClick();
                         }
@@ -157,7 +188,7 @@ public class FinishGameView extends RelativeLayout {
 
                 return true;
             }
-        });
+        });*/
 
 
 
@@ -165,7 +196,19 @@ public class FinishGameView extends RelativeLayout {
 
     }
 
+
+    private void resetPetal(){
+
+        mIvPetal.setVisibility(GONE);
+
+        mIvPetal.clearAnimation();
+    }
+
     public void startAnimation() {
+
+
+        resetPetal();
+
         fishAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_fish_anim);
 
         fishAnimation.setAnimationListener(
@@ -173,13 +216,16 @@ public class FinishGameView extends RelativeLayout {
                     @Override
                     public void onAnimationStart(Animation animation) {
                         Log.d(Tag, "onAnimationStart");
+
+
                     }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         Log.d(Tag, "onAnimationEnd");
-
+                        mIvPetal.setVisibility(VISIBLE);
                         mIvPetal.startAnimation(petalAnimation);
+
                     }
 
                     @Override
@@ -192,6 +238,8 @@ public class FinishGameView extends RelativeLayout {
         mIvFish.startAnimation(fishAnimation);
 
         petalAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_petal_anim);
+
+
     }
 
 

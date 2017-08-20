@@ -5,9 +5,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bagelplay.flowerfish.MainActivity;
 import com.bagelplay.flowerfish.R;
 import com.bagelplay.flowerfish.utils.DimenUtil;
 
@@ -21,13 +24,14 @@ public class PauseButtonView extends RelativeLayout {
     RelativeLayout mRlParent;
 
     int mIvHomeWidth,mIvHomeHeight;
+    Context mContext;
     public PauseButtonView(Context context) {
         super(context);
     }
 
     public PauseButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        mContext=context;
         LayoutInflater.from(context).inflate(R.layout.pause_button_view_layout, this, true);
         mRlParent= (RelativeLayout) findViewById(R.id.rl_parent);
         mRlParent.setOnTouchListener(new OnTouchListener() {
@@ -43,17 +47,23 @@ public class PauseButtonView extends RelativeLayout {
         int h = getResources().getDimensionPixelSize(R.dimen.PauseHomeHeight);
 
 
-        w = DimenUtil.px2Dp(context, w);
+//        w = DimenUtil.px2Dp(context, w);
+//
+//        h = DimenUtil.px2Dp(context, h);
 
-        h = DimenUtil.px2Dp(context, h);
 
+//        mIvHomeWidth = DimenUtil.dip2px(context, w);
+//        mIvHomeHeight = DimenUtil.dip2px(context, h);
+          mIvHomeWidth=w;
+          mIvHomeHeight=h;
 
-        mIvHomeWidth = DimenUtil.dip2px(context, w);
-        mIvHomeHeight = DimenUtil.dip2px(context, h);
 
         mIvHome= (ImageView) findViewById(R.id.iv_home);
 
-        mIvHome.setOnTouchListener(new OnTouchListener() {
+
+
+
+     mIvHome.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
