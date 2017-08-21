@@ -11,7 +11,8 @@
         android:id="@+id/fgv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="gone"
+        >
 
     </com.bagelplay.gameset.view.FinishGameView>
 
@@ -28,7 +29,8 @@
     <com.bagelplay.gameset.numgame.view.NumberGameView
         android:id="@+id/ngv_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+       >
 
     </com.bagelplay.gameset.numgame.view.NumberGameView>
 

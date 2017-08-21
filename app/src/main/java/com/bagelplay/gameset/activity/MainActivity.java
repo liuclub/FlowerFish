@@ -6,7 +6,6 @@ import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -16,13 +15,8 @@ import android.view.WindowManager;
 
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.utils.SoundUtil;
-import com.bagelplay.gameset.view.FinishGameView;
 import com.bagelplay.gameset.view.FllScreenVideoView;
 import com.bagelplay.gameset.view.FlowerView;
-import com.bagelplay.gameset.numgame.view.NumGameCongrationView;
-import com.bagelplay.gameset.numgame.view.NumGameReleaseView;
-import com.bagelplay.gameset.numgame.view.NumPauseButtonView;
-import com.bagelplay.gameset.numgame.view.NumberGameView;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d(Tag, "第" + chooseid + "关" + "通过" + isPassed);
 
-                if (chooseid == 0) {
+
+                //蓝色
+                if (chooseid == 2) {
 
 
                     Intent intent = new Intent(MainActivity.this, NumGameActivity.class);
@@ -153,13 +149,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        com.bagelplay.sdk.cocos.SDKCocosManager.getInstance().onPause();
+        SDKCocosManager.getInstance().onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        com.bagelplay.sdk.cocos.SDKCocosManager.getInstance().onResume();
+       SDKCocosManager.getInstance().onResume();
     }
 
     @Override

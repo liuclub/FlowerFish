@@ -1,6 +1,7 @@
 package com.bagelplay.gameset.view;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,17 +24,21 @@ public class FinishGameView extends RelativeLayout {
     RelativeLayout mRlParent, mRlAnim;
     ImageView mIvFish, mIvPetal;
 
-    ImageView mIvRight, mIvWrong;
+//    ImageView mIvRight, mIvWrong;
 
+    private int TIME = 1000;
+    private int MaxTime = 11;
+    private int i = 0;
+    private Handler timeHandler;
 
-
-   // int mIvWidth, mIvHeight;
+    // int mIvWidth, mIvHeight;
 
     public FinishGameView(Context context) {
         super(context);
     }
 
     Animation fishAnimation, petalAnimation;
+
     Context mContext;
 
     public FinishGameView(Context context, AttributeSet attrs) {
@@ -41,6 +46,7 @@ public class FinishGameView extends RelativeLayout {
 
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.finish_game_view_layout, this, true);
+
 
         findView();
         mRlParent.setOnTouchListener(new OnTouchListener() {
@@ -51,150 +57,39 @@ public class FinishGameView extends RelativeLayout {
         });
 
 
-
-
-/*
-        int w = getResources().getDimensionPixelSize(R.dimen.FinishGameRightWrongBtnWidth);
-
-        int h = getResources().getDimensionPixelSize(R.dimen.FinishGameRightWrongBtnHeight);
-
-
-        w = DimenUtil.px2Dp(context, w);
-
-        h = DimenUtil.px2Dp(context, h);
-
-
-        mIvWidth = DimenUtil.dip2px(context, w);
-        mIvHeight = DimenUtil.dip2px(context, h);*/
-
-        mIvRight.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
-                v.startAnimation(animation);
-
-                if (mRightWrongClickLinstener != null) {
-                    mRightWrongClickLinstener.RightClick();
-                }
-            }
-        });
-
-
-        mIvWrong.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
-                v.startAnimation(animation);
-
-                if (mRightWrongClickLinstener != null) {
-
-                    mRightWrongClickLinstener.WrongClick();
-                }
-            }
-        });
-
-
-
-
-  /*      mIvRight.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Log.d(Tag, "R~down");
-
-                    *//*    RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
-
-
-                        para.height = (int) (mIvWidth * 1.5);
-                        para.width = (int) (mIvHeight * 1.5);
-
-
-                        mIvRight.setLayoutParams(para);*//*
-
-
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                          Log.d(Tag, "R~up");
-
-
-                       *//* RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvRight.getLayoutParams();
-
-
-                        para1.height = mIvHeight;
-                        para1.width = mIvWidth;
-                        mIvRight.setLayoutParams(para1);*//*
-
-
-
-                        break;
-                }
-
-
-                return true;
-            }
-        });
-
-        mIvWrong.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        //   Log.d(Tag, "W~down");
-
-                   *//*     RelativeLayout.LayoutParams para = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
-
-
-                        para.height = (int) (mIvWidth * 1.5);
-                        para.width = (int) (mIvHeight * 1.5);
-
-
-                        mIvWrong.setLayoutParams(para);*//*
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                         Log.d(Tag, "W~up");
-
-                   *//*     RelativeLayout.LayoutParams para1 = (RelativeLayout.LayoutParams) mIvWrong.getLayoutParams();
-
-
-                        para1.height = mIvHeight;
-                        para1.width = mIvWidth;
-                        mIvWrong.setLayoutParams(para1);*//*
-                        if (mRightWrongClickLinstener != null) {
-                            mRightWrongClickLinstener.WrongClick();
-                        }
-
-                        break;
-                }
-
-
-                return true;
-            }
-        });*/
-
-
-
+//        mIvRight.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
+//                v.startAnimation(animation);
+//
+//                if (mRightWrongClickLinstener != null) {
+//                    mRightWrongClickLinstener.RightClick();
+//                }
+//            }
+//        });
+//
+//
+//        mIvWrong.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_large);
+//                v.startAnimation(animation);
+//
+//                if (mRightWrongClickLinstener != null) {
+//
+//                    mRightWrongClickLinstener.WrongClick();
+//                }
+//            }
+//        });
 
 
     }
 
 
-    private void resetPetal(){
+    private void resetPetal() {
 
         mIvPetal.setVisibility(GONE);
 
@@ -237,21 +132,83 @@ public class FinishGameView extends RelativeLayout {
         petalAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_petal_anim);
 
 
+        petalAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                timeHandler = new Handler();
+
+                timeHandler.postDelayed(runnable, TIME);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+    }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            try {
+                i++;
+                if (i < MaxTime) {
+                    timeHandler.postDelayed(this, TIME);
+                } else {
+                    if (timeHandler != null) {
+                        timeHandler = null;
+                        i = 0;
+
+
+                        if (mFinishTimeLinstener != null) {
+                            mFinishTimeLinstener.timeFinish();
+                        }
+
+                    }
+                }
+
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+
+            }
+        }
+    };
+
+
+    public interface FinishTimeLinstener {
+        void timeFinish();
+
+
+    }
+    FinishTimeLinstener mFinishTimeLinstener;
+
+    public void setOnTimeFinishListener(FinishTimeLinstener mFinishTimeLinstener){
+        this.mFinishTimeLinstener=mFinishTimeLinstener;
     }
 
 
-    RightWrongClickLinstener mRightWrongClickLinstener;
+//
+//    RightWrongClickLinstener mRightWrongClickLinstener;
+//
+//    public void setOnRightWrongClickLinstener(RightWrongClickLinstener mRightWrongClickLinstener) {
+//        this.mRightWrongClickLinstener = mRightWrongClickLinstener;
+//    }
 
-    public void setOnRightWrongClickLinstener(RightWrongClickLinstener mRightWrongClickLinstener) {
-        this.mRightWrongClickLinstener = mRightWrongClickLinstener;
-    }
 
-
-    public interface RightWrongClickLinstener {
-        void RightClick();
-
-        void WrongClick();
-    }
+//    public interface RightWrongClickLinstener {
+//        void RightClick();
+//
+//        void WrongClick();
+//    }
 
     private void findView() {
         mRlParent = (RelativeLayout) findViewById(R.id.rl_parent);
@@ -259,8 +216,8 @@ public class FinishGameView extends RelativeLayout {
         mIvFish = (ImageView) findViewById(R.id.iv_fish);
         mIvPetal = (ImageView) findViewById(R.id.iv_petal);
 
-        mIvRight = (ImageView) findViewById(R.id.iv_right);
-        mIvWrong = (ImageView) findViewById(R.id.iv_wrong);
+//        mIvRight = (ImageView) findViewById(R.id.iv_right);
+//        mIvWrong = (ImageView) findViewById(R.id.iv_wrong);
 
     }
 

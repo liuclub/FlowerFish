@@ -17,16 +17,17 @@ public class SoundUtil {
     private static SoundUtil soundUtil;
 
 
-    public static SoundUtil getInstance(Context context){
-        if (soundUtil==null){
-            soundUtil=new SoundUtil();
+    public static SoundUtil getInstance(Context context) {
+        if (soundUtil == null) {
+            soundUtil = new SoundUtil();
         }
 
-        if(player==null) {
+        if (player == null) {
             player = new MediaPlayer();
         }
 
-        mContext=context;
+
+        mContext = context;
 
         return soundUtil;
 
@@ -40,14 +41,12 @@ public class SoundUtil {
 //        mContext=context;
 //    }
 
-    public  void startPlaySound(int path) {
+    public void startPlaySound(int path) {
         if (isPlayComplete) {
 
             music_play(path);
 
-        }
-
-        else {
+        } else {
 
             stopPlaySound();
 
@@ -58,28 +57,31 @@ public class SoundUtil {
     }
 
     public void music_play(int path) {
-        player = MediaPlayer.create(mContext,path);
+
+        player = MediaPlayer.create(mContext, path);
 
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+
+
+                player.release();
                 isPlayComplete = true;
+
             }
         });
 
         try {
             isPlayComplete = false;
+            // player.prepare();
             player.start();
 
-        } catch (IllegalArgumentException e) {
+
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } catch (SecurityException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            player.release();
+            player=null;
         }
     }
 
@@ -88,8 +90,9 @@ public class SoundUtil {
 
         if (player != null) {
             player.release();
+
             isPlayComplete = true;
-          }
+        }
 
     }
 }

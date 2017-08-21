@@ -1,13 +1,9 @@
 package com.bagelplay.gameset.activity;
 
-import android.content.Intent;
 import android.graphics.PixelFormat;
-import android.media.MediaPlayer;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,8 +16,6 @@ import com.bagelplay.gameset.numgame.view.NumPauseButtonView;
 import com.bagelplay.gameset.numgame.view.NumberGameView;
 import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.gameset.view.FinishGameView;
-import com.bagelplay.gameset.view.FllScreenVideoView;
-import com.bagelplay.gameset.view.FlowerView;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
 
@@ -185,7 +179,19 @@ public class NumGameActivity extends AppCompatActivity {
         //奖励
         mFgvView = (FinishGameView) findViewById(R.id.fgv_view);
 
-        mFgvView.setOnRightWrongClickLinstener(new FinishGameView.RightWrongClickLinstener() {
+
+        mFgvView.setOnTimeFinishListener(new FinishGameView.FinishTimeLinstener() {
+            @Override
+            public void timeFinish() {
+                setResult(RESULT_OK);
+                finish();
+
+            }
+        });
+
+
+
+    /*    mFgvView.setOnRightWrongClickLinstener(new FinishGameView.RightWrongClickLinstener() {
             @Override
             public void RightClick() {
                 SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.agree);
@@ -226,7 +232,7 @@ public class NumGameActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
     }

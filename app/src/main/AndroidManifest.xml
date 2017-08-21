@@ -51,7 +51,10 @@
         </activity>
         <activity
             android:name=".activity.MainLogo"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape">
+
+
+        </activity>
         <activity android:name=".activity.NumGameActivity"
             android:screenOrientation="landscape">
 
