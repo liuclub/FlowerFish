@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +12,7 @@
         android:id="@+id/fgv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+
         >
 
     </com.bagelplay.gameset.view.FinishGameView>
@@ -30,9 +31,20 @@
         android:id="@+id/ngv_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
        >
 
     </com.bagelplay.gameset.numgame.view.NumberGameView>
+
+    <com.bagelplay.gameset.view.GameProgressView
+        android:id="@+id/gp_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:max_size="12"
+       >
+
+    </com.bagelplay.gameset.view.GameProgressView>
+
 
 
     <!--暂停按钮-->

@@ -163,16 +163,17 @@
         <item name="android:layout_height">@dimen/FinishGameAnimHeight</item>
 
     </style>
-    <style name="FinishGameAnimFish">
-        <item name="android:layout_width">@dimen/FinishGameAnimFishWidth</item>
-        <item name="android:layout_height">@dimen/FinishGameAnimFishHeight</item>
-
+    <style name="FinishGameAnimMan">
+        <item name="android:layout_width">@dimen/FinishGameAnimManWidth</item>
+        <item name="android:layout_height">@dimen/FinishGameAnimManHeight</item>
+        <item name="android:layout_marginLeft">@dimen/FinishGameAnimManMarginLeft</item>
     </style>
     <style name="FinishGameAnimPetal">
         <item name="android:layout_width">@dimen/FinishGameAnimPetalWidth</item>
         <item name="android:layout_height">@dimen/FinishGameAnimPetalHeight</item>
         <item name="android:layout_marginLeft">@dimen/FinishGameAnimPetalMarginLeft</item>
 
+        <item name="android:layout_marginTop">@dimen/FinishGameAnimPetalMarginTop</item>
     </style>
 
     <style name="FinishGameRightWrongLine">
@@ -189,5 +190,19 @@
         <item name="android:layout_centerVertical">true</item>
 
     </style>
+
+    <style name="GameProgressView">
+        <item name="android:layout_width">@dimen/GameProgressViewWidth</item>
+        <item name="android:layout_height">@dimen/GameProgressViewHeight</item>
+        <item name="android:layout_centerHorizontal">true</item>
+
+    </style>
+
+    <style name="GameProgressBar">
+        <item name="android:layout_width">@dimen/GameProgressBarWidth</item>
+        <item name="android:layout_height">@dimen/GameProgressBarHeight</item>
+
+    </style>
+
 
 </resources>

@@ -16,6 +16,7 @@ import com.bagelplay.gameset.numgame.view.NumPauseButtonView;
 import com.bagelplay.gameset.numgame.view.NumberGameView;
 import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.gameset.view.FinishGameView;
+import com.bagelplay.gameset.view.GameProgressView;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
 
@@ -36,6 +37,7 @@ public class NumGameActivity extends AppCompatActivity {
 
     private Handler timeHandler;
 
+    GameProgressView mGpV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +84,10 @@ public class NumGameActivity extends AppCompatActivity {
             }
         });
 
+       //游戏进程
+        mGpV= (GameProgressView) findViewById(R.id.gp_view);
+
+
 
         //游戏
         mNgvView = (NumberGameView) findViewById(R.id.ngv_view);
@@ -94,13 +100,15 @@ public class NumGameActivity extends AppCompatActivity {
                 timeHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
+                        mGpV.setVisibility(View.GONE);
                         numGameCurrentStage = currentstage;
                         if (currentstage == 1) {
                             SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.next_stage);
                             //mSoundUtil.startPlaySound(R.raw.next_stage);
                             mNgvView.setVisibility(View.GONE);
                             mNgcView.setVisibility(View.VISIBLE);
+
+
                             mNgcView.startAnimation(9);
 
                         } else if (currentstage == 2) {
@@ -130,9 +138,10 @@ public class NumGameActivity extends AppCompatActivity {
             }
 
             @Override
-            public void numGameChooseRight() {
+            public void numGameChooseRight(int num) {
                 SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.right);
 
+                mGpV.setChooseNum(num);
             }
 
             @Override
@@ -165,6 +174,7 @@ public class NumGameActivity extends AppCompatActivity {
                     mNgcView.setVisibility(View.GONE);
 
                     mNgvView.setVisibility(View.VISIBLE);
+                    mGpV.setVisibility(View.VISIBLE);
 
                     mNgvView.initGame();
 
@@ -233,6 +243,9 @@ public class NumGameActivity extends AppCompatActivity {
 
             }
         });*/
+
+
+
 
 
     }

@@ -14,46 +14,49 @@
 
         <ImageView
             android:id="@+id/iv_fish"
-            style="@style/FinishGameAnimFish"
+            style="@style/FinishGameAnimMan"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/fish" />
+
+
+            android:src="@mipmap/xiaohaoqi" />
 
         <ImageView
             android:id="@+id/iv_petal"
             style="@style/FinishGameAnimPetal"
-            android:layout_below="@+id/iv_fish"
 
-            android:src="@mipmap/petal" />
+
+            android:layout_toRightOf="@id/iv_fish"
+
+            android:src="@mipmap/flower3" />
 
 
     </RelativeLayout>
 
 
-  <!--  <RelativeLayout
-        android:id="@+id/ll_right_wrong_line"
+    <!--  <RelativeLayout
+          android:id="@+id/ll_right_wrong_line"
 
-        style="@style/FinishGameRightWrongLine"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+          style="@style/FinishGameRightWrongLine"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true">
 
-        <ImageView
+          <ImageView
 
-            android:id="@+id/iv_right"
-            style="@style/FinishGameRightWrongBtn"
-            android:layout_alignParentLeft="true"
+              android:id="@+id/iv_right"
+              style="@style/FinishGameRightWrongBtn"
+              android:layout_alignParentLeft="true"
 
-            android:src="@mipmap/right_btn" />
+              android:src="@mipmap/right_btn" />
 
-        <ImageView
-            android:id="@+id/iv_wrong"
-            style="@style/FinishGameRightWrongBtn"
-            android:layout_alignParentRight="true"
+          <ImageView
+              android:id="@+id/iv_wrong"
+              style="@style/FinishGameRightWrongBtn"
+              android:layout_alignParentRight="true"
 
-            android:src="@mipmap/wrong_btn" />
+              android:src="@mipmap/wrong_btn" />
 
-    </RelativeLayout>-->
+      </RelativeLayout>-->
 
 
 </RelativeLayout>

@@ -40,15 +40,20 @@
     <dimen name="CongrationWordWidth">@dimen/size_345</dimen>
     <dimen name="CongrationWordHeight">@dimen/size_105</dimen>
 
-    <dimen name="FinishGameAnimWidth">@dimen/size_750</dimen>
-    <dimen name="FinishGameAnimHeight">@dimen/size_400</dimen>
+    <dimen name="FinishGameAnimWidth">@dimen/size_1000</dimen>
+    <dimen name="FinishGameAnimHeight">@dimen/size_600</dimen>
 
-    <dimen name="FinishGameAnimFishWidth">@dimen/size_200</dimen>
-    <dimen name="FinishGameAnimFishHeight">@dimen/size_150</dimen>
+    <dimen name="FinishGameAnimManWidth">@dimen/size_200</dimen>
+    <dimen name="FinishGameAnimManHeight">@dimen/size_415</dimen>
+    <dimen name="FinishGameAnimManMarginLeft">@dimen/size_300</dimen>
 
-    <dimen name="FinishGameAnimPetalWidth">@dimen/size_40</dimen>
-    <dimen name="FinishGameAnimPetalHeight">@dimen/size_40</dimen>
-    <dimen name="FinishGameAnimPetalMarginLeft">@dimen/size_190</dimen>
+
+
+
+    <dimen name="FinishGameAnimPetalWidth">@dimen/size_90</dimen>
+    <dimen name="FinishGameAnimPetalHeight">@dimen/size_100</dimen>
+    <dimen name="FinishGameAnimPetalMarginLeft">@dimen/size_0</dimen>
+    <dimen name="FinishGameAnimPetalMarginTop">@dimen/size_400</dimen>
 
     <dimen name="FinishGameRightWrongLineWidth">@dimen/size_500</dimen>
     <dimen name="FinishGameRightWrongLineHeight">@dimen/size_280</dimen>
@@ -57,6 +62,14 @@
     <dimen name="FinishGameRightWrongBtnWidth">@dimen/size_120</dimen>
     <dimen name="FinishGameRightWrongBtnHeight">@dimen/size_120</dimen>
     <dimen name="FinishGameRightWrongBtnMargin">@dimen/size_20</dimen>
+
+    <dimen name="GameProgressViewWidth">@dimen/size_770</dimen>
+    <dimen name="GameProgressViewHeight">@dimen/size_70</dimen>
+
+    <dimen name="GameProgressBarWidth">@dimen/size_8</dimen>
+    <dimen name="GameProgressBarHeight">@dimen/size_40</dimen>
+
+
 
 
 

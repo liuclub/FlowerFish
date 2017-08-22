@@ -10,7 +10,7 @@
         android:fromXDelta="0"
         android:fromYDelta="0"
         android:toXDelta="200"
-        android:toYDelta="-100"
+        android:toYDelta="-200"
         >
         <!-- android:repeatCount="infinite" 无限重复 只能在子节点中单独设置-->
 

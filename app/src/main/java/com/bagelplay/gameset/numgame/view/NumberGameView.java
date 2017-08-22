@@ -75,6 +75,8 @@ public class NumberGameView extends RelativeLayout {
 
     private int CurrentStage = 0;//当前关卡
 
+    private int MaxNumber=12;
+    private int CurrentNumber=0;
 
     private Context mContext;
 
@@ -150,7 +152,13 @@ public class NumberGameView extends RelativeLayout {
 
             Log.d(Tag, "duile");
             if (mNumGameFinishListener != null) {
-                mNumGameFinishListener.numGameChooseRight();
+
+
+                mNumGameFinishListener.numGameChooseRight(CurrentNumber++);
+
+                if(CurrentNumber==MaxNumber){
+                    CurrentNumber=0;
+                }
             }
             CurrentGameTime++;
             if (CurrentGameTime == MaxGameTime) {
@@ -202,7 +210,7 @@ public class NumberGameView extends RelativeLayout {
     public interface NumGameFinishListener {
         void numGameFinish(int currentstage);
 
-        void numGameChooseRight();
+        void numGameChooseRight(int rightnum);
 
         void numGameChooseWrong();
     }
