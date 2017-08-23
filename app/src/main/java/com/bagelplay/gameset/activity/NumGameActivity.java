@@ -124,7 +124,7 @@ public class NumGameActivity extends AppCompatActivity {
                             // mSoundUtil.startPlaySound(R.raw.congration);
                             mNgvView.setVisibility(View.GONE);
                             mNgcView.setVisibility(View.VISIBLE);
-                            mNgcView.startAnimation(9);
+                            mNgcView.startAnimation(5);
 
                             //通关
 

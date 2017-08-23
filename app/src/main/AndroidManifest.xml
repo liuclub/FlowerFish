@@ -42,22 +42,23 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".activity.MainLogo"
             android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.NumGameActivity"
             android:screenOrientation="landscape">
 
+        </activity>
+        <activity android:name=".activity.EvaluationGameActivity"
+            android:screenOrientation="landscape">
 
         </activity>
     </application>

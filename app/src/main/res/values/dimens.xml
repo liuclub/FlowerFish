@@ -16,7 +16,7 @@
     <dimen name="NumGameNumLinePaddingRight">@dimen/size_35</dimen>
     <dimen name="NumGameNumLinePaddingLeft">@dimen/size_35</dimen>
 
-    <dimen name="SingleFishWidth">@dimen/size_105</dimen>
+    <dimen name="SingleFishWidth">@dimen/size_110</dimen>
     <dimen name="SingleFishHeight">@dimen/size_80</dimen>
 
     <dimen name="RowFishMarginLeft">@dimen/size_20</dimen>
