@@ -1,10 +1,10 @@
 package com.bagelplay.gameset.activity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioFormat;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -16,17 +16,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bagelplay.gameset.R;
-
 import com.bagelplay.gameset.evagame.ise.result.Result;
 import com.bagelplay.gameset.evagame.ise.result.xml.XmlResultParser;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
+import com.bagelplay.sdk.common.OnVoiceListener;
 import com.iflytek.cloud.EvaluatorListener;
 import com.iflytek.cloud.EvaluatorResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
-
-import static android.R.attr.category;
 
 
 public class EvaluationGameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -46,6 +44,13 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
     private String result_level;
 
     private String mLastResult;
+
+
+    public static  int frequency = 16000;
+    // 设置音频的录制的声道CHANNEL_IN_STEREO为双声道，CHANNEL_CONFIGURATION_MONO为单声道
+    public static int channelConfiguration = AudioFormat.CHANNEL_CONFIGURATION_MONO;
+    // 音频数据格式:PCM 16位每个样本。保证设备支持。PCM 8位每个样本。不一定能得到设备支持。
+    public static int audioEncoding = AudioFormat.ENCODING_PCM_16BIT;
 
 
     // 评测监听接口
@@ -91,6 +96,8 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
         public void onEndOfSpeech() {
             // 此回调表示：检测到了语音的尾端点，已经进入识别过程，不再接受语音输入
             Log.d(TAG, "evaluator stoped");
+
+
         }
 
         @Override
@@ -183,8 +190,10 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
         mIse.setParameter(SpeechConstant.LANGUAGE, language);
         mIse.setParameter(SpeechConstant.ISE_CATEGORY, category);
         mIse.setParameter(SpeechConstant.TEXT_ENCODING, "utf-8");
+
         mIse.setParameter(SpeechConstant.VAD_BOS, vad_bos);
         mIse.setParameter(SpeechConstant.VAD_EOS, vad_eos);
+
         mIse.setParameter(SpeechConstant.KEY_SPEECH_TIMEOUT, speech_timeout);
         mIse.setParameter(SpeechConstant.RESULT_LEVEL, result_level);
 
@@ -192,7 +201,7 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
 
 
         //设置后数据从其 writeAudio(byte[] buffer,int offset,int length)方法来
-        //mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
+        mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         // 注：AUDIO_FORMAT参数语记需要更新版本才能生效
@@ -200,6 +209,8 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
         mIse.setParameter(SpeechConstant.ISE_AUDIO_PATH, Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/ise.wav");
     }
 
+
+    int offset =0;
     @Override
     public void onClick(View view) {
         if( null == mIse ){
@@ -224,6 +235,26 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
                 setParams();
 
                 mIse.startEvaluating(evaText, null, mEvaluatorListener);
+
+                offset=0;
+
+                SDKCocosManager.getInstance(this).startVoice(frequency, channelConfiguration,
+                      audioEncoding, new OnVoiceListener() {
+
+                            @Override
+                            public void OnVoice(byte[] data, int arg1) {
+                                offset +=data.length;
+
+
+
+                               boolean flag= mIse.writeAudio(data,0,data.length);
+
+
+
+                                Log.d(TAG,flag+data.toString()+" "+offset+" "+data.length);
+                            }
+                        });
+
                 break;
             case R.id.ise_parse:
                 // 解析最终结果
@@ -239,6 +270,8 @@ public class EvaluationGameActivity extends AppCompatActivity implements View.On
                 }
                 break;
             case R.id.ise_stop:
+
+                SDKCocosManager.getInstance(this).stopVoice();
                 if (mIse.isEvaluating()) {
                     mResultEditText.setHint("评测已停止，等待结果中...");
                     mIse.stopEvaluating();
