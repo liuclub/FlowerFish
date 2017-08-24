@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == NUMGAME_REQUESTCODE && resultCode == RESULT_OK) {
 
             mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
-
-
         }
 
 
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-       SDKCocosManager.getInstance().onResume();
+        SDKCocosManager.getInstance().onResume();
     }
 
     @Override
