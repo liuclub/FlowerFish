@@ -3,6 +3,8 @@ package com.bagelplay.gameset.utils;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+import static android.R.attr.path;
+
 /**
  * Created by zhangtianjie on 2017/8/2.
  */
@@ -55,6 +57,55 @@ public class SoundUtil {
         }
 
     }
+
+    public void startPlaySDSound(String path) {
+        if (isPlayComplete) {
+
+            music_play_sd(path);
+
+        } else {
+
+            stopPlaySound();
+
+            music_play_sd(path);
+
+        }
+
+    }
+
+    public  void music_play_sd(String path) {
+
+        player = new MediaPlayer();
+
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+
+
+                player.release();
+                isPlayComplete = true;
+
+            }
+        });
+
+        try {
+            player.setDataSource(path);
+            isPlayComplete = false;
+            player.prepare();
+            player.start();
+
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            player.release();
+            player=null;
+        }
+    }
+
+
+
+
 
     public void music_play(int path) {
 

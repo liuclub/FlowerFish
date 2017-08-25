@@ -8,9 +8,7 @@
     <RelativeLayout
         android:id="@+id/rl_flower"
         style="@style/FlowerImageView"
-        android:layout_centerHorizontal="true"
-
-        >
+        android:layout_centerHorizontal="true">
 
         <FrameLayout
 
