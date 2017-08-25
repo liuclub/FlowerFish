@@ -58,7 +58,7 @@ public class SoundUtil {
 
     }
 
-    public void startPlaySDSound(String path) {
+    public void startPlaySoundFromSD(String path) {
         if (isPlayComplete) {
 
             music_play_sd(path);

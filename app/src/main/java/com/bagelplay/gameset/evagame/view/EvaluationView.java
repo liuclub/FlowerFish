@@ -27,6 +27,7 @@ import com.iflytek.cloud.EvaluatorResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
+import com.jimmy.wavelibrary.WaveLineView;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -45,6 +46,8 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
     private EditText mResultEditText;
     private Button mIseStartButton;
     private Button mIsePlayButton;
+
+    private WaveLineView mWaveLineView;
 
 
     // 评测语种
@@ -129,6 +132,8 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
         public void onVolumeChanged(int volume, byte[] data) {
             showTip("当前音量：" + volume);
             Log.d(TAG, "返回音频数据：" + data.length);
+
+            mWaveLineView.setVolume(volume*5);
         }
 
         @Override
@@ -170,6 +175,8 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
         mIsePlayButton.setOnClickListener(this);
 
         findViewById(R.id.ise_stop).setOnClickListener(this);
+
+        mWaveLineView= (WaveLineView) findViewById(R.id.wave_line_view);
 
 
         mToast = Toast.makeText(mContext, "", Toast.LENGTH_LONG);
@@ -281,10 +288,12 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
                             }
                         });
 
+                mWaveLineView.startAnim();
+
                 break;
 
             case R.id.ise_stop:
-
+                mWaveLineView.stopAnim();
                 SDKCocosManager.getInstance().stopVoice();
                 if (mIse.isEvaluating()) {
                     mResultEditText.setHint("评测已停止，等待结果中...");
@@ -296,7 +305,7 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
 
             case R.id.ise_play: {
 
-                SoundUtil.getInstance(mContext).startPlaySDSound(Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/ise.wav");
+                SoundUtil.getInstance(mContext).startPlaySoundFromSD(Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/ise.wav");
             }
         }
     }
