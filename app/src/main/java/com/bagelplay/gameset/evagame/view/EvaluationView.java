@@ -1,7 +1,6 @@
 package com.bagelplay.gameset.evagame.view;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.media.AudioFormat;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,7 +9,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -29,8 +27,6 @@ import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
 import com.jimmy.wavelibrary.WaveLineView;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by zhangtianjie on 2017/8/25.
