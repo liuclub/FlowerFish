@@ -10,13 +10,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bagelplay.gameset.R;
-import com.bagelplay.gameset.activity.NumGameActivity;
 import com.bagelplay.gameset.evagame.ise.result.Result;
 import com.bagelplay.gameset.evagame.ise.result.xml.XmlResultParser;
 import com.bagelplay.gameset.utils.SoundUtil;
@@ -42,12 +43,17 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
     private final static String PREFER_NAME = "evagame_settings";
     private SpeechEvaluator mIse;
     private Toast mToast;
-    private EditText mEvaTextEditText;
+    private TextView mEvaTextTextView;
     private EditText mResultEditText;
     private Button mIseStartButton;
     private Button mIsePlayButton;
 
     private WaveLineView mWaveLineView;
+
+
+    private Button mChineseBtn,mEnglishBtn;
+
+    boolean isChineseEva=true;
 
 
     // 评测语种
@@ -73,7 +79,7 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
         @Override
         public void onResult(EvaluatorResult result, boolean isLast) {
             Log.d(TAG, "evaluator result :" + isLast);
-
+            mWaveLineView.setVisibility(View.GONE);
             if (isLast) {
                 StringBuilder builder = new StringBuilder();
                 builder.append(result.getResultString());
@@ -133,7 +139,7 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
             showTip("当前音量：" + volume);
             Log.d(TAG, "返回音频数据：" + data.length);
 
-            mWaveLineView.setVolume(volume*5);
+            mWaveLineView.setVolume(volume*3);
         }
 
         @Override
@@ -165,7 +171,7 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
 
     private void initUI() {
 
-        mEvaTextEditText = (EditText) findViewById(R.id.ise_eva_text);
+        mEvaTextTextView = (TextView) findViewById(R.id.ise_eva_text);
         mResultEditText = (EditText) findViewById(R.id.ise_result_text);
         mIseStartButton = (Button) findViewById(R.id.ise_start);
         mIseStartButton.setOnClickListener(this);
@@ -176,6 +182,12 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
 
         findViewById(R.id.ise_stop).setOnClickListener(this);
 
+
+        mChineseBtn= (Button) findViewById(R.id.chinese_btn);
+        mEnglishBtn= (Button) findViewById(R.id.english_btn);
+        mChineseBtn.setOnClickListener(this);
+        mEnglishBtn.setOnClickListener(this);
+
         mWaveLineView= (WaveLineView) findViewById(R.id.wave_line_view);
 
 
@@ -185,9 +197,13 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
     private void setEvaText() {
 
 
-        SharedPreferences pref = mContext.getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
-        language = pref.getString(SpeechConstant.LANGUAGE, "zh_cn");
-        category = pref.getString(SpeechConstant.ISE_CATEGORY, "read_sentence");
+        if(isChineseEva) {
+            language = "zh_cn";
+            category = "read_word";
+        }else{
+            language = "en_us";
+            category = "read_word";
+        }
 
         String text = "";
         if ("en_us".equals(language)) {
@@ -207,14 +223,14 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
             }
         }
 
-        mEvaTextEditText.setText(text);
+        mEvaTextTextView.setText(text);
         mResultEditText.setText("");
         mLastResult = null;
         mResultEditText.setHint("请点击“开始评测”按钮");
     }
 
     private void setParams() {
-        SharedPreferences pref = mContext.getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
+    /*    SharedPreferences pref = mContext.getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
         // 设置评测语言
         language = pref.getString(SpeechConstant.LANGUAGE, "zh_cn");
         // 设置需要评测的类型
@@ -226,7 +242,12 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
         // 设置语音后端点:后端点静音检测时间，即用户停止说话多长时间内即认为不再输入， 自动停止录音
         String vad_eos = pref.getString(SpeechConstant.VAD_EOS, "1800");
         // 语音输入超时时间，即用户最多可以连续说多长时间；
-        String speech_timeout = pref.getString(SpeechConstant.KEY_SPEECH_TIMEOUT, "-1");
+        String speech_timeout = pref.getString(SpeechConstant.KEY_SPEECH_TIMEOUT, "-1");*/
+
+        result_level="complete";
+        String vad_bos="5000";
+        String vad_eos="1800";
+        String speech_timeout ="-1";
 
         mIse.setParameter(SpeechConstant.LANGUAGE, language);
         mIse.setParameter(SpeechConstant.ISE_CATEGORY, category);
@@ -240,7 +261,7 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
 
 
         //设置后数据从其 writeAudio(byte[] buffer,int offset,int length)方法来
-        //mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
+       // mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         // 注：AUDIO_FORMAT参数语记需要更新版本才能生效
@@ -262,8 +283,9 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
                 if (mIse == null) {
                     return;
                 }
+                mWaveLineView.setVisibility(View.VISIBLE);
 
-                String evaText = mEvaTextEditText.getText().toString();
+                String evaText = mEvaTextTextView.getText().toString();
                 mLastResult = null;
                 mResultEditText.setText("");
                 mResultEditText.setHint("请朗读以上内容");
@@ -294,6 +316,7 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
 
             case R.id.ise_stop:
                 mWaveLineView.stopAnim();
+
                 SDKCocosManager.getInstance().stopVoice();
                 if (mIse.isEvaluating()) {
                     mResultEditText.setHint("评测已停止，等待结果中...");
@@ -303,10 +326,22 @@ public class EvaluationView extends RelativeLayout implements View.OnClickListen
                 }
                 break;
 
-            case R.id.ise_play: {
+            case R.id.ise_play:
 
                 SoundUtil.getInstance(mContext).startPlaySoundFromSD(Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/ise.wav");
-            }
+                break;
+
+
+            case R.id.chinese_btn:
+
+                isChineseEva=true;
+                setEvaText();
+                break;
+            case R.id.english_btn:
+
+                isChineseEva=false;
+                setEvaText();
+                break;
         }
     }
 

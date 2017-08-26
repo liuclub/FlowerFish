@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,13 +11,40 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <EditText
-            android:id="@+id/ise_eva_text"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="top|left"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/chinese_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="中文"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ise_eva_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/english_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="英文"
+                android:textSize="20sp" />
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/ise_result_text"
