@@ -200,17 +200,6 @@
     </style>
 
 
-    <style name="myRatingBar"
-
-        >
-        <item name="android:progressDrawable">@drawable/my_ratingbar_draw</item>
-
-        <item name="android:minHeight">@dimen/size_120</item>
-
-        <item name="android:maxHeight">@dimen/size_120</item>
-
-
-    </style>
 
 
 </resources>

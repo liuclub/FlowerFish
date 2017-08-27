@@ -23,6 +23,8 @@ public class EvaluationGameActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_evaluation_game);
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
         mEvaView=(EvaluationView)findViewById(R.id.eva_view);
+
+
      }
 
 

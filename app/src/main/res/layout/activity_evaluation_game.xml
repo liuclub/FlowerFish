@@ -12,4 +12,11 @@
 
   </com.bagelplay.gameset.evagame.view.EvaluationView>
 
+
+  <com.bagelplay.gameset.evagame.view.EvaluationGameView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+  </com.bagelplay.gameset.evagame.view.EvaluationGameView>
+
 </FrameLayout>
