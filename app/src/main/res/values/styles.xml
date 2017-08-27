@@ -24,7 +24,6 @@
     </style>
 
 
-
     <style name="NumberGameNumLineImagineView">
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_width">@dimen/NumGameNumLineIVWidth</item>
@@ -36,12 +35,11 @@
         <item name="android:layout_width">@dimen/NumGameNumLineWidth</item>
         <item name="android:layout_height">@dimen/NumGameNumLineHeight</item>
         <item name="android:layout_marginBottom">@dimen/NumGameNumLineMarginBottom</item>
-         <item name="android:paddingRight">@dimen/NumGameNumLinePaddingRight</item>
+        <item name="android:paddingRight">@dimen/NumGameNumLinePaddingRight</item>
         <item name="android:paddingLeft">@dimen/NumGameNumLinePaddingLeft</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:background">@mipmap/num_line_bg</item>
-
 
 
     </style>
@@ -51,6 +49,7 @@
         <item name="android:layout_height">@dimen/SingleFishHeight</item>
         <item name="android:src">@mipmap/fish</item>
     </style>
+
     <style name="SingleFish0">
         <item name="android:layout_width">@dimen/SingleFishWidth</item>
         <item name="android:layout_height">@dimen/SingleFishHeight</item>
@@ -58,10 +57,6 @@
         <item name="android:layout_marginLeft">@dimen/RowFishPadding</item>
         <item name="android:src">@mipmap/fish</item>
     </style>
-
-
-
-
 
 
     <style name="SingleFishLine">
@@ -81,7 +76,6 @@
 
 
     </style>
-
 
 
     <style name="RowFishBlank">
@@ -145,7 +139,6 @@
     </style>
 
 
-
     <style name="CongrationFish">
         <item name="android:layout_width">@dimen/CongrationFishWidth</item>
         <item name="android:layout_height">@dimen/CongrationFishHeight</item>
@@ -163,11 +156,13 @@
         <item name="android:layout_height">@dimen/FinishGameAnimHeight</item>
 
     </style>
+
     <style name="FinishGameAnimMan">
         <item name="android:layout_width">@dimen/FinishGameAnimManWidth</item>
         <item name="android:layout_height">@dimen/FinishGameAnimManHeight</item>
         <item name="android:layout_marginLeft">@dimen/FinishGameAnimManMarginLeft</item>
     </style>
+
     <style name="FinishGameAnimPetal">
         <item name="android:layout_width">@dimen/FinishGameAnimPetalWidth</item>
         <item name="android:layout_height">@dimen/FinishGameAnimPetalHeight</item>
@@ -201,6 +196,19 @@
     <style name="GameProgressBar">
         <item name="android:layout_width">@dimen/GameProgressBarWidth</item>
         <item name="android:layout_height">@dimen/GameProgressBarHeight</item>
+
+    </style>
+
+
+    <style name="myRatingBar"
+
+        >
+        <item name="android:progressDrawable">@drawable/my_ratingbar_draw</item>
+
+        <item name="android:minHeight">@dimen/size_120</item>
+
+        <item name="android:maxHeight">@dimen/size_120</item>
+
 
     </style>
 
