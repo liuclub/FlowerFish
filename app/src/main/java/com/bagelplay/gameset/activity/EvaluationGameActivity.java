@@ -7,14 +7,17 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 
 import com.bagelplay.gameset.R;
-import com.bagelplay.gameset.evagame.view.EvaluationView;
+import com.bagelplay.gameset.evagame.view.EvaluationGameView;
+
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
 
-public class EvaluationGameActivity extends AppCompatActivity  {
+public class EvaluationGameActivity extends AppCompatActivity {
     private static String TAG = EvaluationGameActivity.class.getSimpleName();
 
-    private EvaluationView mEvaView;
+
+    private EvaluationGameView mEvaGameView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +25,10 @@ public class EvaluationGameActivity extends AppCompatActivity  {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_evaluation_game);
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
-        mEvaView=(EvaluationView)findViewById(R.id.eva_view);
+        // mEvaView = (EvaluationView) findViewById(R.id.eva_view);
+        mEvaGameView = (EvaluationGameView) findViewById(R.id.eva_game_view);
 
-
-     }
-
+    }
 
 
     public boolean dispatchKeyEvent(KeyEvent event) {

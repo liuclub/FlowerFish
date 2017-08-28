@@ -5,109 +5,26 @@
     android:layout_height="match_parent"
     android:background="@mipmap/eva_game_bg">
 
-    <FrameLayout
-        android:id="@+id/eva_object_bg"
-        android:layout_width="@dimen/size_456"
-        android:layout_height="@dimen/size_348"
-
+    <com.bagelplay.gameset.evagame.view.EvaObjectView
+        android:id="@+id/eva_object"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/rect_bg" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/size_20"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="西红柿"
-                android:textColor="#C00000"
-
-                android:textSize="@dimen/size_50" />
-
-            <ImageView
-
-                android:layout_width="@dimen/size_260"
-                android:layout_height="@dimen/size_260"
-                android:src="@mipmap/eva_tomato" />
-        </LinearLayout>
-    </FrameLayout>
+    </com.bagelplay.gameset.evagame.view.EvaObjectView>
 
 
-    <LinearLayout
-        android:layout_width="@dimen/size_256"
-        android:layout_height="@dimen/size_350"
+    <com.bagelplay.gameset.evagame.view.EvaHamburger
+        android:id="@+id/eva_hamburger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/size_50"
-        android:layout_marginTop="@dimen/size_120"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/size_120">
 
-        <ImageView
+    </com.bagelplay.gameset.evagame.view.EvaHamburger>
 
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_108"
-            android:src="@mipmap/eva_ham_bread_up" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_172"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_80"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_fruit1"
-                    android:layout_width="@dimen/size_128"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/eva_tomato_small" />
-
-                <ImageView
-                    android:id="@+id/iv_fruit2"
-                    android:layout_width="@dimen/size_128"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/eva_cucumber_small" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_80"
-                android:layout_marginTop="@dimen/size_10"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_fruit3"
-                    android:layout_width="@dimen/size_128"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/eva_cabbage_small" />
-
-                <ImageView
-                    android:id="@+id/iv_fruit4"
-                    android:layout_width="@dimen/size_128"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/eva_papper_small" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <ImageView
-
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_70"
-            android:src="@mipmap/eva_ham_bread_down" />
-    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -119,7 +36,9 @@
             android:id="@+id/wave_line_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_160"
-            android:layout_gravity="bottom">
+            android:layout_gravity="bottom"
+            android:background="#50000000"
+            android:visibility="invisible">
 
         </com.jimmy.wavelibrary.WaveLineView>
 
@@ -132,31 +51,35 @@
             android:src="@mipmap/xiaohaoqi" />
 
 
-        <!--<RatingBar
-            android:id="@+id/ratingBar"
-           style="@style/myRatingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-
-            android:numStars="5"
-
-            android:rating="1.5"></RatingBar>-->
-
-
-        <com.bagelplay.gameset.view.XLHRatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            lxhRatingBar:canEdit="false"
-            lxhRatingBar:countSelected="2"
-            lxhRatingBar:dividerWidth="5dp"
-            lxhRatingBar:starCount="5"
+        <FrameLayout
+            android:id="@+id/rating_bar_parent_fl"
+            android:layout_width="@dimen/size_650"
+            android:layout_height="@dimen/size_120"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="@dimen/size_60"
-            lxhRatingBar:stateResId="@drawable/comment_ratingbar_selector"
-            lxhRatingBar:widthAndHeight="@dimen/size_100" />
+            android:visibility="gone">
 
+            <com.bagelplay.gameset.view.XLHRatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                lxhRatingBar:canEdit="false"
+                lxhRatingBar:countSelected="2"
+                lxhRatingBar:dividerWidth="@dimen/size_10"
+                lxhRatingBar:starCount="5"
+                lxhRatingBar:stateResId="@drawable/comment_ratingbar_selector"
+                lxhRatingBar:widthAndHeight="@dimen/size_100" />
 
+            <LinearLayout
+                android:id="@+id/rating_bar_above_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                ></LinearLayout>
+
+        </FrameLayout>
     </FrameLayout>
 
 

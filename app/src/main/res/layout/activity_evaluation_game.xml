@@ -5,18 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.bagelplay.gameset.activity.EvaluationGameActivity">
 
-  <com.bagelplay.gameset.evagame.view.EvaluationView
-      android:id="@+id/eva_view"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+    <com.bagelplay.gameset.evagame.view.EvaluationGameView
+        android:id="@+id/eva_game_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-  </com.bagelplay.gameset.evagame.view.EvaluationView>
-
-
-  <com.bagelplay.gameset.evagame.view.EvaluationGameView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
-  </com.bagelplay.gameset.evagame.view.EvaluationGameView>
+    </com.bagelplay.gameset.evagame.view.EvaluationGameView>
 
 </FrameLayout>

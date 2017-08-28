@@ -115,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
 
                     SoundUtil.getInstance(MainActivity.this).startPlaySound(R.raw.num_game_introduce);
 
+                } else if (chooseid == 0) {
+                    Intent intent = new Intent(MainActivity.this, EvaluationGameActivity.class);
+
+                    startActivity(intent);
                 }
 
 

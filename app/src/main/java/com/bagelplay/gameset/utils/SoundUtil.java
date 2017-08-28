@@ -58,6 +58,24 @@ public class SoundUtil {
 
     }
 
+
+    public void startPlaySoundWithListener(int path,MediaPlayListener mMediaPlayListener) {
+        setOnMediaPlayListener(mMediaPlayListener);
+
+        if (isPlayComplete) {
+
+            music_play(path);
+
+        } else {
+
+            stopPlaySound();
+
+            music_play(path);
+
+        }
+
+    }
+
     public void startPlaySoundFromSD(String path) {
         if (isPlayComplete) {
 
@@ -118,6 +136,11 @@ public class SoundUtil {
 
                 player.release();
                 isPlayComplete = true;
+                if(mMediaPlayListener!=null){
+                    mMediaPlayListener.onPlayerCompletion();
+                    mMediaPlayListener=null;
+                }
+
 
             }
         });
@@ -145,5 +168,15 @@ public class SoundUtil {
             isPlayComplete = true;
         }
 
+    }
+
+
+    private MediaPlayListener mMediaPlayListener;
+    public void setOnMediaPlayListener(MediaPlayListener mMediaPlayListener){
+        this.mMediaPlayListener=mMediaPlayListener;
+    }
+
+    public interface MediaPlayListener{
+       void onPlayerCompletion();
     }
 }

@@ -109,7 +109,7 @@ public class NumGameActivity extends AppCompatActivity {
                             mNgcView.setVisibility(View.VISIBLE);
 
 
-                            mNgcView.startAnimation(9);
+                            mNgcView.startAnimation(5);
 
                         } else if (currentstage == 2) {
                             SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.three_stage);
