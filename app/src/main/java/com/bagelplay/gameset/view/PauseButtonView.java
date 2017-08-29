@@ -1,4 +1,4 @@
-package com.bagelplay.gameset.numgame.view;
+package com.bagelplay.gameset.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -16,7 +16,7 @@ import com.bagelplay.gameset.R;
  * Created by zhangtianjie on 2017/8/14.
  */
 
-public class NumPauseButtonView extends RelativeLayout {
+public class PauseButtonView extends RelativeLayout {
 
     ImageView mIvPause;
     RelativeLayout mRlParent;
@@ -26,12 +26,12 @@ public class NumPauseButtonView extends RelativeLayout {
 
     String Tag = "NumPauseButtonView";
 
-    public NumPauseButtonView(Context context) {
+    public PauseButtonView(Context context) {
         super(context);
 
     }
 
-    public NumPauseButtonView(Context context, AttributeSet attrs) {
+    public PauseButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mContext = context;
@@ -132,7 +132,7 @@ public class NumPauseButtonView extends RelativeLayout {
         });*/
     }
 
-    public NumPauseButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PauseButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
     }

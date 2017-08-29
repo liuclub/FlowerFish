@@ -1,4 +1,4 @@
-package com.bagelplay.gameset.numgame.view;
+package com.bagelplay.gameset.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -14,7 +14,7 @@ import com.bagelplay.gameset.R;
  * Created by zhangtianjie on 2017/8/14.
  */
 
-public class NumGameReleaseView extends RelativeLayout {
+public class ReleaseButtonView extends RelativeLayout {
 
     ImageView mIvRelease;
     RelativeLayout mRlParent;
@@ -23,11 +23,11 @@ public class NumGameReleaseView extends RelativeLayout {
 
     Context mContext;
 
-    public NumGameReleaseView(Context context) {
+    public ReleaseButtonView(Context context) {
         super(context);
     }
 
-    public NumGameReleaseView(Context context, AttributeSet attrs) {
+    public ReleaseButtonView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mContext = context;
@@ -128,7 +128,7 @@ public class NumGameReleaseView extends RelativeLayout {
 
     }
 
-    public NumGameReleaseView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ReleaseButtonView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

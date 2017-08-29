@@ -12,4 +12,34 @@
 
     </com.bagelplay.gameset.evagame.view.EvaluationGameView>
 
+
+    <com.bagelplay.gameset.view.GameProgressView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/gp_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:max_size="8"
+        >
+
+    </com.bagelplay.gameset.view.GameProgressView>
+
+    <!--暂停按钮-->
+    <com.bagelplay.gameset.view.PauseButtonView
+        android:id="@+id/pause_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+    </com.bagelplay.gameset.view.PauseButtonView>
+
+    <!--停止暂停-->
+    <com.bagelplay.gameset.view.ReleaseButtonView
+        android:id="@+id/release_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </com.bagelplay.gameset.view.ReleaseButtonView>
+
 </FrameLayout>

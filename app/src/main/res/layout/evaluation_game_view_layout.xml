@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@mipmap/eva_game_bg">
 
+
+
     <com.bagelplay.gameset.evagame.view.EvaObjectView
         android:id="@+id/eva_object"
         android:layout_width="wrap_content"
@@ -50,6 +52,15 @@
             android:layout_margin="@dimen/size_60"
             android:src="@mipmap/xiaohaoqi" />
 
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="@dimen/size_142"
+            android:layout_height="@dimen/size_80"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="@dimen/size_105"
+            android:layout_marginBottom="@dimen/size_35"
+            android:src="@mipmap/eva_next"/>
+
 
         <FrameLayout
             android:id="@+id/rating_bar_parent_fl"
@@ -81,6 +92,30 @@
 
         </FrameLayout>
     </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_180"
+
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        >
+
+        <ImageView
+            android:layout_width="@dimen/size_130"
+            android:layout_height="@dimen/size_90"
+            android:layout_marginRight="@dimen/size_220"
+            android:src="@mipmap/eva_ch"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/size_130"
+            android:layout_height="@dimen/size_90"
+            android:src="@mipmap/eva_en" />
+    </LinearLayout>
 
 
 </RelativeLayout>

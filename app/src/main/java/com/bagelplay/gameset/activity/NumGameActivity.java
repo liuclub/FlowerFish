@@ -11,8 +11,8 @@ import android.view.WindowManager;
 
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.numgame.view.NumGameCongrationView;
-import com.bagelplay.gameset.numgame.view.NumGameReleaseView;
-import com.bagelplay.gameset.numgame.view.NumPauseButtonView;
+import com.bagelplay.gameset.view.ReleaseButtonView;
+import com.bagelplay.gameset.view.PauseButtonView;
 import com.bagelplay.gameset.numgame.view.NumberGameView;
 import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.gameset.view.FinishGameView;
@@ -23,7 +23,7 @@ import com.bagelplay.sdk.cocos.SDKCocosManager;
 public class NumGameActivity extends AppCompatActivity {
     String Tag = "NumGameActivity";
 
-    NumGameReleaseView mNgrView;
+    ReleaseButtonView mNgrView;
 
     NumberGameView mNgvView;
 
@@ -31,7 +31,7 @@ public class NumGameActivity extends AppCompatActivity {
 
     FinishGameView mFgvView;
 
-    NumPauseButtonView mNpbvView;
+    PauseButtonView mNpbvView;
 
     int numGameCurrentStage;
 
@@ -58,9 +58,9 @@ public class NumGameActivity extends AppCompatActivity {
 
         //暂停按钮
 
-        mNpbvView = (NumPauseButtonView) findViewById(R.id.npbv_view);
+        mNpbvView = (PauseButtonView) findViewById(R.id.npbv_view);
 
-        mNpbvView.setOnPauseButtonViewClickLinstener(new NumPauseButtonView.PauseButtonViewClickLinstener() {
+        mNpbvView.setOnPauseButtonViewClickLinstener(new PauseButtonView.PauseButtonViewClickLinstener() {
             @Override
             public void pauseHomeClick() {
 
@@ -75,8 +75,8 @@ public class NumGameActivity extends AppCompatActivity {
 
 
         //停止暂停控件
-        mNgrView = (NumGameReleaseView) findViewById(R.id.ngr_view);
-        mNgrView.setOnReleaseButtonViewClickLinstener(new NumGameReleaseView.ReleaseButtonViewClickLinstener() {
+        mNgrView = (ReleaseButtonView) findViewById(R.id.ngr_view);
+        mNgrView.setOnReleaseButtonViewClickLinstener(new ReleaseButtonView.ReleaseButtonViewClickLinstener() {
             @Override
             public void releaseButtonClick() {
 
