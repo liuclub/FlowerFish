@@ -50,7 +50,7 @@
                 android:id="@+id/iv_ham_fruit4"
                 android:layout_width="@dimen/size_128"
                 android:layout_height="match_parent"
-                android:src="@mipmap/eva_papper_small" />
+                android:src="@mipmap/eva_carrot_small" />
 
         </LinearLayout>
 

@@ -54,12 +54,13 @@
 
         <ImageView
             android:id="@+id/iv_next"
-            android:layout_width="@dimen/size_142"
-            android:layout_height="@dimen/size_80"
+            android:layout_width="@dimen/size_175"
+            android:layout_height="@dimen/size_100"
             android:layout_gravity="bottom|right"
             android:layout_marginRight="@dimen/size_105"
             android:layout_marginBottom="@dimen/size_35"
-            android:src="@mipmap/eva_next"/>
+            android:src="@mipmap/eva_next"
+            android:visibility="gone"/>
 
 
         <FrameLayout
@@ -101,6 +102,8 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal"
+
+        android:visibility="gone"
 
         >
 

@@ -1,6 +1,7 @@
 package com.bagelplay.gameset.evagame.view;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,23 @@ public class EvaObjectView extends FrameLayout {
     ImageView mIvEvaObject;
     Context mContext;
 
+    private Handler timeHandler;
+
+    Animation textAnimation;
+    private int TIME = 1000;
+
+
+    public void setButtonClickable(boolean buttonClickable) {
+        this.buttonClickable = buttonClickable;
+    }
+
+
+    public boolean isButtonClickable() {
+        return buttonClickable;
+    }
+
+    private boolean buttonClickable=true;
+
     public EvaObjectView(@NonNull Context context) {
         super(context);
     }
@@ -40,16 +58,75 @@ public class EvaObjectView extends FrameLayout {
         mIvEvaObject.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_middle_large);
-                v.startAnimation(animation);
 
-                if(mEvaObjectViewListener!=null){
-                    mEvaObjectViewListener.objectClick();
-                }
+                if(!isButtonClickable())
+                    return;
+
+                    Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.btn_normal_to_middle_large);
+                    v.startAnimation(animation);
+
+                    if (mEvaObjectViewListener != null) {
+                        mEvaObjectViewListener.objectClick();
+                    }
+
+
+
             }
         });
 
 
+
+        textAnimation=AnimationUtils.loadAnimation(mContext, R.anim.hide_to_show);
+
+        timeHandler=  new Handler();
+
+
+
+    }
+
+    public void initView(){
+
+        mTvEvaText.setVisibility(INVISIBLE);
+
+
+        timeHandler.postDelayed(runnable, TIME);
+
+
+
+
+    }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+
+            try {
+
+                mTvEvaText.setVisibility(VISIBLE);
+
+                mTvEvaText.startAnimation(textAnimation);
+                if(mEvaObjectViewListener!=null) {
+                    mEvaObjectViewListener.objectStartPlaySounds();
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+
+            }
+        }
+    };
+
+    public void startAnim(){
+        mTvEvaText.setVisibility(VISIBLE);
+        mTvEvaText.startAnimation(textAnimation);
+
+
+    }
+
+    //获得要闪三下的食物物体
+    public ImageView getFlashObject(){
+
+        return mIvEvaObject;
     }
 
 
@@ -65,8 +142,19 @@ public class EvaObjectView extends FrameLayout {
         this.mEvaObjectViewListener=mEvaObjectViewListener;
     }
 
+    public void changeObject(String text,int imgId){
+        mTvEvaText.setText(text);
+
+        mIvEvaObject.setImageResource(imgId);
+
+        initView();
+
+    }
+
     public  interface EvaObjectViewListener{
          void  objectClick();
+
+        void   objectStartPlaySounds();
     }
 
 

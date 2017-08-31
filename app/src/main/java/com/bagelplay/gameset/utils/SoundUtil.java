@@ -138,7 +138,7 @@ public class SoundUtil {
                 isPlayComplete = true;
                 if(mMediaPlayListener!=null){
                     mMediaPlayListener.onPlayerCompletion();
-                    mMediaPlayListener=null;
+
                 }
 
 
@@ -173,6 +173,7 @@ public class SoundUtil {
 
     private MediaPlayListener mMediaPlayListener;
     public void setOnMediaPlayListener(MediaPlayListener mMediaPlayListener){
+       // mMediaPlayListener=null;
         this.mMediaPlayListener=mMediaPlayListener;
     }
 

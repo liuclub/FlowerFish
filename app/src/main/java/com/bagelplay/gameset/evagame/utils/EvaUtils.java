@@ -70,7 +70,7 @@ public class EvaUtils {
         mIse = SpeechEvaluator.createEvaluator(mContext, null);
         mToast = Toast.makeText(mContext, "", Toast.LENGTH_LONG);
 
-        setChinese();
+        //setChinese();
 
     }
 
@@ -225,7 +225,7 @@ public class EvaUtils {
     }
 
 
-    private void setEvaText() {
+    private void setEvaText(String text) {
 
 
         if (isChineseEva) {
@@ -239,7 +239,7 @@ public class EvaUtils {
 
         if ("en_us".equals(language)) {
             if ("read_word".equals(category)) {
-                evaText = mContext.getString(R.string.text_en_word);
+                evaText = "[word]"+text;
             } else if ("read_sentence".equals(category)) {
                 evaText = mContext.getString(R.string.text_en_sentence);
             }
@@ -248,7 +248,7 @@ public class EvaUtils {
             if ("read_syllable".equals(category)) {
                 evaText = mContext.getString(R.string.text_cn_syllable);
             } else if ("read_word".equals(category)) {
-                evaText = mContext.getString(R.string.text_cn_word);
+                evaText = text;
             } else if ("read_sentence".equals(category)) {
                 evaText = mContext.getString(R.string.text_cn_sentence);
             }
@@ -273,7 +273,20 @@ public class EvaUtils {
         }
     }
 
-    public void startEvaWithListener(EvaListener mEvaListener) {
+    public void cancelEva(){
+        mIse.cancel();
+    }
+
+    public void destroyEva(){
+        if (null != mIse) {
+            mIse.destroy();
+            mIse = null;
+        }
+    }
+
+
+
+    public void startEvaWithListener(EvaListener mEvaListener,boolean isChineseEva,String myEvatext) {
 
 
         if (mIse == null) {
@@ -283,6 +296,11 @@ public class EvaUtils {
 
          setOnEvaListener(mEvaListener);
 
+      if(isChineseEva) {
+          setChinese(myEvatext);
+      }else{
+          setEnglish(myEvatext);
+      }
 
         // mWaveLineView.setVisibility(View.VISIBLE);
 
@@ -320,15 +338,15 @@ public class EvaUtils {
     }
 
 
-    private void setChinese() {
+    private void setChinese(String text) {
 
         isChineseEva = true;
-        setEvaText();
+        setEvaText(text);
     }
 
-    private void setEnglish() {
+    private void setEnglish(String text) {
         isChineseEva = false;
-        setEvaText();
+        setEvaText(text);
     }
 
     private EvaListener mEvaListener;

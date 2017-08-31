@@ -101,7 +101,7 @@ public class FinishGameView extends RelativeLayout {
 
         resetPetal();
 
-        fishAnimation = AnimationUtils.loadAnimation(mContext, R.anim.num_game_finish_fish_anim);
+        fishAnimation = AnimationUtils.loadAnimation(mContext, R.anim.flash_three_times);
 
         fishAnimation.setAnimationListener(
                 new Animation.AnimationListener() {
