@@ -145,6 +145,11 @@ public class EvaluationGameView extends RelativeLayout {
 
                 currentGameIndex++;
 
+                mRatingbarParentFl.setVisibility(GONE);
+
+                mWaveLineView.setVisibility(INVISIBLE);
+
+                mIvNext.setVisibility(GONE);
 
                 mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
 
@@ -177,23 +182,23 @@ public class EvaluationGameView extends RelativeLayout {
 
         List<Integer> sounds=new ArrayList<>();
 
-        //替代语音
+
         sounds.add(R.raw.eva_tomato_zh);
 
         sounds.add(R.raw.eva_tomato_en);
-        //替代语音
+
         sounds.add(R.raw.eva_cucumber_zh);
         sounds.add(R.raw.eva_cucumber_en);
 
-        //替代语音
+
         sounds.add(R.raw.eva_cabbage_zh);
         sounds.add(R.raw.eva_cabbage_en);
 
-       //替代语音
+
         sounds.add(R.raw.eva_potato_zh);
         sounds.add(R.raw.eva_potato_en);
 
-        //替代语音
+
         sounds.add(R.raw.eva_carrot_zh);
         sounds.add(R.raw.eva_carrot_en);
         //替代语音
