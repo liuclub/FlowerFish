@@ -63,8 +63,12 @@ public class EvaHamburger extends LinearLayout {
         fruitsArrayIV.get(index).setVisibility(INVISIBLE);
     }
 
-    public void setFruitVisibleByIndex(int index) {
+    public void setFruitVisibleByIndex(int index,int img) {
+
+        if(index>3)
+            return;
         fruitsArrayIV.get(index).setVisibility(VISIBLE);
+        fruitsArrayIV.get(index).setImageResource(img);
     }
 
     public EvaHamburger(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

@@ -46,6 +46,11 @@ public class MyAnim {
 
         return AnimationUtils.loadAnimation(mContext, R.anim.flash_three_times);
     }
+    //水果移到汉堡
+    public static Animation getAnimMoveToFood(){
+
+        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_move_to_hamber_anim);
+    }
 
 
 

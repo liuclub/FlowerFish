@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.evagame.utils.EvaUtils;
@@ -38,6 +39,7 @@ public class EvaluationGameView extends RelativeLayout {
     Context mContext;
 
     EvaObjectView mEvaObjectView;
+    EvaHamburger mEvaHamburger;
 
     EvaUtils mEvaUtils;
 
@@ -62,9 +64,13 @@ public class EvaluationGameView extends RelativeLayout {
     List<String> evaTexts;
     List<Integer> evaSounds,evaImages;
 
+
+    //是否提示操作
     boolean isFirst=true;
 
     int currentGameIndex=0;
+
+    int maxGameIndex=8;
 
     public void setButtonClickable(boolean buttonClickable) {
         this.buttonClickable = buttonClickable;
@@ -143,7 +149,7 @@ public class EvaluationGameView extends RelativeLayout {
                 if(!isButtonClickable())
                     return;
 
-                currentGameIndex++;
+
 
                 mRatingbarParentFl.setVisibility(GONE);
 
@@ -151,7 +157,47 @@ public class EvaluationGameView extends RelativeLayout {
 
                 mIvNext.setVisibility(GONE);
 
-                mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
+                //食物的英文第二关
+                if(currentGameIndex<maxGameIndex&&currentGameIndex%2==1){
+                    Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToFood();
+
+
+                    objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+
+
+                            mEvaHamburger.setFruitVisibleByIndex(currentGameIndex/2,evaImages.get(currentGameIndex));
+
+                            currentGameIndex++;
+                            mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                    mEvaObjectView.getFlashObject().startAnimation(objectAnimationMove);
+
+
+                }
+                else if(currentGameIndex<maxGameIndex){  //中文第一关
+                    currentGameIndex++;
+                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
+
+                }
+                else{
+                    Toast.makeText(mContext,"结束啦",Toast.LENGTH_SHORT).show();
+                }
+
 
 
 
@@ -329,6 +375,12 @@ public class EvaluationGameView extends RelativeLayout {
                 mRatingbarParentFl.setVisibility(VISIBLE);
                 mXLHRatingBar.setCountSelected(grade);
 
+                if(grade>=3){
+                    SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_you_great);
+                }else{
+                    SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_continue_refueling);
+                }
+
                 //next 按钮出现
                 mIvNext.setVisibility(VISIBLE);
 
@@ -474,6 +526,8 @@ public class EvaluationGameView extends RelativeLayout {
     }
 
     private void initUI() {
+
+        mEvaHamburger= (EvaHamburger) findViewById(R.id.eva_hamburger);
         mEvaObjectView = (EvaObjectView) findViewById(R.id.eva_object);
 
         mWaveLineView = (WaveLineView) findViewById(R.id.wave_line_view);

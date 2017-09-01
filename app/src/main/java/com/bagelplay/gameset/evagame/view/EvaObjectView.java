@@ -96,6 +96,9 @@ public class EvaObjectView extends FrameLayout {
 
     }
 
+
+
+
     Runnable runnable = new Runnable() {
         @Override
         public void run() {

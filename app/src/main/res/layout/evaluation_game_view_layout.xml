@@ -7,14 +7,7 @@
 
 
 
-    <com.bagelplay.gameset.evagame.view.EvaObjectView
-        android:id="@+id/eva_object"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
 
-
-    </com.bagelplay.gameset.evagame.view.EvaObjectView>
 
 
     <com.bagelplay.gameset.evagame.view.EvaHamburger
@@ -22,11 +15,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/size_50"
+        android:layout_marginRight="@dimen/size_80"
         android:layout_marginTop="@dimen/size_120">
 
     </com.bagelplay.gameset.evagame.view.EvaHamburger>
 
+    <com.bagelplay.gameset.evagame.view.EvaObjectView
+        android:id="@+id/eva_object"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+
+    </com.bagelplay.gameset.evagame.view.EvaObjectView>
 
     <FrameLayout
         android:layout_width="match_parent"

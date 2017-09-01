@@ -44,6 +44,8 @@ public class SoundUtil {
 //    }
 
     public void startPlaySound(int path) {
+
+
         if (isPlayComplete) {
 
             music_play(path);
@@ -64,13 +66,13 @@ public class SoundUtil {
 
         if (isPlayComplete) {
 
-            music_play(path);
+            music_play_withl_istener(path);
 
         } else {
 
             stopPlaySound();
 
-            music_play(path);
+            music_play_withl_istener(path);
 
         }
 
@@ -125,7 +127,7 @@ public class SoundUtil {
 
 
 
-    public void music_play(int path) {
+    public void music_play_withl_istener(int path) {
 
         player = MediaPlayer.create(mContext, path);
 
@@ -140,6 +142,38 @@ public class SoundUtil {
                     mMediaPlayListener.onPlayerCompletion();
 
                 }
+
+
+            }
+        });
+
+        try {
+            isPlayComplete = false;
+            // player.prepare();
+            player.start();
+
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            player.release();
+            player=null;
+        }
+    }
+
+
+    public void music_play(int path) {
+
+        player = MediaPlayer.create(mContext, path);
+
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+
+
+                player.release();
+                isPlayComplete = true;
+
 
 
             }
