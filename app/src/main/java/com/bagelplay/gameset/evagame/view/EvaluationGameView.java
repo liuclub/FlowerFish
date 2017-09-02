@@ -28,6 +28,7 @@ import java.util.List;
 import static android.R.attr.animation;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static com.bagelplay.gameset.utils.RandNum.getRandNumNumArray;
+import static com.lidroid.xutils.util.core.CompatibleAsyncTask.init;
 
 /**
  * Created by zhangtianjie on 2017/8/26.
@@ -36,6 +37,7 @@ import static com.bagelplay.gameset.utils.RandNum.getRandNumNumArray;
 public class EvaluationGameView extends RelativeLayout {
 
     private static String Tag = EvaluationGameView.class.getSimpleName();
+
     Context mContext;
 
     EvaObjectView mEvaObjectView;
@@ -62,18 +64,23 @@ public class EvaluationGameView extends RelativeLayout {
 
     //评测文字，语音，用图片
     List<String> evaTexts;
-    List<Integer> evaSounds,evaImages;
+    List<Integer> evaSounds, evaImages;
 
 
     //是否提示操作
-    boolean isFirst=true;
+    boolean isFirst = true;
 
-    int currentGameIndex=0;
+    //是否开场
+    boolean isWelcome = true;
 
-    int maxGameIndex=8;
+    int currentGameIndex = 0;
+
+    int maxGameIndex = 8;
 
     public void setButtonClickable(boolean buttonClickable) {
         this.buttonClickable = buttonClickable;
+
+
     }
 
 
@@ -81,7 +88,7 @@ public class EvaluationGameView extends RelativeLayout {
         return buttonClickable;
     }
 
-    private boolean buttonClickable=true;
+    private boolean buttonClickable = true;
 
     public EvaluationGameView(Context context) {
         super(context);
@@ -94,10 +101,6 @@ public class EvaluationGameView extends RelativeLayout {
         initUI();
 
         initDATA();
-
-
-        mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
-
 
 
         mEvaUtils = EvaUtils.getInstance(mContext);
@@ -127,7 +130,7 @@ public class EvaluationGameView extends RelativeLayout {
             @Override
             public void onClick(View v) {
 
-                if(!isButtonClickable())
+                if (!isButtonClickable())
                     return;
                 Animation animation = MyAnim.getInstance(mContext).getAnimNormalToLittleLarge();
 
@@ -146,9 +149,8 @@ public class EvaluationGameView extends RelativeLayout {
             @Override
             public void onClick(View v) {
 
-                if(!isButtonClickable())
+                if (!isButtonClickable())
                     return;
-
 
 
                 mRatingbarParentFl.setVisibility(GONE);
@@ -158,7 +160,7 @@ public class EvaluationGameView extends RelativeLayout {
                 mIvNext.setVisibility(GONE);
 
                 //食物的英文第二关
-                if(currentGameIndex<maxGameIndex&&currentGameIndex%2==1){
+                if (currentGameIndex < maxGameIndex && currentGameIndex % 2 == 1) {
                     Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToFood();
 
 
@@ -172,10 +174,10 @@ public class EvaluationGameView extends RelativeLayout {
                         public void onAnimationEnd(Animation animation) {
 
 
-                            mEvaHamburger.setFruitVisibleByIndex(currentGameIndex/2,evaImages.get(currentGameIndex));
+                            mEvaHamburger.setFruitVisibleByIndex(currentGameIndex / 2, evaImages.get(currentGameIndex));
 
                             currentGameIndex++;
-                            mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
+                            mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
                         }
 
@@ -188,22 +190,91 @@ public class EvaluationGameView extends RelativeLayout {
                     mEvaObjectView.getFlashObject().startAnimation(objectAnimationMove);
 
 
-                }
-                else if(currentGameIndex<maxGameIndex){  //中文第一关
+                } else if (currentGameIndex < maxGameIndex) {  //中文第一关
                     currentGameIndex++;
-                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex),evaImages.get(currentGameIndex));
+                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
+                } else {
+                    Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    Toast.makeText(mContext,"结束啦",Toast.LENGTH_SHORT).show();
-                }
-
-
 
 
             }
         });
 
+
+        init();
+
+
+    }
+
+
+    private void init() {
+        //显示开场动画
+        if (isWelcome) {
+
+
+
+
+            SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_xiaohaoqi_like_ham, new SoundUtil.MediaPlayListener() {
+                @Override
+                public void onPlayerCompletion() {
+
+
+
+
+                    Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToFood();
+
+                    objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+
+                            mEvaObjectView.getObjectHamNull().setVisibility(GONE);
+
+                            mEvaHamburger.setVisibility(VISIBLE);
+
+
+                            SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_only_meat_no_vegetable, new SoundUtil.MediaPlayListener() {
+                                @Override
+                                public void onPlayerCompletion() {
+
+                                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+
+
+                                }
+
+                            });
+
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+
+                    mEvaObjectView.getObjectHamNull().startAnimation(objectAnimationMove);
+
+
+                }
+            });
+
+
+            Animation objectAnimationFlash = MyAnim.getInstance(mContext).getFlashThreeTimes();
+
+            mEvaObjectView.getObjectHamNull().startAnimation(objectAnimationFlash);
+
+
+        } else {
+            mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+
+        }
 
 
     }
@@ -211,7 +282,7 @@ public class EvaluationGameView extends RelativeLayout {
 
     //随机评测数据
     private void initDATA() {
-       List<String> texts=new ArrayList<>();
+        List<String> texts = new ArrayList<>();
         texts.add("西红柿");
         texts.add("tomato");
         texts.add("黄瓜");
@@ -226,7 +297,7 @@ public class EvaluationGameView extends RelativeLayout {
         texts.add("onion");
 
 
-        List<Integer> sounds=new ArrayList<>();
+        List<Integer> sounds = new ArrayList<>();
 
 
         sounds.add(R.raw.eva_tomato_zh);
@@ -252,8 +323,7 @@ public class EvaluationGameView extends RelativeLayout {
         sounds.add(R.raw.eva_onion_en);
 
 
-
-        List<Integer> images=new ArrayList<>();
+        List<Integer> images = new ArrayList<>();
         images.add(R.mipmap.eva_tomato);
         images.add(R.mipmap.eva_tomato_small);
 
@@ -273,30 +343,24 @@ public class EvaluationGameView extends RelativeLayout {
         images.add(R.mipmap.eva_onion_small);
 
 
-        evaTexts=new ArrayList<>();
-        evaSounds=new ArrayList<>();
-        evaImages=new ArrayList<>();
+        evaTexts = new ArrayList<>();
+        evaSounds = new ArrayList<>();
+        evaImages = new ArrayList<>();
 
 
-        int[] tempArray=  RandNum.getRandNumNumArray(6);
+        int[] tempArray = RandNum.getRandNumNumArray(6);
 
 
+        for (int i = 0; i < tempArray.length; i++) {
+            evaTexts.add(texts.get(tempArray[i] * 2));
+            evaTexts.add(texts.get(tempArray[i] * 2 + 1));
 
-        for(int i=0;i<tempArray.length;i++){
-            evaTexts.add(texts.get(tempArray[i]*2));
-            evaTexts.add(texts.get(tempArray[i]*2+1));
+            evaSounds.add(sounds.get(tempArray[i] * 2));
+            evaSounds.add(sounds.get(tempArray[i] * 2 + 1));
 
-            evaSounds.add(sounds.get(tempArray[i]*2));
-            evaSounds.add(sounds.get(tempArray[i]*2+1));
-
-            evaImages.add(images.get(tempArray[i]*2));
-            evaImages.add(images.get(tempArray[i]*2+1));
+            evaImages.add(images.get(tempArray[i] * 2));
+            evaImages.add(images.get(tempArray[i] * 2 + 1));
         }
-
-
-
-
-
 
 
     }
@@ -327,7 +391,7 @@ public class EvaluationGameView extends RelativeLayout {
                         }
                     });
 
-                }else{
+                } else {
 
                     timeHandler.postDelayed(evaRunnable, soundComplateToEva);
                 }
@@ -356,9 +420,9 @@ public class EvaluationGameView extends RelativeLayout {
 
     private void startEva() {
 
-        boolean isChinese=false;
-        if(currentGameIndex%2==0){
-            isChinese=true;
+        boolean isChinese = false;
+        if (currentGameIndex % 2 == 0) {
+            isChinese = true;
         }
 
         mEvaUtils.startEvaWithListener(new EvaUtils.EvaListener() {
@@ -375,9 +439,9 @@ public class EvaluationGameView extends RelativeLayout {
                 mRatingbarParentFl.setVisibility(VISIBLE);
                 mXLHRatingBar.setCountSelected(grade);
 
-                if(grade>=3){
+                if (grade >= 3) {
                     SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_you_great);
-                }else{
+                } else {
                     SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_continue_refueling);
                 }
 
@@ -410,13 +474,13 @@ public class EvaluationGameView extends RelativeLayout {
             }
 
 
-        },isChinese,evaTexts.get(currentGameIndex));
+        }, isChinese, evaTexts.get(currentGameIndex));
     }
 
     private void firstComeReminder() {
         //第一次显示提示操作
-        if(isFirst){
-            isFirst=!isFirst;
+        if (isFirst) {
+            isFirst = !isFirst;
 
             mEvaObjectView.setButtonClickable(false);
             setButtonClickable(false);
@@ -519,15 +583,12 @@ public class EvaluationGameView extends RelativeLayout {
             });
 
 
-
-
-
         }
     }
 
     private void initUI() {
 
-        mEvaHamburger= (EvaHamburger) findViewById(R.id.eva_hamburger);
+        mEvaHamburger = (EvaHamburger) findViewById(R.id.eva_hamburger);
         mEvaObjectView = (EvaObjectView) findViewById(R.id.eva_object);
 
         mWaveLineView = (WaveLineView) findViewById(R.id.wave_line_view);

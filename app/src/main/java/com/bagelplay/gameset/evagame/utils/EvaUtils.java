@@ -216,7 +216,7 @@ public class EvaUtils {
 
 
         //设置后数据从其 writeAudio(byte[] buffer,int offset,int length)方法来
-        //mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
+       // mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         // 注：AUDIO_FORMAT参数语记需要更新版本才能生效

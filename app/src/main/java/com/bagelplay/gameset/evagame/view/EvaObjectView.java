@@ -24,13 +24,15 @@ import org.w3c.dom.Text;
 
 public class EvaObjectView extends FrameLayout {
     TextView mTvEvaText;
-    ImageView mIvEvaObject;
+    ImageView mIvEvaObject,mIvEvaHamNull;
     Context mContext;
 
     private Handler timeHandler;
 
     Animation textAnimation;
     private int TIME = 1000;
+
+
 
 
     public void setButtonClickable(boolean buttonClickable) {
@@ -87,6 +89,7 @@ public class EvaObjectView extends FrameLayout {
     public void initView(){
 
         mTvEvaText.setVisibility(INVISIBLE);
+        mIvEvaObject.setVisibility(VISIBLE);
 
 
         timeHandler.postDelayed(runnable, TIME);
@@ -106,6 +109,7 @@ public class EvaObjectView extends FrameLayout {
             try {
 
                 mTvEvaText.setVisibility(VISIBLE);
+
 
                 mTvEvaText.startAnimation(textAnimation);
                 if(mEvaObjectViewListener!=null) {
@@ -133,9 +137,19 @@ public class EvaObjectView extends FrameLayout {
     }
 
 
+    public ImageView getObjectHamNull(){
+
+        return mIvEvaHamNull;
+    }
+
+
+
+
     private void initUI() {
         mTvEvaText= (TextView) findViewById(R.id.tv_eva_text);
         mIvEvaObject= (ImageView) findViewById(R.id.iv_eva_object);
+        mIvEvaHamNull= (ImageView) findViewById(R.id.iv_eva_ham_null);
+
     }
 
 
