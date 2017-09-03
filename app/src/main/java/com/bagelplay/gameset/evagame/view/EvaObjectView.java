@@ -130,6 +130,12 @@ public class EvaObjectView extends FrameLayout {
 
     }
 
+    public void setObjectGone(){
+        mTvEvaText.setVisibility(GONE);
+        mIvEvaObject.setVisibility(GONE);
+
+    }
+
     //获得要闪三下的食物物体
     public ImageView getFlashObject(){
 

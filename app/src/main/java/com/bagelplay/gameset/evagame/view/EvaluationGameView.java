@@ -177,7 +177,17 @@ public class EvaluationGameView extends RelativeLayout {
                             mEvaHamburger.setFruitVisibleByIndex(currentGameIndex / 2, evaImages.get(currentGameIndex));
 
                             currentGameIndex++;
-                            mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+
+                            if(currentGameIndex<maxGameIndex) {
+                                mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+                            }else{
+
+
+                                mEvaObjectView.setObjectGone();
+                                Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+
+                            }
+
 
                         }
 
@@ -194,8 +204,6 @@ public class EvaluationGameView extends RelativeLayout {
                     currentGameIndex++;
                     mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
-                } else {
-                    Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
                 }
 
 
