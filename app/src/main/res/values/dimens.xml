@@ -52,7 +52,7 @@
 
     <dimen name="FinishGameAnimPetalWidth">@dimen/size_90</dimen>
     <dimen name="FinishGameAnimPetalHeight">@dimen/size_100</dimen>
-    <dimen name="FinishGameAnimPetalMarginLeft">@dimen/size_0</dimen>
+    <dimen name="FinishGameAnimPetalMarginLeft">@dimen/size_1</dimen>
     <dimen name="FinishGameAnimPetalMarginTop">@dimen/size_400</dimen>
 
     <dimen name="FinishGameRightWrongLineWidth">@dimen/size_500</dimen>
