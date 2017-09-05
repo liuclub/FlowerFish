@@ -6,10 +6,6 @@
     android:background="@mipmap/eva_game_bg">
 
 
-
-
-
-
     <com.bagelplay.gameset.evagame.view.EvaHamburger
         android:id="@+id/eva_hamburger"
         android:layout_width="wrap_content"
@@ -52,18 +48,17 @@
             android:layout_height="@dimen/size_310"
             android:layout_gravity="bottom|left"
             android:layout_margin="@dimen/size_60"
-            android:src="@mipmap/xiaohaoqi"
-            />
+            android:src="@mipmap/xiaohaoqi" />
 
         <ImageView
             android:id="@+id/iv_next"
             android:layout_width="@dimen/size_175"
             android:layout_height="@dimen/size_100"
             android:layout_gravity="bottom|right"
-            android:layout_marginRight="@dimen/size_105"
             android:layout_marginBottom="@dimen/size_35"
+            android:layout_marginRight="@dimen/size_105"
             android:src="@mipmap/eva_next"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
 
         <FrameLayout
@@ -114,8 +109,7 @@
             android:layout_width="@dimen/size_130"
             android:layout_height="@dimen/size_90"
             android:layout_marginRight="@dimen/size_220"
-            android:src="@mipmap/eva_ch"
-            />
+            android:src="@mipmap/eva_ch" />
 
         <ImageView
             android:layout_width="@dimen/size_130"
@@ -124,13 +118,26 @@
     </LinearLayout>
 
 
-    <!--视频-->
-    <com.bagelplay.gameset.view.FllScreenVideoView
-        android:id="@+id/vv_video"
+    <FrameLayout
+        android:id="@+id/fl_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        />
+        android:visibility="gone">
+
+        <!--视频-->
+        <com.bagelplay.gameset.view.FllScreenVideoView
+            android:id="@+id/vv_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/eva_game_bg" />
+
+    </FrameLayout>
 
 
 </RelativeLayout>

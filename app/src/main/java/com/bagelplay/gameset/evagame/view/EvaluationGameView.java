@@ -1,6 +1,7 @@
 package com.bagelplay.gameset.evagame.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
@@ -55,6 +56,9 @@ public class EvaluationGameView extends RelativeLayout {
 
     LinearLayout mRatingbarAboveLl;
     FrameLayout mRatingbarParentFl;
+
+    FrameLayout mFlVideo;
+    ImageView mIvVideo;
 
 
     static int soundComplateToEva = 1000;
@@ -236,7 +240,7 @@ public class EvaluationGameView extends RelativeLayout {
             public void onCompletion(MediaPlayer mp) {
                 mVvVideo.stopPlayback();
 
-                mVvVideo.setVisibility(View.GONE);
+                mFlVideo.setVisibility(View.GONE);
 
 
 
@@ -257,7 +261,22 @@ public class EvaluationGameView extends RelativeLayout {
 
         mVvVideo.start();
 
-        mVvVideo.setVisibility(View.VISIBLE);
+
+        mFlVideo.setVisibility(View.VISIBLE);
+        mIvVideo.setVisibility(View.VISIBLE);
+
+        timeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                mIvVideo.setVisibility(View.GONE);
+            }
+        },1000);
+
+
+
+
+
     }
 
 
@@ -655,6 +674,9 @@ public class EvaluationGameView extends RelativeLayout {
 
         mIvNext = (ImageView) findViewById(R.id.iv_next);
         mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
+        mIvVideo= (ImageView) findViewById(R.id.iv_video);
+        mFlVideo= (FrameLayout) findViewById(R.id.fl_video);
+
     }
 
     public EvaluationGameView(Context context, AttributeSet attrs, int defStyleAttr) {
