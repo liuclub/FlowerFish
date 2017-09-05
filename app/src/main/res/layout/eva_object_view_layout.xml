@@ -49,6 +49,7 @@
         android:layout_width="@dimen/size_400"
         android:layout_height="@dimen/size_270"
         android:layout_gravity="center"
-        android:src="@mipmap/eva_ham_null" />
+        android:src="@mipmap/eva_ham_null"
+        android:visibility="gone"/>
 
 </FrameLayout>

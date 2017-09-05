@@ -68,10 +68,10 @@ public class EvaluationGameView extends RelativeLayout {
 
 
     //是否提示操作
-    boolean isFirst = true;
+    boolean isFirst = false;
 
     //是否开场
-    boolean isWelcome = true;
+    boolean isWelcome = false;
 
     int currentGameIndex = 0;
 
@@ -178,6 +178,7 @@ public class EvaluationGameView extends RelativeLayout {
 
                             currentGameIndex++;
 
+
                             if(currentGameIndex<maxGameIndex) {
                                 mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
                             }else{
@@ -202,7 +203,7 @@ public class EvaluationGameView extends RelativeLayout {
 
                 } else if (currentGameIndex < maxGameIndex) {  //中文第一关
                     currentGameIndex++;
-                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex-1));
 
                 }
 
@@ -221,7 +222,7 @@ public class EvaluationGameView extends RelativeLayout {
         //显示开场动画
         if (isWelcome) {
 
-
+            mEvaObjectView.getObjectHamNull().setVisibility(VISIBLE);
 
 
             SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_xiaohaoqi_like_ham, new SoundUtil.MediaPlayListener() {
@@ -280,6 +281,8 @@ public class EvaluationGameView extends RelativeLayout {
 
 
         } else {
+            mEvaHamburger.setVisibility(VISIBLE);
+
             mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
         }
