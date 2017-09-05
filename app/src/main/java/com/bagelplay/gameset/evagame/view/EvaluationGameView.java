@@ -1,10 +1,13 @@
 package com.bagelplay.gameset.evagame.view;
 
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -19,6 +22,7 @@ import com.bagelplay.gameset.evagame.utils.EvaUtils;
 import com.bagelplay.gameset.utils.MyAnim;
 import com.bagelplay.gameset.utils.RandNum;
 import com.bagelplay.gameset.utils.SoundUtil;
+import com.bagelplay.gameset.view.FllScreenVideoView;
 import com.bagelplay.gameset.view.XLHRatingBar;
 import com.jimmy.wavelibrary.WaveLineView;
 
@@ -62,7 +66,7 @@ public class EvaluationGameView extends RelativeLayout {
     //第一关
     int statge = 1;
 
-    //评测文字，语音，用图片
+    //评测文字，语音，图片
     List<String> evaTexts;
     List<Integer> evaSounds, evaImages;
 
@@ -75,7 +79,9 @@ public class EvaluationGameView extends RelativeLayout {
 
     int currentGameIndex = 0;
 
-    int maxGameIndex = 8;
+    int maxGameIndex = 2;
+
+    FllScreenVideoView mVvVideo;
 
     public void setButtonClickable(boolean buttonClickable) {
         this.buttonClickable = buttonClickable;
@@ -187,6 +193,9 @@ public class EvaluationGameView extends RelativeLayout {
                                 mEvaObjectView.setObjectGone();
                                 Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
 
+
+                                playFinishVideo();
+
                             }
 
 
@@ -215,6 +224,40 @@ public class EvaluationGameView extends RelativeLayout {
         init();
 
 
+    }
+
+    private void playFinishVideo() {
+
+
+
+
+        mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mVvVideo.stopPlayback();
+
+                mVvVideo.setVisibility(View.GONE);
+
+
+
+            }
+        });
+
+        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
+        // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
+
+        mVvVideo.setVideoURI(Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.eva_ham_finish));
+
+
+        mVvVideo.start();
+
+        mVvVideo.setVisibility(View.VISIBLE);
     }
 
 
@@ -611,6 +654,7 @@ public class EvaluationGameView extends RelativeLayout {
         mRatingbarParentFl = (FrameLayout) findViewById(R.id.rating_bar_parent_fl);
 
         mIvNext = (ImageView) findViewById(R.id.iv_next);
+        mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
     }
 
     public EvaluationGameView(Context context, AttributeSet attrs, int defStyleAttr) {

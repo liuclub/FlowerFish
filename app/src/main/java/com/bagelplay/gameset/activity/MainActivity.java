@@ -84,12 +84,6 @@ public class MainActivity extends AppCompatActivity {
         mVvVideo.start();
 
 
-        mVvVideo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
 
 
         //鲜花控件
