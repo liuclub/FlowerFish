@@ -53,5 +53,11 @@ public class MyAnim {
     }
 
 
+    //汉堡移到汉堡
+    public static Animation getAnimhamMoveToFood(){
+
+        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_ham_move_to_hamber_anim);
+    }
+
 
 }

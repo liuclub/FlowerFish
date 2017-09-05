@@ -19,11 +19,13 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bagelplay.gameset.R;
+import com.bagelplay.gameset.activity.NumGameActivity;
 import com.bagelplay.gameset.evagame.utils.EvaUtils;
 import com.bagelplay.gameset.utils.MyAnim;
 import com.bagelplay.gameset.utils.RandNum;
 import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.gameset.view.FllScreenVideoView;
+import com.bagelplay.gameset.view.GameCongrationView;
 import com.bagelplay.gameset.view.XLHRatingBar;
 import com.jimmy.wavelibrary.WaveLineView;
 
@@ -61,6 +63,9 @@ public class EvaluationGameView extends RelativeLayout {
     ImageView mIvVideo;
 
 
+    GameCongrationView mGameCongrationView;
+
+
     static int soundComplateToEva = 1000;
 
     private Handler timeHandler;
@@ -83,7 +88,7 @@ public class EvaluationGameView extends RelativeLayout {
 
     int currentGameIndex = 0;
 
-    int maxGameIndex = 2;
+    int maxGameIndex = 8;
 
     FllScreenVideoView mVvVideo;
 
@@ -224,9 +229,106 @@ public class EvaluationGameView extends RelativeLayout {
             }
         });
 
+        mGameCongrationView.setOnGameCongrationFinishListener(new GameCongrationView.GameCongrationFinishListener() {
+            @Override
+            public void gameConfigurationFinish() {
+                mGameCongrationView.setVisibility(GONE);
+
+                //第一关结束
+            }
+        });
+
 
         init();
 
+
+    }
+
+    void initNextStage(){
+        initNextStageDATA();
+    }
+
+    private void initNextStageDATA(){
+
+        List<String> texts = new ArrayList<>();
+        texts.add("苹果");
+        texts.add("apple");
+        texts.add("橘子");
+        texts.add("orange");
+        texts.add("香蕉");
+        texts.add("banana");
+        texts.add("桃子");
+        texts.add("peach");
+        texts.add("葡萄");
+        texts.add("grape");
+        texts.add("草莓");
+        texts.add("strawberry");
+
+
+        List<Integer> sounds = new ArrayList<>();
+
+
+        sounds.add(R.raw.eva_apple_zh);
+
+        sounds.add(R.raw.eva_apple_en);
+
+        sounds.add(R.raw.eva_orange_zh);
+        sounds.add(R.raw.eva_orange_en);
+
+
+        sounds.add(R.raw.eva_banana_zh);
+        sounds.add(R.raw.eva_banana_en);
+
+
+        sounds.add(R.raw.eva_peach_zh);
+        sounds.add(R.raw.eva_peach_en);
+
+
+        sounds.add(R.raw.eva_grape_zh);
+        sounds.add(R.raw.eva_grape_en);
+
+        sounds.add(R.raw.eva_strawberry_zh);
+        sounds.add(R.raw.eva_strawberry_en);
+
+
+        List<Integer> images = new ArrayList<>();
+        images.add(R.mipmap.eva_apple);
+        images.add(R.mipmap.eva_apple);
+
+        images.add(R.mipmap.eva_orange);
+        images.add(R.mipmap.eva_orange);
+
+        images.add(R.mipmap.eva_banana);
+        images.add(R.mipmap.eva_banana);
+
+        images.add(R.mipmap.eva_peach);
+        images.add(R.mipmap.eva_peach);
+
+        images.add(R.mipmap.eva_grape);
+        images.add(R.mipmap.eva_grape);
+
+        images.add(R.mipmap.eva_strawberry);
+        images.add(R.mipmap.eva_strawberry);
+
+
+        evaTexts = new ArrayList<>();
+        evaSounds = new ArrayList<>();
+        evaImages = new ArrayList<>();
+
+
+        int[] tempArray = RandNum.getRandNumNumArray(6);
+
+
+        for (int i = 0; i < tempArray.length; i++) {
+            evaTexts.add(texts.get(tempArray[i] * 2));
+            evaTexts.add(texts.get(tempArray[i] * 2 + 1));
+
+            evaSounds.add(sounds.get(tempArray[i] * 2));
+            evaSounds.add(sounds.get(tempArray[i] * 2 + 1));
+
+            evaImages.add(images.get(tempArray[i] * 2));
+            evaImages.add(images.get(tempArray[i] * 2 + 1));
+        }
 
     }
 
@@ -241,6 +343,14 @@ public class EvaluationGameView extends RelativeLayout {
                 mVvVideo.stopPlayback();
 
                 mFlVideo.setVisibility(View.GONE);
+
+        //游戏鼓励
+                mGameCongrationView.setCongrationBg(R.mipmap.eva_congration_object);
+
+                mGameCongrationView.setVisibility(VISIBLE);
+
+                SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_congration_into2stage);
+                mGameCongrationView.startAnimation(5);
 
 
 
@@ -294,7 +404,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
 
-                    Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToFood();
+                    Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimhamMoveToFood();
 
                     objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
                         @Override
@@ -676,6 +786,8 @@ public class EvaluationGameView extends RelativeLayout {
         mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
         mIvVideo= (ImageView) findViewById(R.id.iv_video);
         mFlVideo= (FrameLayout) findViewById(R.id.fl_video);
+
+        mGameCongrationView= (GameCongrationView) findViewById(R.id.congration_view);
 
     }
 

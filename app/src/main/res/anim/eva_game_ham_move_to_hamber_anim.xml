@@ -9,8 +9,8 @@
     <translate
         android:fromXDelta="0"
         android:fromYDelta="0"
-        android:toXDelta="360%"
-        android:toYDelta="-60%"
+        android:toXDelta="220%"
+        android:toYDelta="-55%"
         >
         <!-- android:repeatCount="infinite" 无限重复 只能在子节点中单独设置-->
 

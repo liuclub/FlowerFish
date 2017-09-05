@@ -36,7 +36,9 @@
             android:name=".activity.MainActivity"
             android:screenOrientation="landscape">
 
+
         </activity>
+
         <activity
             android:name=".activity.MainLogo"
             android:screenOrientation="landscape">
