@@ -28,7 +28,7 @@ public class EvaFruitRotate extends LinearLayout {
 
     List<Integer> fruitsArrayImg;
 
-    int maxRotateTimes=7;
+    int maxRotateTimes=6;
     int currentRotateTimes=0;
 
     private Handler timeHandler;
@@ -83,12 +83,12 @@ public class EvaFruitRotate extends LinearLayout {
                 if(currentRotateTimes<maxRotateTimes){
 
 
-                        fruitsArrayIV.get(0).setImageResource(fruitsArrayImg.get((currentRotateTimes+0)%6));
-                        fruitsArrayIV.get(1).setImageResource(fruitsArrayImg.get((currentRotateTimes+1)%6));
-                        fruitsArrayIV.get(2).setImageResource(fruitsArrayImg.get((currentRotateTimes+2)%6));
-                        fruitsArrayIV.get(3).setImageResource(fruitsArrayImg.get((currentRotateTimes+3)%6));
-                        fruitsArrayIV.get(4).setImageResource(fruitsArrayImg.get((currentRotateTimes+4)%6));
-                        fruitsArrayIV.get(5).setImageResource(fruitsArrayImg.get((currentRotateTimes+5)%6));
+                        fruitsArrayIV.get(0).setImageResource(fruitsArrayImg.get((currentRotateTimes+1)%6));
+                        fruitsArrayIV.get(1).setImageResource(fruitsArrayImg.get((currentRotateTimes+2)%6));
+                        fruitsArrayIV.get(2).setImageResource(fruitsArrayImg.get((currentRotateTimes+3)%6));
+                        fruitsArrayIV.get(3).setImageResource(fruitsArrayImg.get((currentRotateTimes+4)%6));
+                        fruitsArrayIV.get(4).setImageResource(fruitsArrayImg.get((currentRotateTimes+5)%6));
+                        fruitsArrayIV.get(5).setImageResource(fruitsArrayImg.get((currentRotateTimes+0)%6));
 
 
 

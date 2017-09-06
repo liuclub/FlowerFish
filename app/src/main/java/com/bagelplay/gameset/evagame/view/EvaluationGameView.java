@@ -95,7 +95,7 @@ public class EvaluationGameView extends RelativeLayout {
 
     int currentGameIndex = 0;
 
-    int maxGameIndex = 2;
+    int maxGameIndex = 8;
 
     FllScreenVideoView mVvVideo;
 
