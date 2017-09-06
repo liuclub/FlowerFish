@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+       android:padding="@dimen/size_10"
+        android:layout_marginBottom="@dimen/size_30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fruit1"
+            style="@style/EvaFruitRotateIV"
+            android:src="@mipmap/eva_apple" />
+
+        <ImageView
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            android:id="@+id/fruit6"
+            style="@style/EvaFruitRotateIV"
+            android:src="@mipmap/eva_banana" />
+
+        <ImageView
+            android:id="@+id/fruit5"
+            style="@style/EvaFruitRotateIV"
+            android:src="@mipmap/eva_strawberry" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="@dimen/size_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fruit2"
+            style="@style/EvaFruitRotateIV"
+            android:src="@mipmap/eva_orange" />
+
+        <ImageView
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            android:id="@+id/fruit3"
+            style="@style/EvaFruitRotateIV"
+            android:src="@mipmap/eva_grape" />
+
+        <ImageView
+            android:id="@+id/fruit4"
+            style="@style/EvaFruitRotateIV"
+            android:src="@mipmap/eva_peach" />
+    </LinearLayout>
+
+</LinearLayout>

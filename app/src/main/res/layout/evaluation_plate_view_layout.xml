@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="@dimen/size_80"
+            android:layout_width="@dimen/size_230"
+            android:layout_height="@dimen/size_94"
+            android:src="@mipmap/eva_plate" />
+
+
+        <ImageView
+            android:id="@+id/iv_plate_fruit1"
+            android:layout_width="@dimen/size_75"
+            android:layout_height="@dimen/size_75"
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_30"
+            android:src="@mipmap/eva_apple" />
+
+        <ImageView
+            android:id="@+id/iv_plate_fruit2"
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_80"
+            android:layout_marginLeft="@dimen/size_70"
+            android:layout_marginTop="@dimen/size_30"
+            android:src="@mipmap/eva_banana" />
+
+        <ImageView
+            android:id="@+id/iv_plate_fruit3"
+            android:layout_width="@dimen/size_90"
+            android:layout_height="@dimen/size_90"
+            android:layout_marginLeft="@dimen/size_130"
+            android:layout_marginTop="@dimen/size_30"
+            android:src="@mipmap/eva_orange" />
+
+
+        <ImageView
+            android:id="@+id/iv_plate_fruit4"
+            android:layout_width="@dimen/size_120"
+            android:layout_height="@dimen/size_120"
+            android:layout_marginLeft="@dimen/size_70"
+            android:layout_marginTop="@dimen/size_50"
+            android:src="@mipmap/eva_grape" />
+
+
+    </FrameLayout>
+</RelativeLayout>

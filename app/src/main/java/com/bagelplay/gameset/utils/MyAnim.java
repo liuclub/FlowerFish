@@ -60,4 +60,12 @@ public class MyAnim {
     }
 
 
+    //水果移到盘子
+    public static Animation getAnimMoveToPlate(){
+
+        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_move_to_plate_anim);
+    }
+
+
+
 }

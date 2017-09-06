@@ -24,6 +24,7 @@ import com.bagelplay.gameset.evagame.utils.EvaUtils;
 import com.bagelplay.gameset.utils.MyAnim;
 import com.bagelplay.gameset.utils.RandNum;
 import com.bagelplay.gameset.utils.SoundUtil;
+import com.bagelplay.gameset.view.FinishGameView;
 import com.bagelplay.gameset.view.FllScreenVideoView;
 import com.bagelplay.gameset.view.GameCongrationView;
 import com.bagelplay.gameset.view.XLHRatingBar;
@@ -50,6 +51,8 @@ public class EvaluationGameView extends RelativeLayout {
     EvaObjectView mEvaObjectView;
     EvaHamburger mEvaHamburger;
 
+    EvaPlate mEvaPlate;
+
     EvaUtils mEvaUtils;
 
     WaveLineView mWaveLineView;
@@ -65,6 +68,8 @@ public class EvaluationGameView extends RelativeLayout {
 
     GameCongrationView mGameCongrationView;
 
+    FinishGameView mFinishGameView;
+
 
     static int soundComplateToEva = 1000;
 
@@ -75,20 +80,22 @@ public class EvaluationGameView extends RelativeLayout {
     //第一关
     int statge = 1;
 
+    int section = 1;
+
     //评测文字，语音，图片
     List<String> evaTexts;
     List<Integer> evaSounds, evaImages;
 
 
     //是否提示操作
-    boolean isFirst = false;
+    boolean isFirst = true;
 
     //是否开场
-    boolean isWelcome = false;
+    boolean isWelcome = true;
 
     int currentGameIndex = 0;
 
-    int maxGameIndex = 8;
+    int maxGameIndex = 2;
 
     FllScreenVideoView mVvVideo;
 
@@ -114,8 +121,6 @@ public class EvaluationGameView extends RelativeLayout {
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.evaluation_game_view_layout, this, true);
         initUI();
-
-        initDATA();
 
 
         mEvaUtils = EvaUtils.getInstance(mContext);
@@ -176,52 +181,109 @@ public class EvaluationGameView extends RelativeLayout {
 
                 //食物的英文第二关
                 if (currentGameIndex < maxGameIndex && currentGameIndex % 2 == 1) {
-                    Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToFood();
+
+                    if (section == 1) {
+                        Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToFood();
 
 
-                    objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-
-
-                            mEvaHamburger.setFruitVisibleByIndex(currentGameIndex / 2, evaImages.get(currentGameIndex));
-
-                            currentGameIndex++;
-
-
-                            if(currentGameIndex<maxGameIndex) {
-                                mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
-                            }else{
-
-
-                                mEvaObjectView.setObjectGone();
-                                Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
-
-
-                                playFinishVideo();
+                        objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
 
                             }
 
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
 
-                        }
 
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
+                                mEvaHamburger.setFruitVisibleByIndex(currentGameIndex / 2, evaImages.get(currentGameIndex));
 
-                        }
-                    });
+                                currentGameIndex++;
 
-                    mEvaObjectView.getFlashObject().startAnimation(objectAnimationMove);
+
+                                if (currentGameIndex < maxGameIndex) {
+                                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+                                } else {
+
+
+                                    mEvaObjectView.setObjectGone();
+                                    Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                    timeHandler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            playFinishVideo(R.raw.eva_ham_finish);
+                                        }
+                                    }, 1000);
+
+
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+
+                        mEvaObjectView.getFlashObject().startAnimation(objectAnimationMove);
+
+                    } else {//第二大关
+
+                        Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimMoveToPlate();
+
+                        objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+
+
+                                mEvaPlate.setFruitVisibleByIndex(currentGameIndex / 2, evaImages.get(currentGameIndex));
+
+                                currentGameIndex++;
+
+
+                                if (currentGameIndex < maxGameIndex) {
+                                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+                                } else {
+
+
+                                    mEvaObjectView.setObjectGone();
+                                    Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+
+
+                                    timeHandler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            playFinishVideo(R.raw.eva_salad_finish);
+                                        }
+                                    }, 1000);
+
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+
+                        mEvaObjectView.getFlashObject().startAnimation(objectAnimationMove);
+
+
+                    }
 
 
                 } else if (currentGameIndex < maxGameIndex) {  //中文第一关
                     currentGameIndex++;
-                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex-1));
+                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex - 1));
 
                 }
 
@@ -229,12 +291,49 @@ public class EvaluationGameView extends RelativeLayout {
             }
         });
 
+
+        //鼓励界面结束
         mGameCongrationView.setOnGameCongrationFinishListener(new GameCongrationView.GameCongrationFinishListener() {
             @Override
             public void gameConfigurationFinish() {
-                mGameCongrationView.setVisibility(GONE);
 
-                //第一关结束
+                section++;
+
+                if (section <= 2) {//第一关结束
+                    mGameCongrationView.setVisibility(GONE);
+                    //第一关结束
+
+
+                    mEvaHamburger.setVisibility(GONE);
+
+                    //isWelcome = true;
+
+                    currentGameIndex = 0;
+
+                    init();
+                } else {//第二关结束
+
+
+                    mFinishGameView.setPetalandBg(R.mipmap.flower1, R.mipmap.eva_game_bg);
+
+                    mFinishGameView.setVisibility(VISIBLE);
+
+                    SoundUtil.getInstance(mContext).startPlaySound(R.raw.win_petal);
+                    //  mSoundUtil.startPlaySound(R.raw.win_petal);
+                    mFinishGameView.startAnimation();
+
+                }
+
+
+            }
+        });
+
+
+        mFinishGameView.setOnTimeFinishListener(new FinishGameView.FinishTimeLinstener() {
+            @Override
+            public void timeFinish() {
+                //花瓣结束，此处应该有自定义接口
+
             }
         });
 
@@ -244,11 +343,8 @@ public class EvaluationGameView extends RelativeLayout {
 
     }
 
-    void initNextStage(){
-        initNextStageDATA();
-    }
 
-    private void initNextStageDATA(){
+    private void initNextStageDATA() {
 
         List<String> texts = new ArrayList<>();
         texts.add("苹果");
@@ -332,9 +428,7 @@ public class EvaluationGameView extends RelativeLayout {
 
     }
 
-    private void playFinishVideo() {
-
-
+    private void playFinishVideo(int url) {
 
 
         mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -344,14 +438,19 @@ public class EvaluationGameView extends RelativeLayout {
 
                 mFlVideo.setVisibility(View.GONE);
 
-        //游戏鼓励
+                //游戏鼓励
                 mGameCongrationView.setCongrationBg(R.mipmap.eva_congration_object);
 
                 mGameCongrationView.setVisibility(VISIBLE);
 
-                SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_congration_into2stage);
-                mGameCongrationView.startAnimation(5);
+                if (section == 1) {
+                    SoundUtil.getInstance(mContext).startPlaySound(R.raw.eva_congration_into2stage);
+                } else {
+                    SoundUtil.getInstance(mContext).startPlaySound(R.raw.congration);
+                }
 
+
+                mGameCongrationView.startAnimation(5);
 
 
             }
@@ -366,7 +465,7 @@ public class EvaluationGameView extends RelativeLayout {
 
         // mVvVideo.setVideoPath("http://112.126.81.84/video/video_book.mp4");
 
-        mVvVideo.setVideoURI(Uri.parse("android.resource://" + mContext.getPackageName() + "/" + R.raw.eva_ham_finish));
+        mVvVideo.setVideoURI(Uri.parse("android.resource://" + mContext.getPackageName() + "/" + url));
 
 
         mVvVideo.start();
@@ -381,81 +480,130 @@ public class EvaluationGameView extends RelativeLayout {
 
                 mIvVideo.setVisibility(View.GONE);
             }
-        },1000);
-
-
-
+        }, 1000);
 
 
     }
 
 
     private void init() {
-        //显示开场动画
-        if (isWelcome) {
 
-            mEvaObjectView.getObjectHamNull().setVisibility(VISIBLE);
+        //第一部分游戏
+        if (section == 1) {
+            //显示开场动画
 
-
-            SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_xiaohaoqi_like_ham, new SoundUtil.MediaPlayListener() {
-                @Override
-                public void onPlayerCompletion() {
+            initDATA();
+            if (isWelcome) {
 
 
+                mEvaObjectView.getObjectHamNull().setVisibility(VISIBLE);
 
 
-                    Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimhamMoveToFood();
+                SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_xiaohaoqi_like_ham, new SoundUtil.MediaPlayListener() {
+                    @Override
+                    public void onPlayerCompletion() {
 
-                    objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
 
+                        Animation objectAnimationMove = MyAnim.getInstance(mContext).getAnimhamMoveToFood();
+
+                        objectAnimationMove.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+
+                                mEvaObjectView.getObjectHamNull().setVisibility(GONE);
+
+                                mEvaHamburger.setVisibility(VISIBLE);
+
+
+                                SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_only_meat_no_vegetable, new SoundUtil.MediaPlayListener() {
+                                    @Override
+                                    public void onPlayerCompletion() {
+
+                                        mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+
+
+                                    }
+
+                                });
+
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+
+                        mEvaObjectView.getObjectHamNull().startAnimation(objectAnimationMove);
+
+
+                    }
+                });
+
+
+                Animation objectAnimationFlash = MyAnim.getInstance(mContext).getFlashThreeTimes();
+
+                mEvaObjectView.getObjectHamNull().startAnimation(objectAnimationFlash);
+
+
+            } else {
+                mEvaHamburger.setVisibility(VISIBLE);
+
+                mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+
+            }
+
+
+        } else {  //第二部分游戏
+
+            initNextStageDATA();
+            if (isWelcome) {
+
+
+                mEvaObjectView.getObjectFruteRotate().setVisibility(VISIBLE);
+                SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_xiaohaoqi_want_salad, new SoundUtil.MediaPlayListener() {
+                            @Override
+                            public void onPlayerCompletion() {
+                                mEvaObjectView.getObjectFruteRotate().startRotate();
+
+
+                                timeHandler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+
+
+                                        mEvaObjectView.getObjectFruteRotate().setVisibility(GONE);
+
+                                        mEvaPlate.setVisibility(VISIBLE);
+
+                                        mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
+
+
+                                    }
+                                },7000);
+                            }
                         }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-
-                            mEvaObjectView.getObjectHamNull().setVisibility(GONE);
-
-                            mEvaHamburger.setVisibility(VISIBLE);
+                );
 
 
-                            SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_only_meat_no_vegetable, new SoundUtil.MediaPlayListener() {
-                                @Override
-                                public void onPlayerCompletion() {
-
-                                    mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
 
-                                }
 
-                            });
+            } else {
+                mEvaPlate.setVisibility(VISIBLE);
 
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-
-                    mEvaObjectView.getObjectHamNull().startAnimation(objectAnimationMove);
+                mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
 
-                }
-            });
+            }
 
-
-            Animation objectAnimationFlash = MyAnim.getInstance(mContext).getFlashThreeTimes();
-
-            mEvaObjectView.getObjectHamNull().startAnimation(objectAnimationFlash);
-
-
-        } else {
-            mEvaHamburger.setVisibility(VISIBLE);
-
-            mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
         }
 
@@ -784,10 +932,15 @@ public class EvaluationGameView extends RelativeLayout {
 
         mIvNext = (ImageView) findViewById(R.id.iv_next);
         mVvVideo = (FllScreenVideoView) findViewById(R.id.vv_video);
-        mIvVideo= (ImageView) findViewById(R.id.iv_video);
-        mFlVideo= (FrameLayout) findViewById(R.id.fl_video);
+        mIvVideo = (ImageView) findViewById(R.id.iv_video);
+        mFlVideo = (FrameLayout) findViewById(R.id.fl_video);
 
-        mGameCongrationView= (GameCongrationView) findViewById(R.id.congration_view);
+        mGameCongrationView = (GameCongrationView) findViewById(R.id.congration_view);
+
+        mEvaPlate = (EvaPlate) findViewById(R.id.eva_plate);
+
+        mFinishGameView = (FinishGameView) findViewById(R.id.fgv_view);
+
 
     }
 

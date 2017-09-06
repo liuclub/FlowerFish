@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:background="@mipmap/eva_game_bg">
 
+    <com.bagelplay.gameset.evagame.view.EvaPlate
+        android:id="@+id/eva_plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/size_80"
+        android:layout_marginTop="@dimen/size_120"
+        android:visibility="gone">
+
+    </com.bagelplay.gameset.evagame.view.EvaPlate>
+
 
     <com.bagelplay.gameset.evagame.view.EvaHamburger
         android:id="@+id/eva_hamburger"
@@ -38,7 +49,6 @@
             android:layout_height="@dimen/size_160"
             android:layout_gravity="bottom|center_horizontal"
             android:background="#50000000"
-
             android:visibility="invisible">
 
         </com.jimmy.wavelibrary.WaveLineView>
@@ -97,14 +107,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_180"
-
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal"
-
-        android:visibility="gone"
-
-        >
+        android:visibility="gone">
 
         <ImageView
             android:layout_width="@dimen/size_130"
@@ -129,8 +135,7 @@
         <com.bagelplay.gameset.view.FllScreenVideoView
             android:id="@+id/vv_video"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             />
+            android:layout_height="match_parent" />
 
         <ImageView
             android:id="@+id/iv_video"
@@ -148,6 +153,15 @@
         android:visibility="gone">
 
     </com.bagelplay.gameset.view.GameCongrationView>
+    <!--奖励-->
+    <com.bagelplay.gameset.view.FinishGameView
+        android:id="@+id/fgv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+
+    </com.bagelplay.gameset.view.FinishGameView>
 
 
 </RelativeLayout>

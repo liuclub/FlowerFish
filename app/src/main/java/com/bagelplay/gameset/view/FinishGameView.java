@@ -89,6 +89,16 @@ public class FinishGameView extends RelativeLayout {
     }
 
 
+    public  void setPetalandBg(int petalImg,int gameBgImg){
+
+        mIvPetal.setImageResource(petalImg);
+        mRlParent.setBackgroundDrawable(getResources().getDrawable(gameBgImg));
+
+
+
+    }
+
+
     private void resetPetal() {
 
         mIvPetal.setVisibility(GONE);

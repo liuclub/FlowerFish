@@ -32,6 +32,8 @@ public class EvaObjectView extends FrameLayout {
     Animation textAnimation;
     private int TIME = 1000;
 
+    EvaFruitRotate mEvaFruitRotate;
+
 
 
 
@@ -149,13 +151,18 @@ public class EvaObjectView extends FrameLayout {
     }
 
 
+    public EvaFruitRotate getObjectFruteRotate(){
+
+        return mEvaFruitRotate;
+    }
+
 
 
     private void initUI() {
         mTvEvaText= (TextView) findViewById(R.id.tv_eva_text);
         mIvEvaObject= (ImageView) findViewById(R.id.iv_eva_object);
         mIvEvaHamNull= (ImageView) findViewById(R.id.iv_eva_ham_null);
-
+        mEvaFruitRotate= (EvaFruitRotate) findViewById(R.id.eva_fruit_rotate);
     }
 
 

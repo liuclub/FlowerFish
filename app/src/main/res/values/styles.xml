@@ -199,6 +199,12 @@
 
     </style>
 
+    <style name="EvaFruitRotateIV">
+        <item name="android:layout_width">@dimen/EvaFruitRotateIVWidth</item>
+        <item name="android:layout_height">@dimen/EvaFruitRotateIVHeight</item>
+
+    </style>
+
 
 
 

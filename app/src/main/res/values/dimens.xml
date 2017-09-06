@@ -69,6 +69,10 @@
     <dimen name="GameProgressBarWidth">@dimen/size_8</dimen>
     <dimen name="GameProgressBarHeight">@dimen/size_40</dimen>
 
+    <dimen name="EvaFruitRotateIVWidth">@dimen/size_110</dimen>
+    <dimen name="EvaFruitRotateIVHeight">@dimen/size_110</dimen>
+
+
 
 
 
