@@ -3,10 +3,12 @@ package com.bagelplay.gameset.activity;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.evagame.view.EvaluationGameView;
@@ -23,6 +25,8 @@ public class EvaluationGameActivity extends AppCompatActivity {
 
     private GameProgressView mGameProgressView;
 
+    private boolean evaFinish=true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +34,16 @@ public class EvaluationGameActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_evaluation_game);
+
+        evaFinish=getIntent().getBooleanExtra("evaFinish",false);
+
+
+
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
         // mEvaView = (EvaluationView) findViewById(R.id.eva_view);
 
         mGameProgressView= (GameProgressView) findViewById(R.id.gp_view);
+
 
 
         // mGpV.setChooseNum(num);
@@ -46,7 +56,10 @@ public class EvaluationGameActivity extends AppCompatActivity {
             }
 
             @Override
-            public void startStage() {
+            public void startStage(int numStage) {
+
+                mGameProgressView.setProgressCount(numStage);
+
                 mGameProgressView.setVisibility(View.VISIBLE);
             }
 
@@ -64,13 +77,11 @@ public class EvaluationGameActivity extends AppCompatActivity {
             }
         });
 
-        mEvaGameView.init();
+        mEvaGameView.init(evaFinish);
 
 
 
     }
-
-
 
 
 

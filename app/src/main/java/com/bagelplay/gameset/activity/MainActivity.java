@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.utils.SoundUtil;
@@ -28,14 +29,22 @@ public class MainActivity extends AppCompatActivity {
     FllScreenVideoView mVvVideo;
 
     public static final int NUMGAME_REQUESTCODE = 1000;  //花瓣鱼
-    public static final int EVA_REQUESTCODE = 1000;  //语音评测
+    public static final int EVA_REQUESTCODE = 1001;  //语音评测
+    private boolean eva_finish=false;//评测是否完成过一遍
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == NUMGAME_REQUESTCODE && resultCode == RESULT_OK) {
 
             mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
+
         }else if(requestCode == EVA_REQUESTCODE && resultCode == RESULT_OK){
+
+
             mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
+            eva_finish=true;
+
+
         }
 
 
@@ -113,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (chooseid == 0) {
                     Intent intent = new Intent(MainActivity.this, EvaluationGameActivity.class);
+
+                    intent.putExtra("evaFinish",eva_finish);
+
+                    Log.d("test","传过去"+eva_finish);
 
                     startActivityForResult(intent, EVA_REQUESTCODE);
 

@@ -105,6 +105,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_choose_en_zh"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_180"
         android:layout_alignParentBottom="true"
@@ -113,12 +114,14 @@
         android:visibility="gone">
 
         <ImageView
+            android:id="@+id/iv_eva_zh"
             android:layout_width="@dimen/size_130"
             android:layout_height="@dimen/size_90"
             android:layout_marginRight="@dimen/size_220"
-            android:src="@mipmap/eva_ch" />
+            android:src="@mipmap/eva_zh" />
 
         <ImageView
+            android:id="@+id/iv_eva_en"
             android:layout_width="@dimen/size_130"
             android:layout_height="@dimen/size_90"
             android:src="@mipmap/eva_en" />

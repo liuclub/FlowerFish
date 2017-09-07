@@ -104,6 +104,43 @@ public class GameProgressView extends RelativeLayout {
     }
 
 
+    public void setProgressCount(int count){
+        MaxSize=count;
+
+
+
+        mRlBar.removeAllViews();
+
+
+        bar_w=getResources().getDimensionPixelSize(R.dimen.GameProgressBarWidth);
+        bar_h=getResources().getDimensionPixelSize(R.dimen.GameProgressBarHeight);
+        total_width=getResources().getDimensionPixelSize(R.dimen.GameProgressViewWidth);
+
+        marginLeft=(total_width-bar_w*MaxSize)/(MaxSize-1)+bar_w;
+
+        imageViews=new ArrayList<>();
+
+        for(int i=0;i<MaxSize;i++){
+            ImageView mBarIV=new ImageView(mContext);
+
+            mBarIV.setImageResource(R.mipmap.progress_not_active);
+
+            RelativeLayout.LayoutParams barIVParams = new RelativeLayout.LayoutParams(bar_w,bar_h);
+
+
+
+            barIVParams.leftMargin=i*marginLeft;
+
+
+            mBarIV.setLayoutParams(barIVParams);
+
+
+            imageViews.add(mBarIV);
+            mRlBar.addView(mBarIV);
+        }
+    }
+
+
    public void setChooseNum(int num){
         if(imageViews!=null){
             for(int i=0;i<MaxSize;i++){
