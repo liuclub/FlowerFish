@@ -54,6 +54,14 @@ public class EvaluationGameActivity extends AppCompatActivity {
             public void endStage() {
                 mGameProgressView.setVisibility(View.GONE);
             }
+
+            @Override
+            public void gameFinish() {
+
+
+                setResult(RESULT_OK);
+                finish();
+            }
         });
 
         mEvaGameView.init();

@@ -358,6 +358,10 @@ public class EvaluationGameView extends RelativeLayout {
             public void timeFinish() {
                 //花瓣结束，此处应该有自定义接口
 
+                if(mOnEvaStageStateListener!=null){
+                    mOnEvaStageStateListener.gameFinish();
+                }
+
             }
         });
 
@@ -988,6 +992,7 @@ public class EvaluationGameView extends RelativeLayout {
         void finishStageNum(int num);
         void startStage();
         void endStage();
+        void gameFinish();
     }
 
     public OnEvaStageStateListener mOnEvaStageStateListener;

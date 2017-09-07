@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     FllScreenVideoView mVvVideo;
 
-    public static final int NUMGAME_REQUESTCODE = 1000;
-
+    public static final int NUMGAME_REQUESTCODE = 1000;  //花瓣鱼
+    public static final int EVA_REQUESTCODE = 1000;  //语音评测
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == NUMGAME_REQUESTCODE && resultCode == RESULT_OK) {
 
+            mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
+        }else if(requestCode == EVA_REQUESTCODE && resultCode == RESULT_OK){
             mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
         }
 
@@ -112,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (chooseid == 0) {
                     Intent intent = new Intent(MainActivity.this, EvaluationGameActivity.class);
 
-                    startActivity(intent);
+                    startActivityForResult(intent, EVA_REQUESTCODE);
+
+
                 }
 
 
