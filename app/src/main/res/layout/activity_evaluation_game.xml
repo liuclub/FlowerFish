@@ -18,8 +18,9 @@
         android:id="@+id/gp_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:max_size="8"
-        android:visibility="gone">
+        app:max_size="16"
+        android:visibility="gone"
+        >
 
     </com.bagelplay.gameset.view.GameProgressView>
 

@@ -97,6 +97,9 @@ public class EvaluationGameView extends RelativeLayout {
 
     int maxGameIndex = 8;
 
+    //到第几关
+    int currentStage=0;
+
     FllScreenVideoView mVvVideo;
 
     public void setButtonClickable(boolean buttonClickable) {
@@ -173,6 +176,10 @@ public class EvaluationGameView extends RelativeLayout {
                     return;
 
 
+
+
+
+
                 mRatingbarParentFl.setVisibility(GONE);
 
                 mWaveLineView.setVisibility(INVISIBLE);
@@ -194,7 +201,11 @@ public class EvaluationGameView extends RelativeLayout {
 
                             @Override
                             public void onAnimationEnd(Animation animation) {
+                                if(mOnEvaStageStateListener!=null){
+                                    mOnEvaStageStateListener.finishStageNum(currentStage);
+                                }
 
+                                currentStage++;
 
                                 mEvaHamburger.setFruitVisibleByIndex(currentGameIndex / 2, evaImages.get(currentGameIndex));
 
@@ -204,6 +215,7 @@ public class EvaluationGameView extends RelativeLayout {
                                 if (currentGameIndex < maxGameIndex) {
                                     mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
                                 } else {
+
 
 
                                     mEvaObjectView.setObjectGone();
@@ -247,6 +259,12 @@ public class EvaluationGameView extends RelativeLayout {
 
                                 currentGameIndex++;
 
+                                if(mOnEvaStageStateListener!=null){
+                                    mOnEvaStageStateListener.finishStageNum(currentStage);
+                                }
+
+                                currentStage++;
+
 
                                 if (currentGameIndex < maxGameIndex) {
                                     mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
@@ -285,6 +303,12 @@ public class EvaluationGameView extends RelativeLayout {
                     currentGameIndex++;
                     mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex - 1));
 
+
+                    if(mOnEvaStageStateListener!=null){
+                        mOnEvaStageStateListener.finishStageNum(currentStage);
+                    }
+
+                    currentStage++;
                 }
 
 
@@ -338,7 +362,7 @@ public class EvaluationGameView extends RelativeLayout {
         });
 
 
-        init();
+        //init();
 
 
     }
@@ -429,7 +453,9 @@ public class EvaluationGameView extends RelativeLayout {
     }
 
     private void playFinishVideo(int url) {
-
+        if(mOnEvaStageStateListener!=null){
+            mOnEvaStageStateListener.endStage();
+        }
 
         mVvVideo.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -486,7 +512,7 @@ public class EvaluationGameView extends RelativeLayout {
     }
 
 
-    private void init() {
+    public void init() {
 
         //第一部分游戏
         if (section == 1) {
@@ -518,7 +544,9 @@ public class EvaluationGameView extends RelativeLayout {
                                 mEvaObjectView.getObjectHamNull().setVisibility(GONE);
 
                                 mEvaHamburger.setVisibility(VISIBLE);
-
+                                if(mOnEvaStageStateListener!=null){
+                                    mOnEvaStageStateListener.startStage();
+                                }
 
                                 SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_only_meat_no_vegetable, new SoundUtil.MediaPlayListener() {
                                     @Override
@@ -555,6 +583,8 @@ public class EvaluationGameView extends RelativeLayout {
             } else {
                 mEvaHamburger.setVisibility(VISIBLE);
 
+
+
                 mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
             }
@@ -582,6 +612,10 @@ public class EvaluationGameView extends RelativeLayout {
                                         mEvaObjectView.getObjectFruteRotate().setVisibility(GONE);
 
                                         mEvaPlate.setVisibility(VISIBLE);
+
+                                        if(mOnEvaStageStateListener!=null){
+                                            mOnEvaStageStateListener.startStage();
+                                        }
 
                                         mEvaObjectView.changeObject(evaTexts.get(currentGameIndex), evaImages.get(currentGameIndex));
 
@@ -947,4 +981,19 @@ public class EvaluationGameView extends RelativeLayout {
     public EvaluationGameView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+
+
+    public  interface  OnEvaStageStateListener{
+        void finishStageNum(int num);
+        void startStage();
+        void endStage();
+    }
+
+    public OnEvaStageStateListener mOnEvaStageStateListener;
+
+    public void  setOnEvaStageStateListener(OnEvaStageStateListener mOnEvaStageStateListener){
+        this.mOnEvaStageStateListener=mOnEvaStageStateListener;
+    }
+
 }
