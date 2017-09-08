@@ -230,7 +230,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
                                         mEvaObjectView.setObjectGone();
-                                        Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                      //  Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
                                         timeHandler.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
@@ -282,7 +282,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
                                         mEvaObjectView.setObjectGone();
-                                        Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                      //  Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
 
 
                                         timeHandler.postDelayed(new Runnable() {
@@ -339,7 +339,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
                                         mEvaObjectView.setObjectGone();
-                                        Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
                                         timeHandler.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
@@ -392,7 +392,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
                                         mEvaObjectView.setObjectGone();
-                                        Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
 
 
                                         timeHandler.postDelayed(new Runnable() {
@@ -460,7 +460,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
                                         mEvaObjectView.setObjectGone();
-                                        Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
                                         timeHandler.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
@@ -513,7 +513,7 @@ public class EvaluationGameView extends RelativeLayout {
 
 
                                         mEvaObjectView.setObjectGone();
-                                        Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(mContext, "结束啦", Toast.LENGTH_SHORT).show();
 
 
                                         timeHandler.postDelayed(new Runnable() {
@@ -582,13 +582,26 @@ public class EvaluationGameView extends RelativeLayout {
                 } else {//第二关结束
 
 
-                    mFinishGameView.setPetalandBg(R.mipmap.flower1, R.mipmap.eva_game_bg);
+                    if(!evaFinish){
+                        mFinishGameView.setPetalandBg(R.mipmap.flower1, R.mipmap.eva_game_bg);
 
-                    mFinishGameView.setVisibility(VISIBLE);
+                        mFinishGameView.setVisibility(VISIBLE);
 
-                    SoundUtil.getInstance(mContext).startPlaySound(R.raw.win_petal);
-                    //  mSoundUtil.startPlaySound(R.raw.win_petal);
-                    mFinishGameView.startAnimation();
+
+
+                        SoundUtil.getInstance(mContext).startPlaySound(R.raw.win_petal);
+                        //  mSoundUtil.startPlaySound(R.raw.win_petal);
+                        mFinishGameView.startAnimation();
+                    }else{
+
+
+
+                        if(mOnEvaStageStateListener!=null){
+                            mOnEvaStageStateListener.gameFinish();
+                        }
+                    }
+
+
 
                 }
 

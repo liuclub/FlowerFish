@@ -55,6 +55,8 @@ public class EvaUtils {
 
     private static EvaUtils mEvaUtils=null;
 
+    private static boolean showMessage=false;
+
 
     public static EvaUtils getInstance(Context context){
       if (mEvaUtils==null){
@@ -123,6 +125,9 @@ public class EvaUtils {
             // mIseStartButton.setEnabled(true);
             if (error != null) {
                 showTip("error:" + error.getErrorCode() + "," + error.getErrorDescription());
+
+                Toast.makeText(mContext,"error:" + error.getErrorCode() + "," + error.getErrorDescription(),Toast.LENGTH_SHORT).show();
+
 //                mResultEditText.setText("");
 //                mResultEditText.setHint("请点击“开始评测”按钮");
                 if(mEvaListener!=null) {
@@ -177,9 +182,11 @@ public class EvaUtils {
 
 
     private void showTip(String str) {
-        if (!TextUtils.isEmpty(str)) {
-            mToast.setText(str);
-            mToast.show();
+        if(showMessage) {
+            if (!TextUtils.isEmpty(str)) {
+                mToast.setText(str);
+                mToast.show();
+            }
         }
     }
 
@@ -216,7 +223,7 @@ public class EvaUtils {
 
 
         //设置后数据从其 writeAudio(byte[] buffer,int offset,int length)方法来
-        //mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
+       // mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         // 注：AUDIO_FORMAT参数语记需要更新版本才能生效

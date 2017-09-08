@@ -14,9 +14,9 @@
         android:id="@+id/fv_flower"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        >
-     </com.bagelplay.gameset.view.FlowerView>
+        android:layout_gravity="center">
+
+    </com.bagelplay.gameset.view.FlowerView>
 
     <!--视频-->
     <com.bagelplay.gameset.view.FllScreenVideoView
@@ -26,7 +26,6 @@
         android:visibility="gone"
 
         />
-
 
 
 </FrameLayout>

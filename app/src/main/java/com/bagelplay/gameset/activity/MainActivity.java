@@ -31,12 +31,14 @@ public class MainActivity extends AppCompatActivity {
     public static final int NUMGAME_REQUESTCODE = 1000;  //花瓣鱼
     public static final int EVA_REQUESTCODE = 1001;  //语音评测
     private boolean eva_finish=false;//评测是否完成过一遍
+    private boolean num_finish=false;//花瓣鱼是否完成过一遍
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == NUMGAME_REQUESTCODE && resultCode == RESULT_OK) {
 
             mFvFlower.setFlowerStagePass(mFvFlower.CURRENT_SATGE);
+            num_finish=true;
 
         }else if(requestCode == EVA_REQUESTCODE && resultCode == RESULT_OK){
 
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, NumGameActivity.class);
 
+                    intent.putExtra("numFinish",num_finish);
 
                     startActivityForResult(intent, NUMGAME_REQUESTCODE);
 
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
                     intent.putExtra("evaFinish",eva_finish);
 
-                    Log.d("test","传过去"+eva_finish);
+
 
                     startActivityForResult(intent, EVA_REQUESTCODE);
 

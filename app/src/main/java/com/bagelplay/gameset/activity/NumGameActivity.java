@@ -38,6 +38,9 @@ public class NumGameActivity extends AppCompatActivity {
     private Handler timeHandler;
 
     GameProgressView mGpV;
+
+
+    private boolean numFinish;//是否第一次玩
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,8 @@ public class NumGameActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_num_game);
+
+        numFinish=getIntent().getBooleanExtra("numFinish",false);
 
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
 
@@ -163,11 +168,21 @@ public class NumGameActivity extends AppCompatActivity {
             public void numGameConfigurationFinish() {
                 if (numGameCurrentStage == 3) {
 
-                    mNgcView.setVisibility(View.GONE);
-                    mFgvView.setVisibility(View.VISIBLE);
-                    SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.win_petal);
-                    //  mSoundUtil.startPlaySound(R.raw.win_petal);
-                    mFgvView.startAnimation();
+                    if(!numFinish){
+                        mNgcView.setVisibility(View.GONE);
+                        mFgvView.setVisibility(View.VISIBLE);
+
+
+
+                        SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.win_petal);
+                        //  mSoundUtil.startPlaySound(R.raw.win_petal);
+                        mFgvView.startAnimation();
+                    }else{
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+
+
 
 
                 } else {
