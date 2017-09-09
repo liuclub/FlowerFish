@@ -673,7 +673,7 @@ public class EvaluationGameView extends RelativeLayout {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-
+                        SoundUtil.getInstance(mContext).stopPlaySound();
                         chooseZh = true;
                         mLlChooseEnZh.setVisibility(GONE);
                         if (section == 1) {
@@ -734,6 +734,7 @@ public class EvaluationGameView extends RelativeLayout {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
+                        SoundUtil.getInstance(mContext).stopPlaySound();
                         chooseZh = false;
                         mLlChooseEnZh.setVisibility(GONE);
                         if (section == 1) {
@@ -785,7 +786,7 @@ public class EvaluationGameView extends RelativeLayout {
         mIvLanguageNext.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SoundUtil.getInstance(mContext).stopPlaySound();
                 mIvLanguageNext.setVisibility(GONE);
                 mLlChooseEnZh.setVisibility(GONE);
 

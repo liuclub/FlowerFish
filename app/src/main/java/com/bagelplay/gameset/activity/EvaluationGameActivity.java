@@ -1,5 +1,6 @@
 package com.bagelplay.gameset.activity;
 
+import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.evagame.view.EvaluationGameView;
 
+import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.gameset.view.GameProgressView;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
@@ -27,6 +29,8 @@ public class EvaluationGameActivity extends AppCompatActivity {
 
     private boolean evaFinish=true;
 
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +38,7 @@ public class EvaluationGameActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_evaluation_game);
-
+        mContext=EvaluationGameActivity.this;
         evaFinish=getIntent().getBooleanExtra("evaFinish",false);
 
 
@@ -72,6 +76,8 @@ public class EvaluationGameActivity extends AppCompatActivity {
             public void gameFinish() {
 
 
+
+
                 setResult(RESULT_OK);
                 finish();
             }
@@ -82,7 +88,6 @@ public class EvaluationGameActivity extends AppCompatActivity {
 
 
     }
-
 
 
 
@@ -122,6 +127,8 @@ public class EvaluationGameActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
 
         super.onDestroy();
+
+        SoundUtil.getInstance(mContext).stopPlaySound();
 
         SDKCocosManager.getInstance().removeWindowCallBack(this);
     }

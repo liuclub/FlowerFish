@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int NUMGAME_REQUESTCODE = 1000;  //花瓣鱼
     public static final int EVA_REQUESTCODE = 1001;  //语音评测
-    private boolean eva_finish=true;//评测是否完成过一遍
+    private boolean eva_finish=false;//评测是否完成过一遍
     private boolean num_finish=false;//花瓣鱼是否完成过一遍
 
     @Override
