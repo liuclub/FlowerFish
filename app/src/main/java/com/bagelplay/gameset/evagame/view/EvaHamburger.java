@@ -50,7 +50,7 @@ public class EvaHamburger extends LinearLayout {
 
     }
 
-    private void initFruit(){
+    public void initFruit(){
         if(fruitsArrayIV!=null){
             for (int i = 0; i < fruitsArrayIV.size(); i++) {
                 fruitsArrayIV.get(i).setVisibility(INVISIBLE);

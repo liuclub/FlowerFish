@@ -51,7 +51,7 @@ public class EvaPlate extends RelativeLayout {
 
     }
 
-    private void initFruit(){
+    public void initFruit(){
         if(fruitsArrayIV!=null){
             for (int i = 0; i < fruitsArrayIV.size(); i++) {
                 fruitsArrayIV.get(i).setVisibility(INVISIBLE);
