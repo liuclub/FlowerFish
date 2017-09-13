@@ -177,6 +177,7 @@ public class NumGameActivity extends AppCompatActivity {
                         SoundUtil.getInstance(NumGameActivity.this).startPlaySound(R.raw.win_petal);
                         //  mSoundUtil.startPlaySound(R.raw.win_petal);
                         mFgvView.startAnimation();
+
                     }else{
                         setResult(RESULT_OK);
                         finish();
@@ -208,6 +209,7 @@ public class NumGameActivity extends AppCompatActivity {
         mFgvView.setOnTimeFinishListener(new FinishGameView.FinishTimeLinstener() {
             @Override
             public void timeFinish() {
+
                 setResult(RESULT_OK);
                 finish();
 

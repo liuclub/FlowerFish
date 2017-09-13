@@ -22,14 +22,14 @@ import java.util.List;
  */
 
 public class EvaFruitRotate extends LinearLayout {
-    ImageView mIvFruit1, mIvFruit2, mIvFruit3, mIvFruit4,mIvFruit5,mIvFruit6;
+    ImageView mIvFruit1, mIvFruit2, mIvFruit3, mIvFruit4, mIvFruit5, mIvFruit6;
 
     List<ImageView> fruitsArrayIV;
 
     List<Integer> fruitsArrayImg;
 
-    int maxRotateTimes=6;
-    int currentRotateTimes=0;
+    int maxRotateTimes = 6;
+    int currentRotateTimes = 0;
 
     private Handler timeHandler;
 
@@ -41,7 +41,7 @@ public class EvaFruitRotate extends LinearLayout {
 
     public EvaFruitRotate(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.mContext=context;
+        this.mContext = context;
         LayoutInflater.from(context).inflate(R.layout.evaluation_fruit_rotate_view_layout, this, true);
         timeHandler = new Handler();
         initUI();
@@ -63,7 +63,7 @@ public class EvaFruitRotate extends LinearLayout {
         fruitsArrayIV.add(mIvFruit4);
         fruitsArrayIV.add(mIvFruit5);
         fruitsArrayIV.add(mIvFruit6);
-        fruitsArrayImg=new ArrayList<>();
+        fruitsArrayImg = new ArrayList<>();
         fruitsArrayImg.add(R.mipmap.eva_apple);
         fruitsArrayImg.add(R.mipmap.eva_orange);
         fruitsArrayImg.add(R.mipmap.eva_grape);
@@ -72,38 +72,34 @@ public class EvaFruitRotate extends LinearLayout {
         fruitsArrayImg.add(R.mipmap.eva_banana);
 
 
-
-
-
         //initFruit();
 
 
     }
 
-    public void startRotate(){
+    public void startRotate() {
         timeHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(currentRotateTimes<maxRotateTimes){
+                if (currentRotateTimes < maxRotateTimes) {
 
 
-                        fruitsArrayIV.get(0).setImageResource(fruitsArrayImg.get((currentRotateTimes+1)%6));
-                        fruitsArrayIV.get(1).setImageResource(fruitsArrayImg.get((currentRotateTimes+2)%6));
-                        fruitsArrayIV.get(2).setImageResource(fruitsArrayImg.get((currentRotateTimes+3)%6));
-                        fruitsArrayIV.get(3).setImageResource(fruitsArrayImg.get((currentRotateTimes+4)%6));
-                        fruitsArrayIV.get(4).setImageResource(fruitsArrayImg.get((currentRotateTimes+5)%6));
-                        fruitsArrayIV.get(5).setImageResource(fruitsArrayImg.get((currentRotateTimes+0)%6));
-
+                    fruitsArrayIV.get(0).setImageResource(fruitsArrayImg.get((currentRotateTimes + 1) % 6));
+                    fruitsArrayIV.get(1).setImageResource(fruitsArrayImg.get((currentRotateTimes + 2) % 6));
+                    fruitsArrayIV.get(2).setImageResource(fruitsArrayImg.get((currentRotateTimes + 3) % 6));
+                    fruitsArrayIV.get(3).setImageResource(fruitsArrayImg.get((currentRotateTimes + 4) % 6));
+                    fruitsArrayIV.get(4).setImageResource(fruitsArrayImg.get((currentRotateTimes + 5) % 6));
+                    fruitsArrayIV.get(5).setImageResource(fruitsArrayImg.get((currentRotateTimes + 0) % 6));
 
 
                     currentRotateTimes++;
 
                     startRotate();
 
-                }else{
+                } else {
                     Animation objectAnimationFlash = MyAnim.getInstance(mContext).getFlashThreeTimes();
 
-                    if(fruitsArrayIV!=null){
+                    if (fruitsArrayIV != null) {
                         for (int i = 0; i < fruitsArrayIV.size(); i++) {
                             fruitsArrayIV.get(i).startAnimation(objectAnimationFlash);
                         }
@@ -113,11 +109,11 @@ public class EvaFruitRotate extends LinearLayout {
 
 
             }
-        },500);
+        }, 500);
 
     }
 
-    private void initFruit(){
+    private void initFruit() {
 
     }
 

@@ -107,7 +107,7 @@ public class FlowerView extends RelativeLayout {
                 // TODO Auto-generated method stub
 
 
-                if (arg1.getAction() == KeyEvent.ACTION_DOWN) {
+                if (arg1.getAction() == KeyEvent.ACTION_UP) {
 
 
                     for (int i = 0; i < mFlowerBitmaps.length; i++) {
