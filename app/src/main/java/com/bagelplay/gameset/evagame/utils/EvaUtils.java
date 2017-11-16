@@ -19,6 +19,7 @@ import com.iflytek.cloud.EvaluatorResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechEvaluator;
+import com.lidroid.xutils.util.LogUtils;
 
 import static android.content.ContentValues.TAG;
 
@@ -53,14 +54,14 @@ public class EvaUtils {
     String evaText;
 
 
-    private static EvaUtils mEvaUtils=null;
+    private static EvaUtils mEvaUtils = null;
 
-    private static boolean showMessage=false;
+    private static boolean showMessage = false;
 
 
-    public static EvaUtils getInstance(Context context){
-      if (mEvaUtils==null){
-          mEvaUtils=new EvaUtils(context);
+    public static EvaUtils getInstance(Context context) {
+        if (mEvaUtils == null) {
+            mEvaUtils = new EvaUtils(context);
         }
 
         return mEvaUtils;
@@ -104,17 +105,18 @@ public class EvaUtils {
                     if (null != result1) {
                         // mResultEditText.setText(result1.toString());
 
-                        if(mEvaListener!=null){
-                            mEvaListener.onResult((int)(result1.total_score+0.5));
+                        if (mEvaListener != null) {
 
-                            mEvaListener=null;
+                            mEvaListener.onResult((int) (result1.total_score + 0.5));
+
+                            com.bagelplay.gameset.utils.LogUtils.lb("(int)(result1.total_score+0.5) = \r\n" + (int) (result1.total_score + 0.5));
+                            mEvaListener = null;
                         }
 
                     } else {
                         showTip("解析结果为空");
                     }
                 }
-
 
 
             }
@@ -124,13 +126,15 @@ public class EvaUtils {
         public void onError(SpeechError error) {
             // mIseStartButton.setEnabled(true);
             if (error != null) {
-                showTip("error:" + error.getErrorCode() + "," + error.getErrorDescription());
+//                showTip("error:" + error.getErrorCode() + "," + error.getErrorDescription());
+                com.bagelplay.gameset.utils.LogUtils.lb("error:" + error.getErrorCode() + "," + error.getErrorDescription());
 
-                Toast.makeText(mContext,"error:" + error.getErrorCode() + "," + error.getErrorDescription(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "error:" + error.getErrorCode() + "," + error.getErrorDescription(), Toast.LENGTH_SHORT).show();
 
 //                mResultEditText.setText("");
 //                mResultEditText.setHint("请点击“开始评测”按钮");
-                if(mEvaListener!=null) {
+                com.bagelplay.gameset.utils.LogUtils.lb("error = "+error);
+                if (mEvaListener != null) {
                     mEvaListener.onError();
                 }
             } else {
@@ -142,7 +146,7 @@ public class EvaUtils {
         public void onBeginOfSpeech() {
             // 此回调表示：sdk内部录音机已经准备好了，用户可以开始语音输入
             Log.d(TAG, "evaluator begin");
-            if(mEvaListener!=null) {
+            if (mEvaListener != null) {
                 mEvaListener.onBeginOfSpeech();
             }
 
@@ -164,7 +168,7 @@ public class EvaUtils {
             //mWaveLineView.setVolume(volume*3);
 
 
-            if(mEvaListener!=null){
+            if (mEvaListener != null) {
                 mEvaListener.onVolumeChanged(volume);
             }
         }
@@ -182,7 +186,7 @@ public class EvaUtils {
 
 
     private void showTip(String str) {
-        if(showMessage) {
+        if (showMessage) {
             if (!TextUtils.isEmpty(str)) {
                 mToast.setText(str);
                 mToast.show();
@@ -209,7 +213,7 @@ public class EvaUtils {
         result_level = "complete";
         String vad_bos = "5000";
         String vad_eos = "1800";
-        String speech_timeout = "10000";
+        String speech_timeout = "4000";
 
         mIse.setParameter(SpeechConstant.LANGUAGE, language);
         mIse.setParameter(SpeechConstant.ISE_CATEGORY, category);
@@ -222,8 +226,9 @@ public class EvaUtils {
         mIse.setParameter(SpeechConstant.RESULT_LEVEL, result_level);
 
 
+
         //设置后数据从其 writeAudio(byte[] buffer,int offset,int length)方法来
-        mIse.setParameter(SpeechConstant.AUDIO_SOURCE,"-1");
+        mIse.setParameter(SpeechConstant.AUDIO_SOURCE, "-1");
 
         // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
         // 注：AUDIO_FORMAT参数语记需要更新版本才能生效
@@ -246,7 +251,7 @@ public class EvaUtils {
 
         if ("en_us".equals(language)) {
             if ("read_word".equals(category)) {
-                evaText = "[word]"+text;
+                evaText = "[word]" + text;
             } else if ("read_sentence".equals(category)) {
                 evaText = mContext.getString(R.string.text_en_sentence);
             }
@@ -280,11 +285,11 @@ public class EvaUtils {
         }
     }
 
-    public void cancelEva(){
+    public void cancelEva() {
         mIse.cancel();
     }
 
-    public void destroyEva(){
+    public void destroyEva() {
         if (null != mIse) {
             mIse.destroy();
             mIse = null;
@@ -292,8 +297,7 @@ public class EvaUtils {
     }
 
 
-
-    public void startEvaWithListener(EvaListener mEvaListener,boolean isChineseEva,String myEvatext) {
+    public void startEvaWithListener(EvaListener mEvaListener, boolean isChineseEva, String myEvatext) {
 
 
         if (mIse == null) {
@@ -301,13 +305,13 @@ public class EvaUtils {
         }
 
 
-         setOnEvaListener(mEvaListener);
+        setOnEvaListener(mEvaListener);
 
-      if(isChineseEva) {
-          setChinese(myEvatext);
-      }else{
-          setEnglish(myEvatext);
-      }
+        if (isChineseEva) {
+            setChinese(myEvatext);
+        } else {
+            setEnglish(myEvatext);
+        }
 
         // mWaveLineView.setVisibility(View.VISIBLE);
 
@@ -328,10 +332,7 @@ public class EvaUtils {
                     @Override
                     public void OnVoice(byte[] data, int arg1) {
 
-
                         boolean flag = mIse.writeAudio(data, 0, data.length);
-
-
                         // Log.d(TAG,flag+data.toString()+" "+offset+" "+data.length);
                     }
                 });
@@ -340,7 +341,8 @@ public class EvaUtils {
     }
 
     public void evaPlay() {
-        SoundUtil.getInstance(mContext).startPlaySoundFromSD(Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/ise.wav");
+        SoundUtil.getInstance(mContext).startPlaySoundFromSD(
+                Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/ise.wav");
 
     }
 
@@ -358,11 +360,11 @@ public class EvaUtils {
 
     private EvaListener mEvaListener;
 
-    public void setOnEvaListener(EvaListener mEvaListener){
-        this.mEvaListener=mEvaListener;
+    public void setOnEvaListener(EvaListener mEvaListener) {
+        this.mEvaListener = mEvaListener;
     }
 
-    public interface EvaListener{
+    public interface EvaListener {
 
         void onVolumeChanged(int volume);
 

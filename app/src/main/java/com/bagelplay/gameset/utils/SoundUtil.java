@@ -44,24 +44,16 @@ public class SoundUtil {
 //    }
 
     public void startPlaySound(int path) {
-
-
         if (isPlayComplete) {
-
             music_play(path);
-
         } else {
-
             stopPlaySound();
-
             music_play(path);
-
         }
-
     }
 
 
-    public void startPlaySoundWithListener(int path,MediaPlayListener mMediaPlayListener) {
+    public void startPlaySoundWithListener(int path, MediaPlayListener mMediaPlayListener) {
         setOnMediaPlayListener(mMediaPlayListener);
 
         if (isPlayComplete) {
@@ -93,7 +85,7 @@ public class SoundUtil {
 
     }
 
-    public  void music_play_sd(String path) {
+    public void music_play_sd(String path) {
 
         player = new MediaPlayer();
 
@@ -116,15 +108,11 @@ public class SoundUtil {
 
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             player.release();
-            player=null;
+            player = null;
         }
     }
-
-
-
 
 
     public void music_play_withl_istener(int path) {
@@ -138,7 +126,7 @@ public class SoundUtil {
 
                 player.release();
                 isPlayComplete = true;
-                if(mMediaPlayListener!=null){
+                if (mMediaPlayListener != null) {
                     mMediaPlayListener.onPlayerCompletion();
 
                 }
@@ -154,10 +142,9 @@ public class SoundUtil {
 
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             player.release();
-            player=null;
+            player = null;
         }
     }
 
@@ -175,7 +162,6 @@ public class SoundUtil {
                 isPlayComplete = true;
 
 
-
             }
         });
 
@@ -186,10 +172,9 @@ public class SoundUtil {
 
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             player.release();
-            player=null;
+            player = null;
         }
     }
 
@@ -206,12 +191,13 @@ public class SoundUtil {
 
 
     private MediaPlayListener mMediaPlayListener;
-    public void setOnMediaPlayListener(MediaPlayListener mMediaPlayListener){
-       // mMediaPlayListener=null;
-        this.mMediaPlayListener=mMediaPlayListener;
+
+    public void setOnMediaPlayListener(MediaPlayListener mMediaPlayListener) {
+        // mMediaPlayListener=null;
+        this.mMediaPlayListener = mMediaPlayListener;
     }
 
-    public interface MediaPlayListener{
-       void onPlayerCompletion();
+    public interface MediaPlayListener {
+        void onPlayerCompletion();
     }
 }

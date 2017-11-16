@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bagelplay.gameset.R;
@@ -73,14 +74,67 @@ public class XLHRatingBar extends LinearLayout {
     private void initView() {
         removeAllViews();
         for (int i = 0; i < countNum; i++) {
+//            CheckBox cb = new CheckBox(getContext());
+            ImageView imageView = new ImageView(getContext());
+            LayoutParams layoutParams;
+            if (widthAndHeight == 0) {
+                layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            } else {
+                layoutParams = new LayoutParams((int) widthAndHeight, (int) widthAndHeight);
+            }
+            if (differentSize && countNum % 2 != 0) {
+                Log.e("xxx", layoutParams.width + "");
+                int index = i;
+                if (index > countNum / 2) {
+                    index = countNum - 1 - index;
+                }
+                float scale = (index + 1) / (float) (countNum / 2 + 1);
+                layoutParams.width = (int) (layoutParams.width * scale);
+                layoutParams.height = layoutParams.width;
+            }
+            layoutParams.gravity = Gravity.CENTER_VERTICAL;
+            if (i != 0 && i != countNum - 1) {
+                layoutParams.leftMargin = (int) dividerWidth;
+                layoutParams.rightMargin = (int) dividerWidth;
+            } else if (i == 0) {
+                layoutParams.rightMargin = (int) dividerWidth;
+            } else if (i == countNum - 1) {
+                layoutParams.leftMargin = (int) dividerWidth;
+            }
+
+            imageView.setBackgroundResource(stateResId);
+            if (i + 1 <= countSelected) {
+//                cb.setChecked(true);
+                imageView.setImageResource(R.mipmap.star_goal);
+            } else {
+                imageView.setImageResource(R.mipmap.star_gray);
+            }
+
+            addView(imageView, layoutParams);
+//            cb.setButtonDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+//            if (stateResId == -1) {
+//                stateResId = R.drawable.comment_ratingbar_selector;
+//            }
+//            cb.setEnabled(canEdit);
+//            cb.setOnClickListener(new MyClickListener(i));
+        }
+
+        if (mOnRatingChangeListener != null) {
+            mOnRatingChangeListener.onChange(countSelected);
+        }
+
+    }
+
+
+    private void initView2() {
+        removeAllViews();
+        for (int i = 0; i < countNum; i++) {
             CheckBox cb = new CheckBox(getContext());
             LayoutParams layoutParams;
             if (widthAndHeight == 0) {
-                layoutParams = new LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             } else {
-                layoutParams = new LayoutParams(
-                        (int) widthAndHeight, (int) widthAndHeight);
+                layoutParams = new LayoutParams((int) widthAndHeight, (int) widthAndHeight);
             }
             if (differentSize && countNum % 2 != 0) {
                 Log.e("xxx", layoutParams.width + "");
@@ -103,8 +157,8 @@ public class XLHRatingBar extends LinearLayout {
             }
             addView(cb, layoutParams);
             cb.setButtonDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-            if(stateResId==-1){
-                stateResId=R.drawable.comment_ratingbar_selector;
+            if (stateResId == -1) {
+                stateResId = R.drawable.comment_ratingbar_selector;
             }
             cb.setBackgroundResource(stateResId);
             if (i + 1 <= countSelected) {
@@ -112,6 +166,10 @@ public class XLHRatingBar extends LinearLayout {
             }
             cb.setEnabled(canEdit);
             cb.setOnClickListener(new MyClickListener(i));
+        }
+
+        if (mOnRatingChangeListener != null) {
+            mOnRatingChangeListener.onChange(countSelected);
         }
 
     }
@@ -156,9 +214,9 @@ public class XLHRatingBar extends LinearLayout {
 
     public interface OnRatingChangeListener {
         /**
-         *
          * @param countSelected 星星选中的个数
          */
         void onChange(int countSelected);
+
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/eva_object_bg"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             android:id="@+id/eva_object_bg"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
 
     <RelativeLayout
@@ -17,7 +17,7 @@
             android:layout_width="@dimen/size_456"
             android:layout_height="@dimen/size_400"
             android:layout_centerInParent="true"
-            android:src="@mipmap/rect_bg" />
+            android:src="@mipmap/rect_bg"/>
 
         <TextView
             android:id="@+id/tv_eva_text"
@@ -29,7 +29,7 @@
             android:text="西红柿"
             android:textColor="#C00000"
             android:textSize="@dimen/size_50"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/iv_eva_object"
@@ -39,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/size_65"
             android:src="@mipmap/eva_tomato"
-            android:visibility="gone" />
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <ImageView
@@ -48,17 +48,16 @@
         android:layout_height="@dimen/size_270"
         android:layout_gravity="center"
         android:src="@mipmap/eva_ham_null"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <com.bagelplay.gameset.evagame.view.EvaFruitRotate
         android:id="@+id/eva_fruit_rotate"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:visibility="gone">
 
     </com.bagelplay.gameset.evagame.view.EvaFruitRotate>
-
 
 
 </FrameLayout>

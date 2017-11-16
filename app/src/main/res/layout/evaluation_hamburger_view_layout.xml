@@ -65,5 +65,7 @@
         android:layout_width="@dimen/size_200"
         android:layout_height="@dimen/size_55"
         android:src="@mipmap/eva_ham_bread_down" />
+
+    <!--android:src="@mipmap/eva_ham_bread_down"-->
 </LinearLayout>
 

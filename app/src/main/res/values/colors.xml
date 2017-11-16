@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!--<color name="orange_start">#ffe661</color>-->
+    <!--<color name="orange_end">#f79d11</color>-->
+    <color name="orange_start">#ffff99</color>
+    <color name="orange_end">#ff6600</color>
+    <color name="skip_bg">#d9ffffff</color>
+
 </resources>

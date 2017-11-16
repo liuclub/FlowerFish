@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,8 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowExitTransition" tools:ignore="NewApi">@transition/explode</item>
+        <item name="android:windowEnterAnimation" tools:ignore="NewApi">@transition/explode</item>
+        <item name="android:windowReenterTransition" tools:ignore="NewApi">@transition/explode</item>
+    </style>
 
-
+    <style name="AppStartLoadTranslucent" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="FlowerImageView">
@@ -187,11 +193,13 @@
     </style>
 
     <style name="GameProgressView">
-        <item name="android:layout_width">@dimen/GameProgressViewWidth</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/GameProgressViewHeight</item>
+        <item name="android:background">@drawable/progress_bg</item>
         <item name="android:layout_centerHorizontal">true</item>
 
     </style>
+    <!--<item name="android:layout_width">@dimen/GameProgressViewWidth</item>-->
 
     <style name="GameProgressBar">
         <item name="android:layout_width">@dimen/GameProgressBarWidth</item>
@@ -206,6 +214,19 @@
     </style>
 
 
+    <style name="AppTheme2" parent="Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@style/fade</item>
+    </style>
 
+    <!--activity切换动画-->
+    <style name="fade" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
+    </style>
 
 </resources>

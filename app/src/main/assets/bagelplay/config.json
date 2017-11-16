@@ -3,7 +3,7 @@
 	"gameHandler_remoteControl":true,
 	"gun_control":false,
 	"openTouchDebug":false,
-	"youmeng":false,
+	"youmeng":true,
 	"mouse":[
 			{
 				"id":501,

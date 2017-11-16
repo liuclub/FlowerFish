@@ -1401,4 +1401,29 @@
     <dimen name="size_1399">2098.5px</dimen>
     <dimen name="size_1400">2100px</dimen>
 
+    <dimen name="dimen_10">20px</dimen>
+    <dimen name="dimen_20">40px</dimen>
+    <dimen name="dimen_30">60px</dimen>
+    <dimen name="dimen_40">80px</dimen>
+    <dimen name="dimen_66">100px</dimen>
+    <dimen name="dimen_80">120px</dimen>
+    <dimen name="dimen_100">200px</dimen>
+    <dimen name="dimen_150">300px</dimen>
+    <dimen name="dimen_180">360px</dimen>
+    <dimen name="dimen_244">488px</dimen>
+    <dimen name="dimen_248">496px</dimen>
+
+
+
+    <!--<dimen name="language_width">420px</dimen>-->
+    <!--<dimen name="language_height">288px</dimen>-->
+
+
+    <!--<dimen name="hamburger_width">1066px</dimen>-->
+    <!--<dimen name="hamburger_height">540px</dimen>-->
+
+    <!--<dimen name="salad_width">894px</dimen>-->
+    <!--<dimen name="salad_height">732px</dimen>-->
+
+    <dimen name="language_margin_left">150px</dimen>
 </resources>

@@ -46,8 +46,6 @@ public class EvaHamburger extends LinearLayout {
         fruitsArrayIV.add(mIvHamFruit4);
 
         initFruit();
-
-
     }
 
     public void initFruit(){

@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">FlowerFish</string>
+    <string name="app_name">Picnic Basket</string>
+    <string name="skip">跳过</string>
+    <string name="game_introduction_play_failed">游戏介绍视频播放失败</string>
     <!-- 请替换成在语音云官网申请的appid -->
     <string name="app_id">56af03c6</string>
     <!-- 语音评测 -->
@@ -30,4 +32,80 @@
         <item>plain</item>
         <item>complete</item>
     </string-array>
+
+    <string-array name="fruits_list_cn">
+        <item>苹果</item>
+        <item>香蕉</item>
+        <item>哈密瓜</item>
+        <item>樱桃</item>
+        <item>椰子</item>
+        <item>红枣</item>
+        <item>火龙果</item>
+        <item>葡萄</item>
+        <item>白兰瓜</item>
+        <item>猕猴桃</item>
+        <item>柠檬</item>
+        <item>芒果</item>
+        <item>橘子</item>
+        <item>桃子</item>
+        <item>鸭梨</item>
+        <item>柿子</item>
+        <item>菠萝</item>
+        <item>草莓</item>
+        <item>西瓜</item>
+    </string-array>
+    <string-array name="fruits_list_en">
+        <item>apple</item>
+        <item>banana</item>
+        <item>cantaloupe</item>
+        <item>cherry</item>
+        <item>coconuts</item>
+        <item>dates</item>
+        <item>dragon fruit</item>
+        <item>grapes</item>
+        <item>honeydew</item>
+        <item>kiwi</item>
+        <item>lemon</item>
+        <item>mango</item>
+        <item>orange</item>
+        <item>peach</item>
+        <item>pear</item>
+        <item>persimmons</item>
+        <item>pineapple</item>
+        <item>strawberry</item>
+        <item>watermelon</item>
+    </string-array>
+
+    <string-array name="vegetables_list_cn">
+        <item>西兰花</item>
+        <item>胡萝卜</item>
+        <item>芹菜</item>
+        <item>玉米</item>
+        <item>黄瓜</item>
+        <item>茄子</item>
+        <item>大蒜</item>
+        <item>青豆</item>
+        <item>生菜</item>
+        <item>洋葱</item>
+        <item>柿子椒</item>
+        <item>土豆</item>
+        <item>西红柿</item>
+    </string-array>
+
+    <string-array name="vegetables_list_en">
+        <item>broccoli</item>
+        <item>carrot</item>
+        <item>celery</item>
+        <item>corn</item>
+        <item>cucumber</item>
+        <item>eggplant</item>
+        <item>garlic</item>
+        <item>green peas</item>
+        <item>lettuce</item>
+        <item>onion</item>
+        <item>bell pepper</item>
+        <item>potato</item>
+        <item>tomato</item>
+    </string-array>
+
 </resources>

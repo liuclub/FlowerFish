@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:lxhRatingBar="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/eva_game_bg">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/dimen_20"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="center"
+            android:src="@drawable/grade"
+            />
+
+        <TextView
+            android:id="@+id/eva_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:gravity="center_horizontal"
+            android:text="5200 积分"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <com.bagelplay.gameset.evagame.view.EvaPlate
+        android:id="@+id/eva_plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/size_80"
+        android:layout_marginTop="@dimen/size_120"
+        android:visibility="gone">
+
+    </com.bagelplay.gameset.evagame.view.EvaPlate>
+
+
+    <!--<com.bagelplay.gameset.evagame.view.EvaHamburger-->
+    <!--android:id="@+id/eva_hamburger"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="@dimen/size_80"-->
+    <!--android:layout_marginTop="@dimen/size_120"-->
+    <!--android:visibility="gone">-->
+
+    <!--</com.bagelplay.gameset.evagame.view.EvaHamburger>-->
+
+    <com.bagelplay.gameset.evagame.view.EvaHamburger2
+        android:id="@+id/eva_hamburger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/size_200"
+        android:layout_marginRight="@dimen/size_20"
+        android:visibility="gone">
+
+    </com.bagelplay.gameset.evagame.view.EvaHamburger2>
+
+    <com.bagelplay.gameset.evagame.view.EvaObjectView
+        android:id="@+id/eva_object"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+
+    </com.bagelplay.gameset.evagame.view.EvaObjectView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+
+        <com.jimmy.wavelibrary.WaveLineView
+            android:id="@+id/wave_line_view"
+            android:layout_width="@dimen/size_650"
+            android:layout_height="@dimen/size_80"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/size_80"
+            android:background="#66000000"
+            android:visibility="invisible">
+
+        </com.jimmy.wavelibrary.WaveLineView>
+
+        <ImageView
+            android:id="@+id/iv_xiaohaoqi"
+            android:layout_width="@dimen/size_250"
+            android:layout_height="@dimen/size_400"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="@dimen/size_60"
+            android:layout_marginLeft="@dimen/size_150"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/xiaohaoqi"/>
+        <!--android:layout_height="@dimen/size_310"-->
+        <!--android:layout_width="@dimen/size_150"-->
+
+        <!--android:layout_margin="@dimen/size_80"-->
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="@dimen/size_175"
+            android:layout_height="@dimen/size_100"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/size_35"
+            android:layout_marginRight="@dimen/size_105"
+            android:src="@mipmap/eva_next"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/iv_language_next"
+            android:layout_width="@dimen/size_175"
+            android:layout_height="@dimen/size_100"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/size_35"
+            android:layout_marginRight="@dimen/size_105"
+            android:visibility="gone"/>
+
+
+        <FrameLayout
+            android:id="@+id/rating_bar_parent_fl"
+            android:layout_width="@dimen/size_650"
+            android:layout_height="@dimen/size_120"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/size_60"
+            android:visibility="gone">
+
+            <com.bagelplay.gameset.view.XLHRatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                lxhRatingBar:canEdit="false"
+                lxhRatingBar:countSelected="2"
+                lxhRatingBar:dividerWidth="@dimen/size_10"
+                lxhRatingBar:starCount="5"
+                lxhRatingBar:stateResId="@drawable/comment_ratingbar_selector"
+                lxhRatingBar:widthAndHeight="@dimen/size_100"/>
+
+            <LinearLayout
+                android:id="@+id/rating_bar_above_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+
+                ></LinearLayout>
+
+        </FrameLayout>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_choose_en_zh"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_180"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_eva_zh"
+            android:layout_width="@dimen/size_130"
+            android:layout_height="@dimen/size_90"
+            android:layout_marginRight="@dimen/size_220"
+            android:src="@mipmap/eva_zh"/>
+
+        <ImageView
+            android:id="@+id/iv_eva_en"
+            android:layout_width="@dimen/size_130"
+            android:layout_height="@dimen/size_90"
+            android:src="@mipmap/eva_en"/>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fl_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <!--视频-->
+        <com.bagelplay.gameset.view.FllScreenVideoView
+            android:id="@+id/vv_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/iv_video"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/eva_game_bg"/>
+
+    </FrameLayout>
+
+    <!--鼓励-->
+    <com.bagelplay.gameset.view.GameCongrationView
+        android:id="@+id/congration_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </com.bagelplay.gameset.view.GameCongrationView>
+    <!--奖励-->
+    <com.bagelplay.gameset.view.FinishGameView
+        android:id="@+id/fgv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+
+    </com.bagelplay.gameset.view.FinishGameView>
+
+
+</RelativeLayout>

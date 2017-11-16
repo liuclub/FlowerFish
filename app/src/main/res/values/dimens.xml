@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="dimen_2">2dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
 
     <dimen name="FlowerImangeViewWidth">@dimen/size_500</dimen>
     <dimen name="FlowerImangeViewHeight">@dimen/size_500</dimen>
@@ -48,8 +53,6 @@
     <dimen name="FinishGameAnimManMarginLeft">@dimen/size_300</dimen>
 
 
-
-
     <dimen name="FinishGameAnimPetalWidth">@dimen/size_90</dimen>
     <dimen name="FinishGameAnimPetalHeight">@dimen/size_100</dimen>
     <dimen name="FinishGameAnimPetalMarginLeft">@dimen/size_1</dimen>
@@ -66,15 +69,13 @@
     <dimen name="GameProgressViewWidth">@dimen/size_770</dimen>
     <dimen name="GameProgressViewHeight">@dimen/size_70</dimen>
 
-    <dimen name="GameProgressBarWidth">@dimen/size_8</dimen>
-    <dimen name="GameProgressBarHeight">@dimen/size_40</dimen>
+    <!--<dimen name="GameProgressBarWidth">@dimen/size_8</dimen>-->
+    <!--<dimen name="GameProgressBarHeight">@dimen/size_40</dimen>-->
+    <dimen name="GameProgressBarWidth">@dimen/size_100</dimen>
+    <dimen name="GameProgressBarHeight">@dimen/size_100</dimen>
 
     <dimen name="EvaFruitRotateIVWidth">@dimen/size_110</dimen>
     <dimen name="EvaFruitRotateIVHeight">@dimen/size_110</dimen>
-
-
-
-
 
 
     <dimen name="PauseBgWidth">163dp</dimen>
@@ -99,4 +100,42 @@
     <dimen name="RightWrongBtnHeight">100dp</dimen>
     <dimen name="RightWrongBtnMargin">40dp</dimen>
 
+
+
+
+    <!--<dimen name="dimen_10">13.2px</dimen>-->
+    <!--<dimen name="dimen_20">26px</dimen>-->
+    <dimen name="dimen_30">40px</dimen>
+    <dimen name="dimen_40">52px</dimen>
+    <dimen name="dimen_66">66px</dimen>
+    <dimen name="dimen_80">80px</dimen>
+    <dimen name="dimen_100">132px</dimen>
+    <dimen name="dimen_150">200px</dimen>
+    <dimen name="dimen_180">240px</dimen>
+    <dimen name="dimen_244">324px</dimen>
+    <dimen name="dimen_248">330px</dimen>
+    <dimen name="dimen_300">300px</dimen>
+    <dimen name="dimen_450">450px</dimen>
+
+
+    <!--<dimen name="language_width">187px</dimen>-->
+    <!--<dimen name="language_height">128px</dimen>-->
+
+
+    <dimen name="language_width">315px</dimen>
+    <dimen name="language_height">216px</dimen>
+
+    <!--<dimen name="hamburger_width">711px</dimen>-->
+    <!--<dimen name="hamburger_height">360px</dimen>-->
+
+    <!--<dimen name="salad_width">596px</dimen>-->
+    <!--<dimen name="salad_height">488px</dimen>-->
+
+    <dimen name="hamburger_width">474px</dimen>
+    <dimen name="hamburger_height">240px</dimen>
+
+    <dimen name="salad_width">496px</dimen>
+    <dimen name="salad_height">325px</dimen>
+
+    <dimen name="language_margin_left">100px</dimen>
 </resources>

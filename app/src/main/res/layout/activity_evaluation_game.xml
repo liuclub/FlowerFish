@@ -1,46 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:lxhRatingBar="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ae_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bagelplay.gameset.activity.EvaluationGameActivity">
+    android:background="@mipmap/eva_game_bg"
+    tools:context="com.bagelplay.gameset.activity.EvaluationGame2Activity">
+    <!--中间透明白色背景-->
+    <ImageView
+        android:id="@+id/ae_center"
+        android:layout_width="@dimen/size_456"
+        android:layout_height="@dimen/size_400"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/rect_bg"
+        android:visibility="invisible"
+        />
 
-    <com.bagelplay.gameset.evagame.view.EvaluationGameView
-        android:id="@+id/eva_game_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </com.bagelplay.gameset.evagame.view.EvaluationGameView>
-
-
-    <com.bagelplay.gameset.view.GameProgressView
-        android:id="@+id/gp_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:max_size="16"
+    <com.bagelplay.gameset.view.XLHRatingBar
+        android:id="@+id/ae_ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ae_center"
+        android:layout_alignRight="@id/ae_center"
+        android:layout_below="@id/ae_center"
+        android:layout_gravity="center"
         android:visibility="gone"
+        lxhRatingBar:canEdit="false"
+        lxhRatingBar:countSelected="2"
+        lxhRatingBar:dividerWidth="@dimen/size_5"
+        lxhRatingBar:starCount="5"
+        lxhRatingBar:stateResId="@drawable/comment_ratingbar_selector"
+        lxhRatingBar:widthAndHeight="@dimen/size_80"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ae_center"
+        android:layout_alignRight="@id/ae_center"
+        android:layout_below="@id/ae_center"
+        android:orientation="horizontal"
         >
 
-    </com.bagelplay.gameset.view.GameProgressView>
+        <com.jimmy.wavelibrary.WaveLineView
+            android:id="@+id/ae_waveview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_50"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="10dp"
+            android:background="#66000000"
+            android:visibility="invisible"/>
+    </LinearLayout>
 
-    <!--暂停按钮-->
-    <com.bagelplay.gameset.view.PauseButtonView
-        android:id="@+id/pause_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
+    <RelativeLayout
+        android:id="@+id/ae_food_container"
+        android:layout_width="@dimen/size_300"
+        android:layout_height="@dimen/size_200"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/size_200"
+        android:layout_marginRight="@dimen/size_50"
+        android:background="@mipmap/eva_plate"
         >
 
-    </com.bagelplay.gameset.view.PauseButtonView>
+    </RelativeLayout>
 
-    <!--停止暂停-->
-    <com.bagelplay.gameset.view.ReleaseButtonView
-        android:id="@+id/release_view"
+    <com.bagelplay.gameset.evagame.view.EvaObjectView
+        android:id="@+id/ae_object"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:visibility="gone">
 
-    </com.bagelplay.gameset.view.ReleaseButtonView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/size_200"
+            android:layout_marginRight="@dimen/size_200"
+            android:background="@drawable/progress_bg"
+            android:paddingLeft="@dimen/size_200"
+            android:paddingRight="@dimen/size_200">
 
-</FrameLayout>
+            <RelativeLayout
+                android:id="@+id/ae_progress_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                ></RelativeLayout>
+        </RelativeLayout>
+    </com.bagelplay.gameset.evagame.view.EvaObjectView>
+
+
+    <!--小好奇-->
+    <ImageView
+        android:id="@+id/ae_xiaohaoqi"
+        android:layout_width="@dimen/size_250"
+        android:layout_height="@dimen/size_400"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/size_60"
+        android:layout_marginLeft="@dimen/size_150"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/xiaohaoqi"/>
+    <!--顶部进度条-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/progress_bg"
+        >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.85"
+            android:background="@android:color/transparent"/>
+
+        <LinearLayout
+            android:id="@+id/ae_progress_container2_inner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="15.37"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="3.85"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+    <!--积分-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ae_grade_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="center"
+            android:src="@drawable/grade"
+            />
+
+        <TextView
+            android:id="@+id/ae_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="5200 积分"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!--暂停/播放-->
+    <ImageView
+        android:id="@+id/ae_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:src="@mipmap/pause_button"
+        />
+    <SurfaceView
+        android:id="@+id/eva_surfaceview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <com.bagelplay.gameset.view.GameCongrationView2
+        android:id="@+id/ae_celebrateview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/ae_full_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/ae_mouse_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/mouse1"
+        android:visibility="gone"
+        />
+</RelativeLayout>

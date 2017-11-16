@@ -10,9 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bagelplay.gameset.R;
-import com.bagelplay.gameset.utils.MyAnim;
-import com.iflytek.cloud.thirdparty.A;
-import com.iflytek.cloud.thirdparty.I;
+import com.bagelplay.gameset.utils.LocalAnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +95,7 @@ public class EvaFruitRotate extends LinearLayout {
                     startRotate();
 
                 } else {
-                    Animation objectAnimationFlash = MyAnim.getInstance(mContext).getFlashThreeTimes();
+                    Animation objectAnimationFlash = LocalAnimationUtils.getInstance(mContext).getFlashThreeTimes();
 
                     if (fruitsArrayIV != null) {
                         for (int i = 0; i < fruitsArrayIV.size(); i++) {
