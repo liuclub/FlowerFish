@@ -1,2 +1,3 @@
 include ':app', ':test', ':wavelibrary', 'library', ':biggiFiVMG_new_random'
 //include ':a_BFSDK_Server_new'
+include ':activityAnimationLib'

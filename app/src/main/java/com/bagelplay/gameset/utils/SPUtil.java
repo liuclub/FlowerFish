@@ -5,7 +5,7 @@ import java.io.Serializable;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.bagelplay.gameset.activity.MyApplication;
+import com.bagelplay.gameset.MyApplication;
 
 /**
  * 

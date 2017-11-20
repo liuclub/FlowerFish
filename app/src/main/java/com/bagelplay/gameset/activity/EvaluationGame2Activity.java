@@ -3,6 +3,7 @@ package com.bagelplay.gameset.activity;
 import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.PixelFormat;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -30,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.bagelplay.gameset.MyApplication;
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.evagame.doman.Food;
 import com.bagelplay.gameset.evagame.utils.DataUtil;
@@ -64,11 +67,9 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     public static final int soundComplateToEva = 0;
     private boolean chooseZh;
     private boolean isFirst;
-    private boolean buttonClickable;
 
     private RelativeLayout aeFoodContainer;
     private EvaObjectView aeObject;
-    //    private ImageView aeXiaohaoqi;
     private RelativeLayout aeProgressContainer;
     private TextView aeGrade;
     private ImageView aePause;
@@ -82,10 +83,9 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 
     private EvaUtils mEvaUtils;
 
-    private int maxSize;
     private boolean once = true;
-    private int fruitWidth, fruitHeight, fruitMarginLeft;
-    private int vegetableWidth, vegetableHeight, vegetableMarginBottom;
+    private int fruitHeight;
+    private int vegetableHeight;
     private final int DISTANCE = 50;
     //每一小关卡，用户尝试次数
     private int tryCount;
@@ -107,28 +107,23 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     private EvaUtils.EvaListener mEvaListener = new EvaUtils.EvaListener() {
         @Override
         public void onVolumeChanged(int volume) {
-//            LogUtils.lb("onVolumeChanged");
             ae_waveview.setVolume(volume * 5);
         }
 
         @Override
         public void onResult(final int grade) {
-//            LogUtils.lb("onResult");
             //grade取值范围是0/1/2/3/4/5
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
+            handler.post(() -> {
 
-                    if (grade > 0) {
-                        ae_waveview.setVisibility(View.GONE);
-                        aeProgressContainer.setVisibility(View.VISIBLE);
-                        mXLHRatingBar.setVisibility(View.VISIBLE);
-                        mXLHRatingBar.setCountSelected(grade);
-                    } else if (grade == 0) {
-                        //此处的处理方式同onError
-                        //应该自动播放语音
-                        tryAgain();
-                    }
+                if (grade > 0) {
+                    ae_waveview.setVisibility(View.GONE);
+                    aeProgressContainer.setVisibility(View.VISIBLE);
+                    mXLHRatingBar.setVisibility(View.VISIBLE);
+                    mXLHRatingBar.setCountSelected(grade);
+                } else if (grade == 0) {
+                    //此处的处理方式同onError
+                    //应该自动播放语音
+                    tryAgain();
                 }
             });
 
@@ -143,18 +138,14 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 
         @Override
         public void onBeginOfSpeech() {
-//            LogUtils.lb("onBeginOfSpeech");
 
             aeObject.setButtonClickable(false);
             aeObject.setDisableTouch(true);
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    mXLHRatingBar.setVisibility(View.GONE);
-                    aeProgressContainer.setVisibility(View.GONE);
-                    ae_waveview.setVisibility(View.VISIBLE);
-                    ae_waveview.startAnim();
-                }
+            handler.post(() -> {
+                mXLHRatingBar.setVisibility(View.GONE);
+                aeProgressContainer.setVisibility(View.GONE);
+                ae_waveview.setVisibility(View.VISIBLE);
+                ae_waveview.startAnim();
             });
         }
     };
@@ -163,37 +154,35 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
      * 提示用户再读一次/继续下一个食物
      */
     private void tryAgain() {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                mXLHRatingBar.setVisibility(View.GONE);
-                ae_waveview.setVisibility(View.GONE);
-                aeProgressContainer.setVisibility(View.GONE);
+        handler.post(() -> {
+            mXLHRatingBar.setVisibility(View.GONE);
+            ae_waveview.setVisibility(View.GONE);
+            aeProgressContainer.setVisibility(View.GONE);
 
-                //TODO 评分出现错误，怎么操作？
-                aeObject.setDisableTouch(true);
-                aeObject.setButtonClickable(false);
+            //TODO 评分出现错误，怎么操作？
+            aeObject.setDisableTouch(true);
+            aeObject.setButtonClickable(false);
 
-                tryCount++;
-                //TODO 在这里做如下动作
-                //提示用户发音:最多三次
-                if (tryCount < 4) {
-                    SoundUtil.getInstance(EvaluationGame2Activity.this).startPlaySoundWithListener(R.raw.try_again, new SoundUtil.MediaPlayListener() {
-                        @Override
-                        public void onPlayerCompletion() {
-                            startPlaySound();
-                        }
-                    });
-                } else {
-                    //超过三次后，跳过
-                    SoundUtil.getInstance(EvaluationGame2Activity.this).startPlaySoundWithListener(R.raw.try_another, new SoundUtil.MediaPlayListener() {
-                        @Override
-                        public void onPlayerCompletion() {
-                            tryCount = 0;
-                            next();
-                        }
-                    });
-                }
+            tryCount++;
+            //TODO 在这里做如下动作
+            //提示用户发音:最多三次
+            if (tryCount < 4) {
+                SoundUtil.getInstance(EvaluationGame2Activity.this).startPlaySoundWithListener(R.raw.try_again, new SoundUtil.MediaPlayListener() {
+                    @Override
+                    public void onPlayerCompletion() {
+                        startPlaySound();
+                    }
+                });
+            } else {
+                //超过三次后，跳过
+                SoundUtil.getInstance(EvaluationGame2Activity.this).startPlaySoundWithListener(R.raw.try_another, new SoundUtil.MediaPlayListener() {
+                    @Override
+                    public void onPlayerCompletion() {
+                        tryCount = 0;
+                        putFoodIntoContainer();
+                        next();
+                    }
+                });
             }
         });
     }
@@ -203,10 +192,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 //        LogUtils.lb("onCreate");
         super.onCreate(savedInstanceState);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-//        hideBottomUIMenu();
 
         setContentView(R.layout.activity_evaluation_game);
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
@@ -245,14 +230,10 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
             default:
                 break;
         }
-
-//        maxSize = mFoodList.size();
-        maxSize = 16;
     }
 
     @Override
     protected void onResume() {
-//        LogUtils.lb("onResume");
         super.onResume();
         SDKCocosManager.getInstance().onResume();
 
@@ -307,7 +288,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         int height = (int) (imageView.getHeight() * 1.0 * 12 / 28);
         fruitHeight = height;
         vegetableHeight = height;
-        vegetableMarginBottom = (int) (imageView.getHeight() * 1.0 * 4 / 7);
     }
 
     /**
@@ -327,7 +307,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         int containerHeight = (int) (height2 * 0.4);
         int containerWidth = (int) (parent2.getWidth() * 15.37d / 23.07);
         LinearLayout.LayoutParams containerParams = new LinearLayout.LayoutParams(containerWidth, containerHeight);
-//        containerParams.gravity = Gravity.CENTER;
         int marginTop = (int) ((height2 - containerHeight) * 1.0 / 2 * 4 / 5);
         containerParams.topMargin = marginTop;
         ae_progress_container2.setLayoutParams(containerParams);
@@ -344,16 +323,8 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         LinearLayout gradeContainer = findViewById(R.id.linearLayout);
         RelativeLayout.LayoutParams gradeContainerParams = new RelativeLayout.LayoutParams(height2, RelativeLayout.LayoutParams.WRAP_CONTENT);
         gradeContainerParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT | RelativeLayout.ALIGN_PARENT_TOP);
-//        gradeContainerParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         gradeContainerParams.setMargins(0, marginTop, (int) (pauseHeight * 0.8), 0);
         gradeContainer.setLayoutParams(gradeContainerParams);
-
-        //设置积分图片的宽高
-//        int gradeImageViewWidth = (int) (pauseHeight*1.5);
-//        int gradeImageViewHeight = (int) (gradeImageViewWidth * 58 *1.5/ 78);
-//        LinearLayout.LayoutParams gradeImageViewParams = new LinearLayout.LayoutParams(gradeImageViewWidth, gradeImageViewHeight);
-//        gradeImageViewParams.gravity = Gravity.CENTER_HORIZONTAL;
-//        gradeContainer.findViewById(R.id.ae_grade_iv).setLayoutParams(gradeImageViewParams);
 
         int marginLeft = (int) ((containerWidth - containerHeight * 16) * 1.0 / 17);
         ae_progress_container2.removeAllViews();
@@ -361,11 +332,7 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
             ImageView imageView = new ImageView(EvaluationGame2Activity.this);
             imageView.setImageResource(i < progress ? R.drawable.progress_done : R.drawable.progress_undo);
             LinearLayout parent = (LinearLayout) ae_progress_container2.getParent();
-            int parentHeight = parent.getHeight();
-//            int wid = (int) (parentHeight * 1.0 * 1 / 2);
-//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(wid, wid);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(containerHeight, containerHeight);
-//            params.setMargins(20, 0, 0, 20);
             if (i == 15) {
                 params.setMargins(marginLeft, 0, 0, marginLeft);
             } else {
@@ -380,12 +347,9 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     @Override
     public void showUI() {
         LogUtils.lb("showUI");
-        //更新进度条
-//        Integer progress = SPUtil.get("progress", 0);
         Integer progress = MyApplication.progress;
         ImageView child = (ImageView) ae_progress_container2.getChildAt(progress > 15 ? 15 : progress);
         child.setImageResource(R.drawable.progress_done);
-//        SPUtil.set("progress", ++progress);
         MyApplication.progress++;
 
         //增加积分
@@ -433,8 +397,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         mXLHRatingBar = (XLHRatingBar) root_view.findViewById(R.id.ae_ratingbar);
         ae_progress_container2 = (LinearLayout) root_view.findViewById(R.id.ae_progress_container2_inner);
         surfaceView = root_view.findViewById(R.id.eva_surfaceview);
-        surfaceView.setBackgroundColor(Color.TRANSPARENT);
-        surfaceView.setZOrderOnTop(true);
         ae_celebrateview = root_view.findViewById(R.id.ae_celebrateview);
         ae_full_screen = root_view.findViewById(R.id.ae_full_screen);
         ae_mouse_tip = root_view.findViewById(R.id.ae_mouse_tip);
@@ -454,20 +416,16 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         });
 
         //星星点击
-        mXLHRatingBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Animation animation = LocalAnimationUtils.getInstance(mContext).getAnimNormalToLittleLarge();
-                mXLHRatingBar.startAnimation(animation);
-                mEvaUtils.evaPlay();
-            }
+        mXLHRatingBar.setOnClickListener(v -> {
+            Animation animation = LocalAnimationUtils.getInstance(mContext).getAnimNormalToLittleLarge();
+            mXLHRatingBar.startAnimation(animation);
+            mEvaUtils.evaPlay();
         });
 
         mXLHRatingBar.setOnRatingChangeListener(this);
     }
 
     private void startPlaySound() {
-//        LogUtils.lb("startPlaySound");
         aeObject.setButtonClickable(false);
 
         //获取用户录音输入数据之前，Food不可移动
@@ -482,24 +440,20 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         Food food = mFoodList.get(currentGameIndex);
         SoundUtil.getInstance(mContext).startPlaySoundWithListener(
                 chooseZh ? food.getChineseSoundResId() : food.getEnglishSoundResId()
-                , new SoundUtil.MediaPlayListener() {
-                    @Override
-                    public void onPlayerCompletion() {
-                        ae_waveview.setVisibility(View.VISIBLE);
-                        if (isFirst) {
-                            MyApplication.isFirst = false;
-                            isFirst = false;
-//                            SPUtil.set("isFirst", isFirst);
-                            //小朋友跟我一起读吧
-                            SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_follow_me, new SoundUtil.MediaPlayListener() {
-                                @Override
-                                public void onPlayerCompletion() {
-                                    handler.postDelayed(evaRunnable, soundComplateToEva);
-                                }
-                            });
-                        } else {
-                            handler.postDelayed(evaRunnable, soundComplateToEva);
-                        }
+                , () -> {
+                    ae_waveview.setVisibility(View.VISIBLE);
+                    if (isFirst) {
+                        MyApplication.isFirst = false;
+                        isFirst = false;
+                        //小朋友跟我一起读吧
+                        SoundUtil.getInstance(mContext).startPlaySoundWithListener(R.raw.eva_follow_me, new SoundUtil.MediaPlayListener() {
+                            @Override
+                            public void onPlayerCompletion() {
+                                handler.postDelayed(evaRunnable, soundComplateToEva);
+                            }
+                        });
+                    } else {
+                        handler.postDelayed(evaRunnable, soundComplateToEva);
                     }
                 });
     }
@@ -508,7 +462,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
      * 开始评测语音
      */
     private void startEva() {
-//        LogUtils.lb("startEva");
         Food food = mFoodList.get(currentGameIndex);
         mEvaUtils.startEvaWithListener(mEvaListener, chooseZh, chooseZh ? food.getChineseName() : food.getEnglishName());
     }
@@ -699,7 +652,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
      * 继续游戏
      */
     private void next() {
-//        LogUtils.lb("next");
         //每次游戏最多添加四种水果/蔬菜
         if (currentGameIndex < 3) {
             ((RelativeLayout) (aeProgressContainer.getParent())).setVisibility(View.VISIBLE);
@@ -753,12 +705,15 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
                                 mediaPlayer.prepare();
                                 mediaPlayer.setOnPreparedListener(mp -> {
                                     mediaPlayer.start();
+                                    surfaceView.setVisibility(View.VISIBLE);
                                 });
                                 mediaPlayer.setOnCompletionListener(mp -> {
-                                    surfaceView.setZOrderOnTop(false);
                                     surfaceView.setVisibility(View.GONE);
                                     mp.stop();
                                     mp.release();
+                                    mp = null;
+                                    startActivity(new Intent(EvaluationGame2Activity.this, Main2Activity.class));
+                                    handler.postDelayed(() -> EvaluationGame2Activity.this.finish(), 1000);
                                 });
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -781,6 +736,8 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     private class MyCallBack implements SurfaceHolder.Callback {
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
+            surfaceView.setBackgroundColor(Color.TRANSPARENT);
+            holder.setFormat(PixelFormat.TRANSPARENT);
             mediaPlayer.setDisplay(holder);
         }
 
@@ -795,11 +752,12 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         }
     }
 
+    private int left;
+
     /**
      * 把食物放进盘子/碗里
      */
     private void putFoodIntoContainer() {
-//        LogUtils.lb("putFoodIntoContainer");
         //放置水果/蔬菜
         ImageView imageView = new ImageView(EvaluationGame2Activity.this);
         imageView.setImageResource(mFoodList.get(currentGameIndex).getImageResId());
@@ -809,40 +767,52 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
             if (currentGameIndex == 0) {
                 params.addRule(RelativeLayout.CENTER_VERTICAL);
             }
+            switch (currentGameIndex) {
+                case 0:
+                    params.setMargins(0, 0, 0, 0);
+                    break;
+
+                case 1:
+                    params.setMargins(DISTANCE, 0, 0, 0);
+                    break;
+
+                case 2:
+                    params.setMargins(0, DISTANCE, 0, 0);
+                    break;
+
+                case 3:
+                    params.setMargins(DISTANCE * 2, DISTANCE * 2, 0, 0);
+                    break;
+                default:
+                    break;
+            }
         } else {
             params = new RelativeLayout.LayoutParams(vegetableHeight, vegetableHeight);
-            if (currentGameIndex == 0) {
-                params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//            if (currentGameIndex == 0) {
+//                params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//            }
+            switch (currentGameIndex) {
+                case 0:
+                    int width = aeFoodContainer.getWidth();
+                    left = (width - 2 * vegetableHeight) / 2;
+                    params.setMargins(left, 0, 0, 0);
+                    break;
+                case 1:
+                    params.setMargins(vegetableHeight + left, 0, 0, 0);
+                    break;
+                case 2:
+                    params.setMargins(vegetableHeight + left, vegetableHeight, 0, 0);
+                    break;
+                case 3:
+                    params.setMargins(left, vegetableHeight, 0, 0);
+                    break;
+                default:
+                    break;
             }
-        }
-        switch (currentGameIndex) {
-            case 0:
-                params.setMargins(0, 0, 0, 0);
-                break;
-
-            case 1:
-                params.setMargins(DISTANCE, 0, 0, 0);
-                break;
-
-            case 2:
-                params.setMargins(0, DISTANCE, 0, 0);
-                break;
-
-            case 3:
-                params.setMargins(DISTANCE * 2, DISTANCE * 2, 0, 0);
-                break;
-            default:
-                break;
         }
         imageView.setLayoutParams(params);
         aeFoodContainer.addView(imageView);
     }
-
-    public void setButtonClickable(boolean buttonClickable) {
-//        LogUtils.lb("setButtonClickable");
-        this.buttonClickable = buttonClickable;
-    }
-
 
     public boolean dispatchKeyEvent(KeyEvent event) {
 //        LogUtils.lb("dispatchKeyEvent");
@@ -857,24 +827,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
             return true;
         return super.dispatchGenericMotionEvent(ev);
 
-    }
-
-
-    /**
-     * 隐藏虚拟按键，并且全屏
-     */
-    protected void hideBottomUIMenu() {
-//        LogUtils.lb("hideBottomUIMenu");
-        //隐藏虚拟按键，并且全屏
-        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
-            View v = this.getWindow().getDecorView();
-            v.setSystemUiVisibility(View.GONE);
-        } else if (Build.VERSION.SDK_INT >= 19) {
-            //for new api versions.
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN;
-            decorView.setSystemUiVisibility(uiOptions);
-        }
     }
 
     @Override

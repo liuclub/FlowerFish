@@ -6,14 +6,22 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowExitTransition" tools:ignore="NewApi">@transition/explode</item>
-        <item name="android:windowEnterAnimation" tools:ignore="NewApi">@transition/explode</item>
-        <item name="android:windowReenterTransition" tools:ignore="NewApi">@transition/explode</item>
+    </style>
+
+    <style name="AppcompatNoTitle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="AppStartLoadTranslucent" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="Test" parent="android:Theme.Light">
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="FlowerImageView">
@@ -221,6 +229,16 @@
         <item name="android:windowAnimationStyle">@style/fade</item>
     </style>
 
+    <style name="skip">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <!--<item name="android:layout_marginTop">10dp</item>-->
+    <!--<item name="android:layout_marginRight">10dp</item>-->
     <!--activity切换动画-->
     <style name="fade" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>

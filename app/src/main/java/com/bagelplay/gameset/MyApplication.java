@@ -1,15 +1,9 @@
-package com.bagelplay.gameset.activity;
+package com.bagelplay.gameset;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.bagelplay.gameset.R;
-import com.bagelplay.sdk.cocos.SDKCocosManager;
 import com.iflytek.cloud.SpeechUtility;
-
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by zhangtianjie on 2017/8/24.
