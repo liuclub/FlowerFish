@@ -299,7 +299,8 @@ public class Main2Activity extends Activity implements View.OnClickListener {
 //                surfaceHolder.setFormat(PixelFormat.TRANSLUCENT);
 //                surfaceHolder.setFormat(PixelFormat.TRANSPARENT);
                 try {
-                    mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.game_introduction));
+                    mediaPlayer.setDataSource(this,
+                            Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.game_introduction));
                     surfaceHolder.addCallback(new SurfaceHolder.Callback() {
                         @Override
                         public void surfaceCreated(SurfaceHolder holder) {

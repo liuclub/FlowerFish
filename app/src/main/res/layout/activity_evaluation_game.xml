@@ -208,13 +208,19 @@
         android:visibility="gone"
         />
 
-    <ImageView
-        android:id="@+id/ae_restart"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#a8ffffff"
-        android:scaleType="centerInside"
-        android:src="@mipmap/release_btn"
         android:visibility="gone"
-        />
+        >
+
+        <ImageView
+            android:id="@+id/ae_restart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:src="@mipmap/release_btn"
+            />
+    </LinearLayout>
 </RelativeLayout>

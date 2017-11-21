@@ -52,6 +52,11 @@
             android:screenOrientation="landscape">
         </activity>
         <activity
+            android:name=".activity.Main2ActivityBackup"
+            android:theme="@style/AppcompatNoTitle"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
             android:name=".activity.FragmentActivity"
             android:theme="@style/AppcompatNoTitle"
             android:screenOrientation="landscape">

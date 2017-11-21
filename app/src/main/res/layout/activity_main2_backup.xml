@@ -1,118 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ViewFlipper
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main2_rootview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/eva_game_bg"
-    android:orientation="vertical"
-    tools:context="com.bagelplay.gameset.activity.Main2Activity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:visibility="invisible"
-        ></LinearLayout>
-
+    android:layout_height="match_parent">
+    <!--android:background="@mipmap/eva_game_bg"-->
     <RelativeLayout
+        android:id="@+id/main2_videoview_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        >
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <SurfaceView
+            android:id="@+id/main2_surfaceview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="fitEnd"
-                android:src="@mipmap/xiaohaoqi"
-                />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.5"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/main2_hamburger"
-                        android:layout_width="@dimen/dimen_244"
-                        android:layout_height="@dimen/dimen_180"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/hamburge_plate_finish"/>
-
-                    <ImageView
-                        android:id="@+id/main2_salad"
-                        android:layout_width="@dimen/dimen_248"
-                        android:layout_height="@dimen/dimen_180"
-                        android:layout_marginLeft="@dimen/dimen_20"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/food_fruit_salad"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/language_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="@dimen/dimen_30"
-                    android:layout_marginTop="@dimen/dimen_40"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/dimen_100"
-                    android:visibility="gone"
-                    >
-
-                    <ImageButton
-                        android:id="@+id/language_en"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center_vertical"
-                        android:background="@mipmap/eva_zh"
-                        />
-
-                    <ImageButton
-                        android:id="@+id/language_zh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
-                        android:layout_marginLeft="@dimen/dimen_150"
-                        android:background="@mipmap/eva_en"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.4"
-                android:visibility="invisible"/>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/main2_exit"
+        <TextView
+            android:id="@+id/main2_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="@dimen/dimen_30"
-            android:layout_marginRight="@dimen/dimen_66"
-            android:src="@drawable/exit"
-            />
-
-
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/skip_bg"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10"
+            android:text="跳过"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
     </RelativeLayout>
-</LinearLayout>
+
+    <include
+        android:id="@+id/main2_second"
+        layout="@layout/main2_second"/>
+</ViewFlipper>

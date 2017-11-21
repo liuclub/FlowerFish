@@ -729,7 +729,7 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
                                     mp = null;
                                     startActivity(
                                             new Intent(EvaluationGame2Activity.this, Main2Activity.class)
-                                            .putExtra("enteragain",true));
+                                                    .putExtra("enteragain", true));
                                     handler.postDelayed(() -> EvaluationGame2Activity.this.finish(), 1000);
                                 });
                             } catch (IOException e) {
@@ -755,12 +755,12 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         switch (v.getId()) {
             case R.id.ae_pause:
                 aePause.setVisibility(View.GONE);
-                ae_restart.setVisibility(View.VISIBLE);
+                ((LinearLayout) ae_restart.getParent()).setVisibility(View.VISIBLE);
                 onPause();
                 break;
             case R.id.ae_restart:
                 aePause.setVisibility(View.VISIBLE);
-                ae_restart.setVisibility(View.GONE);
+                ((LinearLayout) ae_restart.getParent()).setVisibility(View.GONE);
                 onResume();
                 break;
         }
