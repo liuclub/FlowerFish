@@ -178,6 +178,7 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:src="@mipmap/pause_button"
         />
+
     <SurfaceView
         android:id="@+id/eva_surfaceview"
         android:layout_width="match_parent"
@@ -204,6 +205,16 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@drawable/mouse1"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/ae_restart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#a8ffffff"
+        android:scaleType="centerInside"
+        android:src="@mipmap/release_btn"
         android:visibility="gone"
         />
 </RelativeLayout>

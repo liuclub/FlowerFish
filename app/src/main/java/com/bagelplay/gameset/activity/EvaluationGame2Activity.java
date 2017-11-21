@@ -56,7 +56,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EvaluationGame2Activity extends AppCompatActivity implements EvaObjectView.TouchInterface, XLHRatingBar.OnRatingChangeListener {
+public class EvaluationGame2Activity extends AppCompatActivity implements EvaObjectView.TouchInterface, XLHRatingBar.OnRatingChangeListener, View.OnClickListener {
     private Context mContext;
     private int section;//1:做汉堡；2：做沙拉
 
@@ -73,6 +73,7 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     private RelativeLayout aeProgressContainer;
     private TextView aeGrade;
     private ImageView aePause;
+    private ImageView ae_restart;
     private WaveLineView ae_waveview;
     private XLHRatingBar mXLHRatingBar;
     private LinearLayout ae_progress_container2;
@@ -237,6 +238,10 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         super.onResume();
         SDKCocosManager.getInstance().onResume();
 
+
+        aeObject.setDisableTouch(false);
+        aeObject.setButtonClickable(true);
+
         //设置积分字体颜色
         LinearGradient mLinearGradient = new LinearGradient(0, 0, 0, aeGrade.getPaint().getTextSize(), getResources().getColor(R.color.orange_start), getResources().getColor(R.color.orange_end), Shader.TileMode.CLAMP);
         aeGrade.getPaint().setShader(mLinearGradient);
@@ -256,6 +261,11 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     protected void onPause() {
 //        LogUtils.lb("onPause");
         super.onPause();
+        mEvaUtils.cancelEva();
+
+        aeObject.setDisableTouch(true);
+        aeObject.setButtonClickable(false);
+
         SDKCocosManager.getInstance().onPause();
         SoundUtil.getInstance(EvaluationGame2Activity.this).stopPlaySound();
     }
@@ -393,6 +403,7 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         aeProgressContainer = (RelativeLayout) root_view.findViewById(R.id.ae_progress_container);
         aeGrade = (TextView) root_view.findViewById(R.id.ae_grade);
         aePause = (ImageView) root_view.findViewById(R.id.ae_pause);
+        ae_restart = (ImageView) root_view.findViewById(R.id.ae_restart);
         ae_waveview = (WaveLineView) root_view.findViewById(R.id.ae_waveview);
         mXLHRatingBar = (XLHRatingBar) root_view.findViewById(R.id.ae_ratingbar);
         ae_progress_container2 = (LinearLayout) root_view.findViewById(R.id.ae_progress_container2_inner);
@@ -400,6 +411,9 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         ae_celebrateview = root_view.findViewById(R.id.ae_celebrateview);
         ae_full_screen = root_view.findViewById(R.id.ae_full_screen);
         ae_mouse_tip = root_view.findViewById(R.id.ae_mouse_tip);
+
+        aePause.setOnClickListener(this);
+        ae_restart.setOnClickListener(this);
 
         aeObject.setTouchInterface(this);
         aeObject.setVisibility(View.VISIBLE);
@@ -675,6 +689,7 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
             aeObject.setVisibility(View.GONE);
             LinearLayout parent2 = (LinearLayout) ae_waveview.getParent();
             parent2.setVisibility(View.GONE);
+            findViewById(R.id.ae_center).setVisibility(View.GONE);
 
             ae_waveview.clearAnimation();
             ae_waveview.setVisibility(View.GONE);
@@ -712,7 +727,9 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
                                     mp.stop();
                                     mp.release();
                                     mp = null;
-                                    startActivity(new Intent(EvaluationGame2Activity.this, Main2Activity.class));
+                                    startActivity(
+                                            new Intent(EvaluationGame2Activity.this, Main2Activity.class)
+                                            .putExtra("enteragain",true));
                                     handler.postDelayed(() -> EvaluationGame2Activity.this.finish(), 1000);
                                 });
                             } catch (IOException e) {
@@ -730,6 +747,22 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
                         }
                     })
                     .playOn(aeFoodContainer);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ae_pause:
+                aePause.setVisibility(View.GONE);
+                ae_restart.setVisibility(View.VISIBLE);
+                onPause();
+                break;
+            case R.id.ae_restart:
+                aePause.setVisibility(View.VISIBLE);
+                ae_restart.setVisibility(View.GONE);
+                onResume();
+                break;
         }
     }
 

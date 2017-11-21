@@ -1,20 +1,12 @@
 package com.bagelplay.gameset.activity;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.os.Bundle;
@@ -24,17 +16,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewParent;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.VideoView;
 import android.widget.ViewFlipper;
 
 import com.bagelplay.gameset.R;
@@ -43,13 +30,7 @@ import com.bagelplay.gameset.utils.DimenUtil;
 import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
 
 public class Main2Activity extends Activity implements View.OnClickListener {
     private ViewFlipper main2_rootview;
@@ -357,9 +338,14 @@ public class Main2Activity extends Activity implements View.OnClickListener {
                 if (main2_videoview_container.getVisibility() != View.GONE) {
                     main2_videoview_container.setVisibility(View.GONE);
                 }
-                click = true;
-                SoundUtil.getInstance(Main2Activity.this).startPlaySound(R.raw.continue_or_exit_game);
-            }
+                main2_rootview.showNext();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        click = true;
+                        SoundUtil.getInstance(Main2Activity.this).startPlaySound(R.raw.continue_or_exit_game);
+                    }
+                }, 1500);}
             firstEnter = true;
         }
     }
