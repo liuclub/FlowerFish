@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/BiggiFiTextPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_set_nosticks2"
+            android:textColor="@color/biggifitext" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/BiggiFiTextNomal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numbertitle1"
+                android:textColor="@color/biggifitext" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/BiggiFiTextNomal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wifi_set_nobiggififound_tip_1"
+                    android:textColor="@color/biggifitext" />
+				
+                <TextView
+                    android:id="@+id/howtoconnectbiggifi"
+                    style="@style/BiggiFiButtonSmall"
+                    android:layout_width="250dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/wifi_set_nobiggififound_btn_howtoconnectbiggifi"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="60dp">
+
+            <TextView
+                style="@style/BiggiFiTextNomal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numbertitle2"
+                android:textColor="@color/biggifitext" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/BiggiFiTextNomal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wifi_set_nobiggififound_tip_2"
+                    android:textColor="@color/biggifitext" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/BiggiFiTextNomal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numbertitle3"
+                android:textColor="@color/biggifitext" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/BiggiFiTextNomal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wifi_set_nobiggififound_tip_3"
+                    android:textColor="@color/biggifitext" />
+
+                <TextView
+                    android:id="@+id/exit"
+                    style="@style/BiggiFiButtonSmall"
+                    android:layout_width="250dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/wifi_set_nobiggififound_btn_exitandtryagain"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

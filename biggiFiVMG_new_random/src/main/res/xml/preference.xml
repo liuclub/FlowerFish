@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:title="@string/setting_advance_screenshot"
+ android:background="@drawable/bg02"
+ >
+
+	<CheckBoxPreference 
+		android:key="mode_1"
+		android:defaultValue="false"
+		android:title="@string/setting_advance_screenshot_sensor"
+		android:persistent="true"
+		/>
+	<CheckBoxPreference 
+		android:key="mode_2"
+		android:defaultValue="false"
+		android:title="@string/setting_advance_screenshot_touch"
+		android:persistent="true" />
+
+	
+ 	<!-- <PreferenceScreen
+		 android:title="Switch Mode"
+		 android:background="@drawable/bg02"
+		 >
+		 <CheckBoxPreference 
+	        android:key="mode_3"
+			android:title="Slip Bar"
+			android:persistent="true"/>
+		<CheckBoxPreference 
+	        android:key="mode_4"
+			android:title="Sensor"
+			android:persistent="true"/>
+	</PreferenceScreen> -->
+			
+</PreferenceScreen>
+

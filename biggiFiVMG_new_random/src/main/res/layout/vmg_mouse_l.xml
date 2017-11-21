@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:panel="http://schemas.android.com/apk/res/com.bagelplay.controller.com"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:id="@+id/topView11" 
+    android:orientation="horizontal" >
+    
+   <LinearLayout android:orientation="vertical"
+   	android:layout_width="fill_parent"
+   	android:layout_height="fill_parent"
+   	android:layout_weight="6">
+   <LinearLayout android:id="@+id/topView1"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+		android:layout_weight="10">		
+    <com.bagelplay.controller.widget.BiggiFiPanel android:id="@+id/panel" 
+     android:layout_width="fill_parent" 
+	 android:layout_height="wrap_content" 
+	 android:paddingBottom="4dip"
+	 android:gravity="center_horizontal"
+     panel:handle="@+id/handle"
+     panel:content="@+id/content"
+     panel:position="top"
+	 panel:animationDuration="600"
+	 panel:linearFlying="true"
+     >
+     	<ImageView android:id="@+id/handle"
+     		android:layout_width="wrap_content"
+     		android:layout_height="25dp"
+     		/>
+     	<com.bagelplay.controller.widget.BiggiFiGridView android:id="@+id/content" 
+			android:layout_width="fill_parent"
+			android:layout_height="70dp" 
+			android:background="#00000000" 
+			android:numColumns="6"
+			android:layout_marginLeft="0dp"
+			/>
+    </com.bagelplay.controller.widget.BiggiFiPanel>    
+  </LinearLayout>
+   	<!--<LinearLayout android:layout_width="fill_parent"
+   		android:layout_height="wrap_content"
+   		android:layout_weight="20"/>-->   		
+	<LinearLayout android:id="@+id/topView"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="83"
+		android:gravity="bottom" android:orientation="vertical"
+		>
+		<!-- <ImageView android:id="@+id/signalImg"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="10dp"
+			android:background="@drawable/signal_green"
+			android:layout_gravity="right"
+			/>-->
+	</LinearLayout> 
+   </LinearLayout>
+</LinearLayout>

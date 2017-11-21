@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/full"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/BiggiFiTextPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/biggifitext" />
+
+        <TextView
+            android:id="@+id/message"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/wifi_set_successmessage"
+            android:textColor="@color/biggifitext" />
+
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/pingguo" />
+
+        <TextView
+            android:id="@+id/finish"
+            style="@style/BiggiFiButton"
+            android:layout_width="150dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/wifi_set_finishsetup" />
+    </LinearLayout>
+
+</RelativeLayout>

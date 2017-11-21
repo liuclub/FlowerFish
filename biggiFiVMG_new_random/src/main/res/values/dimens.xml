@@ -1,0 +1,67 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	
+    <dimen name="appGridPaddingTop">10dp</dimen>
+    <dimen name="appGridPaddingLeft">7dp</dimen>
+    <dimen name="appGridPaddingRight">7dp</dimen>
+    <dimen name="appGridPaddingBottom">10dp</dimen>
+    
+    
+    
+    
+    
+    <!--  
+    <dimen name="recommandSpecailItemWidth">920dp</dimen>
+    <dimen name="recommandSpecailItemHeight">150dp</dimen>
+    <dimen name="recommandSpecailItemPaddingTop">10dp</dimen>
+    <dimen name="recommandSpecailItemPaddingLeft">10dp</dimen>
+    <dimen name="recommandSpecailItemPaddingRight">10dp</dimen>
+    <dimen name="recommandSpecailItemSelectedWidth">300dp</dimen>
+    <dimen name="recommandSpecailItemSelectedHeight">100dp</dimen>
+    -->
+    
+    
+    <dimen name="adGallerySpacing">50dp</dimen>
+    
+    
+    <dimen name="adSpotSize">20dp</dimen>
+    <dimen name="adSpotHorizontalSpacing">5dp</dimen>
+    
+    <dimen name="appSpotFrameSize">30dp</dimen>
+    <dimen name="appSpotSize">15dp</dimen>
+    <dimen name="appSpotHorizontalSpacing">10dp</dimen>
+    
+    
+    
+    <dimen name="gameHallGridPaddingTop">22dp</dimen>
+    <dimen name="gameHallGridPaddingLeft">40dp</dimen>
+    <dimen name="gameHallGridPaddingBottom">3dp</dimen>
+    <dimen name="gameHallGridPaddingRight">40dp</dimen>
+ 
+    
+    <dimen name="gameRecommendGridPaddingTop">20dp</dimen>
+    <dimen name="gameRecommendGridPaddingLeft">22dp</dimen>
+    <dimen name="gameRecommendGridHorizontalSpacing">25dp</dimen>
+    <dimen name="gameRecommendGridVerticalSpacing">15dp</dimen>
+    
+    <dimen name="videoPicWidth">155dp</dimen>
+    <dimen name="videoPicHeight">220dp</dimen>
+    
+    
+    <dimen name="hotAppsGridPaddingTop">15dp</dimen>
+    <dimen name="hotAppsGridPaddingLeft">20dp</dimen>
+    <dimen name="hotAppsGridPaddingBottom">15dp</dimen>
+    <dimen name="hotAppsGridPaddingRight">20dp</dimen>
+    
+    
+    <dimen name="mediaGridPaddingTop">40dp</dimen>
+    <dimen name="mediaGridPaddingLeft">60dp</dimen>
+    <dimen name="mediaGridPaddingBottom">40dp</dimen>
+    <dimen name="mediaGridPaddingRight">60dp</dimen>
+    <dimen name="mediaGridItemWidth">355dp</dimen>
+    <dimen name="mediaGridItemHeight">202dp</dimen>
+    
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="BiggiFiButton">
+        <item name="android:background">@drawable/circlebutton_select</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+    
+    <style name="BiggiFiButtonSmall">
+        <item name="android:background">@drawable/circlebutton_select</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_height">30dp</item>
+    </style>
+
+    <style name="BiggiFiList">
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:divider">@drawable/list_line</item>
+        <item name="android:dividerHeight">1px</item>
+        <item name="android:listSelector">@drawable/list_select</item>
+    </style>
+    
+    <style name="BiggiFiTextTitle">
+        <item name="android:textSize">40dp</item>
+    </style>
+    
+    <style name="BiggiFiTextPoint">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="BiggiFiTextNomal">
+        <item name="android:textSize">20dp</item>
+    </style>
+    
+    <style name="BiggiFiTextProcessDialog">
+        <item name="android:textSize">16dp</item>
+    </style>
+	
+    <style name="BiggiFiDialog" parent="@android:style/Theme.Dialog">
+<item name="android:windowFrame">@null</item>
+<item name="android:windowIsFloating">true</item>
+<item name="android:windowIsTranslucent">false</item>
+<item name="android:windowNoTitle">true</item>
+<item name="android:background">@android:color/black</item>
+<item name="android:windowBackground">@null</item>
+<item name="android:backgroundDimEnabled">false</item>
+</style> 
+
+    <style name="Widget.SeekBar.Normal" parent="@android:style/Widget.SeekBar">  
+            <item name="android:maxHeight">20.0dip</item>  
+            <item name="android:indeterminateOnly">false</item>  
+            <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>  
+            <item name="android:progressDrawable">@drawable/seekbarprogress</item>  
+            <item name="android:minHeight">20.0dip</item>  
+            <item name="android:thumb">@drawable/seekbarthumb</item>  
+             
+        </style>  
+</resources>

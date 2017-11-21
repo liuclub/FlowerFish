@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/requirestick"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_set_nobiggififound_tip_1"
+            android:textColor="@color/biggifitext" android:gravity="center" />
+        
+        <TextView
+            android:id="@+id/name"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_set_howtoconnectbiggifi"
+            android:textColor="@color/biggifitext" android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/stickset"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/stickset" />
+
+        <TextView
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/stickset"
+            android:layout_marginTop="10dp"
+            android:text="@string/wifi_set_checkstickset"
+            android:textColor="@color/biggifitext" />
+
+        <TextView
+            android:id="@+id/exit"
+            style="@style/BiggiFiButtonSmall"
+            android:layout_width="200dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/wifi_set_nobiggififound_btn_exitandtryagain" />
+    </LinearLayout>
+
+</RelativeLayout>

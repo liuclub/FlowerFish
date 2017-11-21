@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res/com.bagelplay.controller.random"
+    android:id="@+id/full"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/wifibg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/logotitle" />
+
+        <!-- <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/logo"
+            android:src="@drawable/logotitletext"
+            android:visibility="gone" /> -->
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/logo"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:visibility="gone"/>
+
+       <!--  <TextView
+            android:id="@+id/btn2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circlebutton_select"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+           
+            android:visibility="gone" /> -->
+
+       <!--  <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/refresh" /> -->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/top"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#cf000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="gone" >
+    </LinearLayout>
+
+    <!--
+        <com.bagelplay.controller.wifiset.widget.Btn3
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        my:bg="@drawable/circlebtn2"
+        my:iconbg="@drawable/circlebtn1" 
+        my:icon="@drawable/circlebtn3"
+        my:icontouched="@drawable/circlebtn4"
+        />
+    -->
+
+
+    <!--
+         <com.bagelplay.controller.wifiset.widget.Menu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    -->
+    <!--
+   <SeekBar 
+       android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="15dp"
+        android:minHeight="10dp"
+         android:progressDrawable="@drawable/seekbar"
+         android:layout_marginTop="100dp"
+        android:thumb="@drawable/seekbarthumb"
+   
+       
+       />
+    -->
+
+    
+    
+         
+        
+        <!-- <RelativeLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="300dp" android:layout_marginTop="100dp">
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/seekbarbg2" />
+
+        <com.bagelplay.controller.wifiset.widget.BFSeekBarVertical
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:maxHeight="5dp"
+            android:minHeight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:progressDrawable="@drawable/seekbar"
+            android:thumb="@drawable/seekbarthumb_horizontal" /> 
+
+</RelativeLayout>-->
+
+</RelativeLayout>

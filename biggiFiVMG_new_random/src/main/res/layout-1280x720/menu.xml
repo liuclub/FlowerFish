@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res/com.bagelplay.controller.com"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+     >
+
+    <LinearLayout
+        android:id="@+id/frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <com.bagelplay.controller.wifiset.widget.Btn
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            my:src_normal="@drawable/back1"
+            my:src_selected="@drawable/back2" />
+
+        <com.bagelplay.controller.wifiset.widget.Btn
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            my:src_normal="@drawable/home1"
+            my:src_selected="@drawable/home2" />
+
+        <com.bagelplay.controller.wifiset.widget.Btn
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            my:src_normal="@drawable/settings1"
+            my:src_selected="@drawable/settings2" />
+
+        <com.bagelplay.controller.wifiset.widget.Btn
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            my:src_normal="@drawable/help1"
+            my:src_selected="@drawable/help2" />
+
+        <com.bagelplay.controller.wifiset.widget.Btn
+            android:id="@+id/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            my:src_normal="@drawable/exit1"
+            my:src_selected="@drawable/exit2" />
+
+        <com.bagelplay.controller.wifiset.widget.Btn
+            android:id="@+id/about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            my:src_normal="@drawable/about1"
+            my:src_selected="@drawable/about2" />
+    </LinearLayout>
+
+    <com.bagelplay.controller.wifiset.widget.Btn
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        my:src_normal="@drawable/more1"
+        my:src_selected="@drawable/more2" />
+
+</RelativeLayout>

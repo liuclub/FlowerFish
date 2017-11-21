@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:id="@+id/info"
+    >
+    <LinearLayout android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_weight="7"
+    	>
+	    <com.bagelplay.controller.widget.BiggiFiGallery android:id="@+id/info_gallery"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="fill_parent"
+	    	android:spacing="0dp"
+	    	/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_weight="1"
+    	android:gravity="center_horizontal"
+    	android:layout_marginBottom="3dp"
+    	>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn1"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn2"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn3"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn4"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn5"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn6"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn7"/>
+    </LinearLayout>	
+</LinearLayout>

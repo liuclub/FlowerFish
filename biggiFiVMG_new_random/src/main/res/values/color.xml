@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="b_color">#000000</color>  
+    
+    <color name="biggifibg">#00dcdfe1</color>  
+    <color name="biggifitext2">#313638</color>  
+    <color name="biggifitext">#ffffffff</color>
+     <color name="tm">#00000000</color>  
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:title="@string/setting_advance_switch"
+ android:background="@drawable/bg02"
+ >
+	<CheckBoxPreference 
+		android:key="mode_4"
+		android:title="@string/setting_advance_switch_sensor"
+		android:persistent="true"
+		/>
+
+			
+</PreferenceScreen>
+

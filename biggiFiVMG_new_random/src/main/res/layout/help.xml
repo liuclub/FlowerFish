@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+	>
+	<LinearLayout android:layout_width="fill_parent"
+   		android:layout_height="wrap_content"
+   		android:layout_weight="10"
+   		>
+   		<android.support.v4.view.ViewPager
+	        android:id="@+id/help"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        />
+   	</LinearLayout>
+	
+	<LinearLayout android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_weight="1"
+    	android:gravity="center_horizontal"
+    	android:layout_marginBottom="3dp"
+    	>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn1"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn2"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn3"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn4"/>
+    	<ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn5"/>
+    	<!-- ImageButton android:background="@drawable/font" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:id="@+id/mImageBtn6"/-->
+	</LinearLayout>     
+
+</LinearLayout>

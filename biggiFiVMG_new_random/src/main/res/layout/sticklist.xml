@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg" >
+
+    <ImageView
+        android:id="@+id/bangzi"
+        android:layout_width="240dp"
+        android:layout_height="135dp"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/howuse2" />
+
+    <TextView
+        android:id="@+id/currentWifi"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bangzi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        
+        android:background="@drawable/dialogbg2"
+         />
+
+    <com.bagelplay.controller.wifiset.WifiLoading
+        android:id="@+id/wifiloading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentWifi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <ImageView
+        android:id="@+id/holdPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wifiloading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/holdphone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/holdPhone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+         />
+
+   
+
+</RelativeLayout>

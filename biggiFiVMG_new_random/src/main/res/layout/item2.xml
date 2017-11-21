@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView  xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@android:id/text1"
+	style="?android:attr/dropDownItemStyle"
+	android:textAppearance="?android:attr/textAppearanceLargeInverse"
+	android:singleLine="true"
+	android:layout_width="match_parent"
+	android:layout_height="?android:attr/listPreferredItemHeight"
+	android:ellipsize="marquee" 
+	/>
+	
+	<!-- <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content"
+	 	android:layout_height="wrap_content" 
+	 	android:id="@+id/delete_login_button"
+	 	android:background="@drawable/exit"/> -->
+<!-- <LinearLayout 
+	android:orientation="horizontal" android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>	 	
+</LinearLayout> -->
+
+
+

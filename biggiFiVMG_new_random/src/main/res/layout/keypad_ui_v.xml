@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <ImageButton
+        android:id="@+id/keypad_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/poweroff" />
+    <ImageButton
+        android:id="@+id/keypad_volume_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/volume_add" />
+    <ImageButton
+        android:id="@+id/keypad_volume_reduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@id/keypad_volume_add"
+        android:layout_marginRight="10dip"
+        android:background="@drawable/volume_reduce" />
+    <ImageButton
+        android:id="@+id/keypad_ok"
+        android:layout_width="120dip"
+        android:layout_height="120dip"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ok" />
+    <ImageButton
+        android:id="@+id/keypad_left"
+        android:layout_width="90dip"
+        android:layout_height="90dip"
+        android:layout_toLeftOf="@id/keypad_ok"
+        android:layout_centerVertical="true"
+        android:background="@drawable/left" />
+    <ImageButton
+        android:id="@+id/keypad_down"
+        android:layout_width="90dip"
+        android:layout_height="90dip"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/keypad_ok"
+        android:background="@drawable/down" />
+    <ImageButton
+        android:id="@+id/keypad_up"
+        android:layout_width="90dip"
+        android:layout_height="90dip"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/keypad_ok"
+        android:background="@drawable/up" />
+    <ImageButton
+        android:id="@+id/keypad_right"
+        android:layout_width="90dip"
+        android:layout_height="90dip"
+        android:layout_toRightOf="@id/keypad_ok"
+        android:layout_centerVertical="true"
+        android:background="@drawable/right" />
+    <ImageButton
+        android:id="@+id/keypad_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dip"
+        android:background="@drawable/back_keypad" />
+    <ImageButton
+        android:id="@+id/keypad_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dip"
+        android:background="@drawable/home_keypad" />
+    <ImageButton
+        android:id="@+id/keypad_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dip"
+        android:background="@drawable/menu_keypad" />
+
+</RelativeLayout>

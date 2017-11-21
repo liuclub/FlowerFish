@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/qq_checkbox_text_color</item>
+        <item name="android:paddingLeft">28.0px</item>
+    </style>
+
+    <style name="loginstyle" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:popupBackground">@drawable/exit</item>
+        <item name="android:dropDownVerticalOffset">10dip</item>
+    </style>
+
+    <style name="MyCheckBox2" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/showpasswordselect</item>
+        <item name="android:paddingLeft">25.0dip</item>
+        <item name="android:maxHeight">5.0dip</item>
+    </style>
+    
+    <style name="Translucent_NoTitle" parent="android:style/Theme.Dialog">
+        <item name="android:background">#00000000</item>
+ <!-- 设置自定义布局的背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+ <!-- 设置window背景透明，也就是去边框 --> 
+    </style>
+
+</resources>

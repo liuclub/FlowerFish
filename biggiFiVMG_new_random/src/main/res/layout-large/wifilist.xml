@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/BiggiFiTextPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/wifi_set_choosewifi"
+        android:textColor="@color/biggifitext" android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/wifi_set_wifinetwork"
+            android:textColor="@color/biggifitext" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <EditText
+                android:id="@+id/network"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wifi_set_inputwifi"
+                android:textColor="#313638"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/sanjiao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/network"
+                android:layout_alignRight="@id/network"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/sanjiao" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/passworknotice"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/wifi_set_wifipassword"
+            android:textColor="@color/biggifitext" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/wifi_set_inputpassword"
+            android:password="true"
+            android:textColor="#313638"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/showpassword2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:button="@drawable/showpasswordselect"
+            android:paddingLeft="25dp"
+            android:text="@string/wifi_set_showpassword"
+            android:textColor="@color/biggifitext" android:textSize="18dp"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/networks"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circlewifilist"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/list_line2"
+        android:dividerHeight="2px"
+        android:listSelector="@drawable/list_select"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/setup"
+        style="@style/BiggiFiButton"
+        android:layout_width="200dp"
+        android:layout_below="@id/content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/wifi_set_connect" />
+
+</RelativeLayout>

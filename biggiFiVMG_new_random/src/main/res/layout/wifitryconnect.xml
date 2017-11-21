@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:paddingBottom="30dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <ImageView
+        android:id="@+id/bangzi"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    
+
+    <LinearLayout
+        android:id="@+id/processframe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+
+        <TextView
+            android:id="@+id/sendssidtostick"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C0C0C0" android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/connectselfwifi"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C0C0C0" android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/connectselftostick"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#C0C0C0" android:singleLine="true"/>
+    </LinearLayout>
+
+</RelativeLayout>

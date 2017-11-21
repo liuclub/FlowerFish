@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+   <!--  <ImageView
+        android:id="@+id/bangzi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/howuse" /> -->
+
+    <ImageView
+        android:id="@+id/bangzi"
+        android:layout_width="540dp"
+        android:layout_height="437dp"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/howuse" />
+    
+    <LinearLayout
+        android:id="@+id/choosestickframe"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp">
+
+        <TextView
+            android:id="@+id/choosestickfromlist"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_set_choosestickfromlist"
+            android:textColor="@color/biggifitext" />
+
+        <!--
+             <TextView
+            android:id="@+id/choosestickfromlistorexit"
+            style="@style/BiggiFiTextNomal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_set_choosestickfromlist"
+            android:textColor="@color/biggifitext" />
+        -->
+
+        <TextView
+            android:id="@+id/exitandtryagain"
+            style="@style/BiggiFiButtonSmall"
+            android:layout_width="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/wifi_set_btn_exitandtryagain"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/sticks2"
+        style="@style/BiggiFiList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/choosestickframe"
+        android:layout_below="@id/bangzi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>

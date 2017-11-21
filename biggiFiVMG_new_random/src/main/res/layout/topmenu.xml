@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vmg_menu_gridview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/mouseiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/topmenubutton_select"
+        android:src="@drawable/mouse_mode" />
+
+    <View
+        android:layout_width="30dp"
+        android:layout_height="1dp" />
+
+    <ImageView
+        android:id="@+id/moreiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/topmenubutton_select"
+        android:src="@drawable/more" />
+
+    <View
+        android:id="@+id/morev"
+        android:layout_width="30dp"
+        android:layout_height="1dp" />
+
+    <ImageView
+        android:id="@+id/screenshotiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/topmenubutton_select"
+        android:src="@drawable/screenshot"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/screenshotv"
+        android:layout_width="30dp"
+        android:layout_height="1dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/guideiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/topmenubutton_select"
+        android:src="@drawable/qa" />
+
+    <View
+        android:id="@+id/guidev"
+        android:layout_width="30dp"
+        android:layout_height="1dp" />
+</LinearLayout>

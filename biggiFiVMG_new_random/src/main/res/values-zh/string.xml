@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">北鸽遥控</string>
+    <string name="info1"><b>北鸽遥控 v1.0.125\n (发布日期:4-20-2016)</b></string>
+    <string name="info2"><b> 版本: 1.0.125\n
+									日期: 4-20-2016\n
+									\n
+									意见反馈\n
+									QQ：234631578\n
+									邮箱：info@biggifi.com\n
+									\n
+ 							     版权 ⊙2015 BagelPlay Mobile, Inc.</b>
+    						 </string>
+    			
+    <string name="search_vma">搜索北鸽服务</string>
+    <string name="search_vma_description">正在努力搜索中，请稍等...</string>				 
+	<string name="no_vma">未找到北鸽服务，请再次尝试...</string>
+	<string name="ok">确定</string>
+	<string name="disconnect">断开</string>
+	
+	
+	<string name="reconnection">重连</string>
+	<string name="cancel">取消</string>	
+	<string name="insert_ip">输入IP</string>	
+	<string name="invalid_ip">非法IP</string>
+	<string name="enter_ip">输入IP</string>
+	<string name="yes">是</string>	
+	<string name="no">否</string>	
+	<string name="delete_ip">删除IP</string>
+	<string name="delete_ask">确定要删除它吗？</string>	
+	<string name="rescan">  搜  索  </string>	
+	<string name="insert">输入地址</string>
+	<string name="active_vma">北鸽服务列表</string>
+	
+	<string name="length_error">最多只能输入15个字符 </string>
+	<string name="null_error">昵称和代码不能为空</string>
+	<string name="network_error">连接异常，请检查网络</string>
+	<string name="ip_error">连接超时或该IP不存在，请检查网络之后重试</string>
+	<string name="ip_error_timeout">连接超时，请检查网络之后重试</string>
+	<string name="ip_error_wrong">该IP不存在，请检查网络之后重试</string>
+	<string name="account_existed_error">用户已存在，请选择其他用户</string>
+	<string name="code_error">代码错误</string>
+	<string name="code_set_error">没有设置代码</string>
+	<string name="account_logged_error">该用户已经登录</string>
+	<string name="max_user_error">已经达到最大连接数</string>
+	<string name="disconnect_error">已经断开连接</string>
+	<string name="unknown_error">未知错误</string>
+	<string name="delete_username">删除用户名</string>
+	<string name="nick_name">昵称</string>
+	<string name="vma_code">代码</string>
+	<string name="cha_limited">最多15个字符</string>
+	<string name="login_btn">登录</string>
+	<string name="remember_me">记住我</string>
+	
+	<string name="screenshot_time_error">此版本只允许截屏10次，如需解锁次数限制请升级到高级版本</string>
+	
+	<string name="value">灵敏度 x </string>
+	<string name="setting_mouse">鼠标设置</string>
+	<string name="setting_mouse_speed">设置鼠标移动速度</string>
+	<string name="setting_sensor">重力感应设置</string>
+	<string name="setting_sensor_sensitivity">灵敏度</string>
+	<string name="setting_sensor_direction">交换方向</string>
+	<string name="setting_sensor_direction_description">将重力感应的水平和垂直方向互换</string>
+	<string name="setting_advance">高级模式</string>
+	<string name="setting_advance_screenshot">截图方式</string>
+	<string name="setting_advance_screenshot_sensor">晃动截图</string>
+	<string name="setting_advance_screenshot_touch">触摸截图</string>
+	<string name="setting_advance_switch">鼠标/触摸屏切换方式</string>
+	<string name="setting_advance_switch_slipbar">滑动条切换</string>
+	<string name="setting_advance_switch_sensor">重力感应切换</string>
+	<string name="setting_help">帮助</string>
+	<string name="setting_about">关于</string>
+	
+	<string name="wifi_error">Wi-Fi未连接</string>
+	<string name="wifi_error_msg">请连接Wi-Fi或者退出</string>
+	<string name="wifi_error_configure">连接Wi-Fi</string>
+	<string name="wifi_error_exit">退出</string>
+	<string name="wifi_error_weak">Wi-Fi信号弱</string>
+	<string name="no_response">北鸽服务无反应</string>
+	<string name="need_rescan">连接不上北鸽服务\n请重新连接或退出</string>
+	<string name="reconnect">正在重新连接北鸽服务.</string>
+	<string name="reconnect_success">连接北鸽服务成功！</string>
+	
+	<string name="help_info">需要查看帮助吗?</string>
+	
+	<string name="keypad">遥控器</string>
+	<string name="sensor">重力感应</string>
+	<string name="setting">设置</string>
+	<string name="exit">退出</string>
+	<string name="back">返回</string>
+	<string name="menu">菜单</string>
+	<string name="home">主页</string>
+	<string name="quit">确定退出吗?</string>
+	
+	<string name="update">更新</string>
+	<string name="new_version">新版本：</string>
+	<string name="alert_dialog_ok">确定</string>
+	<string name="alert_dialog_retry">重试</string>
+	<string name="alert_dialog_cancel">取消</string>	
+	<string name="alert_dialog_update">更新</string>	
+	<string name="download_update_apk_failure">下载失败,没有SD卡。</string>
+	
+	
+	
+	<string name="wait_dialog_title">请等待</string>
+	<string name="wait_dialog_findToVMA">正在查找待配置的北鸽服务</string>
+	<string name="wait_dialog_connectToVMA">正在连接要配置的北鸽服务</string>
+	<string name="inform">提示</string>
+	<string name="outOfTime">您刚才进行的操作超时，请返回重新操作</string>
+	<string name="config_hot_title">配置热点</string>
+	<string name="config_hot_message">请选择一北鸽服务热点进行设置，若你已经设置过该北鸽服务对应的热点，请点击\"跳过\"按钮</string>
+	<string name="config_hot_btn_ok">配置</string>
+	<string name="config_hot_btn_cancel">跳过</string>
+	<string name="config_hot_dialog_makesureCancel">是否将北鸽服务连接到互联网？</string>
+	
+	
+	<string name="wait_dialog_findHots">正在查找所有可用的Wi-Fi</string>
+	<string name="wait_dialog_configIPForVMA">正在为您的北鸽服务配置Wi-Fi</string>
+	<string name="configIPForVMA_fail_passwordWrong">连接失败，Wi-Fi密码错误</string>
+	<string name="configIPForVMA_fail_timeout">连接超时，请退出重连</string>
+	<string name="wifi_input_password">密码</string>
+	<string name="wifi_input_connect">连接</string>
+	<string name="wifi_input_showPassword">显示密码</string>
+	<string name="wifi_list_title">Wi-Fi列表</string>
+	<string name="hot_list_title">热点列表</string>
+	
+	
+	<string name="wifi_reconnct">Wi-Fi正在重新连接</string>
+	<string name="wifi_reconnct_timeout">重新连接Wi-Fi超时，请退出应用重新登入</string>
+	<string name="wifi_disconnect">Wi-Fi断开连接，请退出应用重新登入</string>
+	<string name="wifi_dangle_disconnect">北鸽服务无反应</string>
+	<string name="wifi_dangle_disconnect_reconnect">重连</string>
+	
+	<string name="keyboard">键盘</string>
+	<string name="send">发送</string>
+	
+	<string name="close">关闭</string>
+	
+	<string name="wifi_set_findingstick">正在搜索北鸽服务...</string>
+    <string name="wifi_set_stickonwifi"><xliff:g id="node1">%1$s</xliff:g> BiggiFi on: <xliff:g id="node2">%2$s</xliff:g></string>
+    <string name="wifi_set_sticksetup">现在连接<xliff:g id="node1">%1$s</xliff:g>到你的Wi-Fi网络</string>
+    <string name="wifi_set_sticksetuping">正在连接<xliff:g id="node1">%1$s</xliff:g>...</string>
+    <string name="wifi_set_choosewifi">选择Wi-Fi网络</string>
+    <string name="wifi_set_findingwifi">正在寻找可用的Wi-Fi...</string>
+    <string name="wifi_set_connectingwifi">正在连接Wi-Fi...</string>
+    <string name="wifi_set_wifinetwork">Wi-Fi</string>
+    <string name="wifi_set_wifipassword">密码</string>
+    <string name="wifi_set_showpassword">显示密码</string>
+    <string name="wifi_set_foundwifi">配置北鸽服务[<xliff:g id="node1">%1$s</xliff:g>]</string>
+    <string name="wifi_set_setupwifi">配置北鸽服务[<xliff:g id="node1">%1$s</xliff:g>]</string>
+    
+    
+	<string name="wifi_set_passwordAtLeast">密码至少要求8位</string>
+	<string name="wifi_set_setup">设置</string>
+	<string name="wifi_set_nosetup">否</string>
+	<string name="wifi_set_offline">如果选择否，你会进入离线模式 。在离线模式下，不能访问互联网</string>
+	<string name="wifi_set_connect">连接</string>
+	<string name="wifi_set_inputwifi">请选择Wi-Fi</string>
+	<string name="wifi_set_inputpassword">请输入密码</string>
+    
+    <string name="wifi_set_error_cantconnectstick">无法连接到你的北鸽服务，请确定它就在附近</string>
+    <string name="wifi_set_error_passworderrormessagetitle">设置中出现了连接问题</string>
+    <string name="wifi_set_error_passworderrormessage">密码错误，请检查你的密码，然后</string>
+    
+    <string name="wifi_set_toast_wifiopening">Wi-Fi正在打开...</string>
+    <string name="wifi_set_refresh">刷新</string>
+    <string name="wifi_set_retry">重试</string>
+    <string name="wifi_set_successtitle"><xliff:g id="node1">%1$s</xliff:g>设置成功！</string>
+    <string name="wifi_set_successmessage">现在你可以在大屏电视上享受百万应用了！</string>
+    
+    <string name="wifi_set_checkstickset">请检查这些连接：\r\n1.北鸽服务设备与HDMI端口的连接\r\n2.连接到电视上或电源适配器上的USB电源\r\n3.切换信号源为北鸽服务设备接入的HDMI\r\n4.你连接的Wi-Fi网络</string>
+    <string name="wifi_set_sticisetmessage">如果选择否，你将进入离线模式。在离线模式下，不能访问互联网</string>
+    <string name="wifi_set_nosticks2">未找到北鸽服务</string>
+	
+    <string name="wifi_set_error_canntfindwifititle">设置中出现了连接问题</string>
+    <string name="wifi_set_error_canntfindwifi">连接<xliff:g id="node1">%1$s</xliff:g>失败，请检查你的无线网络名称</string>
+    
+    <string name="wifi_set_finishsetup">完成设置</string>
+    
+    <string name="wifi_set_error_huilianerrortitle">连接北鸽服务超时</string>
+     <string name="wifi_set_error_huilianerrormessage">请检查你的无线网络</string>
+     
+     <string name="wifi_set_stickresettitle">请等待</string>
+     <string name="wifi_set_stickreset">请继续设置北鸽服务</string>
+     
+     <string name="numbertitle1">1.</string>
+     <string name="numbertitle2">2.</string>
+     <string name="numbertitle3">3.</string>
+     <string name="wifi_set_nobiggififound_tip_1">请确认您已有北鸽服务设备，并已接通电源，连接到了一台电视</string>
+     <string name="wifi_set_nobiggififound_tip_2">若北鸽服务设备未连接到任何一个Wi-Fi，请根据北鸽服务设备的屏幕提示设置Wi-Fi</string>
+     <string name="wifi_set_nobiggififound_tip_3">请确认您的北鸽服务设备和北鸽遥控应用连接的是同一个Wi-Fi</string>
+     <string name="wifi_set_nobiggififound_btn_howtoconnectbiggifi">如何连接北鸽服务</string>
+     <string name="wifi_set_nobiggififound_btn_exitandtryagain">退出并重试</string>
+     <string name="wifi_set_howtoconnectbiggifi">如何连接北鸽服务</string>
+     <string name="wifi_set_gotit">确定</string>
+     <string name="wifi_set_btn_wifi">配置Wi-Fi</string>
+     <string name="wifi_set_btn_offline">离线模式</string>
+     <string name="wifi_set_wifimode">连接北鸽服务设备到您的无线网络</string>
+     <string name="wifi_set_offlinemode">在离线模式下，您的北鸽服务将无法上网</string>
+     
+     <string name="weimile">北鸽服务</string>
+     
+     <string name="wifi_set_choosestickfromlist">点击右上角的刷新按钮再次搜索</string>
+	<string name="wifi_set_choosestickfromlistorexit">搜索已达到最大限度，选择列表或者</string>
+	<string name="wifi_set_btn_exitandtryagain">退出并重试</string>
+	<string name="wifi_set_loading_findsticktime">正在搜索您的电视或盒子，约 <xliff:g id="node1">%1$s</xliff:g>秒钟</string>
+	
+	<string name="wifi_set_highline_confirmwifipassword">验证Wi-Fi密码</string>
+	<string name="wifi_set_highline_sendssidtostick">连接[<xliff:g id="node1">%1$s</xliff:g>]到[<xliff:g id="node2">%2$s</xliff:g>]上</string>
+	<string name="wifi_set_highline_connectselfwifi">连接自己到Wi-Fi上</string>
+	<string name="wifi_set_highline_connectselftostick">连接自己到[<xliff:g id="node1">%1$s</xliff:g>上</string>
+	<string name="wifi_set_highline_loading_connecttime">本次需要花费<xliff:g id="node1">%1$s</xliff:g>秒</string>
+	<string name="wifi_set_doyousee">你在电视上看到这张图片了吗?</string>
+	<string name="wifi_set_mustinsamewifi">您的手机或者平板电脑需要和北鸽服务连接到相同的Wi-Fi上,请退出重试</string>
+	<string name="wifi_set_needastick">请确认您已有北鸽服务设备，并已接通电源，连接到了一台电视。更多详情：www.mobilewee.com</string>
+	<string name="wifi_set_tryconnect_cantconnectbftowifi">不能连接[<xliff:g id="node1">%1$s</xliff:g>]到[<xliff:g id="node2">%2$s</xliff:g>]上，请检查并且退出重试</string>
+	<string name="wifi_set_tryconnect_cantconnectselftowifi">不能将自己连接到[<xliff:g id="node1">%1$s</xliff:g>]上,请检查并且退出重试</string>
+	<string name="wifi_set_tryconnect_cantconnectselftostick">不能将自己连接到[<xliff:g id="node1">%1$s</xliff:g>]上,请检查并且退出重试</string>
+	
+	<string name="biggifigo">体感</string>
+	<string name="nomotion">该功能需要BiggiFi Go,更多信息请关注biggifi.com</string>
+	<string name="nodatafrombiggifi">没有北鸽服务来的数据</string>
+	<string name="losemotionfile">丢失一些体感文件</string>
+	<string name="parsemotionfailed">解析体感文件失败</string>
+	<string name="motioncode">请在北鸽服务上输入体感验证码</string>
+	
+	<string name="appcenter">应用中心</string>
+	
+	<string name="nogoogleaccount">请先登录Google账号</string>
+	
+	<string-array name="category">
+	    <item>最热</item>
+	    <item>最新</item>
+	    <item>娱乐</item>
+	    <item>视频</item>
+	    <item>教育</item>
+	    <item>社交</item>
+	    <item>工具</item>
+	    <item>所有</item>
+	    <item>其他</item>
+	</string-array>
+	
+	<string name="iapnotice">您确定要进行本次购买吗?</string>
+	
+	<string name="payversionwrong">支付版本不匹配，请下载最新的北鸽遥控</string>
+	<string name="currentwifi">当前WiFi网络：<xliff:g id="node1">%1$s</xliff:g></string>
+	
+
+	<string name="save_setting">设置已保存</string>
+	<string name="no_device">没有设备</string>
+	<string name="choose_the_network_connection">请选择网络连接</string>
+	<string name="current_WiFi_network">当前WiFi网络:</string>
+	<string name="please_connect_your_phone_to_the_same_network">\r\n(提示：请将手机连接至电视设备相同的网络)</string>
+	<string name="please_connect_your_phone_to_the_same_network1">\r\n\r\n(提示：请将手机连接至电视设备相同的网络)</string>
+	<string name="download">正在下载...</string>
+	
+	<string name="download_APK_failed">下载apk失败</string>
+	<string name="access_to_APK_information_file_failed">获取apk信息文件失败</string>
+	<string name="error">提示</string>
+	<string name="disconnected">连接断开</string>
+	<string name="failconnect">与该设备连接失败</string>
+	<string name="failconnect_service">连接机顶盒服务失败</string>
+	<string name="connect_to_other_devices">请重启机顶盒应用</string>
+    
+</resources>

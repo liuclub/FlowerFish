@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res/com.bagelplay.controller.com"
+    android:id="@+id/parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg03"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/dialogbg2"
+            android:scaleType="fitXY"
+            android:src="@drawable/settingsicon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="设置" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/volumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/volume1" />
+
+    <com.bagelplay.controller.wifiset.widget.BFSeekBarFrame
+        android:id="@+id/volumeBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="100dp"
+        my:orientation="horizontal"
+        my:thumb="@drawable/seekbarthumb_horizontal" />
+
+    <com.bagelplay.controller.wifiset.widget.BFSeekBarFrame
+        android:id="@+id/vibrateBar"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="60dp"
+        my:orientation="vertical"
+        my:thumb="@drawable/seekbarthumb_horizontal" />
+
+    <ImageView
+        android:id="@+id/vibrateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="210dp"
+        android:src="@drawable/vibrate1" />
+
+    <ImageView
+        android:id="@+id/sensortext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="95dp"
+        android:layout_marginLeft="65dp"
+        android:src="@drawable/sensor1" />
+
+    <com.bagelplay.controller.wifiset.widget.BFSeekBarFrame
+        android:id="@+id/sensorBar"
+        android:layout_width="550dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="65dp"
+        my:orientation="horizontal"
+        my:thumb="@drawable/seekbarthumb_horizontal" />
+
+    <com.bagelplay.controller.wifiset.widget.Btn
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone"
+        my:src_normal="@drawable/submit1"
+        my:src_selected="@drawable/submit2" />
+
+    <com.bagelplay.controller.wifiset.widget.KnobView
+        android:id="@+id/mouse_nob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        my:height="180dp"
+        my:r1="50dp"
+        my:r2="70dp"
+        my:width="180dp" />
+
+    <com.bagelplay.controller.wifiset.widget.SignText
+        android:id="@+id/mouse_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.bagelplay.controller.wifiset.widget.Btn
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        my:src_normal="@drawable/close1"
+        my:src_selected="@drawable/close2" />
+
+</RelativeLayout>

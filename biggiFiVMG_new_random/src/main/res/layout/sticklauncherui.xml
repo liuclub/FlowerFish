@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/biggifibg"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:id="@+id/doyouseeframe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/doyousee"
+            style="@style/BiggiFiTextPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_set_doyousee"
+            android:textColor="@color/biggifitext" />
+
+        <ImageView
+            android:id="@+id/stickset"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_below="@id/doyousee"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/homescreenframe" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/yes"
+                style="@style/BiggiFiButton"
+                android:layout_width="100dp"
+                android:text="@string/yes" />
+
+            <TextView
+                android:id="@+id/no"
+                style="@style/BiggiFiButton"
+                android:layout_width="100dp"
+                android:layout_marginLeft="50dp"
+                android:text="@string/no" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <!-- TextView 
+  		android:id="@+id/text_head"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:text="VMA IP"
+        android:gravity="left"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        /-->
+ <EditText
+   		android:id="@+id/vma_ip"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:scrollHorizontally="true"
+        android:capitalize="none"
+        android:gravity="fill_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        />
+  <ImageButton 
+  			android:id="@+id/vma_select"
+    	 	android:background="@drawable/more_select"
+    	 	android:layout_width="wrap_content"  
+            android:layout_height="wrap_content" 
+            android:layout_marginRight="1.0dip"  
+            android:layout_alignTop="@+id/vma_ip"  
+            android:layout_alignRight="@+id/vma_ip"  
+            android:layout_alignBottom="@+id/vma_ip"/>     
+   <TextView 
+   		android:id="@+id/ip_valid"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:gravity="left"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@id/vma_select" 
+        />
+</RelativeLayout>
