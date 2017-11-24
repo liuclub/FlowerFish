@@ -2,12 +2,13 @@ package com.bagelplay.sdk.common;
 
 
 import com.bagelplay.sdk.common.util.FileDir;
-import com.bagelplay.sdk.common.util.Log;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -16,88 +17,77 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-public abstract class Logo extends Activity{
+public abstract class Logo extends Activity {
 
-	private SDKManager bfusm;
+    private SDKManager sdkManager;
 
-	private ImageView logoIV;
+    private ImageView logoIV;
 
-	private int step;
+    private int step;
 
-	private boolean isExit = true;
+    private boolean isExit = true;
 
-	private boolean isStopWantPlayerIDs;
+    private boolean isStopWantPlayerIDs;
 
-	private OnShowPlayerLinstener ospl	=	new OnShowPlayerLinstener()
-	{
+    private OnShowPlayerLinstener ospl = new OnShowPlayerLinstener() {
 
-		@Override
-		public void OnGetPlayerIDs(int[] playerIDs, int num) {
-			if(step == 1 && num > 0)
-			{
-				isStopWantPlayerIDs	=	true;
-				bfusm.removeOnShowPlayerLinstener(ospl);
-				doStep(2);
+        @Override
+        public void OnGetPlayerIDs(int[] playerIDs, int num) {
+            if (step == 1 && num > 0) {
+                isStopWantPlayerIDs = true;
+                sdkManager.removeOnShowPlayerLinstener(ospl);
+                doStep(2);
+            }
+        }
 
+    };
 
-			}
-		}
+    private SDKManager.OnSDKKeyListener sdkKeyListener = new SDKManager.OnSDKKeyListener() {
 
-	};
+        @Override
+        public void OnSDKKeyDown(int playerOrder, int keyCode) {
+            if (playerOrder < 100) {      //遥控器
+                if (step == 1) {
+                    doStep(4);
+                }
+            } else {       //游戏手柄
+                if (step == 1) {
+                    doStep(3);
+                }
+            }
+        }
 
-	private SDKManager.OnSDKKeyListener osdkkl	=	new SDKManager.OnSDKKeyListener()
-	{
+        @Override
+        public void OnSDKKeyUp(int playerOrder, int keyCode) {
 
-		@Override
-		public void OnSDKKeyDown(int playerOrder, int keyCode) {
-			if(playerOrder < 100)		//遥控器
-			{
-				if(step == 1)
-				{
-					doStep(4);
-				}
-			}
-			else						//游戏手柄
-			{
-				if(step == 1)
-				{
-					doStep(3);
-				}
-			}
-		}
+        }
 
-		@Override
-		public void OnSDKKeyUp(int playerOrder, int keyCode) {
+    };
 
-		}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	};
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        sdkManager = getSDKManager();
+        if (sdkManager.isNormalLaunched()) {
+            sdkManager.addWindowCallBack(this);
+            sdkManager.setOnShowPlayerLinstener(ospl);
 
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            doStep(1);
 
-		bfusm	=	getSDKManager();
-		if(bfusm.isNormalLaunched())
-		{
-			bfusm.addWindowCallBack(this);
-			bfusm.setOnShowPlayerLinstener(ospl);
+            wantPlayerIDs();
 
-			doStep(1);
-
-			wantPlayerIDs();
-
-			bfusm.setOnSDKKeyListener(osdkkl);
-		}
+            sdkManager.setOnSDKKeyListener(sdkKeyListener);
+        }
 
 
-	}
+    }
 
 	/*@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event)
+    public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		if(event.getAction() == KeyEvent.ACTION_DOWN)
 		{
@@ -106,210 +96,187 @@ public abstract class Logo extends Activity{
 		return super.onKeyDown(keyCode, event);
 	}*/
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event)
-	{
-		if(event.getAction() == MotionEvent.ACTION_UP)
-		{
-			if(step == 1)
-			{
-				doStep(2);
-			}
-			else if(step == 2 || step == 3 || step == 4)
-			{
-				doFinish();
-			}
-		}
-		return super.onTouchEvent(event);
-	}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (step == 1) {
+                doStep(2);
+            } else if (step == 2 || step == 3 || step == 4) {
+                doFinish();
+            }
+        }
+        return super.onTouchEvent(event);
+    }
 
-	public boolean dispatchKeyEvent(KeyEvent event) {
+    public boolean dispatchKeyEvent(KeyEvent event) {
 
-		if(event.getAction() == KeyEvent.ACTION_DOWN && (step == 3 || step == 4 || step == 2))
-			doFinish();
-		if(bfusm.dispatchKeyEvent(event))
-			return true;
-		return super.dispatchKeyEvent(event);
-	}
+        if (event.getAction() == KeyEvent.ACTION_DOWN && (step == 3 || step == 4 || step == 2))
+            doFinish();
+        if (sdkManager.dispatchKeyEvent(event))
+            return true;
+        return super.dispatchKeyEvent(event);
+    }
 
-	public boolean dispatchGenericMotionEvent(MotionEvent event)
-	{
-		if(event.getAction() == KeyEvent.ACTION_DOWN && (step == 3 || step == 4 || step == 2))
-			doFinish();
-		if(bfusm.dispatchGenericMotionEvent(event))
-			return true;
-		return super.dispatchGenericMotionEvent(event);
-	}
+    public boolean dispatchGenericMotionEvent(MotionEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN && (step == 3 || step == 4 || step == 2))
+            doFinish();
+        if (sdkManager.dispatchGenericMotionEvent(event))
+            return true;
+        return super.dispatchGenericMotionEvent(event);
+    }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        sdkManager.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        sdkManager.onStop();
+    }
+
+    protected void onResume() {
+        super.onResume();
+
+        sdkManager.onResume();
 
 
-	@Override
-	protected void onStart() {
-		super.onStart();
+    }
 
-		bfusm.onStart();
-	}
+    protected void onPause() {
+        super.onPause();
 
-	@Override
-	protected void onStop() {
-		super.onStop();
-
-		bfusm.onStop();
-	}
-
-	protected void onResume()
-	{
-		super.onResume();
-
-		bfusm.onResume();
+        sdkManager.onPause();
+    }
 
 
-	}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-	protected void onPause() {
-		super.onPause();
+        sdkManager.removeWindowCallBack(this);
 
-		bfusm.onPause();
-	}
+        if (isExit) {
+            sdkManager.destroy();
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                }
+            }.start();
 
+        }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-
-		bfusm.removeWindowCallBack(this);
-
-		if(isExit)
-		{
-			bfusm.destroy();
-			new Thread()
-			{
-				@Override
-				public void run()
-				{
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					android.os.Process.killProcess(android.os.Process.myPid());
-				}
-			}.start();
-
-		}
-
-	}
+    }
 
 
-	private void wantPlayerIDs()
-	{
-		new Thread()
-		{
-			@Override
-			public void run()
-			{
-				while(!isStopWantPlayerIDs)
-				{
-					bfusm.wantPlayerIDs();
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+    private void wantPlayerIDs() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (!isStopWantPlayerIDs) {
+                    sdkManager.wantPlayerIDs();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-			}
-		}.start();
+            }
+        }.start();
 
-	}
+    }
 
-	private void doStep(int step)
-	{
-		if(step == 1)
-		{
-			logoIV	=	new ImageView(this);
-			Bitmap pic	=	null;
-			try {
-				pic	=	BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().LOGO));
-			} catch (Exception e) {
-				e.printStackTrace();
-				return;
-			}
+    private void doStep(int step) {
+        if (step == 1) {
+            logoIV = new ImageView(this);
+            Bitmap pic = null;
+            try {
+                pic = BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().LOGO));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
 
-			logoIV.setImageBitmap(pic);
-			logoIV.setScaleType(ScaleType.FIT_XY);
+            logoIV.setImageBitmap(pic);
+            logoIV.setScaleType(ScaleType.FIT_XY);
 
-			setContentView(logoIV);
-		}
-		else if(step == 2)						//手机说明
-		{
-			logoIV	=	new ImageView(this);
-			Bitmap pic	=	null;
-			try {
-				pic	=	BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().HOWTOPLAY_PHONE));
-			} catch (Exception e) {
-				e.printStackTrace();
-				return;
-			}
+            setContentView(logoIV);
+        } else if (step == 2) {                        //手机说明
+            logoIV = new ImageView(this);
+            Bitmap pic = null;
+            try {
+                pic = BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().HOWTOPLAY_PHONE));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
 
-			logoIV.setImageBitmap(pic);
-			logoIV.setScaleType(ScaleType.FIT_XY);
+            logoIV.setImageBitmap(pic);
+            logoIV.setScaleType(ScaleType.FIT_XY);
 
-			setContentView(logoIV);
-		}
-		else if(step == 3)					//手柄说明
-		{
-			logoIV	=	new ImageView(this);
-			Bitmap pic	=	null;
-			try {
-				pic	=	BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().HOWTOPLAY_GHANDLE));
-			} catch (Exception e) {
-				e.printStackTrace();
-				return;
-			}
+            setContentView(logoIV);
+        } else if (step == 3) {                   //手柄说明
 
-			logoIV.setImageBitmap(pic);
-			logoIV.setScaleType(ScaleType.FIT_XY);
+            logoIV = new ImageView(this);
+            Bitmap pic = null;
+            try {
+                pic = BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().HOWTOPLAY_GHANDLE));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
 
-			setContentView(logoIV);
-		}
-		else if(step == 4)					//遥控器说明
-		{
-			logoIV	=	new ImageView(this);
-			Bitmap pic	=	null;
-			try {
-				pic	=	BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().HOWTOPLAY_RCONTROLLER));
-			} catch (Exception e) {
-				e.printStackTrace();
-				return;
-			}
+            logoIV.setImageBitmap(pic);
+            logoIV.setScaleType(ScaleType.FIT_XY);
 
-			logoIV.setImageBitmap(pic);
-			logoIV.setScaleType(ScaleType.FIT_XY);
+            setContentView(logoIV);
+        } else if (step == 4)                    //遥控器说明
+        {
+            logoIV = new ImageView(this);
+            Bitmap pic = null;
+            try {
+                pic = BitmapFactory.decodeStream(getAssets().open(FileDir.getInstance().HOWTOPLAY_RCONTROLLER));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
 
-			setContentView(logoIV);
-		}
+            logoIV.setImageBitmap(pic);
+            logoIV.setScaleType(ScaleType.FIT_XY);
 
-		this.step	=	step;
+            setContentView(logoIV);
+        }
+        this.step = step;
+    }
 
-	}
+    private void doFinish() {
+        isExit = false;
+        Intent intent = new Intent(Logo.this, getNextClass());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        } else {
+            startActivity(intent);
+        }
+        isStopWantPlayerIDs = true;
+        sdkManager.removeOnShowPlayerLinstener(ospl);
+        sdkManager.removeOnSDKKeyListener(sdkKeyListener);
+        finish();
+    }
 
-	private void doFinish()
-	{
-		isExit	=	false;
-		Intent intent	=	new Intent(Logo.this,getNextClass());
-		startActivity(intent);
+    public abstract Class getNextClass();
 
-		isStopWantPlayerIDs	=	true;
-		bfusm.removeOnShowPlayerLinstener(ospl);
-		bfusm.removeOnSDKKeyListener(osdkkl);
-		finish();
-	}
-
-	public abstract Class getNextClass();
-
-	public abstract SDKManager getSDKManager();
-
+    public abstract SDKManager getSDKManager();
 
 }

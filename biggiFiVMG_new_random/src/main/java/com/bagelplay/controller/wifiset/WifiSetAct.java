@@ -33,265 +33,158 @@ import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
 public class WifiSetAct extends BaseActivity {
+    private TextView titleTV;
+    private LinearLayout contentLL;
+    private RelativeLayout fullRL;
+    private LinearLayout dialogLL;
+    private View loadingV;
+    private boolean isShowLoading;
+    private boolean isLoading;
+    private Screen screen;
+    private boolean canBack = true;
+    protected Handler handler = new Handler();
 
-	private TextView titleTV;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-	private LinearLayout contentLL;
+        setContentView(R.layout.wifisetact);
 
-	private RelativeLayout fullRL;
+        titleTV = (TextView) findViewById(R.id.title);
 
-	private LinearLayout dialogLL;
+        contentLL = (LinearLayout) findViewById(R.id.content);
 
-	private View loadingV;
+        fullRL = (RelativeLayout) findViewById(R.id.full);
 
-	private boolean isShowLoading;
+        dialogLL = (LinearLayout) findViewById(R.id.dialog);
+        Intent intent = getIntent();
+        if (intent != null) {
+            StickList sl = new StickList(this, intent.getBooleanExtra("iswelcome", true));
+            setSubView(sl);
+        } else {
+            StickList sl = new StickList(this, true);
+            setSubView(sl);
+        }
 
-	// private TextView btnTV;
+        UpdateManager um = new UpdateManager(this);
+        um.checkUpdate();
+    }
 
-	// private ImageView refreshIV;
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-	private boolean isLoading;
+    }
 
-	private Screen screen;
+    public void suddenExit() {
 
-	private boolean canBack = true;
+        finish();
 
-	protected Handler handler = new Handler();
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
+        }.start();
+    }
 
-		setContentView(R.layout.wifisetact);
+    public void setTitle(String text) {
+        titleTV.setText(text);
+    }
 
-		
-		
-		
-		
-		titleTV = (TextView) findViewById(R.id.title);
+    public void setSubView(Screen screen) {
+        contentLL.removeAllViews();
+        contentLL.addView(screen, new LinearLayout.LayoutParams(
+                LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+        WifiSetAct.this.screen = screen;
+    }
 
-		contentLL = (LinearLayout) findViewById(R.id.content);
+    public void showProcessDialog(String str) {
+        if (isShowLoading) {
+            ((TextView) loadingV.findViewById(R.id.setupmessage)).setText(str);
+            return;
+        }
+        loadingV = View.inflate(this, R.layout.wifisetuping, null);
+        setFullView(loadingV);
+        Animation ani = AnimationUtils.loadAnimation(this, R.anim.loading);
+        loadingV.findViewById(R.id.loading).startAnimation(ani);
+        ((TextView) loadingV.findViewById(R.id.setupmessage)).setText(str);
+        loadingV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-		fullRL = (RelativeLayout) findViewById(R.id.full);
+            }
+        });
+        isShowLoading = true;
+    }
 
-		// btnTV = (TextView) findViewById(R.id.btn2);
+    public void removeProcessDialog() {
+        removeFullView(loadingV);
+        isShowLoading = false;
+    }
 
-		// refreshIV = (ImageView) findViewById(R.id.refresh);
+    public void startLoading() {
+        isLoading = true;
+        Log.v("=--------------ddd-------------------------", "startLoading");
+    }
 
-		dialogLL = (LinearLayout) findViewById(R.id.dialog);
-		Intent intent =getIntent();
-		if(intent!=null){
-			
-		StickList sl = new StickList(this, intent.getBooleanExtra("iswelcome", true));
-		setSubView(sl);
-		}
-		else{
-			StickList sl = new StickList(this, true);
-			setSubView(sl);
-		}
-	
-		
-//		ConnectToServer cts	=	new ConnectToServer(this,true);
-//		setSubView(cts);
+    public void stopLoading() {
+        isLoading = false;
+        Log.v("=--------------ddd-------------------------", "stopLoading");
+    }
 
-		Log.v("=---------------------", "Product Model: "
-				+ android.os.Build.MODEL + "," + android.os.Build.VERSION.SDK
-				+ "," + android.os.Build.VERSION.RELEASE);
+    public void showLoading(View.OnClickListener vocl) {
+        Log.v("=--------------ddd-------------------------", "showLoading");
+    }
 
-		/*
-		 * WifiListDialog dialog = new WifiListDialog(this);
-		 * dialog.setTit("请选择网络连接");
-		 * dialog.setMessage("当前WiFi网络:Biggifi\r\n(提示：请将手机连接至电视设备相同的网络)");
-		 * dialog.show();
-		 */
+    public void hiddenLoading() {
+        stopLoading();
+        Log.v("=--------------ddd-------------------------", "hiddenLoading");
+    }
 
-		UpdateManager um = new UpdateManager(this);
-		um.checkUpdate();
+    public boolean isLoading() {
+        return isLoading;
+    }
 
-		/*
-		 * cs = new CSlider(this,null); cs.setPhoneXY(0, 0); cs.setWH(600,
-		 * 1000); View view = new View(this); this.setContentView(view, new
-		 * ViewGroup.LayoutParams(600,1000));
-		 * view.setBackgroundColor(0xff00ff00);
-		 */
+    public void setFullView(View view) {
+        fullRL.addView(view, new RelativeLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+    }
 
-		// try {
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		// ApplicationInfo appInfo = this.getPackageManager()
-		// .getApplicationInfo(getPackageName(),
-		// PackageManager.GET_META_DATA);
-		// String msg=appInfo.metaData.getString("UMENG_CHANNEL");
-		//
-		//
-		//
-		//
-		// MobclickAgent.openActivityDurationTrack(false);
-		// } catch (NameNotFoundException e) {
-		// e.printStackTrace();
-		// }
+    public void removeFullView(View view) {
+        fullRL.removeView(view);
+    }
 
-		
-		
-	}
-	
+    public void showDialog(View view) {
+        dialogLL.setVisibility(View.VISIBLE);
+        dialogLL.addView(view, new LinearLayout.LayoutParams(
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        canBack = false;
+    }
 
+    public void removeDialog() {
+        dialogLL.setVisibility(View.GONE);
+        dialogLL.removeAllViews();
+        canBack = true;
+    }
 
-	/*
-	 * CSlider cs; public boolean dispatchTouchEvent(MotionEvent ev) {
-	 * 
-	 * cs.dispatchTouchEvent(ev); return super.dispatchTouchEvent(ev); }
-	 */
+    @Override
+    public void onBackPressed() {
+        if (canBack) {
+            suddenExit();
+        }
+        Log.v("=--------------onBackPressed----------------", canBack + " ");
+    }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
+    @Override
+    public void orientationChanged(int orientation) {
 
-	}
-
-	public void suddenExit() {
-
-		finish();
-
-		new Thread() {
-			@Override
-			public void run() {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				android.os.Process.killProcess(android.os.Process.myPid());
-			}
-		}.start();
-	}
-
-	public void setTitle(String text) {
-		titleTV.setText(text);
-	}
-
-	public void setSubView(Screen screen) {
-		contentLL.removeAllViews();
-		contentLL.addView(screen, new LinearLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-		WifiSetAct.this.screen = screen;
-	}
-
-	public void showProcessDialog(String str) {
-		if (isShowLoading) {
-			((TextView) loadingV.findViewById(R.id.setupmessage)).setText(str);
-			return;
-		}
-		loadingV = View.inflate(this, R.layout.wifisetuping, null);
-		setFullView(loadingV);
-		Animation ani = AnimationUtils.loadAnimation(this, R.anim.loading);
-		loadingV.findViewById(R.id.loading).startAnimation(ani);
-		((TextView) loadingV.findViewById(R.id.setupmessage)).setText(str);
-		loadingV.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-			}
-		});
-		isShowLoading = true;
-	}
-
-	public void removeProcessDialog() {
-		removeFullView(loadingV);
-		isShowLoading = false;
-	}
-
-	public void startLoading() {
-
-		// refreshIV.startAnimation(AnimationUtils.loadAnimation(this,
-		// R.anim.loading));
-		isLoading = true;
-		Log.v("=--------------ddd-------------------------", "startLoading");
-	}
-
-	public void stopLoading() {
-		// if (refreshIV.getAnimation() != null)
-		// refreshIV.getAnimation().cancel();
-		isLoading = false;
-		Log.v("=--------------ddd-------------------------", "stopLoading");
-	}
-
-	public void showLoading(View.OnClickListener vocl) {
-
-		// refreshIV.setVisibility(View.VISIBLE);
-		// refreshIV.setOnClickListener(vocl);
-		Log.v("=--------------ddd-------------------------", "showLoading");
-	}
-
-	public void hiddenLoading() {
-		stopLoading();
-		// refreshIV.clearAnimation();
-		// refreshIV.setVisibility(View.GONE);
-		// refreshIV.setOnClickListener(null);
-		Log.v("=--------------ddd-------------------------", "hiddenLoading");
-	}
-
-	public boolean isLoading() {
-		return isLoading;
-	}
-
-	// public void setBtnClick(String str, View.OnClickListener vocl) {
-	// btnTV.setText(str);
-	// btnTV.setOnClickListener(vocl);
-	// btnTV.setVisibility(View.VISIBLE);
-	// }
-
-	// public void removeBtn() {
-	// btnTV.setText(null);
-	// btnTV.setOnClickListener(null);
-	// btnTV.setVisibility(View.GONE);
-	// }
-
-	public void setFullView(View view) {
-		fullRL.addView(view, new RelativeLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-	}
-
-	public void removeFullView(View view) {
-		fullRL.removeView(view);
-	}
-
-	public void showDialog(View view) {
-		dialogLL.setVisibility(View.VISIBLE);
-		dialogLL.addView(view, new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		canBack = false;
-	}
-
-	public void removeDialog() {
-		dialogLL.setVisibility(View.GONE);
-		dialogLL.removeAllViews();
-		canBack = true;
-	}
-
-	@Override
-	public void onBackPressed() {
-		if (canBack) {
-			suddenExit();
-		}
-
-		Log.v("=--------------onBackPressed----------------", canBack + " ");
-	}
-
-	@Override
-	public void orientationChanged(int orientation) {
-
-	}
-
-	/*
-	 * @Override public void onBackPressed() { if(screen != null &&
-	 * !isShowLoading && !isLoading) screen.onBackPressed(); }
-	 */
+    }
 
 }

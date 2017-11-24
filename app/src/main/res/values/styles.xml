@@ -2,17 +2,17 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@drawable/splash_bg</item>
     </style>
 
-    <style name="AppcompatNoTitle" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppcompatNoTitle" parent="Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="AppLoad" parent="Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash_bg</item>
     </style>
 
     <style name="AppStartLoadTranslucent" parent="AppTheme">
@@ -20,136 +20,11 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="Test" parent="android:Theme.Light">
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="FlowerImageView">
-        <item name="android:layout_width">@dimen/FlowerImangeViewWidth</item>
-        <item name="android:layout_height">@dimen/FlowerImangeViewHeight</item>
-    </style>
-
-
     <style name="RightWrongBtn">
         <item name="android:layout_height">@dimen/RightWrongBtnHeight</item>
         <item name="android:layout_width">@dimen/RightWrongBtnWidth</item>
         <item name="android:layout_margin">@dimen/RightWrongBtnMargin</item>
         <item name="android:layout_centerVertical">true</item>
-    </style>
-
-
-    <style name="NumberGameNumLineImagineView">
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_width">@dimen/NumGameNumLineIVWidth</item>
-        <item name="android:layout_height">@dimen/NumGameNumLineIVHeight</item>
-
-    </style>
-
-    <style name="NumberGameNumLine">
-        <item name="android:layout_width">@dimen/NumGameNumLineWidth</item>
-        <item name="android:layout_height">@dimen/NumGameNumLineHeight</item>
-        <item name="android:layout_marginBottom">@dimen/NumGameNumLineMarginBottom</item>
-        <item name="android:paddingRight">@dimen/NumGameNumLinePaddingRight</item>
-        <item name="android:paddingLeft">@dimen/NumGameNumLinePaddingLeft</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:background">@mipmap/num_line_bg</item>
-
-
-    </style>
-
-    <style name="SingleFish">
-        <item name="android:layout_width">@dimen/SingleFishWidth</item>
-        <item name="android:layout_height">@dimen/SingleFishHeight</item>
-        <item name="android:src">@mipmap/fish</item>
-    </style>
-
-    <style name="SingleFish0">
-        <item name="android:layout_width">@dimen/SingleFishWidth</item>
-        <item name="android:layout_height">@dimen/SingleFishHeight</item>
-        <item name="android:layout_marginRight">@dimen/RowFishPadding</item>
-        <item name="android:layout_marginLeft">@dimen/RowFishPadding</item>
-        <item name="android:src">@mipmap/fish</item>
-    </style>
-
-
-    <style name="SingleFishLine">
-        <item name="android:layout_width">@dimen/SingleFishWidth</item>
-        <item name="android:layout_height">@dimen/SingleFishHeight</item>
-        <item name="android:src">@mipmap/fish</item>
-        <item name="android:layout_marginLeft">@dimen/RowFishMarginLeft</item>
-    </style>
-
-    <style name="RowFish">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-
-        <item name="android:orientation">vertical</item>
-
-        <item name="android:layout_gravity">center</item>
-
-
-    </style>
-
-
-    <style name="RowFishBlank">
-
-        <item name="android:layout_width">@dimen/RowFishBlank</item>
-        <item name="android:layout_height">@dimen/RowFishBlank</item>
-    </style>
-
-    <style name="LineFish">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
-
-    <style name="LineFish2">
-        <item name="android:layout_marginTop">@dimen/LineFishMarginTop</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
-
-
-    <style name="PauseBg">
-        <item name="android:layout_width">@dimen/PauseBgWidth</item>
-        <item name="android:layout_height">@dimen/PauseBgHeight</item>
-    </style>
-
-    <style name="PauseRestart">
-        <item name="android:layout_width">@dimen/PauseRestartWidth</item>
-        <item name="android:layout_height">@dimen/PauseRestartHeight</item>
-    </style>
-
-    <style name="PauseBackHome">
-        <item name="android:layout_width">@dimen/PauseBackHomeWidth</item>
-        <item name="android:layout_height">@dimen/PauseBackHomeHeight</item>
-    </style>
-
-    <style name="PauseBack">
-        <item name="android:layout_width">@dimen/PauseBackWidth</item>
-        <item name="android:layout_height">@dimen/PauseBackHeight</item>
-    </style>
-
-    <style name="PauseHome">
-        <item name="android:layout_width">@dimen/PauseHomeWidth</item>
-        <item name="android:layout_height">@dimen/PauseHomeHeight</item>
-        <item name="android:layout_margin">@dimen/PauseHomeMargin</item>
-    </style>
-
-    <style name="PauseButton">
-        <item name="android:layout_width">@dimen/PauseButtonWidth</item>
-        <item name="android:layout_height">@dimen/PauseButtonHeight</item>
-        <item name="android:layout_margin">@dimen/PauseButtonMargin</item>
-    </style>
-
-    <style name="ReleaseButton">
-        <item name="android:layout_width">@dimen/ReleaseButtonWidth</item>
-        <item name="android:layout_height">@dimen/ReleaseButtonHeight</item>
-        <item name="android:layout_centerInParent">true</item>
     </style>
 
 
@@ -237,14 +112,27 @@
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
-    <!--<item name="android:layout_marginTop">10dp</item>-->
-    <!--<item name="android:layout_marginRight">10dp</item>-->
-    <!--activity切换动画-->
     <style name="fade" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
         <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
         <item name="android:activityCloseEnterAnimation">@anim/fade_in</item>
         <item name="android:activityCloseExitAnimation">@anim/fade_out</item>
     </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="android:Widget.Holo.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 </resources>

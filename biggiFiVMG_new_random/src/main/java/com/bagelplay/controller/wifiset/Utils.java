@@ -27,257 +27,238 @@ import android.widget.Toast;
 import com.bagelplay.controller.utils.Log;
 
 public class Utils {
-	
-	public static final String HOTTAG	=	"=------------------MyTest------------------=";
-		
-	public static final String BROADCAST_SEND_ID				=	"sendID";
-		
-	public static String HOT_SSID								=	"";
-	
-	public static final String HOT_PASSWORD						=	"biggifipassword";
-	
-	public static String HOT_BSSID								=	"";
-	
-	//public static final String HOT_SECURITY						=	"[wpa-psk-ccmp]";
-	public static final String HOT_SECURITY						=	null;
-	
-	public static final String BIGGIFIWIFIAPSSID_PREFIX_OLD		=	"biggifi_";
-	
-	public static final String BIGGIFIWIFIAPSSID_PREFIX			=	"BiggiFi";
-	
-	public static final int HOT_SOCKETSERVER_POT				=	19999;
-	
-	public static final int HOT_SOCKETSERVERMONITOR_POT			=	19998;
-	
-	public static final int HOT_PROTOCOL_C2S_WIFI_SIIDANDPASSWORD	=  1000001;
-	
-	public static final int HOT_PROTOCOL_C2S_CONFIGWIFIOK			=  1000004;
-	
-	public static final int HOT_PROTOCOL_C2S_WIFI_DEVICENAME		=  1000005;
-	
-	public static final int HOT_PROTOCOL_C2S_WIFI_WANTOTHERHOTS			=  1000006;
-	
-	public static final int HOT_PROTOCOL_S2C_WIFI_WANTSIIDANDPASSWORD	=	2000001;
-	
-	public static final int HOT_PROTOCOL_S2C_WIFI_DEVICENAMESUCCESS	=	2000005;
-	
-	public static final int HOT_PROTOCOL_C2S_WIFI_CHECKISLAUNCHERING	=  1000010;
-	
-	public static final int HOT_PROTOCOL_S2C_WIFI_CHECKISLAUNCHERING	=  2000010;
-	
-	public static final int HOT_PROTOCOL_S2C_WIFI_OTHERHOTS			=	2000006;
-	
-	public static final int HOT_PROTOCOL_C2S_WIFI_RESETWIFISETTING	=  1000011;
-	
-	public static final String HOT_ACTIVITY_ACTION_NOSHOW	=	"noShow"; 
-	
-	public static String SERVERSOCKETIP;
-	
-	public static final int ERROR_CODE_1	=	1;
-	
-	public static final int ERROR_CODE_2	=	2;
-	
-	public static final int ERROR_CODE_3	=	3;
-	
-	public static final int ERROR_CODE_4	=	4;
-	
-	public static final int ERROR_CODE_5	=	5;
-	
-	public static final int ERROR_CODE_6	=	6;
-	
-	public static final int ERROR_CODE_7	=	7;
-	
-	public static final int ERROR_CODE_8	=	8;
-	
-	public static final int ERROR_CODE_9	=	9;
-	
-	public static final int ERROR_CODE_10	=	10;
-	
-	
-	public static byte[] getServerWantWifiSSidAndPassword()
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_S2C_WIFI_WANTSIIDANDPASSWORD);
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
-	
-	public static byte[] getClientWifiSSidAndPassword(String ssid,String password,String type)
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_C2S_WIFI_SIIDANDPASSWORD);
-			dos.writeUTF(ssid);
-			dos.writeUTF(password);
-			dos.writeUTF(type);
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
-	
-	public static byte[] getDeviceName()
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_C2S_WIFI_DEVICENAME);
-			byte[] device	=	android.os.Build.MODEL.getBytes("utf-8");
-			dos.writeInt(device.length);
-			dos.write(device);
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
-	
-	public static byte[] getConfigWifiOk()
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_C2S_CONFIGWIFIOK);
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
-	
-	public static String ipLong2String(long ip)
-	{
-		long first	=	ip >>> 24 & 0xff;
-		long secend	=	ip >>> 16 & 0xff;
-		long third	=	ip >>> 8 & 0xff;
-		long forth	=	ip & 0xff;
-		return forth + "." + third + "." + secend + "." + first;
-	}
-	
-	public static String ipLong2StringPreference(long ip)
-	{
-		long first	=	ip >>> 24 & 0xff;
-		long secend	=	ip >>> 16 & 0xff;
-		long third	=	ip >>> 8 & 0xff;
-		long forth	=	ip & 0xff;
-		return first + "." + secend + "." + third + "." + forth;
-	}
-	
-	 public static int dip2px(Context context, float dpValue) {  
-	        final float scale = context.getResources().getDisplayMetrics().density;  
-	        return (int) (dpValue * scale + 0.5f);  
-	    } 
-	
-	public static void setBold(TextView tv)
-	{
-		Locale l = Locale.getDefault();  
-		if("zh".equals(l.getLanguage()))
-		{
-			TextPaint tp = tv.getPaint();
-			tp.setFakeBoldText(true);
-		}
-	}
-	
-	public static List<StickInfo> getSticksFromWifiFind(List<StickInfo> stickA)
-	{
-		String[] sticks = new String[stickA.size()];
-		for(int i=0;i<stickA.size();i++)
-		{
-			StickInfo si = 	stickA.get(i);
-			sticks[i]	=	si.name + "|" + si.ip + "|";
-		}
-		
-		byte[][] sticksByte = com.bagelplay.controller.wifiset.Jni.findSticksFromWifi(sticks);
-		
-		
-		
-  		if(sticksByte != null)
-		{
-  			List<StickInfo> s			=	new ArrayList<StickInfo>();
- 			for(int i=0;i<sticksByte.length;i++)
- 			{
- 				String stickName	=	new String(sticksByte[i]);
- 				String[] sns		=	stickName.split("\\|");
- 				StickInfo si	=	new StickInfo(sns[0], sns[1], false, null);
- 				s.add(si);
- 			}
- 			return s;
-		}
-		
- 		return null;
-	}
-	
-	public static List<StickInfo> getSticksFromWifiFindRandom(List<StickInfo> stickA)
-	{		
-		String[] sticks = new String[stickA.size()];
-		for(int i=0;i<stickA.size();i++)
-		{
-			StickInfo si = 	stickA.get(i);
-			sticks[i]	=	si.name + "|" + si.ip + "|";
-		}
-		
-		byte[][] sticksByte = com.bagelplay.controller.wifiset.random.Jni.findSticksFromWifi(sticks);
-		
-		
-		
-  		if(sticksByte != null)
-		{
-  			List<StickInfo> s			=	new ArrayList<StickInfo>();
- 			for(int i=0;i<sticksByte.length;i++)
- 			{
- 				String stickName	=	new String(sticksByte[i]);
- 				Log.v("=-------------------------------=====", stickName);
- 				String[] sns		=	stickName.split("\\|");
- 				String hostName		=	"";
- 				int SCRSHOTSC_PORT	=	0;
- 				int CMD_PORT		=	0;
- 				int level			=	0;
- 				int VMA_CMD_APP_INFO	=	0;
- 				try {
-					JSONObject jo		=	new JSONObject(sns[0]);
-					hostName		=	jo.getString("HOSTNAME");
-					SCRSHOTSC_PORT	=	jo.getInt("SCRSHOTSC_PORT");
-					CMD_PORT		=	jo.getInt("CMD_PORT");
-					level			=	jo.getInt("LEVEL");
-					VMA_CMD_APP_INFO	=	jo.getInt("SDK_APP_INFO_PORT");
-				} catch (JSONException e) {
-					e.printStackTrace();
-				} 
- 				
- 				
- 				StickInfo si	=	new StickInfo(hostName, sns[1],SCRSHOTSC_PORT,CMD_PORT,level);
- 				si.VMA_CMD_APP_INFO	=	VMA_CMD_APP_INFO;
- 				s.add(si);
- 			}
- 			return s;
-		}
-		
- 		return null;
-	}
-	 
-	
-	public static boolean findStickFromWifi(StickInfo si)
-	{
-		/*final int timeout	=	30 * 1000;
+
+    public static final String HOTTAG = "=------------------MyTest------------------=";
+
+    public static final String BROADCAST_SEND_ID = "sendID";
+
+    public static String HOT_SSID = "";
+
+    public static final String HOT_PASSWORD = "biggifipassword";
+
+    public static String HOT_BSSID = "";
+
+    //public static final String HOT_SECURITY						=	"[wpa-psk-ccmp]";
+    public static final String HOT_SECURITY = null;
+
+    public static final String BIGGIFIWIFIAPSSID_PREFIX_OLD = "biggifi_";
+
+    public static final String BIGGIFIWIFIAPSSID_PREFIX = "BiggiFi";
+
+    public static final int HOT_SOCKETSERVER_POT = 19999;
+
+    public static final int HOT_SOCKETSERVERMONITOR_POT = 19998;
+
+    public static final int HOT_PROTOCOL_C2S_WIFI_SIIDANDPASSWORD = 1000001;
+
+    public static final int HOT_PROTOCOL_C2S_CONFIGWIFIOK = 1000004;
+
+    public static final int HOT_PROTOCOL_C2S_WIFI_DEVICENAME = 1000005;
+
+    public static final int HOT_PROTOCOL_C2S_WIFI_WANTOTHERHOTS = 1000006;
+
+    public static final int HOT_PROTOCOL_S2C_WIFI_WANTSIIDANDPASSWORD = 2000001;
+
+    public static final int HOT_PROTOCOL_S2C_WIFI_DEVICENAMESUCCESS = 2000005;
+
+    public static final int HOT_PROTOCOL_C2S_WIFI_CHECKISLAUNCHERING = 1000010;
+
+    public static final int HOT_PROTOCOL_S2C_WIFI_CHECKISLAUNCHERING = 2000010;
+
+    public static final int HOT_PROTOCOL_S2C_WIFI_OTHERHOTS = 2000006;
+
+    public static final int HOT_PROTOCOL_C2S_WIFI_RESETWIFISETTING = 1000011;
+
+    public static final String HOT_ACTIVITY_ACTION_NOSHOW = "noShow";
+
+    public static String SERVERSOCKETIP;
+
+    public static final int ERROR_CODE_1 = 1;
+
+    public static final int ERROR_CODE_2 = 2;
+
+    public static final int ERROR_CODE_3 = 3;
+
+    public static final int ERROR_CODE_4 = 4;
+
+    public static final int ERROR_CODE_5 = 5;
+
+    public static final int ERROR_CODE_6 = 6;
+
+    public static final int ERROR_CODE_7 = 7;
+
+    public static final int ERROR_CODE_8 = 8;
+
+    public static final int ERROR_CODE_9 = 9;
+
+    public static final int ERROR_CODE_10 = 10;
+
+
+    public static byte[] getServerWantWifiSSidAndPassword() {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_S2C_WIFI_WANTSIIDANDPASSWORD);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static byte[] getClientWifiSSidAndPassword(String ssid, String password, String type) {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_C2S_WIFI_SIIDANDPASSWORD);
+            dos.writeUTF(ssid);
+            dos.writeUTF(password);
+            dos.writeUTF(type);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static byte[] getDeviceName() {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_C2S_WIFI_DEVICENAME);
+            byte[] device = android.os.Build.MODEL.getBytes("utf-8");
+            dos.writeInt(device.length);
+            dos.write(device);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static byte[] getConfigWifiOk() {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_C2S_CONFIGWIFIOK);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static String ipLong2String(long ip) {
+        long first = ip >>> 24 & 0xff;
+        long secend = ip >>> 16 & 0xff;
+        long third = ip >>> 8 & 0xff;
+        long forth = ip & 0xff;
+        return forth + "." + third + "." + secend + "." + first;
+    }
+
+    public static String ipLong2StringPreference(long ip) {
+        long first = ip >>> 24 & 0xff;
+        long secend = ip >>> 16 & 0xff;
+        long third = ip >>> 8 & 0xff;
+        long forth = ip & 0xff;
+        return first + "." + secend + "." + third + "." + forth;
+    }
+
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static void setBold(TextView tv) {
+        Locale l = Locale.getDefault();
+        if ("zh".equals(l.getLanguage())) {
+            TextPaint tp = tv.getPaint();
+            tp.setFakeBoldText(true);
+        }
+    }
+
+    public static List<StickInfo> getSticksFromWifiFind(List<StickInfo> stickA) {
+        String[] sticks = new String[stickA.size()];
+        for (int i = 0; i < stickA.size(); i++) {
+            StickInfo si = stickA.get(i);
+            sticks[i] = si.name + "|" + si.ip + "|";
+        }
+
+        byte[][] sticksByte = com.bagelplay.controller.wifiset.Jni.findSticksFromWifi(sticks);
+
+
+        if (sticksByte != null) {
+            List<StickInfo> s = new ArrayList<StickInfo>();
+            for (int i = 0; i < sticksByte.length; i++) {
+                String stickName = new String(sticksByte[i]);
+                String[] sns = stickName.split("\\|");
+                StickInfo si = new StickInfo(sns[0], sns[1], false, null);
+                s.add(si);
+            }
+            return s;
+        }
+
+        return null;
+    }
+
+    public static List<StickInfo> getSticksFromWifiFindRandom(List<StickInfo> stickA) {
+        String[] sticks = new String[stickA.size()];
+        for (int i = 0; i < stickA.size(); i++) {
+            StickInfo si = stickA.get(i);
+            sticks[i] = si.name + "|" + si.ip + "|";
+        }
+
+        byte[][] sticksByte = com.bagelplay.controller.wifiset.random.Jni.findSticksFromWifi(sticks);
+
+
+        if (sticksByte != null) {
+            List<StickInfo> s = new ArrayList<StickInfo>();
+            for (int i = 0; i < sticksByte.length; i++) {
+                String stickName = new String(sticksByte[i]);
+                Log.v("=-------------------------------=====", stickName);
+                String[] sns = stickName.split("\\|");
+                String hostName = "";
+                int SCRSHOTSC_PORT = 0;
+                int CMD_PORT = 0;
+                int level = 0;
+                int VMA_CMD_APP_INFO = 0;
+                try {
+                    JSONObject jo = new JSONObject(sns[0]);
+                    hostName = jo.getString("HOSTNAME");
+                    SCRSHOTSC_PORT = jo.getInt("SCRSHOTSC_PORT");
+                    CMD_PORT = jo.getInt("CMD_PORT");
+                    level = jo.getInt("LEVEL");
+                    VMA_CMD_APP_INFO = jo.getInt("SDK_APP_INFO_PORT");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                StickInfo si = new StickInfo(hostName, sns[1], SCRSHOTSC_PORT, CMD_PORT, level);
+                si.VMA_CMD_APP_INFO = VMA_CMD_APP_INFO;
+                s.add(si);
+            }
+            return s;
+        }
+
+        return null;
+    }
+
+
+    public static boolean findStickFromWifi(StickInfo si) {
+        /*final int timeout	=	30 * 1000;
 		final int sleepTime	=	500;
 		String msg = "SCN";
 		final DatagramSocket ds;
@@ -358,48 +339,42 @@ public class Utils {
 				return true;
 			}
 		}*/
-		
-		return false;
-	}
-	
-	public static List<StickInfo> findStickFromHot()
-	{
-		float time	=	3;
-		List<StickInfo> sticks	=	new ArrayList<StickInfo>();
-		WifManager wm			=	WifManager.getInstance();
-		List<ScanResult> srs	=	wm.scanHots(time);
-		for(ScanResult sr : srs)
-		{
-			Log.v("=--------------findStickFromHot----------------", sr.SSID);
-			boolean isHave	=	false;
-			for(StickInfo tsr : sticks)
-			{
-				if(tsr.name.equals(sr.SSID))
-				{
-					isHave	=	true;
-					break;
-				}
-			}
-			if(!isHave && isSsidBiggiFiHot(sr.SSID))
-				addStick(sticks,new StickInfo(sr.SSID,null,true,sr.capabilities));
-		}
-		return sticks;
-	}
-	
-	public static boolean isSsidBiggiFiHot(String ssid)
-	{
-		if(ssid == null)
-			return false;
-		if(ssid.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX_OLD))
-			return true;
-		return false;
-		 
-	}
-	
-	private static boolean isOldStick(String ssid)
-	{
-		return ssid.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX_OLD) && ssid.length() > 12;
-	}
+
+        return false;
+    }
+
+    public static List<StickInfo> findStickFromHot() {
+        float time = 3;
+        List<StickInfo> sticks = new ArrayList<StickInfo>();
+        WifManager wm = WifManager.getInstance();
+        List<ScanResult> srs = wm.scanHots(time);
+        for (ScanResult sr : srs) {
+            Log.v("=--------------findStickFromHot----------------", sr.SSID);
+            boolean isHave = false;
+            for (StickInfo tsr : sticks) {
+                if (tsr.name.equals(sr.SSID)) {
+                    isHave = true;
+                    break;
+                }
+            }
+            if (!isHave && isSsidBiggiFiHot(sr.SSID))
+                addStick(sticks, new StickInfo(sr.SSID, null, true, sr.capabilities));
+        }
+        return sticks;
+    }
+
+    public static boolean isSsidBiggiFiHot(String ssid) {
+        if (ssid == null)
+            return false;
+        if (ssid.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX_OLD))
+            return true;
+        return false;
+
+    }
+
+    private static boolean isOldStick(String ssid) {
+        return ssid.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX_OLD) && ssid.length() > 12;
+    }
 	
 	/*public static int isStickLaunchering(final Context context,String ip,String ssid)
 	{
@@ -430,55 +405,52 @@ public class Utils {
 		}
 		return 3;
 	}*/
-	
-	 
-	public static byte[] getAskStickLaunchering()
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_C2S_WIFI_CHECKISLAUNCHERING);
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
-	
-	public static byte[] getResetStickWifisetting()
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_C2S_WIFI_RESETWIFISETTING);
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
-	
-	public static byte[] getAskStickOtherHots()
-	{
-		byte[] res	=	null;
-		try {
-			ByteArrayOutputStream baos	=	new ByteArrayOutputStream();
-			DataOutputStream dos	=	new DataOutputStream(baos);
-			dos.writeInt(HOT_PROTOCOL_C2S_WIFI_WANTOTHERHOTS);    
-			res		=	baos.toByteArray();
-			dos.close();
-			baos.close();
-		} catch (Exception e) {
- 			e.printStackTrace();
-		}
-		return res;
-	}
+
+
+    public static byte[] getAskStickLaunchering() {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_C2S_WIFI_CHECKISLAUNCHERING);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static byte[] getResetStickWifisetting() {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_C2S_WIFI_RESETWIFISETTING);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public static byte[] getAskStickOtherHots() {
+        byte[] res = null;
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream dos = new DataOutputStream(baos);
+            dos.writeInt(HOT_PROTOCOL_C2S_WIFI_WANTOTHERHOTS);
+            res = baos.toByteArray();
+            dos.close();
+            baos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 	
 	/*public static boolean resetStickWifisetting(String ip)
 	{
@@ -495,20 +467,18 @@ public class Utils {
 		}
 		return false;
 	}*/
-	
-	
-	private static void addStick(List<StickInfo> sticks,StickInfo si)
-	{
-		if(!si.name.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX) && !si.name.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX_OLD))
-			return;
-		for(StickInfo s : sticks)
-		{
-			if(s.equals(si))
-				return;
-		}
-		Log.v("=--------------addStick----------------", si.name);
-		sticks.add(si);
-	}
+
+
+    private static void addStick(List<StickInfo> sticks, StickInfo si) {
+        if (!si.name.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX) && !si.name.startsWith(Utils.BIGGIFIWIFIAPSSID_PREFIX_OLD))
+            return;
+        for (StickInfo s : sticks) {
+            if (s.equals(si))
+                return;
+        }
+        Log.v("=--------------addStick----------------", si.name);
+        sticks.add(si);
+    }
 	
 	/*public static boolean connectToHot2(final Context context,final String ssid,String password,String type,final View.OnClickListener btn1Lisn)
 	{
@@ -633,25 +603,23 @@ public class Utils {
 		}
 		return true;
 	}*/
-	
-	
-	public static boolean connectToHot(final Context context,final String ssid,String password,String type)
-	{
-		Log.v("=--------------connectToHot----------------", ssid + " " + password + " " + type);
-		Handler handler	=	new Handler(context.getMainLooper());
-		WifManager wm			=	WifManager.getInstance();
-		int res		=	wm.connectToHot(ssid, password, type);
-		return res != 1 && res != 2;
-	}
-	
-	public static int connectToHot2(final Context context,final String ssid,String password,String type)
-	{
-		Log.v("=--------------connectToHot----------------", ssid + " " + password + " " + type);
-		Handler handler	=	new Handler(context.getMainLooper());
-		WifManager wm			=	WifManager.getInstance();
-		int res		=	wm.connectToHot(ssid, password, type);
-		return res;
-	}
+
+
+    public static boolean connectToHot(final Context context, final String ssid, String password, String type) {
+        Log.v("=--------------connectToHot----------------", ssid + " " + password + " " + type);
+        Handler handler = new Handler(context.getMainLooper());
+        WifManager wm = WifManager.getInstance();
+        int res = wm.connectToHot(ssid, password, type);
+        return res != 1 && res != 2;
+    }
+
+    public static int connectToHot2(final Context context, final String ssid, String password, String type) {
+        Log.v("=--------------connectToHot----------------", ssid + " " + password + " " + type);
+        Handler handler = new Handler(context.getMainLooper());
+        WifManager wm = WifManager.getInstance();
+        int res = wm.connectToHot(ssid, password, type);
+        return res;
+    }
 	
 	
 	/*public static boolean connectToWifiHuiLian(final Context context,final String ssid,String password,String type,final View.OnClickListener btn1Lisn,final View.OnClickListener btn1Lisn2)
@@ -687,11 +655,9 @@ public class Utils {
 		}
 		return true;
 	}*/
-	
-	
-	
-	public static boolean connectToVma(String ip,final Context context,final boolean showToast)
-	{
+
+
+    public static boolean connectToVma(String ip, final Context context, final boolean showToast) {
 		/*Handler handler	=	new Handler(context.getMainLooper());
 		BiggiFiVmaStub_b biggiFiVmaStub	=	BiggiFiVmaStub_b.getInstance();
 		if (biggiFiVmaStub.initVmaStub(BiggiFiUtil.ipToLong(ip)) != 0)
@@ -762,37 +728,34 @@ public class Utils {
 					}
 				}
 			});*/
-			return false;
-		//}
-	}
-	
-	public static boolean connectToVma(StickInfo si,final Context context)
-	{
+        return false;
+        //}
+    }
+
+    public static boolean connectToVma(StickInfo si, final Context context) {
 		/*BiggiFiVmaStub_b.VMA_SCRSHOTSC_PORT	=	si.VMA_SCRSHOTSC_PORT;
 		BiggiFiVmaStub_b.VMA_CMD_PORT			=	si.VMA_CMD_PORT;
 		String ip		=	si.ip;*/
-		 
-		return false;
-	}
-	
-	public static boolean connectToVma(String ip,final Context context)
-	{
- 		int times	=	3;
-		for(int i=0;i<times;i++)
-		{
-			boolean showToast	=	i < times - 1 ? false : true;
-			boolean res	=	connectToVma(ip,context,showToast);
-			 
-			if(res)
-				return true;
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
- 				e.printStackTrace();
-			}
-		}
-		return false;
-	}
+
+        return false;
+    }
+
+    public static boolean connectToVma(String ip, final Context context) {
+        int times = 3;
+        for (int i = 0; i < times; i++) {
+            boolean showToast = i < times - 1 ? false : true;
+            boolean res = connectToVma(ip, context, showToast);
+
+            if (res)
+                return true;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 	
 	/*public static void notifyVmaSetupFinish(String ip)
 	{
@@ -915,100 +878,91 @@ public class Utils {
 		}
 		return new ArrayList<WifiList.WifiScanResult>();
 	}*/
-	
-	public static void showAlertDialog(final Context context,final String title,final String message,final int btnText1,final View.OnClickListener btn1Lisn,final int btnText2,final View.OnClickListener btn2Lisn)
-	{
-		Handler handler		=	new Handler(context.getMainLooper());
-		handler.post(new Runnable(){
-			@Override
-			public void run()
-			{
-				BFDialog2 bfdialog	=	new BFDialog2((WifiSetAct)context);
-				if(title != null)
-					bfdialog.setTitle(title);
-				if(message != null)
-					bfdialog.setMessage(message);
-				bfdialog.setPositiveButton(btnText1,btn1Lisn);
-				bfdialog.setNegativeButton(btnText2,btn2Lisn);
-				bfdialog.show();
-			}
-		});
- 	}
-	
-	 
-	public static void showAlertDialog(final Context context,final String title,final String message,final int btnText1,final View.OnClickListener btn1Lisn,final int errorCode)
-	{
-		Handler handler		=	new Handler(context.getMainLooper());
-		handler.post(new Runnable(){
-			@Override
-			public void run()
-			{
-				BFDialog2 bfdialog	=	new BFDialog2((WifiSetAct)context);
-		 		if(title != null)
-		 			bfdialog.setTitle(title);
-		 		if(message != null)
-		 			bfdialog.setMessage(message);
- 		 		bfdialog.setPositiveButton(btnText1,btn1Lisn);
-		 		bfdialog.show();
-		 		if(errorCode != -1)
-		 			Toast.makeText(context, "Error code: " + errorCode, Toast.LENGTH_SHORT).show();
-			}
-		});
- 		
- 	}
-	
-	public static boolean checkNetworkState(final Context context) {
-		WeakReference<Context> contextRef = new WeakReference<Context>(context);
-		final Context mContext = contextRef.get();
 
-		ConnectivityManager conMan = (ConnectivityManager) mContext
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		// wifi
-		android.net.NetworkInfo.State wifi = conMan.getNetworkInfo(
-				ConnectivityManager.TYPE_WIFI).getState();
-		
-		return wifi == State.CONNECTED;
-	}
-	
-	public static byte[] readPic(DataInputStream dis,int size) throws Exception
-	{
-		byte[] data	=	new byte[size];
-		int per		=	1024;
-		int readNum	=	0;
-		while(true)
-		{
-			int needRead	=	size - readNum >= per ? per : size - readNum;
-			if(needRead <= 0)
-				break;
-			int actRead	=	dis.read(data, readNum, needRead);
-			readNum	+=	actRead;
-		}
-		return data;
-	}
-	
-	private static void saveToSharedPreferences(String item,String key,int value,Context context)
-	{
-		SharedPreferences verPreference = context.getSharedPreferences(
-				item, Context.MODE_PRIVATE);
-		Editor verEdit = verPreference.edit();
-		verEdit.putInt(key, value);
-		verEdit.commit();
-	}
-	
-	private static void saveToSharedPreferences(String item,String key,long value,Context context)
-	{
-		SharedPreferences verPreference = context.getSharedPreferences(
-				item, Context.MODE_PRIVATE);
-		Editor verEdit = verPreference.edit();
-		verEdit.putLong(key, value);
-		verEdit.commit();
-	}
-	
-	 
-	static class Finish
-	{
-		public boolean finish;
-		
-		public boolean result;
-	}
+    public static void showAlertDialog(final Context context, final String title, final String message, final int btnText1, final View.OnClickListener btn1Lisn, final int btnText2, final View.OnClickListener btn2Lisn) {
+        Handler handler = new Handler(context.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                BFDialog2 bfdialog = new BFDialog2((WifiSetAct) context);
+                if (title != null)
+                    bfdialog.setTitle(title);
+                if (message != null)
+                    bfdialog.setMessage(message);
+                bfdialog.setPositiveButton(btnText1, btn1Lisn);
+                bfdialog.setNegativeButton(btnText2, btn2Lisn);
+                bfdialog.show();
+            }
+        });
+    }
+
+
+    public static void showAlertDialog(final Context context, final String title, final String message, final int btnText1, final View.OnClickListener btn1Lisn, final int errorCode) {
+        Handler handler = new Handler(context.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                BFDialog2 bfdialog = new BFDialog2((WifiSetAct) context);
+                if (title != null)
+                    bfdialog.setTitle(title);
+                if (message != null)
+                    bfdialog.setMessage(message);
+                bfdialog.setPositiveButton(btnText1, btn1Lisn);
+                bfdialog.show();
+                if (errorCode != -1)
+                    Toast.makeText(context, "Error code: " + errorCode, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public static boolean checkNetworkState(final Context context) {
+        WeakReference<Context> contextRef = new WeakReference<Context>(context);
+        final Context mContext = contextRef.get();
+
+        ConnectivityManager conMan = (ConnectivityManager) mContext
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        // wifi
+        android.net.NetworkInfo.State wifi = conMan.getNetworkInfo(
+                ConnectivityManager.TYPE_WIFI).getState();
+
+        return wifi == State.CONNECTED;
+    }
+
+    public static byte[] readPic(DataInputStream dis, int size) throws Exception {
+        byte[] data = new byte[size];
+        int per = 1024;
+        int readNum = 0;
+        while (true) {
+            int needRead = size - readNum >= per ? per : size - readNum;
+            if (needRead <= 0)
+                break;
+            int actRead = dis.read(data, readNum, needRead);
+            readNum += actRead;
+        }
+        return data;
+    }
+
+    private static void saveToSharedPreferences(String item, String key, int value, Context context) {
+        SharedPreferences verPreference = context.getSharedPreferences(
+                item, Context.MODE_PRIVATE);
+        Editor verEdit = verPreference.edit();
+        verEdit.putInt(key, value);
+        verEdit.commit();
+    }
+
+    private static void saveToSharedPreferences(String item, String key, long value, Context context) {
+        SharedPreferences verPreference = context.getSharedPreferences(
+                item, Context.MODE_PRIVATE);
+        Editor verEdit = verPreference.edit();
+        verEdit.putLong(key, value);
+        verEdit.commit();
+    }
+
+
+    static class Finish {
+        public boolean finish;
+
+        public boolean result;
+    }
 }

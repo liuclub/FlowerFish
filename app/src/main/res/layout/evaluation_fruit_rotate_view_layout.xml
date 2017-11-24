@@ -14,19 +14,19 @@
         <ImageView
             android:id="@+id/fruit1"
             style="@style/EvaFruitRotateIV"
-            android:src="@mipmap/eva_apple" />
+            android:src="@drawable/eva_apple" />
 
         <ImageView
             android:layout_marginLeft="@dimen/size_10"
             android:layout_marginRight="@dimen/size_10"
             android:id="@+id/fruit6"
             style="@style/EvaFruitRotateIV"
-            android:src="@mipmap/eva_banana" />
+            android:src="@drawable/eva_banana" />
 
         <ImageView
             android:id="@+id/fruit5"
             style="@style/EvaFruitRotateIV"
-            android:src="@mipmap/eva_strawberry" />
+            android:src="@drawable/eva_strawberry" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,19 +38,19 @@
         <ImageView
             android:id="@+id/fruit2"
             style="@style/EvaFruitRotateIV"
-            android:src="@mipmap/eva_orange" />
+            android:src="@drawable/eva_orange" />
 
         <ImageView
             android:layout_marginLeft="@dimen/size_10"
             android:layout_marginRight="@dimen/size_10"
             android:id="@+id/fruit3"
             style="@style/EvaFruitRotateIV"
-            android:src="@mipmap/eva_grape" />
+            android:src="@drawable/eva_grape" />
 
         <ImageView
             android:id="@+id/fruit4"
             style="@style/EvaFruitRotateIV"
-            android:src="@mipmap/eva_peach" />
+            android:src="@drawable/eva_peach" />
     </LinearLayout>
 
 </LinearLayout>

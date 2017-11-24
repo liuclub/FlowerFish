@@ -3,7 +3,6 @@ package com.bagelplay.gameset.activity;
 import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.PixelFormat;
@@ -15,22 +14,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import com.bagelplay.gameset.MyApplication;
 import com.bagelplay.gameset.R;
@@ -44,13 +39,12 @@ import com.bagelplay.gameset.utils.LocalAnimationUtils;
 import com.bagelplay.gameset.utils.LogUtils;
 import com.bagelplay.gameset.utils.RandNum;
 import com.bagelplay.gameset.utils.SoundUtil;
-import com.bagelplay.gameset.view.FllScreenVideoView;
 import com.bagelplay.gameset.view.GameCongrationView2;
+import com.bagelplay.gameset.view.WaveLineView;
 import com.bagelplay.gameset.view.XLHRatingBar;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-import com.jimmy.wavelibrary.WaveLineView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -193,7 +187,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 //        LogUtils.lb("onCreate");
         super.onCreate(savedInstanceState);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-
         setContentView(R.layout.activity_evaluation_game);
         SDKCocosManager.getInstance(this).addWindowCallBack(this);
         AppManager.getInstance().addActivity(this);
@@ -213,14 +206,14 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 
         switch (section) {
             case 1://做汉堡
-                aeFoodContainer.setBackgroundResource(R.mipmap.eva_ham_bread);
+                aeFoodContainer.setBackgroundResource(R.drawable.eva_ham_bread);
                 mFoodList.addAll(DataUtil.getVegetableData(this));
 
                 Food vegetabe = mFoodList.get(currentGameIndex);
                 aeObject.changeObject(chooseZh ? vegetabe.getChineseName() : vegetabe.getEnglishName(), vegetabe.getImageResId());
                 break;
             case 2://做沙拉
-                aeFoodContainer.setBackgroundResource(R.mipmap.eva_plate);
+                aeFoodContainer.setBackgroundResource(R.drawable.eva_plate);
                 mFoodList.addAll(DataUtil.getFruitData(this));
 
                 aeObject.getObjectFruteRotate().setVisibility(View.GONE);
@@ -728,7 +721,7 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
                                     mp.release();
                                     mp = null;
                                     startActivity(
-                                            new Intent(EvaluationGame2Activity.this, Main2Activity.class)
+                                            new Intent(EvaluationGame2Activity.this, Main2ActivityBackup.class)
                                                     .putExtra("enteragain", true));
                                     handler.postDelayed(() -> EvaluationGame2Activity.this.finish(), 1000);
                                 });

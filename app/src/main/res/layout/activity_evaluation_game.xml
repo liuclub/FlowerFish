@@ -7,7 +7,7 @@
     android:id="@+id/ae_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/eva_game_bg"
+    android:background="@drawable/eva_game_bg"
     tools:context="com.bagelplay.gameset.activity.EvaluationGame2Activity">
     <!--中间透明白色背景-->
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_width="@dimen/size_456"
         android:layout_height="@dimen/size_400"
         android:layout_centerInParent="true"
-        android:src="@mipmap/rect_bg"
+        android:src="@drawable/rect_bg"
         android:visibility="invisible"
         />
 
@@ -44,7 +44,7 @@
         android:orientation="horizontal"
         >
 
-        <com.jimmy.wavelibrary.WaveLineView
+        <com.bagelplay.gameset.view.WaveLineView
             android:id="@+id/ae_waveview"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/size_50"
@@ -63,7 +63,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="@dimen/size_200"
         android:layout_marginRight="@dimen/size_50"
-        android:background="@mipmap/eva_plate"
+        android:background="@drawable/eva_plate"
         >
 
     </RelativeLayout>
@@ -104,7 +104,7 @@
         android:layout_marginBottom="@dimen/size_60"
         android:layout_marginLeft="@dimen/size_150"
         android:scaleType="centerCrop"
-        android:src="@mipmap/xiaohaoqi"/>
+        android:src="@drawable/xiaohaoqi"/>
     <!--顶部进度条-->
     <LinearLayout
         android:layout_width="wrap_content"
@@ -176,7 +176,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/dimen_10"
         android:layout_marginTop="@dimen/dimen_10"
-        android:src="@mipmap/pause_button"
+        android:src="@drawable/pause_button"
         />
 
     <SurfaceView
@@ -220,7 +220,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerInside"
-            android:src="@mipmap/release_btn"
+            android:src="@drawable/release_btn"
             />
     </LinearLayout>
 </RelativeLayout>

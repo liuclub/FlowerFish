@@ -10,4 +10,6 @@
     <color name="orange_end">#ff6600</color>
     <color name="skip_bg">#d9ffffff</color>
 
+    <color name="black_overlay">#66000000</color>
+
 </resources>

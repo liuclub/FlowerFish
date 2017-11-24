@@ -62,12 +62,12 @@ public class EvaFruitRotate extends LinearLayout {
         fruitsArrayIV.add(mIvFruit5);
         fruitsArrayIV.add(mIvFruit6);
         fruitsArrayImg = new ArrayList<>();
-        fruitsArrayImg.add(R.mipmap.eva_apple);
-        fruitsArrayImg.add(R.mipmap.eva_orange);
-        fruitsArrayImg.add(R.mipmap.eva_grape);
-        fruitsArrayImg.add(R.mipmap.eva_peach);
-        fruitsArrayImg.add(R.mipmap.eva_strawberry);
-        fruitsArrayImg.add(R.mipmap.eva_banana);
+        fruitsArrayImg.add(R.drawable.eva_apple);
+        fruitsArrayImg.add(R.drawable.eva_orange);
+        fruitsArrayImg.add(R.drawable.eva_grape);
+        fruitsArrayImg.add(R.drawable.eva_peach);
+        fruitsArrayImg.add(R.drawable.eva_strawberry);
+        fruitsArrayImg.add(R.drawable.eva_banana);
 
 
         //initFruit();

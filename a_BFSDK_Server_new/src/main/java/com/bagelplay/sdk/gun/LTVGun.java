@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Handler;
 
 import com.bagelplay.sdk.common.SDKManager;
-import com.bagelplay.sdk.test.MainGun;
 
 public class LTVGun extends Gun
 {
@@ -166,13 +165,13 @@ public class LTVGun extends Gun
 		{
 			radiusX		=	radius;
 		}
-		bfusm.onLeftStickChangedOnHandler(0,radiusX,radiusY);
+		sdkManager.onLeftStickChangedOnHandler(0,radiusX,radiusY);
 	}
 	
 	private void rightStickEvent(GunEvent event)
 	{
-		float x	=	(float)((event.pointX - bfusm.getScreenWidth() / 2) / (bfusm.getScreenWidth() / 2));
-		float y	=	(float)((event.pointY - bfusm.getScreenHeight() / 2) / (bfusm.getScreenHeight() / 2));
+		float x	=	(float)((event.pointX - sdkManager.getScreenWidth() / 2) / (sdkManager.getScreenWidth() / 2));
+		float y	=	(float)((event.pointY - sdkManager.getScreenHeight() / 2) / (sdkManager.getScreenHeight() / 2));
 		/*if(++index % 100 == 0)
 		{
 			showTV("pointX:" + event.pointX + " x:" + x + " pointY:" +  event.pointY + " y:" + y);
@@ -184,7 +183,7 @@ public class LTVGun extends Gun
 			index = 0;
 		}*/
 		
-		bfusm.onRightStickChangedOnHandler(0, x, y);
+		sdkManager.onRightStickChangedOnHandler(0, x, y);
 	}
 	
 	

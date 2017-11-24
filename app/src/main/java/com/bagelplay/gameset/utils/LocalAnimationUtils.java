@@ -1,10 +1,6 @@
 package com.bagelplay.gameset.utils;
 
-import android.animation.Keyframe;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Context;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -49,22 +45,22 @@ public class LocalAnimationUtils {
         return AnimationUtils.loadAnimation(mContext, R.anim.flash_three_times);
     }
 
-    //水果移到汉堡
-    public static Animation getAnimMoveToFood() {
-        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_move_to_hamber_anim);
-    }
+//    //水果移到汉堡
+//    public static Animation getAnimMoveToFood() {
+//        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_move_to_hamber_anim);
+//    }
 
 
     //汉堡移到汉堡
-    public static Animation getAnimhamMoveToFood() {
-        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_ham_move_to_hamber_anim);
-    }
+//    public static Animation getAnimhamMoveToFood() {
+//        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_ham_move_to_hamber_anim);
+//    }
 
 
     //水果移到盘子
-    public static Animation getAnimMoveToPlate() {
-        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_move_to_plate_anim);
-    }
+//    public static Animation getAnimMoveToPlate() {
+//        return AnimationUtils.loadAnimation(mContext, R.anim.eva_game_move_to_plate_anim);
+//    }
 
     public static Animation getMouseMoveAnimation() {
         return AnimationUtils.loadAnimation(mContext, R.anim.mouse_move);

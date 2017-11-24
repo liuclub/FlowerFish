@@ -63,4 +63,14 @@ public class Food {
         this.imageResId = imageResId;
     }
 
+    @Override
+    public String toString() {
+        return "Food{" +
+                "chineseName='" + chineseName + '\'' +
+                ", englishName='" + englishName + '\'' +
+                ", chineseSoundResId=" + chineseSoundResId +
+                ", englishSoundResId=" + englishSoundResId +
+                ", imageResId=" + imageResId +
+                '}';
+    }
 }

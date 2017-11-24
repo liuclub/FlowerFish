@@ -9,7 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/activityAnimationLib" />
+            <option value="$PROJECT_DIR$/a_BFSDK_Server_new" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/biggiFiVMG_new_random" />
             <option value="$PROJECT_DIR$/library" />

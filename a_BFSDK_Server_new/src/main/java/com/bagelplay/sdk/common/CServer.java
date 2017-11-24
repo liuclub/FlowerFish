@@ -40,7 +40,7 @@ class CServer {
 				File file = new File(FileDir.getInstance().SERVER_FILE);
 				file.setExecutable(true, true);
 				process = Runtime.getRuntime().exec(FileDir.getInstance().SERVER_FILE + " " + bfusm.getApplicationContext().getPackageName() + " " + bfusm.getScreenWidth() + " " + bfusm.getScreenHeight() + " " + bfusm.getExtral() + " " + 12355 + " " + "101.200.231.169" + " " + 12345 + " &");
-				//process	=	Runtime.getRuntime().exec(FileDir.getInstance().SERVER_FILE + " " + bfusm.getApplicationContext().getPackageName() + " " + bfusm.getScreenWidth() + " " + bfusm.getScreenHeight() + " " + bfusm.getExtral() + " &");
+				//process	=	Runtime.getRuntime().exec(FileDir.getInstance().SERVER_FILE + " " + sdkManager.getApplicationContext().getPackageName() + " " + sdkManager.getScreenWidth() + " " + sdkManager.getScreenHeight() + " " + sdkManager.getExtral() + " &");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

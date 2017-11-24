@@ -58,13 +58,13 @@ public class XSGRControl extends RControl{
 			if(state != 1)
 			{
 				
-				bfusm.getMouse().setHold(1);
-				bfusm.getMouse().mouseMove(-60, -60);
+				sdkManager.getMouse().setHold(1);
+				sdkManager.getMouse().mouseMove(-60, -60);
 				state	=	1;
 			}
 			else
 			{
-				bfusm.getMouse().setHold(2);
+				sdkManager.getMouse().setHold(2);
 				state	=	0;
 			}
 			
@@ -80,13 +80,13 @@ public class XSGRControl extends RControl{
 			if(state != 1)
 			{
 				
-				bfusm.getMouse().setHold(1);
-				bfusm.getMouse().mouseMove(-60, -60);
+				sdkManager.getMouse().setHold(1);
+				sdkManager.getMouse().mouseMove(-60, -60);
 				state	=	1;
 			}
 			else
 			{
-				bfusm.getMouse().setHold(2);
+				sdkManager.getMouse().setHold(2);
 				state	=	0;
 			}
 			

@@ -59,7 +59,7 @@
             android:visibility="gone" />
     </RelativeLayout>
 
-    <com.bagelplay.controller.wifiset.widget.Menu
+    <com.bagelplay.controller.wifiset.widget.FloatView
         android:id="@+id/more_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

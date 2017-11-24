@@ -6,6 +6,9 @@ import com.bagelplay.controller.widget.BaseActivity;
 
 import android.os.Bundle;
 
+/**
+ * Introduction of Bagel
+ */
 public class BagelPlayVmgAboutActivity extends BaseActivity{
 	
 	@Override

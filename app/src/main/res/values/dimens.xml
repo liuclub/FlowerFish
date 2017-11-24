@@ -101,8 +101,6 @@
     <dimen name="RightWrongBtnMargin">40dp</dimen>
 
 
-
-
     <!--<dimen name="dimen_10">13.2px</dimen>-->
     <!--<dimen name="dimen_20">26px</dimen>-->
     <dimen name="dimen_30">40px</dimen>
@@ -138,4 +136,5 @@
     <dimen name="salad_height">325px</dimen>
 
     <dimen name="language_margin_left">100px</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

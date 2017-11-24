@@ -330,7 +330,7 @@ public class GHandle{
 			PointerProperties pp	=	new PointerProperties();
 			pp.id	=	holdComponents[0].getTouchId();
 						
-   			//bfusm.getTouch().doTouch(mainActionToSend, screenXY[0], screenXY[1]);
+   			//sdkManager.getTouch().doTouch(mainActionToSend, screenXY[0], screenXY[1]);
   			bfusm.getTouch().doTouch(holdLen, mainActionToSend, new PointerCoords[]{pc}, new PointerProperties[]{pp});
   			Log.v("=---------------------------------------==", "component2Touch1 " + " action:" + mainActionToSend);
   		
@@ -449,7 +449,7 @@ public class GHandle{
 	private int[] keyCode2Screen(int keyCode)
 	{
 		Log.v(TAG, "keyCode2Screen " + "keyCode:" + keyCode + " x:" + keyCustomized[keyCode][0] + " y:" + keyCustomized[keyCode][1]);
-		//bfusm.getMouse().debugForTouchShow(keyCustomized[keyCode][0], keyCustomized[keyCode][1]);
+		//sdkManager.getMouse().debugForTouchShow(keyCustomized[keyCode][0], keyCustomized[keyCode][1]);
 		return keyCustomized[keyCode];
 	}
 	

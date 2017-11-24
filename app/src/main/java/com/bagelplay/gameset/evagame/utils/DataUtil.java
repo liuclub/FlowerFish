@@ -1,13 +1,17 @@
 package com.bagelplay.gameset.evagame.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.bagelplay.gameset.R;
 import com.bagelplay.gameset.evagame.doman.Food;
+import com.bagelplay.gameset.utils.LogUtils;
+import com.bagelplay.gameset.utils.RandNum;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by liubo on 2017/10/31.
@@ -16,6 +20,7 @@ import java.util.List;
 public class DataUtil {
 
     public static List<Food> getFruitData(Context context) {
+        Random random = new Random();
         String[] fruits_list_cn = context.getResources().getStringArray(R.array.fruits_list_cn);
         String[] fruits_list_en = context.getResources().getStringArray(R.array.fruits_list_en);
 
@@ -40,12 +45,25 @@ public class DataUtil {
         list.add(new Food(fruits_list_cn[17], fruits_list_en[17], R.raw.cf_strawberry, R.raw.ef_strawberry, R.drawable.f_strawberry));
         list.add(new Food(fruits_list_cn[18], fruits_list_en[18], R.raw.cf_watermelon, R.raw.ef_watermelon, R.drawable.f_watermelon));
 
-        Collections.shuffle(list);
+//        Collections.shuffle(list, random);
+        List<Food> tempList = new ArrayList<>();
+        int size = list.size();
+        a:for (;;){
+            int randNum = RandNum.randNum2(size);
+            Food tempFood = list.get(randNum);
+            if (!tempList.contains(tempFood)) {
+                tempList.add(tempFood);
+            }
+            if (tempList.size()==4) {
+                break a;
+            }
+        }
 
-        return list;
+        return tempList;
     }
 
     public static List<Food> getVegetableData(Context context) {
+        Random random = new Random();
         String[] vegetables_list_cn = context.getResources().getStringArray(R.array.vegetables_list_cn);
         String[] vegetable_list_en = context.getResources().getStringArray(R.array.vegetables_list_en);
 
@@ -64,8 +82,20 @@ public class DataUtil {
         list.add(new Food(vegetables_list_cn[11], vegetable_list_en[11], R.raw.cv_potato, R.raw.ev_potato, R.drawable.v_potato));
         list.add(new Food(vegetables_list_cn[12], vegetable_list_en[12], R.raw.cv_tomato, R.raw.ev_tomato, R.drawable.v_tomato));
 
-        Collections.shuffle(list);
+        Collections.shuffle(list, random);
+        List<Food> tempList = new ArrayList<>();
+        int size = list.size();
+        a:for (;;){
+            int randNum = RandNum.randNum2(size);
+            Food tempFood = list.get(randNum);
+            if (!tempList.contains(tempFood)) {
+                tempList.add(tempFood);
+            }
+            if (tempList.size()==4) {
+                break a;
+            }
+        }
 
-        return list;
+        return tempList;
     }
 }

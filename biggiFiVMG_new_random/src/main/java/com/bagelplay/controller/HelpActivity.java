@@ -11,32 +11,31 @@ import com.bagelplay.controller.domotion.DoMotionViewManager;
 import com.bagelplay.controller.widget.BaseActivity;
 
 
-public class HelpActivity extends BaseActivity{
-	
-	private View frameV;
-	
-	private ImageView helpIV;
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);
-		 
-		setContentView(R.layout.help);
-		
-		frameV		=	this.findViewById(R.id.frame);
-		
-		helpIV			=	(ImageView) this.findViewById(R.id.help);
-		
-		DoMotionView dmv	=	DoMotionViewManager.getCurrentDoMotionView();
-		if(dmv != null)
-		{
-			frameV.setBackgroundDrawable(new BitmapDrawable(dmv.getBg()));
-		}
-	}
+public class HelpActivity extends BaseActivity {
 
-	@Override
-	public void orientationChanged(int orientation) {
+    private View frameV;
 
-	}
+    private ImageView helpIV;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.help);
+
+        frameV = this.findViewById(R.id.frame);
+
+        helpIV = (ImageView) this.findViewById(R.id.help);
+
+        DoMotionView dmv = DoMotionViewManager.getCurrentDoMotionView();
+        if (dmv != null) {
+            frameV.setBackgroundDrawable(new BitmapDrawable(dmv.getBg()));
+        }
+    }
+
+    @Override
+    public void orientationChanged(int orientation) {
+
+    }
 
 }

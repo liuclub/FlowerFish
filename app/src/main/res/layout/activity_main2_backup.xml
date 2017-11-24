@@ -4,7 +4,7 @@
     android:id="@+id/main2_rootview"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--android:background="@mipmap/eva_game_bg"-->
+    <!--android:background="@drawable/eva_game_bg"-->
     <RelativeLayout
         android:id="@+id/main2_videoview_container"
         android:layout_width="match_parent"

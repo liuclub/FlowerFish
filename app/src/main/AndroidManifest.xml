@@ -26,15 +26,16 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
         android:installLocation="auto"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Test">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainLogo"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppLoad">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -43,23 +44,19 @@
         </activity>
         <activity
             android:name=".activity.EvaluationGame2Activity"
-            android:theme="@style/AppcompatNoTitle"
-            android:screenOrientation="landscape">
-        </activity>
-        <activity
-            android:name=".activity.Main2Activity"
-            android:theme="@style/AppcompatNoTitle"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppcompatNoTitle">
         </activity>
         <activity
             android:name=".activity.Main2ActivityBackup"
-            android:theme="@style/AppcompatNoTitle"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppcompatNoTitle">
         </activity>
         <activity
-            android:name=".activity.FragmentActivity"
-            android:theme="@style/AppcompatNoTitle"
-            android:screenOrientation="landscape">
+            android:name=".activity.DeviceActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_device"
+            android:theme="@style/FullscreenTheme">
         </activity>
     </application>
 

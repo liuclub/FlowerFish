@@ -55,30 +55,11 @@ public class StickList extends Screen {
 
 		@Override
 		public void OnAfterConnect(boolean result) {
-		
 			if (result) {
 				wifiLoading.stop();
 				wifisetact.finish();
 			} else {
-				
-				//wifiLoading.turn();
-				
 				StickList.getInstance().restartFindSticks();
-				
-//				MessageDialog md = new MessageDialog(wifisetact);
-//				md.setTit(getResources().getString(R.string.failconnect));
-//				md.setMess(getResources().getString(
-//						R.string.connect_to_other_devices));
-//				md.show();
-//				md.setOnDismissListener(new OnDismissListener() {
-//
-//					@Override
-//					public void onDismiss(DialogInterface dialog) {
-//						StickList.getInstance().wifiLoading.stop();
-//						
-//					}
-//
-//				});
 			}
 		}
 	};
@@ -174,14 +155,7 @@ public class StickList extends Screen {
 
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					
-					
-					
 					startFindSticks();
-					
-					
-					
-					
 				}
 				
 			});
@@ -190,7 +164,6 @@ public class StickList extends Screen {
 
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					
 					wifisetact.finish();
 					android.os.Process.killProcess(android.os.Process.myPid());
 					
@@ -199,28 +172,7 @@ public class StickList extends Screen {
 				}
 				
 			});
-			
-			
-	 		Dialog dialog	=	builder.show();	
-			
-			
-			
-		/*	MessageDialog md = new MessageDialog(wifisetact);
-			md.setTit(getResources().getString(R.string.no_device));
-			md.setMess(getResources().getString(R.string.current_WiFi_network)
-					+ ssid
-					+ getResources()
-							.getString(
-									R.string.please_connect_your_phone_to_the_same_network));
-			md.show();
-			md.setOnDismissListener(new OnDismissListener() {
-
-				@Override
-				public void onDismiss(DialogInterface dialog) {
-					startFindSticks();
-				}
-
-			});*/
+	 		Dialog dialog	=	builder.show();
 		} else {
 			final WifiListDialog dialog = new WifiListDialog(wifisetact);
 			dialog.setTit(getResources().getString(
@@ -238,7 +190,6 @@ public class StickList extends Screen {
 
 				@Override
 				public void OnWDClick(StickInfo si) {
-
 					startConnect(si);
 					dialog.dismiss();
 				}

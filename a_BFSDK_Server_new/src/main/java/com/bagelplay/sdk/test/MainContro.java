@@ -44,7 +44,7 @@ public class MainContro extends Activity {
         bfusm = SDKCocosManager.getInstance(this);
         bfusm.addWindowCallBack(this);
         bfusm.setControlZip("mouse.zip");
-         /*bfusm.setLocateRemoteControlJson("r1.json");
+         /*sdkManager.setLocateRemoteControlJson("r1.json");
      	
      	
      	handler.postDelayed(new Runnable(){
@@ -52,7 +52,7 @@ public class MainContro extends Activity {
 			@Override
 			public void run() {
 				 
-				bfusm.onControllerKeyDown(1003, 19);
+				sdkManager.onControllerKeyDown(1003, 19);
 			}
      		
      	}, 5000);
@@ -62,7 +62,7 @@ public class MainContro extends Activity {
 			@Override
 			public void run() {
 				 
-				bfusm.onControllerKeyDown(1003, 20);
+				sdkManager.onControllerKeyDown(1003, 20);
 			}
      		
      	}, 6000);
@@ -72,7 +72,7 @@ public class MainContro extends Activity {
 			@Override
 			public void run() {
 				 
-				bfusm.onControllerKeyDown(1003, 21);
+				sdkManager.onControllerKeyDown(1003, 21);
 			}
      		
      	}, 7000);
@@ -82,7 +82,7 @@ public class MainContro extends Activity {
 			@Override
 			public void run() {
 				 
-				bfusm.onControllerKeyDown(1003, 22);
+				sdkManager.onControllerKeyDown(1003, 22);
 			}
      		
      	}, 8000);*/
@@ -104,14 +104,14 @@ public class MainContro extends Activity {
 				}
 				else
 				{
-					bfusm.stopVoice(lastPlayerID);
+					sdkManager.stopVoice(lastPlayerID);
 					isVoice	=	false;
 					btn.setText("点一下说话");
 					audioTrack.stop();
 					Log.v("=--------------------------------=", "2222222222   "  + lastPlayerID);
 				}*/
 
-				/*bfusm.checkVoice("ok", new OnVoiceResultLinstener(){
+				/*sdkManager.checkVoice("ok", new OnVoiceResultLinstener(){
 
 					@Override
 					public void OnVoiceResult(final String right, final String result) {

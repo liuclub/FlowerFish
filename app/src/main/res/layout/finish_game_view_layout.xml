@@ -3,7 +3,7 @@
     android:id="@+id/rl_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/finish_game_bg">
+    android:background="@drawable/finish_game_bg">
 
     <RelativeLayout
         android:id="@+id/rl_anim"
@@ -19,7 +19,7 @@
             android:layout_centerVertical="true"
 
 
-            android:src="@mipmap/xiaohaoqi" />
+            android:src="@drawable/xiaohaoqi" />
 
         <ImageView
             android:id="@+id/iv_petal"
@@ -28,7 +28,7 @@
 
             android:layout_toRightOf="@id/iv_fish"
 
-            android:src="@mipmap/flower3" />
+            android:src="@drawable/flower3" />
 
 
     </RelativeLayout>
@@ -47,14 +47,14 @@
               style="@style/FinishGameRightWrongBtn"
               android:layout_alignParentLeft="true"
 
-              android:src="@mipmap/right_btn" />
+              android:src="@drawable/right_btn" />
 
           <ImageView
               android:id="@+id/iv_wrong"
               style="@style/FinishGameRightWrongBtn"
               android:layout_alignParentRight="true"
 
-              android:src="@mipmap/wrong_btn" />
+              android:src="@drawable/wrong_btn" />
 
       </RelativeLayout>-->
 

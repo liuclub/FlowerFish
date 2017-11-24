@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FlowerFish.iml" filepath="$PROJECT_DIR$/FlowerFish.iml" />
-      <module fileurl="file://$PROJECT_DIR$/activityAnimationLib/activityAnimationLib.iml" filepath="$PROJECT_DIR$/activityAnimationLib/activityAnimationLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/a_BFSDK_Server_new/a_BFSDK_Server_new.iml" filepath="$PROJECT_DIR$/a_BFSDK_Server_new/a_BFSDK_Server_new.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/biggiFiVMG_new_random/biggiFiVMG_new_random.iml" filepath="$PROJECT_DIR$/biggiFiVMG_new_random/biggiFiVMG_new_random.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />

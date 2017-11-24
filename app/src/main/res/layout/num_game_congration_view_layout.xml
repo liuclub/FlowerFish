@@ -3,7 +3,7 @@
               android:id="@+id/ll_parent"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@mipmap/congration_bg"
+              android:background="@drawable/congration_bg"
               android:gravity="center"
               android:orientation="vertical">
 
@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/iv_congration_fish"
             style="@style/CongrationFish"
-            android:src="@mipmap/fish"
+            android:src="@drawable/fish"
             android:visibility="invisible"/>
 
         <ImageView
@@ -25,7 +25,7 @@
             style="@style/CongrationWord"
             android:layout_toEndOf="@+id/iv_congration_fish"
             android:layout_toRightOf="@+id/iv_congration_fish"
-            android:src="@mipmap/congration_word"/>
+            android:src="@drawable/congration_word"/>
     </RelativeLayout>
 
 

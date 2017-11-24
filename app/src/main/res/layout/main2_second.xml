@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@mipmap/eva_game_bg"
+              android:background="@drawable/eva_game_bg"
               android:orientation="vertical">
 
     <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_marginBottom="@dimen/dimen_30"
                 android:layout_weight="1"
                 android:scaleType="fitEnd"
-                android:src="@mipmap/xiaohaoqi"
+                android:src="@drawable/xiaohaoqi"
                 />
 
             <LinearLayout
@@ -85,7 +85,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
-                        android:src="@mipmap/eva_zh"
+                        android:src="@drawable/eva_zh"
                         android:visibility="invisible"/>
 
                     <ImageView
@@ -94,7 +94,7 @@
                         android:layout_height="@dimen/language_height"
                         android:layout_toLeftOf="@id/falg_iv"
                         android:scaleType="centerInside"
-                        android:src="@mipmap/eva_zh"
+                        android:src="@drawable/eva_zh"
                         />
 
                     <ImageView
@@ -103,7 +103,7 @@
                         android:layout_height="@dimen/language_height"
                         android:layout_toRightOf="@+id/falg_iv"
                         android:scaleType="centerInside"
-                        android:src="@mipmap/eva_en"
+                        android:src="@drawable/eva_en"
                         />
                 </RelativeLayout>
             </LinearLayout>

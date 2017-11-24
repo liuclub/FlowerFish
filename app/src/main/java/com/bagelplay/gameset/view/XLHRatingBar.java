@@ -13,7 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bagelplay.gameset.R;
-import com.bagelplay.gameset.utils.UnitUtil;
+import com.bagelplay.gameset.utils.DimenUtil;
+import com.bagelplay.gameset.utils.DimenUtil;
 
 
 /**
@@ -40,10 +41,10 @@ public class XLHRatingBar extends LinearLayout {
         differentSize = typedArray.getBoolean(R.styleable.XlHRatingBar_differentSize, false);
         widthAndHeight = typedArray.getDimension(
                 R.styleable.XlHRatingBar_widthAndHeight,
-                UnitUtil.dp2Px(context, 0));
+                DimenUtil.dip2px(context, 0));
         dividerWidth = typedArray.getDimension(
                 R.styleable.XlHRatingBar_dividerWidth,
-                UnitUtil.dp2Px(context, 0));
+                DimenUtil.dip2px(context, 0));
         stateResId = typedArray.getResourceId(
                 R.styleable.XlHRatingBar_stateResId, -1);
         initView();
@@ -105,9 +106,9 @@ public class XLHRatingBar extends LinearLayout {
             imageView.setBackgroundResource(stateResId);
             if (i + 1 <= countSelected) {
 //                cb.setChecked(true);
-                imageView.setImageResource(R.mipmap.star_goal);
+                imageView.setImageResource(R.drawable.star_goal);
             } else {
-                imageView.setImageResource(R.mipmap.star_gray);
+                imageView.setImageResource(R.drawable.star_gray);
             }
 
             addView(imageView, layoutParams);

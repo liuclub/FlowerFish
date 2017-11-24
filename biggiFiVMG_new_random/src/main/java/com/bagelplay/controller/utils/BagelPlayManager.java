@@ -9,7 +9,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioFormat;
 import android.os.Handler;
 
 import com.bagelplay.controller.BagelPlayActivity;
@@ -22,15 +21,15 @@ import com.umeng.analytics.AnalyticsConfig;
 
 public class BagelPlayManager {
 
-    private static BagelPlayManager bvm;
+    private static BagelPlayManager bagelPlayManager;
 
     private Context context;
 
     private SocketReader socketReader;
 
-    private BagelPlayVmaStub bvs;
+    private BagelPlayVmaStub bagelPlayVmaStub;
 
-    private InputStream is;
+    private InputStream inputStream;
 
     private Handler handler = new Handler();
 
@@ -46,17 +45,17 @@ public class BagelPlayManager {
     }
 
     public static void init(Context context) {
-        if (bvm == null)
-            bvm = new BagelPlayManager(context);
+        if (bagelPlayManager == null)
+            bagelPlayManager = new BagelPlayManager(context);
     }
 
     public static BagelPlayManager getInstance() {
-        return bvm;
+        return bagelPlayManager;
     }
 
     public void start() {
-        bvs = BagelPlayVmaStub.getInstance();
-        is = bvs.getDataInputStream();
+        bagelPlayVmaStub = BagelPlayVmaStub.getInstance();
+        inputStream = bagelPlayVmaStub.getDataInputStream();
         BMThread b = new BMThread();
         b.start();
     }
@@ -65,13 +64,13 @@ public class BagelPlayManager {
         while (true) {
             try {
 
-                int len = socketReader.readInt(is);
-                int cmd = socketReader.readInt(is);
+                int len = socketReader.readInt(inputStream);
+                int cmd = socketReader.readInt(inputStream);
 
                 Log.v("=----------------------------------------------=", len
                         + " " + cmd);
                 if (len <= 0) {
-                    bvs.close();
+                    bagelPlayVmaStub.close();
                     return;
                 }
 
@@ -111,13 +110,13 @@ public class BagelPlayManager {
                 } else if (cmd == CmdProtocol.ServerToClient.VOICE_CHECK) {
                     voiceCheck();
                 } else {
-                    is.skip(len - 4);
+                    inputStream.skip(len - 4);
                 }
 
             } catch (Exception e) {
 
                 e.printStackTrace();
-                bvs.close();
+                bagelPlayVmaStub.close();
                 return;
             }
 
@@ -125,7 +124,7 @@ public class BagelPlayManager {
     }
 
     private void getExtra() throws Exception {
-        String extra = socketReader.readStr(is);
+        String extra = socketReader.readStr(inputStream);
 
         JSONObject jo = new JSONObject(extra);
 
@@ -139,30 +138,30 @@ public class BagelPlayManager {
     }
 
     private void login() throws Exception {
-        int result = socketReader.readInt(is);
+        int result = socketReader.readInt(inputStream);
         if (result == 0) {
-            bvs.sendSensorSwitchData(1);
-            Config.tvWidthPixels = socketReader.readInt(is);
-            Config.tvHeightPixels = socketReader.readInt(is);
+            bagelPlayVmaStub.sendSensorSwitchData(1);
+            Config.tvWidthPixels = socketReader.readInt(inputStream);
+            Config.tvHeightPixels = socketReader.readInt(inputStream);
 
         } else {
 
             StickList sl = StickList.getInstance();
             if (sl != null)
                 sl.finishConnect(false, result);
-            bvs.close();
+            bagelPlayVmaStub.close();
 
         }
     }
 
     private void appInfo2() throws Exception {
         SocketReader socketReader = new SocketReader(ByteOrder.BIG_ENDIAN);
-        final int doMotionView = socketReader.readInt(is);
+        final int doMotionView = socketReader.readInt(inputStream);
         String tPayment = "";
         byte[] tBgPicData = new byte[0];
         if (doMotionView != 0) {
-            tBgPicData = socketReader.readBytes(is);
-            tPayment = socketReader.readStr(is);
+            tBgPicData = socketReader.readBytes(inputStream);
+            tPayment = socketReader.readStr(inputStream);
         }
 
         final byte[] bgPicData = tBgPicData;
@@ -190,7 +189,7 @@ public class BagelPlayManager {
 
         SocketReader socketReader = new SocketReader(ByteOrder.BIG_ENDIAN);
 
-        String zipName = socketReader.readStr(is);
+        String zipName = socketReader.readStr(inputStream);
 
         File file0 = new File(DoMotionViewManager.ZIP_DIR);
         File[] files = file0.listFiles();
@@ -207,7 +206,7 @@ public class BagelPlayManager {
         //File file = new File(DoMotionViewManager.ZIP_DIR + zipName);
         file.delete();
 
-        byte[] buf = socketReader.readBytes(is);
+        byte[] buf = socketReader.readBytes(inputStream);
 
 
         FileOutputStream fos = new FileOutputStream(file);
@@ -236,7 +235,7 @@ public class BagelPlayManager {
 
     private void appInfoZipName() throws Exception {
         SocketReader socketReader = new SocketReader(ByteOrder.BIG_ENDIAN);
-        String zipName = socketReader.readStr(is);
+        String zipName = socketReader.readStr(inputStream);
         File file = new File(DoMotionViewManager.ZIP_DIR + zipName);
         if (file.exists()) {
             Intent intent = new Intent(context, BagelPlayActivity.class);
@@ -245,7 +244,7 @@ public class BagelPlayManager {
             context.startActivity(intent);
         } else {
             if (!zipName.equals(lastZipName)) {
-                bvs.sendAppInfoData();
+                bagelPlayVmaStub.sendAppInfoData();
                 zipName = lastZipName;
             }
         }
@@ -261,13 +260,13 @@ public class BagelPlayManager {
 
     private void paymentRequest() throws Exception {
         SocketReader socketReader = new SocketReader(ByteOrder.BIG_ENDIAN);
-        String version = socketReader.readStr(is);
-        String platform = socketReader.readStr(is);
-        String token = socketReader.readStr(is);
-        String packageName = socketReader.readStr(is);
-        String macAddr = socketReader.readStr(is);
-        String brand = socketReader.readStr(is);
-        String paramJson = socketReader.readStr(is);
+        String version = socketReader.readStr(inputStream);
+        String platform = socketReader.readStr(inputStream);
+        String token = socketReader.readStr(inputStream);
+        String packageName = socketReader.readStr(inputStream);
+        String macAddr = socketReader.readStr(inputStream);
+        String brand = socketReader.readStr(inputStream);
+        String paramJson = socketReader.readStr(inputStream);
 
         Log.v("=--------------------paymentRequest-----------------------",
                 version + " ");
@@ -299,9 +298,9 @@ public class BagelPlayManager {
 
     private void voiceStart() throws Exception {
         SocketReader socketReader = new SocketReader(ByteOrder.BIG_ENDIAN);
-        int frequency = socketReader.readInt(is);
-        int channelConfiguration = socketReader.readInt(is);
-        int audioEncoding = socketReader.readInt(is);
+        int frequency = socketReader.readInt(inputStream);
+        int channelConfiguration = socketReader.readInt(inputStream);
+        int audioEncoding = socketReader.readInt(inputStream);
 
 
         VoiceRecorder.getInstance().start(frequency, channelConfiguration,
@@ -315,15 +314,15 @@ public class BagelPlayManager {
 
     private void voiceCheck() throws Exception {
         SocketReader socketReader = new SocketReader(ByteOrder.BIG_ENDIAN);
-        int id = socketReader.readInt(is);
-        String right = socketReader.readStr(is);
+        int id = socketReader.readInt(inputStream);
+        String right = socketReader.readStr(inputStream);
 
         // 需要保存id作为本次通话的标识，这个要和对比的结果一起发给sdk端 right为sdk端传来的正确的文字
         // 调用讯飞的sdk进行判断
         // 再调用BagelPlayVmaStub类的sendVoiceCheckResult(int id,String right,String
         // result)方法将结果返回给sdk端
 
-        bvs.sendVoiceCheckResult(id, right, "result something ");
+        bagelPlayVmaStub.sendVoiceCheckResult(id, right, "result something ");
 
     }
 

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.iflytek.cloud.SpeechUtility;
+import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Created by zhangtianjie on 2017/8/24.
@@ -33,6 +34,8 @@ public class MyApplication extends Application {
 
         // 以下语句用于设置日志开关（默认开启），设置成false时关闭语音云SDK日志打印
         // Setting.setShowLog(false);
+
+        CrashReport.initCrashReport(getApplicationContext(), "ff413359f6", false);
         super.onCreate();
     }
 }

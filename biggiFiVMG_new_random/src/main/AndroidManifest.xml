@@ -1,173 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.bagelplay.controller.com" android:versionCode="125"
-	android:versionName="1.0.125">
+          package="com.bagelplay.controller.com"
+          android:versionCode="125"
+          android:versionName="1.0.125">
 
-	<uses-sdk android:minSdkVersion="9" />
+    <uses-sdk android:minSdkVersion="9"/>
 
-	<application android:name="com.bagelplay.controller.BagelPlayApplication"
-		android:icon="@drawable/biggifi03_wuz" android:label="@string/app_name">
+    <application
+        android:name="com.bagelplay.controller.BagelPlayApplication"
+        android:icon="@drawable/biggifi03_wuz"
+        android:label="@string/app_name">
 
-		<!-- android:name=".BiggiFiApplication"> -->
-		<meta-data android:name="BaiduMobAd_CHANNEL" android:value="Baidu Market" />
-		<!-- 您从百度网站获取的APP KEY -->
-		<meta-data android:name="BaiduMobAd_STAT_ID" android:value="e2955cd423" />
-		<meta-data android:name="UMENG_APPKEY" android:value="566aa23ee0f55a319a0018d3">
-		</meta-data>
-		<!-- <meta-data android:name="UMENG_CHANNEL" android:value="北鸽" /> -->
+        <!-- android:name=".BiggiFiApplication"> -->
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="Baidu Market"/>
+        <!-- 您从百度网站获取的APP KEY -->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="e2955cd423"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="566aa23ee0f55a319a0018d3">
+        </meta-data>
+        <!-- <meta-data android:name="UMENG_CHANNEL" android:value="北鸽" /> -->
 
 
-		<!-- <activity android:name="com.bagelplay.controller.BiggiFiVmaSearchActivity" 
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale" 
-			android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
-			android:windowSoftInputMode="stateHidden" > </activity> -->
-		<activity android:name="com.bagelplay.controller.BiggiFiVmaListActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:label="@string/app_name" android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden">
-		</activity>
-		<activity android:name="com.bagelplay.controller.wifiset.WifiSetAct"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:exported="true" android:label="@string/app_name"
-			android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
+        <!-- <activity android:name="com.bagelplay.controller.BiggiFiVmaSearchActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden" > </activity> -->
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiVmaListActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity
+            android:name="com.bagelplay.controller.wifiset.WifiSetAct"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
 
-		</activity>
-		<activity android:name="com.bagelplay.controller.BagelPlayActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:exported="true" android:label="@string/app_name"
-			android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity
+            android:name="com.bagelplay.controller.BagelPlayActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden">
 
-		</activity>
-		<activity android:name="com.bagelplay.controller.HelpActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:exported="true" android:label="@string/app_name"
-			android:launchMode="singleInstance" android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden">
-		</activity>
-		<activity android:name="com.bagelplay.controller.BagelPlaySettingActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden">
-		</activity>
+        </activity>
+        <activity
+            android:name="com.bagelplay.controller.HelpActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity
+            android:name="com.bagelplay.controller.BagelPlaySettingActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
 
-		<service android:name="com.bagelplay.controller.BagelPlayHeartService">
-			<intent-filter>
-				<action android:name="com.bagelplay.controller.BiggiFiHeartService" />
-			</intent-filter>
-		</service>
+        <service android:name="com.bagelplay.controller.BagelPlayHeartService">
+            <intent-filter>
+                <action android:name="com.bagelplay.controller.BiggiFiHeartService"/>
+            </intent-filter>
+        </service>
 
-		<activity android:name="com.bagelplay.controller.BiggiFiVmaLoginActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape" />
-		<activity android:name="com.bagelplay.controller.BiggiFiVmgPlusActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:launchMode="singleTask" android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden|adjustUnspecified" />
-		<activity android:name="com.bagelplay.controller.BiggiFiVmgInfoActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.BiggiFiSettingListViewActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.BiggiFiHelpInfoActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape" android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiVmaLoginActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiVmgPlusActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustUnspecified"/>
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiVmgInfoActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiSettingListViewActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiHelpInfoActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"/>
 
-		<service android:name="com.bagelplay.controller.service.BiggiFiService"
-			android:windowSoftInputMode="stateHidden" />
+        <service
+            android:name="com.bagelplay.controller.service.BiggiFiService"
+            android:windowSoftInputMode="stateHidden"/>
 
-		<activity android:name="com.bagelplay.controller.BagelPlayVmgAboutActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape" android:windowSoftInputMode="stateHidden" />
-		<activity
-			android:name="com.bagelplay.controller.BiggiFiAdvancedVersionSettingActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape" android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.BiggiFiKeypadUIActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.ArrowMouseUIActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.GuideActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.hot.GuideListActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:label="@string/app_name" android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden">
-			<!--<intent-filter>-->
+        <activity
+            android:name="com.bagelplay.controller.BagelPlayVmgAboutActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiAdvancedVersionSettingActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.BiggiFiKeypadUIActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.ArrowMouseUIActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.GuideActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.hot.GuideListActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden">
+            <!--<intent-filter>-->
 
-				<!-- <action android:name="android.intent.action.MAIN" /> <category android:name="android.intent.category.LAUNCHER" 
-					/> -->
-			<!--</intent-filter>-->
-		</activity>
+            <!-- <action android:name="android.intent.action.MAIN" /> <category android:name="android.intent.category.LAUNCHER"
+                /> -->
+            <!--</intent-filter>-->
+        </activity>
 
-		<service android:name="com.bagelplay.controller.hot.HotService">
-			<intent-filter>
-				<action android:name="com.digilink.biggifi.action.HotServices" />
+        <service android:name="com.bagelplay.controller.hot.HotService">
+            <intent-filter>
+                <action android:name="com.digilink.biggifi.action.HotServices"/>
 
-				<category android:name="android.intent.category.default" />
-			</intent-filter>
-		</service>
+                <category android:name="android.intent.category.default"/>
+            </intent-filter>
+        </service>
 
-		<activity android:name="com.bagelplay.controller.hot.WifiListActivity"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden" />
-		<activity android:name="com.bagelplay.controller.widget.NoWifiDialogAct"
-			android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
-			android:launchMode="singleTop" android:screenOrientation="landscape"
-			android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-			android:windowSoftInputMode="stateHidden" />
-	</application>
+        <activity
+            android:name="com.bagelplay.controller.hot.WifiListActivity"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.bagelplay.controller.widget.NoWifiDialogAct"
+            android:configChanges="orientation|locale|mcc|mnc|touchscreen|keyboard|keyboardHidden|navigation|screenLayout|uiMode|fontScale"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden"/>
+    </application>
 
-	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE">
-	</uses-permission>
-	<uses-permission android:name="android.permission.INTERNET">
-	</uses-permission>
-	<uses-permission android:name="android.permissi.WAKE_LOCK">
-	</uses-permission>
-	<uses-permission android:name="android.permission.RESTART_PACKAGES" />
-	<uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.GET_TASKS" />
-	<uses-permission android:name="android.permission.RECORD_AUDIO" />
-	<uses-permission android:name="android.permission.PLAY_AUDIO" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-	<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET">
+    </uses-permission>
+    <uses-permission android:name="android.permissi.WAKE_LOCK">
+    </uses-permission>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.PLAY_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
-	<supports-screens android:anyDensity="true"
-		android:largeScreens="true" android:normalScreens="true"
-		android:smallScreens="true" />
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"/>
 
 </manifest>

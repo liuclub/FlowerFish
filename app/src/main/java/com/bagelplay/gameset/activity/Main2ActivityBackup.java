@@ -7,9 +7,12 @@ import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.transition.Explode;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -48,7 +51,6 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
     private RelativeLayout main2_videoview_container;
     private SurfaceView surfaceView;
     private MPlayer player;
-    private MediaPlayer mediaPlayer;
     private int currentSectiion;
 
     private LinearLayout main2_second;
@@ -105,27 +107,6 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
             if (mUrl.length() > 0) {
                 try {
                     player.setSource(Main2ActivityBackup.this, mUrl);
-//                    player.setPlayListener(new IMPlayListener() {
-//                        @Override
-//                        public void onStart(IMPlayer player) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onPause(IMPlayer player) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onResume(IMPlayer player) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onComplete(IMPlayer player) {
-//
-//                        }
-//                    });
                     player.play();
                 } catch (MPlayerException e) {
                     e.printStackTrace();
@@ -147,8 +128,8 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
     }
 
     private void next() {
-        main2_rootview.setInAnimation(AnimationUtils.loadAnimation(Main2ActivityBackup.this, R.anim.test_in));
-        main2_rootview.setOutAnimation(AnimationUtils.loadAnimation(Main2ActivityBackup.this, R.anim.test_out));
+        main2_rootview.setInAnimation(AnimationUtils.loadAnimation(Main2ActivityBackup.this, R.anim.fade_in));
+        main2_rootview.setOutAnimation(AnimationUtils.loadAnimation(Main2ActivityBackup.this, R.anim.fade_out));
 
         main2_rootview.showNext();
         handler.postDelayed(() -> {
@@ -245,10 +226,6 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
                 }
                 break;
             case R.id.main2_skip:
-//                if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-//                    mediaPlayer.stop();
-//                    mediaPlayer.release();
-//                }
                 player.pause();
                 next();
                 break;
@@ -288,8 +265,6 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
         super.onResume();
         player.onResume();
         SDKCocosManager.getInstance().onResume();
-
-
     }
 
     @Override

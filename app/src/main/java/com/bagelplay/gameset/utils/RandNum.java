@@ -11,38 +11,40 @@ import java.util.Random;
 public class RandNum {
 
 
-
     //从0到num-1
     public static int randNum(int num) {
         Random r = new Random();
         return Math.abs(r.nextInt() % num);
     }
 
+    public static int randNum2(int num) {
+        Random r = new Random();
+        return Math.abs(r.nextInt(num));
+    }
+
     //一组长度为numsize,的随机数组
-    public static int[] getRandNumNumArray(int numsize){
+    public static int[] getRandNumNumArray(int numsize) {
 
         //得到一个从1-numsize的初始数组
 
-        List<Integer> numArray =new ArrayList<>();
+        List<Integer> numArray = new ArrayList<>();
 
-        for(int i=0;i<numsize;i++){
+        for (int i = 0; i < numsize; i++) {
 
             numArray.add(i);
         }
 
 
         //随机后数组
-        int [] resultArray=new int[numsize];
+        int[] resultArray = new int[numsize];
 
-        for(int j=numsize-1;j>=0;j--){
+        for (int j = numsize - 1; j >= 0; j--) {
 
 
+            int temp = randNum(j + 1);
 
-            int temp=randNum(j+1);
-
-            resultArray[j]=numArray.get(temp);
+            resultArray[j] = numArray.get(temp);
             numArray.remove(temp);
-
 
 
         }

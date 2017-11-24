@@ -100,8 +100,6 @@ public class BagelPlayVmaStub {
     }
 
     public void sendLoginData() {
-
-
         SocketWriter sw = new SocketWriter(ByteOrder.LITTLE_ENDIAN);
         sw.writeInt(CmdProtocol.ClientToServer.LOGIN);
 
@@ -109,28 +107,6 @@ public class BagelPlayVmaStub {
         sw.writeInt(Config.heightPixels);
 
         sendTcp(sw.getBytes());
-
-	/*	SocketWriter sw	=	new SocketWriter(ByteOrder.LITTLE_ENDIAN);
-		sw.writeInt(CmdProtocol.ClientToServer.LOGIN);
-		
-		sw.writeInt(Config.widthPixels);
-		sw.writeInt(Config.heightPixels);
-		
-		
-		SocketWriter sw1	=	new SocketWriter(ByteOrder.LITTLE_ENDIAN);
-		
-		sw1.writeBytes(sw.getBytes());
-	
-		try
-		{
-			
-			os.write(sw1.getBytes());
-			os.flush();
-		}catch(Exception e){
-			e.printStackTrace();
-		}*/
-
-
     }
 
     public static String bytesToHexString(byte[] src) {

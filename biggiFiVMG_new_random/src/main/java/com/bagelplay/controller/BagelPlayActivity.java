@@ -12,7 +12,7 @@ import com.bagelplay.controller.utils.Config;
 import com.bagelplay.controller.utils.Log;
 import com.bagelplay.controller.widget.BaseActivity;
 import com.bagelplay.controller.wifiset.WifiSetAct;
-import com.bagelplay.controller.wifiset.widget.Menu;
+import com.bagelplay.controller.wifiset.widget.FloatView;
 import com.umeng.analytics.MobclickAgent;
 
 import android.content.Intent;
@@ -37,11 +37,11 @@ public class BagelPlayActivity extends BaseActivity {
 
 	// private BiggiFiTopMenu topMenu;
 
-	private static BagelPlayActivity bfa;
+	private static BagelPlayActivity bagelPlayActivity;
 
 	private View keyboardV;
 
-	private Menu menuV;
+	private FloatView floatView;
 
 	private ImageView currentControlIV;
 	private String zipName;
@@ -52,14 +52,14 @@ public class BagelPlayActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		bfa = this;
+		bagelPlayActivity = this;
 
 		setContentView(R.layout.vmg_main_layout);
 
 		mVmgMainLayout = (RelativeLayout) findViewById(R.id.vmg_main_ui);
 
 		// topMenu = (BiggiFiTopMenu)findViewById(R.id.top_menu);
-		menuV = (Menu) findViewById(R.id.more_menu);
+		floatView = (FloatView) findViewById(R.id.more_menu);
 
 		keyboardV = findViewById(R.id.keyboard);
 
@@ -109,13 +109,13 @@ public class BagelPlayActivity extends BaseActivity {
 	}
 
 	public static BagelPlayActivity getInstance() {
-		return bfa;
+		return bagelPlayActivity;
 	}
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
-		menuV.initMoreView();
+		floatView.initMoreView();
 
 	}
 
@@ -159,8 +159,8 @@ public class BagelPlayActivity extends BaseActivity {
 	public void orientationChanged(int orientation) {
 
 		// topMenu.setCenter(Config.widthPixels);
-		if (menuV != null) {
-			menuV.initMoreView();
+		if (floatView != null) {
+			floatView.initMoreView();
 		}
 	}
 
