@@ -35,4 +35,5 @@ public class DimenUtil {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return typedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, value, metrics);
     }
+
 }

@@ -13,13 +13,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.constraint.solver.widgets.WidgetContainer;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.widget.ImageView;
@@ -34,7 +38,11 @@ import com.bagelplay.gameset.evagame.utils.DataUtil;
 import com.bagelplay.gameset.evagame.utils.EvaUtils;
 import com.bagelplay.gameset.evagame.utils.SPUtil;
 import com.bagelplay.gameset.evagame.view.EvaObjectView;
+import com.bagelplay.gameset.player.MPlayer;
+import com.bagelplay.gameset.player.MPlayerException;
+import com.bagelplay.gameset.player.MinimalDisplay;
 import com.bagelplay.gameset.utils.AppManager;
+import com.bagelplay.gameset.utils.DimenUtil;
 import com.bagelplay.gameset.utils.LocalAnimationUtils;
 import com.bagelplay.gameset.utils.LogUtils;
 import com.bagelplay.gameset.utils.RandNum;
@@ -88,6 +96,11 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     private int score;//积分/得分
     public static final String SCORE_SUFFIX = " 积分";
 
+    private MPlayer player;
+
+    private int screenWidth, screenHeight;
+
+    public RelativeLayout eva_surfaceview_container;
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
     private MediaPlayer mediaPlayer;
@@ -184,7 +197,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        LogUtils.lb("onCreate");
         super.onCreate(savedInstanceState);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setContentView(R.layout.activity_evaluation_game);
@@ -230,7 +242,6 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
     protected void onResume() {
         super.onResume();
         SDKCocosManager.getInstance().onResume();
-
 
         aeObject.setDisableTouch(false);
         aeObject.setButtonClickable(true);
@@ -279,11 +290,9 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-//        LogUtils.lb("onWindowFocusChanged");
         super.onWindowFocusChanged(hasFocus);
         //添加进度条
         if (once) {
-
             initProgress();
             once = false;
         }
@@ -291,7 +300,21 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         int height = (int) (imageView.getHeight() * 1.0 * 12 / 28);
         fruitHeight = height;
         vegetableHeight = height;
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenHeight = displayMetrics.heightPixels;
+        screenWidth = displayMetrics.widthPixels;
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenHeight / 4, screenHeight / 4);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        ae_restart.setLayoutParams(params);
+
+        foodContainerHeight = aeFoodContainer.getHeight();
+        foodContainerWidth = aeFoodContainer.getWidth();
+
     }
+
+    private int foodContainerHeight, foodContainerWidth;
 
     /**
      * 初始化进度条
@@ -400,7 +423,8 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         ae_waveview = (WaveLineView) root_view.findViewById(R.id.ae_waveview);
         mXLHRatingBar = (XLHRatingBar) root_view.findViewById(R.id.ae_ratingbar);
         ae_progress_container2 = (LinearLayout) root_view.findViewById(R.id.ae_progress_container2_inner);
-        surfaceView = root_view.findViewById(R.id.eva_surfaceview);
+        eva_surfaceview_container = root_view.findViewById(R.id.eva_surfaceview_container);
+        surfaceView = eva_surfaceview_container.findViewById(R.id.eva_surfaceview);
         ae_celebrateview = root_view.findViewById(R.id.ae_celebrateview);
         ae_full_screen = root_view.findViewById(R.id.ae_full_screen);
         ae_mouse_tip = root_view.findViewById(R.id.ae_mouse_tip);
@@ -704,22 +728,53 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
                             currentGameIndex = 0;
                             String uriString = "android.resource://" + getPackageName() + "/" + (section == 1 ? R.raw.hamburger_finished : R.raw.salad_finished);
 
+//                            try {
+//                                player = new MPlayer();
+//                                player.isResumed = true;
+//                                player.setSource(EvaluationGame2Activity.this, uriString);
+//                                player.setDisplay(new MinimalDisplay(surfaceView));
+//                                player.play();
+//                            } catch (MPlayerException e) {
+//                                e.printStackTrace();
+//                            }
+
                             mediaPlayer = new MediaPlayer();
                             surfaceHolder = surfaceView.getHolder();
                             try {
                                 mediaPlayer.setDataSource(EvaluationGame2Activity.this, Uri.parse(uriString));
 
-                                surfaceHolder.addCallback(new MyCallBack());
+                                surfaceHolder.addCallback(new SurfaceHolder.Callback() {
+                                    @Override
+                                    public void surfaceCreated(SurfaceHolder holder) {
+                                        surfaceView.setBackgroundColor(Color.TRANSPARENT);
+                                        holder.setFormat(PixelFormat.TRANSPARENT);
+                                        if (mediaPlayer != null) {
+                                            mediaPlayer.setDisplay(holder);
+                                            mediaPlayer.seekTo(mediaPlayer.getCurrentPosition());
+                                        }
+                                    }
+
+                                    @Override
+                                    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+                                    }
+
+                                    @Override
+                                    public void surfaceDestroyed(SurfaceHolder holder) {
+
+                                    }
+                                });
                                 mediaPlayer.prepare();
                                 mediaPlayer.setOnPreparedListener(mp -> {
                                     mediaPlayer.start();
-                                    surfaceView.setVisibility(View.VISIBLE);
+
+                                    eva_surfaceview_container.setVisibility(View.VISIBLE);
                                 });
                                 mediaPlayer.setOnCompletionListener(mp -> {
-                                    surfaceView.setVisibility(View.GONE);
-                                    mp.stop();
-                                    mp.release();
-                                    mp = null;
+//                                    eva_surfaceview_container.setVisibility(View.GONE);
+//                                    mp.stop();
+//                                    mp.release();
+//                                    mp = null;
                                     startActivity(
                                             new Intent(EvaluationGame2Activity.this, Main2ActivityBackup.class)
                                                     .putExtra("enteragain", true));
@@ -748,33 +803,17 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
         switch (v.getId()) {
             case R.id.ae_pause:
                 aePause.setVisibility(View.GONE);
-                ((LinearLayout) ae_restart.getParent()).setVisibility(View.VISIBLE);
+                ((RelativeLayout) ae_restart.getParent()).setVisibility(View.VISIBLE);
+
+                ae_waveview.setVisibility(View.GONE);
+
                 onPause();
                 break;
             case R.id.ae_restart:
                 aePause.setVisibility(View.VISIBLE);
-                ((LinearLayout) ae_restart.getParent()).setVisibility(View.GONE);
+                ((RelativeLayout) ae_restart.getParent()).setVisibility(View.GONE);
                 onResume();
                 break;
-        }
-    }
-
-    private class MyCallBack implements SurfaceHolder.Callback {
-        @Override
-        public void surfaceCreated(SurfaceHolder holder) {
-            surfaceView.setBackgroundColor(Color.TRANSPARENT);
-            holder.setFormat(PixelFormat.TRANSPARENT);
-            mediaPlayer.setDisplay(holder);
-        }
-
-        @Override
-        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-        }
-
-        @Override
-        public void surfaceDestroyed(SurfaceHolder holder) {
-
         }
     }
 
@@ -814,23 +853,38 @@ public class EvaluationGame2Activity extends AppCompatActivity implements EvaObj
             }
         } else {
             params = new RelativeLayout.LayoutParams(vegetableHeight, vegetableHeight);
-//            if (currentGameIndex == 0) {
-//                params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//            switch (currentGameIndex) {
+//                case 0:
+//                    int width = aeFoodContainer.getWidth();
+//                    left = (width - 2 * vegetableHeight) / 2;
+//                    params.setMargins(left, 0, 0, 0);
+//                    break;
+//                case 1:
+//                    params.setMargins(vegetableHeight + left, 0, 0, 0);
+//                    break;
+//                case 2:
+//                    params.setMargins(vegetableHeight + left, vegetableHeight, 0, 0);
+//                    break;
+//                case 3:
+//                    params.setMargins(left, vegetableHeight, 0, 0);
+//                    break;
+//                default:
+//                    break;
 //            }
+            params.addRule(RelativeLayout.CENTER_VERTICAL);
+            int interval = DimenUtil.dip2px(this, 10);
             switch (currentGameIndex) {
                 case 0:
-                    int width = aeFoodContainer.getWidth();
-                    left = (width - 2 * vegetableHeight) / 2;
-                    params.setMargins(left, 0, 0, 0);
+                    params.setMargins(interval, 0, 0, 0);
                     break;
                 case 1:
-                    params.setMargins(vegetableHeight + left, 0, 0, 0);
+                    params.setMargins(foodContainerWidth / 4 - interval, 0, 0, 0);
                     break;
                 case 2:
-                    params.setMargins(vegetableHeight + left, vegetableHeight, 0, 0);
+                    params.setMargins(foodContainerWidth * 2 / 4 - interval, 0, 0, 0);
                     break;
                 case 3:
-                    params.setMargins(left, vegetableHeight, 0, 0);
+                    params.setMargins(foodContainerWidth * 3 / 4 - interval, 0, 0, 0);
                     break;
                 default:
                     break;

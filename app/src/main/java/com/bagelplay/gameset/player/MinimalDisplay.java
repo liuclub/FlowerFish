@@ -18,8 +18,8 @@ public class MinimalDisplay implements IMDisplay {
 
     private SurfaceView surfaceView;
 
-    public MinimalDisplay(SurfaceView surfaceView){
-        this.surfaceView=surfaceView;
+    public MinimalDisplay(SurfaceView surfaceView) {
+        this.surfaceView = surfaceView;
     }
 
     @Override
@@ -51,4 +51,5 @@ public class MinimalDisplay implements IMDisplay {
     public void onComplete(IMPlayer player) {
 
     }
+
 }

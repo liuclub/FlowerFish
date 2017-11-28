@@ -8,6 +8,7 @@
 package com.bagelplay.gameset.player;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
@@ -16,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+
+import com.bagelplay.gameset.activity.EvaluationGame2Activity;
+import com.bagelplay.gameset.activity.Main2ActivityBackup;
+import com.bagelplay.gameset.utils.LogUtils;
 
 import java.io.IOException;
 
@@ -36,7 +41,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     private boolean isMediaPrepared = false;      //视频资源是否准备完成
     private boolean isSurfaceCreated = false;     //Surface是否被创建
     private boolean isUserWantToPlay = false;     //使用者是否打算播放
-    private boolean isResumed = false;            //是否在Resume状态
+    public boolean isResumed = false;            //是否在Resume状态
 
     private boolean mIsCrop = false;
 
@@ -47,6 +52,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     private void createPlayerIfNeed() {
         if (null == player) {
+            LogUtils.lb("createPlayerIfNeed");
             player = new MediaPlayer();
             player.setScreenOnWhilePlaying(true);
             player.setOnBufferingUpdateListener(this);
@@ -59,7 +65,22 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     }
 
     private void playStart() {
-        if (isVideoSizeMeasured && isMediaPrepared && isSurfaceCreated && isUserWantToPlay && isResumed) {
+        boolean temp = isVideoSizeMeasured && isMediaPrepared && isSurfaceCreated && isUserWantToPlay && isResumed;
+        LogUtils.lb("isVideoSizeMeasured = " + isVideoSizeMeasured);
+        LogUtils.lb("isMediaPrepared = " + isMediaPrepared);
+        LogUtils.lb("isSurfaceCreated = " + isSurfaceCreated);
+        LogUtils.lb("isUserWantToPlay = " + isUserWantToPlay);
+        LogUtils.lb("isResumed = " + isResumed);
+        if (temp) {
+            if (activity instanceof EvaluationGame2Activity) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((EvaluationGame2Activity) activity).eva_surfaceview_container.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+            LogUtils.lb("playStart");
             player.setDisplay(display.getHolder());
             player.start();
             log("视频开始播放");
@@ -72,6 +93,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     private void playPause() {
         if (player != null && player.isPlaying()) {
+            LogUtils.lb("playPause");
             player.pause();
             display.onPause(this);
             if (mPlayListener != null) {
@@ -81,6 +103,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     }
 
     private boolean checkPlay() {
+        LogUtils.lb("checkPlay");
         if (source == null || source.length() == 0) {
             return false;
         }
@@ -88,6 +111,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     }
 
     public void setPlayListener(IMPlayListener listener) {
+        LogUtils.lb("setPlayListener");
         this.mPlayListener = listener;
     }
 
@@ -100,11 +124,13 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     public void setCrop(boolean isCrop) {
         this.mIsCrop = isCrop;
         if (display != null && currentVideoWidth > 0 && currentVideoHeight > 0) {
+            LogUtils.lb("setCrop");
             tryResetSurfaceSize(display.getDisplayView(), currentVideoWidth, currentVideoHeight);
         }
     }
 
     public boolean isCrop() {
+        LogUtils.lb("isCrop");
         return mIsCrop;
     }
 
@@ -114,11 +140,13 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
      * @return 视频是否正在播放
      */
     public boolean isPlaying() {
+        LogUtils.lb("isPlaying");
         return player != null && player.isPlaying();
     }
 
     //根据设置和视频尺寸，调整视频播放区域的大小
     private void tryResetSurfaceSize(final View view, int videoWidth, int videoHeight) {
+        LogUtils.lb("tryResetSurfaceSize");
         ViewGroup parent = (ViewGroup) view.getParent();
         int width = parent.getWidth();
         int height = parent.getHeight();
@@ -156,8 +184,12 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
         }
     }
 
-//    @Override
+    private Activity activity;
+
+    //    @Override
     public void setSource(Activity activity, String url) throws MPlayerException {
+        LogUtils.lb("setSource");
+        this.activity = activity;
         this.source = url;
         createPlayerIfNeed();
         isMediaPrepared = false;
@@ -168,7 +200,8 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
         try {
 //            player.setDataSource(url);
             player.setDataSource(activity, Uri.parse(url));
-            player.prepareAsync();
+//            player.prepareAsync();
+            player.prepare();
             log("异步准备视频");
         } catch (IOException e) {
             throw new MPlayerException("set source error", e);
@@ -177,6 +210,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     @Override
     public void setDisplay(IMDisplay display) {
+        LogUtils.lb("setDisplay");
         if (this.display != null && this.display.getHolder() != null) {
             this.display.getHolder().removeCallback(this);
         }
@@ -186,6 +220,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     @Override
     public void play() throws MPlayerException {
+        LogUtils.lb("play");
         if (!checkPlay()) {
             throw new MPlayerException("Please setSource");
         }
@@ -196,24 +231,28 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     @Override
     public void pause() {
+        LogUtils.lb("pause");
         isUserWantToPlay = false;
         playPause();
     }
 
     @Override
     public void onPause() {
+        LogUtils.lb("onPause");
         isResumed = false;
         playPause();
     }
 
     @Override
     public void onResume() {
+        LogUtils.lb("onResume");
         isResumed = true;
         playStart();
     }
 
     @Override
     public void onDestroy() {
+        LogUtils.lb("onDestroy");
         if (player != null) {
             player.release();
         }
@@ -221,19 +260,37 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     @Override
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
+        LogUtils.lb("onBufferingUpdate");
 
     }
 
     @Override
     public void onCompletion(MediaPlayer mp) {
+        LogUtils.lb("onCompletion");
         display.onComplete(this);
         if (mPlayListener != null) {
             mPlayListener.onComplete(this);
         }
+
+        boolean temp = isVideoSizeMeasured && isMediaPrepared && isSurfaceCreated && isUserWantToPlay && isResumed;
+
+        if (temp && activity instanceof Main2ActivityBackup) {
+            pause();
+            ((Main2ActivityBackup) activity).next();
+        }
+
+        if (activity instanceof EvaluationGame2Activity) {
+            ((EvaluationGame2Activity) activity).startActivity(
+                    new Intent(activity, Main2ActivityBackup.class)
+                            .putExtra("enteragain", true));
+            activity.finish();
+        }
+
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
+        LogUtils.lb("onPrepared");
         log("视频准备完成");
         isMediaPrepared = true;
         playStart();
@@ -243,6 +300,7 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
         log("视频大小被改变->" + width + "/" + height);
         if (width > 0 && height > 0) {
+            LogUtils.lb("onVideoSizeChanged");
             this.currentVideoWidth = width;
             this.currentVideoHeight = height;
             tryResetSurfaceSize(display.getDisplayView(), width, height);
@@ -253,17 +311,20 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     @Override
     public void onSeekComplete(MediaPlayer mp) {
+        LogUtils.lb("onSeekComplete");
 
     }
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
+        LogUtils.lb("onError : " + "\r\n" + "what = " + what + "\r\nextra = " + extra);
         return false;
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         if (display != null && holder == display.getHolder()) {
+            LogUtils.lb("surfaceCreated");
             isSurfaceCreated = true;
             //此举保证以下操作下，不会黑屏。（或许还是会有手机黑屏）
             //暂停，然后切入后台，再切到前台，保持暂停状态
@@ -279,11 +340,13 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+        LogUtils.lb("surfaceChanged");
         log("surface大小改变");
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        LogUtils.lb("surfaceDestroyed");
         if (display != null && holder == display.getHolder()) {
             log("surface被销毁");
             isSurfaceCreated = false;
@@ -293,4 +356,5 @@ public class MPlayer implements IMPlayer, MediaPlayer.OnBufferingUpdateListener,
     private void log(String content) {
         Log.e("MPlayer", content);
     }
+
 }

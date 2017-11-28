@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/dimen_40"
-                    android:layout_marginTop="@dimen/dimen_20"
+                    android:layout_marginTop="@dimen/dimen_10"
                     android:orientation="horizontal"
                     android:visibility="gone"
                     >
@@ -82,8 +82,7 @@
                         android:id="@+id/falg_iv"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/eva_zh"
                         android:visibility="invisible"/>
@@ -93,7 +92,7 @@
                         android:layout_width="@dimen/language_width"
                         android:layout_height="@dimen/language_height"
                         android:layout_toLeftOf="@id/falg_iv"
-                        android:scaleType="centerInside"
+                        android:scaleType="fitXY"
                         android:src="@drawable/eva_zh"
                         />
 
@@ -101,10 +100,10 @@
                         android:id="@+id/language_zh"
                         android:layout_width="@dimen/language_width"
                         android:layout_height="@dimen/language_height"
-                        android:layout_toRightOf="@+id/falg_iv"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/eva_en"
-                        />
+                        android:layout_toEndOf="@id/falg_iv"
+                        android:layout_toRightOf="@id/falg_iv"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/eva_en"/>
                 </RelativeLayout>
             </LinearLayout>
 

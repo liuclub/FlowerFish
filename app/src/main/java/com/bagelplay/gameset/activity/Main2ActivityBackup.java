@@ -2,27 +2,17 @@ package com.bagelplay.gameset.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
-import android.graphics.Typeface;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.transition.Explode;
-import android.transition.Slide;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.Window;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -36,10 +26,9 @@ import com.bagelplay.gameset.player.MPlayerException;
 import com.bagelplay.gameset.player.MinimalDisplay;
 import com.bagelplay.gameset.utils.AppManager;
 import com.bagelplay.gameset.utils.DimenUtil;
+import com.bagelplay.gameset.utils.LogUtils;
 import com.bagelplay.gameset.utils.SoundUtil;
 import com.bagelplay.sdk.cocos.SDKCocosManager;
-
-import java.io.IOException;
 
 public class Main2ActivityBackup extends Activity implements View.OnClickListener {
     private ViewFlipper main2_rootview;
@@ -51,7 +40,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
     private RelativeLayout main2_videoview_container;
     private SurfaceView surfaceView;
     private MPlayer player;
-    private int currentSectiion;
+    private int currentSection;
 
     private LinearLayout main2_second;
 
@@ -78,10 +67,6 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
         surfaceView = main2_videoview_container.findViewById(R.id.main2_surfaceview);
         main2_videoview_container.findViewById(R.id.main2_skip).setOnClickListener(this);
 
-
-        player = new MPlayer();
-        player.setDisplay(new MinimalDisplay(surfaceView));
-
         main2_second = main2_rootview.findViewById(R.id.main2_second);
         main2Hamburger = (ImageView) main2_second.findViewById(R.id.main2_hamburger);
         main2Salad = (ImageView) main2_second.findViewById(R.id.main2_salad);
@@ -97,7 +82,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
         main2Salad.setOnClickListener(this);
         main2Exit.setOnClickListener(this);
 
-        currentSectiion = 1;
+        currentSection = 1;
 
 
         if (!enteragain) {//否，这是第一次进入该界面
@@ -106,7 +91,9 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
             String mUrl = "android.resource://" + getPackageName() + "/" + R.raw.game_introduction;
             if (mUrl.length() > 0) {
                 try {
+                    player = new MPlayer();
                     player.setSource(Main2ActivityBackup.this, mUrl);
+                    player.setDisplay(new MinimalDisplay(surfaceView));
                     player.play();
                 } catch (MPlayerException e) {
                     e.printStackTrace();
@@ -127,7 +114,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
         }
     }
 
-    private void next() {
+    public void next() {
         main2_rootview.setInAnimation(AnimationUtils.loadAnimation(Main2ActivityBackup.this, R.anim.fade_in));
         main2_rootview.setOutAnimation(AnimationUtils.loadAnimation(Main2ActivityBackup.this, R.anim.fade_out));
 
@@ -150,7 +137,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
                 if (click) {
                     startActivity(new Intent(Main2ActivityBackup.this, EvaluationGame2Activity.class)
                             .putExtra("language", "en")
-                            .putExtra("section", currentSectiion));
+                            .putExtra("section", currentSection));
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -163,7 +150,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
                 if (click) {
                     startActivity(new Intent(Main2ActivityBackup.this, EvaluationGame2Activity.class)
                             .putExtra("language", "zh")
-                            .putExtra("section", currentSectiion));
+                            .putExtra("section", currentSection));
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -179,7 +166,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
                     parent.setGravity(Gravity.CENTER_HORIZONTAL);
                     languageContainer.setVisibility(View.VISIBLE);
                     main2Salad.setVisibility(View.GONE);
-                    currentSectiion = 1;
+                    currentSection = 1;
                     SoundUtil.getInstance(Main2ActivityBackup.this).startPlaySoundWithListener(R.raw.select_language, new SoundUtil.MediaPlayListener() {
                         @Override
                         public void onPlayerCompletion() {
@@ -195,7 +182,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
                     parent.setGravity(Gravity.CENTER_HORIZONTAL);
                     main2Hamburger.setVisibility(View.GONE);
                     languageContainer.setVisibility(View.VISIBLE);
-                    currentSectiion = 2;
+                    currentSection = 2;
                     SoundUtil.getInstance(Main2ActivityBackup.this).startPlaySoundWithListener(R.raw.select_language, new SoundUtil.MediaPlayListener() {
                         @Override
                         public void onPlayerCompletion() {
@@ -207,7 +194,7 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
             case R.id.main2_exit:
                 if (click) {
                     if (languageContainer.getVisibility() != View.GONE) {
-                        switch (currentSectiion) {
+                        switch (currentSection) {
                             case 1:
                                 main2Salad.setVisibility(View.VISIBLE);
 
@@ -232,6 +219,39 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
         }
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        setLanguageImageViewWidthAndHeight();
+    }
+
+    private void setLanguageImageViewWidthAndHeight() {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenHeight = displayMetrics.heightPixels;
+        int screenWidth = displayMetrics.widthPixels;
+
+        //187*128
+        double temHei = screenHeight * 1.0 * 2 / (9*1.5);
+        double temWid = temHei * 187 / 128;
+
+//        LogUtils.lb("temWid = " + temWid);
+//        LogUtils.lb("temHei = " + temHei);
+//        LogUtils.lb("languageContainer.getWidth() = " + languageContainer.getWidth());
+//        LogUtils.lb("languageContainer.getHeight() = " + languageContainer.getHeight());
+
+        RelativeLayout.LayoutParams paramsZH = new RelativeLayout.LayoutParams((int) temWid, (int) temHei);
+        paramsZH.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        paramsZH.setMargins(DimenUtil.dip2px(this,20),0,0,0);
+        languageContainer.findViewById(R.id.language_en).setLayoutParams(paramsZH);
+
+        RelativeLayout.LayoutParams paramsEN = new RelativeLayout.LayoutParams((int) temWid, (int) temHei);
+        paramsEN.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        paramsEN.setMargins(0,0,DimenUtil.dip2px(this,20),0);
+        languageContainer.findViewById(R.id.language_zh).setLayoutParams(paramsEN);
+    }
+
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (SDKCocosManager.getInstance().dispatchKeyEvent(event))
             return true;
@@ -254,7 +274,9 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
     @Override
     protected void onPause() {
         super.onPause();
-        player.onPause();
+        if (player != null) {
+            player.onPause();
+        }
         SDKCocosManager.getInstance().onPause();
         SoundUtil.getInstance(Main2ActivityBackup.this).stopPlaySound();
     }
@@ -263,14 +285,18 @@ public class Main2ActivityBackup extends Activity implements View.OnClickListene
     @Override
     protected void onResume() {
         super.onResume();
-        player.onResume();
+        if (player != null) {
+            player.onResume();
+        }
         SDKCocosManager.getInstance().onResume();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        player.onDestroy();
+        if (player != null) {
+            player.onDestroy();
+        }
         SDKCocosManager.getInstance().removeWindowCallBack(this);
     }
 

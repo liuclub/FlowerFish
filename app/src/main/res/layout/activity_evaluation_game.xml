@@ -179,11 +179,17 @@
         android:src="@drawable/pause_button"
         />
 
-    <SurfaceView
-        android:id="@+id/eva_surfaceview"
+    <RelativeLayout
+        android:id="@+id/eva_surfaceview_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone">
+
+        <SurfaceView
+            android:id="@+id/eva_surfaceview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 
     <com.bagelplay.gameset.view.GameCongrationView2
         android:id="@+id/ae_celebrateview"
@@ -208,7 +214,7 @@
         android:visibility="gone"
         />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#a8ffffff"
@@ -217,10 +223,11 @@
 
         <ImageView
             android:id="@+id/ae_restart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
             android:src="@drawable/release_btn"
             />
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
